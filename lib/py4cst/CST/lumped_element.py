@@ -34,10 +34,10 @@ class LumpedElement(ComObjectWrapper):
         self.invoke_method('Modify')
 
     def set_type(self, elem_type: str):
-        self.invoke_method('Type', elem_type)
+        self.invoke_method('SetType', elem_type)
 
     def set_name(self, name: str):
-        self.invoke_method('Name', name)
+        self.invoke_method('SetName', name)
 
     def set_folder_name(self, folder_name: str):
         self.invoke_method('Folder', folder_name)
@@ -48,7 +48,7 @@ class LumpedElement(ComObjectWrapper):
     def set_inductance(self, value: float):
         self.invoke_method('SetL', value)
 
-    def set_capacity(self, value: float):
+    def set_capacitance(self, value: float):
         self.invoke_method('SetC', value)
 
     def set_blocking_conductivity(self, value: float):

@@ -346,7 +346,7 @@ class Material(ComObjectWrapper):
             'AddTabulatedSurfaceImpedanceFittingValue', frequency,
             impedance.real, impedance.imag, weight)
 
-    def add_tabulated_surface_impedance_fitting_value(self, frequency: float, impedance: complex):
+    def add_tabulated_surface_impedance_value(self, frequency: float, impedance: complex):
         self.invoke_method(
             'AddTabulatedSurfaceImpedanceValue', frequency, impedance.real, impedance.imag)
 

@@ -93,6 +93,73 @@ def prepare_vacuum(material: Material) -> None:
         rel_permitivity=1.0, rel_permeability=1.0,
         el_conductivity=0.0, mag_conductivity=0.0)
 
+def prepare_surface_impedance_table(
+        material: Material,
+        frq_imp_weight: list[tuple[float, complex, float]],
+        max_order: int = 10,
+        error_limit: float = 0.1,
+        transparent_model: bool = False):
+    # frq_imp_weight: list of tuples: [(freq, impdance, weight), ...]
+    material.reset()
+    material.set_material_density(0)
+    material.set_reference_coord_system(Material.REF_COORD_SYSTEM_GLOBAL)
+    material.set_coord_system_type(Material.COORD_SYSTEM_CARTESIAN)
+    set_units(material)
+    material.set_type(Material.TYPE_LOSSY_METAL)
+    material.set_tabulated_surface_impedance_model(
+        Material.TAB_SURF_IMP_MODEL_TRANSPARENT\
+            if transparent_model else Material.TAB_SURF_IMP_MODEL_OPAQUE)
+    for freq, imp, weight in frq_imp_weight:
+        material.add_tabulated_surface_impedance_fitting_value(freq, imp, weight)
+    material.set_dispersive_fitting_scheme_tab_surf_imp(Material.DISP_FIT_SCHEME_TAB_SI_NTH_ORDER)
+    material.set_max_order_nth_model_fit_tab_surf_imp(max_order)
+    material.set_use_only_data_in_sim_freq_range_nth_model_tab_surf_imp(True)
+    material.set_error_limit_nth_model_fit_tab_surf_imp(error_limit)
+
+# With Material
+#      .Reset
+#      .Name "material1"
+#      .Folder ""
+#      .Rho "0.0"
+#      .ThermalType "Normal"
+#      .ThermalConductivity "0"
+#      .SpecificHeat "0", "J/K/kg"
+#      .DynamicViscosity "0"
+#      .UseEmissivity "True"
+#      .Emissivity "0"
+#      .MetabolicRate "0.0"
+#      .VoxelConvection "0.0"
+#      .BloodFlow "0"
+#      .MechanicsType "Unused"
+#      .IntrinsicCarrierDensity "0"
+#      .FrqType "all"
+#      .Type "Lossy metal"
+#      .MaterialUnit "Frequency", "GHz"
+#      .MaterialUnit "Geometry", "mm"
+#      .MaterialUnit "Time", "ns"
+#      .MaterialUnit "Temperature", "Celsius"
+#      .SetTabulatedSurfaceImpedanceModel "Opaque"
+#      .AddTabulatedSurfaceImpedanceFittingValue "10", "1.1", "-3.2", "1.0"
+#      .ReferenceCoordSystem "Global"
+#      .CoordSystemType "Cartesian"
+#      .DispersiveFittingSchemeTabSI "Nth Order"
+#      .MaximalOrderNthModelFitTabSI "9"
+#      .ErrorLimitNthModelFitTabSI "0.1"
+#      .UseOnlyDataInSimFreqRangeNthModelTabSI "False"
+#      .NLAnisotropy "False"
+#      .NLAStackingFactor "1"
+#      .NLADirectionX "1"
+#      .NLADirectionY "0"
+#      .NLADirectionZ "0"
+#      .Colour "0", "1", "1"
+#      .Wireframe "False"
+#      .Reflection "False"
+#      .Allowoutline "True"
+#      .Transparentoutline "False"
+#      .Transparency "0"
+#      .Create
+# End With
+
 # def prepare_simple_material(
 #         material: Material,
 #         rel_permitivity: float = 1.0, rel_permeability: float = 1.0,

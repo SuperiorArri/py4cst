@@ -106,7 +106,7 @@ class MeshAdaption3D(ComObjectWrapper):
     def remove_all_custom_stop_criteria(self):
         self.invoke_method('RemoveAllUserDefinedStopCriteria')
 
-    def set_mesh_increment(self, value: int):
+    def set_mesh_increment(self, value: float):
         self.invoke_method('MeshIncrement', value)
 
     def set_frequency_range(self, f_min: float, f_max: float):

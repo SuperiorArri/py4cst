@@ -1,6 +1,6 @@
-# Welcome to py4cst
+# Welcome to py4cst!
 
-This is a small python library that provides wrappers for CST Studio Suite win32com object and also some useful high level tools to setup your projects and to read out the results.
+This is a small python library that provides wrappers for CST Studio Suite win32com object as well as some useful high level tools to setup your projects and to read out the results.
 
 **Be aware the library in it's current state is highly untested and will change a lot even in it's core. Any contributions are welcome.**
 
@@ -23,7 +23,7 @@ Click on `Environment Variables...` button. Add or modify environment variable `
 
 # Known issues
 
-There is sometimes a problem with win32com Dispatcher complaining. The solution is to delete `%TMP%/gen_py` in your filesystem. There is also an option to do so via the library itself:
+There is sometimes a problem with win32com Dispatcher complaining. The solution is to remove the `%TMP%/gen_py` directory from your filesystem. There is also an option to do so via the library itself:
 
     from py4cst.CST import Interface
     Interface.clear_cache()

@@ -28,7 +28,7 @@ class Wire(ComObjectWrapper):
     def set_name(self, name: str):
         self.invoke_method('Name', name)
 
-    def set_folder(self, folder_name: str):
+    def set_folder_name(self, folder_name: str):
         self.invoke_method('Folder', folder_name)
 
     def set_type(self, wire_type: str):

@@ -354,20 +354,20 @@ class Project(ComObjectWrapper):
     def run_script(self, script_name: str):
         self.invoke_method('RunScript', script_name)
 
-    def report_information(self, message: str):
-        self.invoke_method('ReportInformation', message)
+    def report_information(self, *msg):
+        self.invoke_method('ReportInformation', ''.join(list(map(lambda x: str(x), msg))))
 
-    def report_warning(self, message: str):
-        self.invoke_method('ReportWarning', message)
+    def report_warning(self, *msg):
+        self.invoke_method('ReportWarning', ''.join(list(map(lambda x: str(x), msg))))
 
-    def report_information_to_window(self, message: str):
-        self.invoke_method('ReportInformationToWindow', message)
+    def report_information_to_window(self, *msg):
+        self.invoke_method('ReportInformationToWindow', ''.join(list(map(lambda x: str(x), msg))))
 
-    def report_warning_to_window(self, message: str):
-        self.invoke_method('ReportWarningToWindow', message)
+    def report_warning_to_window(self, *msg):
+        self.invoke_method('ReportWarningToWindow', ''.join(list(map(lambda x: str(x), msg))))
 
-    def report_error(self, message: str):
-        self.invoke_method('ReportError', message)
+    def report_error(self, *msg):
+        self.invoke_method('ReportError', ''.join(list(map(lambda x: str(x), msg))))
 
     def set_common_mpi_cluster_config(
             self, install_folder: str, temp_folder: str, architecture: str):
