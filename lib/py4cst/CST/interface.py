@@ -13,7 +13,7 @@ class Interface(IQuietModeController):
 
     def __init__(
             self, version_or_install_dir: Optional[Union[int,str]] = None,
-            start_mode: StartMode = StartMode.New) -> None:
+            start_mode: StartMode = StartMode.ExistingOrNew) -> None:
         installation_util.load_win_cst_python_lib(version_or_install_dir)
         self.stored_quiet_mode = False
         self.__init_cst_interface(start_mode)

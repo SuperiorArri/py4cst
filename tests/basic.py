@@ -1,4 +1,6 @@
 from py4cst.CST import Interface, Project, Parameters, Component, LumpedElement, Boundary, Results
+from py4cst.results import ASCIIFarfieldExporter
+from py4cst import material_library
 from pprint import pprint
 
 ifc = Interface(2023, start_mode=Interface.StartMode.ExistingOrNew)
@@ -35,9 +37,18 @@ proj = ifc.get_active_project()
 
 # proj.generate_history_list()
 
-results = Results(proj.get_file_name())
-results_3d = results.get_3d()
-pprint(results_3d.get_result_item('1D Results\\S-Parameters\\S1,1').get_title())
+# print(proj.get_install_path())
+# mat = material_library.Material()
+# mat.load_from_file(material_library.get_material_path(proj, 'Air'))
+# mat.import_to_project(proj)
+
+# results = Results(proj.get_file_name())
+# results_3d = results.get_3d()
+# pprint(results_3d.get_tree_items())
+
+ffexp = ASCIIFarfieldExporter()
+ffexp.prepare(proj, 'farfield (f=3) [1]')
+print(ffexp.export_complex_theta())
 
 input("Press Enter to continue...")
 
