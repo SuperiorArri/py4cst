@@ -1,89 +1,92 @@
-import win32com.client
+from .. import installation_util
+from . import Project, IQuietModeController
+from typing import Optional, Union
+from enum import Enum
 import os.path
-import shutil
 
-class Interface:
-    def clear_cache():
-        cache_path = os.path.join(os.getenv('TMP'), 'gen_py')
-        shutil.rmtree(cache_path, True)
+class Interface(IQuietModeController):
+    class StartMode(Enum):
+        import cst.interface
+        New = cst.interface.DesignEnvironment.StartMode.New
+        ExistingOrNew = cst.interface.DesignEnvironment.StartMode.ExistingOrNew
+        Existing = cst.interface.DesignEnvironment.StartMode.Existing
 
-    def __init__(self, version=None):
+    def __init__(
+            self, version_or_install_dir: Optional[Union[int,str]] = None,
+            start_mode: StartMode = StartMode.New) -> None:
+        installation_util.load_win_cst_python_lib(version_or_install_dir)
         self.stored_quiet_mode = False
-        if(version is None):
-            self.__open_app_latest_version()
-        else:
-            self.__open_app_specific_version(version)
-        self.enable_quiet_mode()
+        self.__init_cst_interface(start_mode)
+        self.set_quiet_mode(True)
 
-    def __del__(self):
-        self.disable_quiet_mode()
+    def __del__(self) -> None:
+        # FIXME: here should be set_quiet_mode(False) but it doesn't work here (for an unknown
+        # reason the connection to the Design Environment is lost)
+        pass
 
-    def __open_app_latest_version(self):
-        self.com_object = win32com.client.gencache\
-            .EnsureDispatch('CSTStudio.Application')
+    def __init_cst_interface(self, start_mode: StartMode = StartMode.New) -> None:
+        import cst.interface
+        self.design_env = cst.interface.DesignEnvironment(mode=start_mode.value)
 
-    def __open_app_specific_version(self, version):
-        self.com_object = win32com.client.gencache\
-            .EnsureDispatch('CSTStudio.Application.'+str(version))
-
-    def store_quiet_mode(self):
+    def store_quiet_mode(self) -> None:
         self.stored_quiet_mode = self.is_in_quiet_mode()
 
-    def restore_quiet_mode(self):
+    def restore_quiet_mode(self) -> None:
         self.set_quiet_mode(self.stored_quiet_mode)
 
-    def store_and_disable_quiet_mode(self):
+    def store_and_disable_quiet_mode(self) -> None:
         self.store_quiet_mode()
-        self.disable_quiet_mode()
+        self.set_quiet_mode(False)
 
-    def store_and_enable_quiet_mode(self):
+    def store_and_enable_quiet_mode(self) -> None:
         self.store_quiet_mode()
-        self.enable_quiet_mode()
+        self.set_quiet_mode(True)
 
-    def open_3d_project(self, path):
-        self.com_object.OpenFile(os.path.abspath(path))
+    def set_quiet_mode(self, enabled: bool = True) -> None:
+        self.design_env.set_quiet_mode(enabled)
 
-    def open_ds_project(self, path):
-        self.com_object.OpenFile(os.path.abspath(path))
+    def is_in_quiet_mode(self) -> bool:
+        return self.design_env.in_quiet_mode()
 
-    def create_new_mws_project(self):
-        # Creates a new CST Microwave Studio project.
-        self.com_object.NewMWS()
+    def get_open_projects(self) -> list[str]:
+        return self.design_env.list_open_projects()
 
-    def create_new_ems_project(self):
-        # Creates a new CST EM Studio project.
-        self.com_object.NewEMS()
+    def open_project(self, path: str) -> Project:
+        return Project(self.design_env.open_project(os.path.abspath(path)), self)
 
-    def create_new_ps_project(self):
-        # Creates a new CST Particle Studio project.
-        self.com_object.NewPS()
+    def get_active_project(self) -> Project:
+        return Project(self.design_env.active_project(), self)
 
-    def create_new_mps_project(self):
-        # Creates a new CST Mphysics Studio project.
-        self.com_object.NewMPS()
+    def new_project(self, kind: Project.Kind) -> Project:
+        return Project(self.design_env.new_project(kind.value), self)
 
-    def create_new_pcbs_project(self):
-        # Creates a new CST PCB Studio project.
-        self.com_object.NewPCBS()
+    def new_cable_studio_project(self) -> Project:
+        return Project(self.design_env.new_cs(), self)
 
-    def create_new_ds_project(self):
-        # Creates a new CST Design Studio project.
-        self.com_object.NewDS()
+    def new_design_studio_project(self) -> Project:
+        return Project(self.design_env.new_ds(), self)
 
-    def enable_quiet_mode(self, flag: bool = True):
-        self.com_object.SetQuietMode(flag)
-        self.in_quiet_mode = flag
+    def new_em_studio_project(self) -> Project:
+        return Project(self.design_env.new_ems(), self)
 
-    def disable_quiet_mode(self):
-        self.com_object.SetQuietMode(False)
-        self.in_quiet_mode = False
+    def new_filter_designer_3d_project(self) -> Project:
+        return Project(self.design_env.new_fd3d(), self)
 
-    def set_quiet_mode(self, enabled=True):
-        self.com_object.SetQuietMode(enabled)
-        self.in_quiet_mode = enabled
+    def new_mphysics_studio_project(self) -> Project:
+        return Project(self.design_env.new_mps(), self)
 
-    def is_in_quiet_mode(self):
-        return self.in_quiet_mode
+    def new_microwave_studio_project(self) -> Project:
+        return Project(self.design_env.new_mws(), self)
 
-    def close(self):
-        self.com_object.Quit()
+    def new_pcb_studio_project(self) -> Project:
+        return Project(self.design_env.new_pcbs(), self)
+
+    def new_particle_studio_project(self) -> Project:
+        return Project(self.design_env.new_ps(), self)
+
+    def close(self) -> None:
+        self.design_env.close()
+
+    def get_version() -> str:
+        import cst.interface
+        return cst.interface.DesignEnvironment.version()

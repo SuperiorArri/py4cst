@@ -1,26 +1,20 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class Shape(ComObjectWrapper):
-    def __init__(self, project: Project, com_object) -> None:
-        self.project = project
-        self.com_object = com_object
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+class Shape(VBAObjWrapper):
+    def __init__(self, vbap: IVBAProvider, shape_name: str) -> None:
+        super.__init__(vbap, shape_name)
 
     def reset(self):
-        self.invoke_method('Reset')
+        self.record_method('Reset')
 
     def set_name(self, name: str):
-        self.invoke_method('Name', name)
+        self.record_method('Name', name)
 
     def set_component(self, component_name: str):
-        self.invoke_method('Component', component_name)
+        self.record_method('Component', component_name)
 
     def set_material(self, mat_name: str):
-        self.invoke_method('Material', mat_name)
+        self.record_method('Material', mat_name)
 
     def create(self):
-        self.invoke_method('Create')
+        self.record_method('Create')

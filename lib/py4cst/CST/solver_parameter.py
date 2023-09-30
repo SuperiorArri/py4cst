@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class SolverParameter(ComObjectWrapper):
+class SolverParameter(VBAObjWrapper):
     SOLVER_TYPE_TRANSIENT = 'Transient solver'
     SOLVER_TYPE_FREQ_DOMAIN = 'Frequency domain solver'
     SOLVER_TYPE_ASYMPTOTIC = 'Asymptotic solver'
@@ -26,31 +25,26 @@ class SolverParameter(ComObjectWrapper):
     MESH_TETRAHEDRAL = 'Tetrahedral'
     MESH_SURFACE = 'Surface'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.SolverParameter
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'SolverParameter')
 
     def set_solver_type(self, solver_type: str, mesh: str):
-        self.invoke_method('SolverType', solver_type, mesh)
+        self.record_method('SolverType', solver_type, mesh)
 
     def set_ignore_lossy_metals(self, flag: bool = True):
-        self.invoke_method('IgnoreLossyMetals', flag)
+        self.record_method('IgnoreLossyMetals', flag)
 
     def set_ignore_lossy_dielectrics(self, flag: bool = True):
-        self.invoke_method('IgnoreLossyDielectrics', flag)
+        self.record_method('IgnoreLossyDielectrics', flag)
 
     def set_ignore_lossy_metals_for_wires(self, flag: bool = True):
-        self.invoke_method('IgnoreLossyMetalsForWires', flag)
+        self.record_method('IgnoreLossyMetalsForWires', flag)
 
     def set_ignore_nonlinear_materials(self, flag: bool = True):
-        self.invoke_method('IgnoreNonlinearMaterials', flag)
+        self.record_method('IgnoreNonlinearMaterials', flag)
 
     def set_use_thin_wire_model(self, flag: bool = True):
-        self.invoke_method('UseThinWireModel', flag)
+        self.record_method('UseThinWireModel', flag)
 
     def set_use_zero_wire_radius(self, flag: bool = True):
-        self.invoke_method('UseZeroWireRadius', flag)
+        self.record_method('UseZeroWireRadius', flag)

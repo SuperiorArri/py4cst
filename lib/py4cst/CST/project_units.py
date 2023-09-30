@@ -1,53 +1,47 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class ProjectUnits(ComObjectWrapper):
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.Units
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+class ProjectUnits(VBAObjWrapper):
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'Units')
 
     def set_geometry_unit(self, unit: str):
-        self.invoke_method('Geometry', unit)
+        self.record_method('Geometry', unit)
 
     def get_geometry_unit(self) -> str:
-        return self.invoke_method('GetGeometryUnit')
+        return self.query_method_str('GetGeometryUnit')
 
     def get_geometry_unit_to_si_factor(self) -> float:
-        return self.invoke_method('GetGeometryUnitToSI')
+        return self.query_method_float('GetGeometryUnitToSI')
 
     def get_geometry_si_to_unit_factor(self) -> float:
-        return self.invoke_method('GetGeometrySIToUnit')
+        return self.query_method_float('GetGeometrySIToUnit')
 
     def set_time_unit(self, unit: str):
-        self.invoke_method('Time', unit)
+        self.record_method('Time', unit)
 
     def get_time_unit(self) -> str:
-        return self.invoke_method('GetTimeUnit')
+        return self.query_method_str('GetTimeUnit')
 
     def get_time_unit_to_si_factor(self) -> float:
-        return self.invoke_method('GetTimeUnitToSI')
+        return self.query_method_float('GetTimeUnitToSI')
 
     def get_time_si_to_unit_factor(self) -> float:
-        return self.invoke_method('GetTimeSIToUnit')
+        return self.query_method_float('GetTimeSIToUnit')
 
     def set_frequency_unit(self, unit: str):
-        self.invoke_method('Frequency', unit)
+        self.record_method('Frequency', unit)
 
     def get_frequency_unit(self) -> str:
-        return self.invoke_method('GetFrequencyUnit')
+        return self.query_method_str('GetFrequencyUnit')
 
     def get_frequency_unit_to_si_factor(self) -> float:
-        return self.invoke_method('GetFrequencyUnitToSI')
+        return self.query_method_float('GetFrequencyUnitToSI')
 
     def get_frequency_si_to_unit_factor(self) -> float:
-        return self.invoke_method('GetFrequencySIToUnit')
+        return self.query_method_float('GetFrequencySIToUnit')
 
     def set_temperature_unit(self, unit: str):
-        self.invoke_method('TemperatureUnit', unit)
+        self.record_method('TemperatureUnit', unit)
 
     def get_temperature_unit(self) -> str:
-        return self.invoke_method('GetTemperatureUnit')
+        return self.query_method_str('GetTemperatureUnit')

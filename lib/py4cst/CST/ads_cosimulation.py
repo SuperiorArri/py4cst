@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class ADSCosimulation(ComObjectWrapper):
+class ADSCosimulation(VBAObjWrapper):
     SOLVER_TYPE_TRANSIENT = 'transient'
     SOLVER_TYPE_FREQUNCY_DOMAIN = 'frequency domain'
 
@@ -17,28 +16,23 @@ class ADSCosimulation(ComObjectWrapper):
     PARAM_TYPE_FREQUENCY = 'Frequency'
     PARAM_TYPE_TIME = 'Time'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.ADSCosimulation
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'ADSCosimulation')
 
     def set_cosimulation_enabled(self, flag: bool = True):
-        self.invoke_method('EnableCoSimulation', flag)
+        self.record_method('EnableCoSimulation', flag)
 
     def set_use_interpolation(self, flag: bool = True):
-        self.invoke_method('UseInterpolation', flag)
+        self.record_method('UseInterpolation', flag)
 
     def set_solver_type(self, solver_type: str):
-        self.invoke_method('SolverType', solver_type)
+        self.record_method('SolverType', solver_type)
 
     def set_description(self, description: str):
-        self.invoke_method('Description', description)
+        self.record_method('Description', description)
 
     def set_parameter_info(
             self, param_name: str, use: bool, param_type: str, nominal_value: float,
             step_size: float):
-        self.invoke_method(
+        self.record_method(
             'ParameterInformation', param_name, use, param_type, nominal_value, step_size)

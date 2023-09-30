@@ -1,9 +1,8 @@
-from . import Project
-from . import ComObjectWrapper
-from . import w32com
+from . import IVBAProvider, VBAObjWrapper, VBATypeName
 import numpy as np
+from typing import Optional
 
-class FloquetPort(ComObjectWrapper):
+class FloquetPort(VBAObjWrapper):
     POSITION_Z_MIN = 'zmin'
     POSITION_Z_MAX = 'zmax'
 
@@ -26,105 +25,99 @@ class FloquetPort(ComObjectWrapper):
     CODE_PLUS_ORDER_Y = '+ordery'
     CODE_MINUS_ORDER_Y = '-ordery'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.FloquetPort
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'FloquetPort')
 
     def reset(self):
-        self.invoke_method('Reset')
+        self.record_method('Reset')
 
     def prepare_port(self, position: str):
-        self.invoke_method('Port', position)
+        self.record_method('Port', position)
 
     def add_mode(self, mode_type: str, order_x: int, order_y_prime: int):
-        self.invoke_method('AddMode', mode_type, order_x, order_y_prime)
+        self.record_method('AddMode', mode_type, order_x, order_y_prime)
 
     def set_use_circular_polarization(self, flag: bool = True):
-        self.invoke_method('SetUseCircularPolarization', flag)
+        self.record_method('SetUseCircularPolarization', flag)
 
     def set_polarization_independent_of_phi_deg(self, alignment_angle: float):
-        self.invoke_method('SetPolarizationIndependentOfScanAnglePhi', alignment_angle, True)
+        self.record_method('SetPolarizationIndependentOfScanAnglePhi', alignment_angle, True)
 
     def set_polarization_independent_of_phi_rad(self, alignment_angle: float):
         self.set_polarization_independent_of_phi_deg(np.rad2deg(alignment_angle))
 
     def set_polarization_dependent_of_phi(self):
-        self.invoke_method('SetPolarizationIndependentOfScanAnglePhi', 0, False)
+        self.record_method('SetPolarizationIndependentOfScanAnglePhi', 0, False)
 
     def set_dialog_frequency(self, frequency: float):
-        self.invoke_method('SetDialogFrequency', frequency)
+        self.record_method('SetDialogFrequency', frequency)
 
     def set_dialog_media_factor(self, frequency: float):
-        self.invoke_method('SetDialogMediaFactor', frequency)
+        self.record_method('SetDialogMediaFactor', frequency)
 
     def set_dialog_theta_deg(self, angle: float):
-        self.invoke_method('SetDialogTheta', angle)
+        self.record_method('SetDialogTheta', angle)
 
     def set_dialog_theta_rad(self, angle: float):
         self.set_dialog_theta_deg(np.rad2deg(angle))
 
     def set_dialog_phi_deg(self, angle: float):
-        self.invoke_method('SetDialogPhi', angle)
+        self.record_method('SetDialogPhi', angle)
 
     def set_dialog_phi_rad(self, angle: float):
         self.set_dialog_phi_deg(np.rad2deg(angle))
 
     def set_dialog_max_order_x(self, order: int):
-        self.invoke_method('SetDialogMaxOrderX', order)
+        self.record_method('SetDialogMaxOrderX', order)
 
     def set_dialog_max_order_y_prime(self, order: int):
-        self.invoke_method('SetDialogMaxOrderYPrime', order)
+        self.record_method('SetDialogMaxOrderYPrime', order)
 
     def set_customized_list(self, flag: bool = True):
-        self.invoke_method('SetCustomizedListFlag', flag)
+        self.record_method('SetCustomizedListFlag', flag)
 
     def set_number_of_modes_considered(self, number: int):
-        self.invoke_method('SetNumberOfModesConsidered', number)
+        self.record_method('SetNumberOfModesConsidered', number)
 
     def set_sort_code(self, code: str):
-        self.invoke_method('SetSortCode', code)
+        self.record_method('SetSortCode', code)
 
     def set_distance_to_reference_plane(self, distance: float):
-        self.invoke_method('SetDistanceToReferencePlane', distance)
+        self.record_method('SetDistanceToReferencePlane', distance)
 
     def get_number_of_modes(self) -> int:
-        return self.invoke_method('GetNumberOfModes')
+        return self.query_method_int('GetNumberOfModes')
 
     def reset_mode_iterator(self) -> bool:
-        return self.invoke_method('FirstMode')
+        return self.query_method_bool('FirstMode')
 
-    def get_mode(self):
-        mode_type = w32com.create_ref_str()
-        order_x = w32com.create_ref_int()
-        order_y_prime = w32com.create_ref_int()
-        success = self.invoke_method('GetMode', mode_type, order_x, order_y_prime)
-        return (mode_type.value, order_x.value, order_y_prime.value) if success else None
+    # returns: (mode_type, order_x, order_y_prime) or None
+    def get_mode(self) -> Optional[tuple[str, int, int]]:
+        S, I = VBATypeName.String, VBATypeName.Integer
+        res = self.query_method_t('GetMode', VBATypeName.Boolean, S, I, I)
+        return None if not res[0] else res[1:]
 
     def increment_mode_iterator(self) -> bool:
-        return self.invoke_method('NextMode')
+        return self.query_method_bool('NextMode')
 
     def get_number_of_modes_considered(self) -> int:
-        return self.invoke_method('GetNumberOfModesConsidered')
+        return self.query_method_int('GetNumberOfModesConsidered')
 
     def is_port_at_z_min(self) -> bool:
-        return self.invoke_method('IsPortAtZmin')
+        return self.query_method_bool('IsPortAtZmin')
 
     def is_port_at_z_max(self) -> bool:
-        return self.invoke_method('IsPortAtZmax')
+        return self.query_method_bool('IsPortAtZmax')
 
-    def get_mode_name_by_number(self, number: int) -> str:
-        name = w32com.create_ref_str()
-        success = self.invoke_method('GetModeNameByNumber', name, number)
-        return name.value if success else None
+    def get_mode_name_by_number(self, number: int) -> Optional[str]:
+        S = VBATypeName.String
+        res = self.query_method_t('GetModeNameByNumber', VBATypeName.Boolean, S, number)
+        return None if not res[0] else res[1]
 
     def get_mode_name_by_number(self, name: str) -> int:
-        number = w32com.create_ref_long()
-        success = self.invoke_method('GetModeNumberByName', number, name)
-        return number.value if success else None
+        L = VBATypeName.Long
+        res = self.query_method_t('GetModeNameByNumber', VBATypeName.Boolean, L, name)
+        return None if not res[0] else res[1]
 
     def set_force_legacy_phase_reference(self, flag: bool = True):
-        self.invoke_method('ForceLegacyPhaseReference', flag)
+        self.record_method('ForceLegacyPhaseReference', flag)

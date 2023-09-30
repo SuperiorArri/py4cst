@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class Optimizer(ComObjectWrapper):
+class Optimizer(VBAObjWrapper):
     GOAL_TYPE_1D_PRIMARY_RESULT = '1D Primary Result'
     GOAL_TYPE_1DC_PRIMARY_RESULT = '1DC Primary Result'
     GOAL_TYPE_0D_RESULT = '0D Result'
@@ -56,13 +55,10 @@ class Optimizer(ComObjectWrapper):
     DATA_STORAGE_STRATEGY_AUTOMATIC = 'Automatic'
     DATA_STORAGE_STRATEGY_NONE = 'None'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.Optimizer
+    #TODO: check which methods should be recorded and which invoked
 
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'Optimizer')
 
     def start(self):
         self.invoke_method('Start')
@@ -104,25 +100,25 @@ class Optimizer(ComObjectWrapper):
         self.invoke_method('SetUseDataOfPreviousCalculations', flag)
 
     def get_number_of_varying_parameters(self) -> int:
-        return self.invoke_method('GetNumberOfVaryingParameters')
+        return self.query_method_int('GetNumberOfVaryingParameters')
 
     def get_name_of_varying_parameter(self, index: int) -> str:
-        return self.invoke_method('GetNameOfVaryingParameter', index)
+        return self.query_method_str('GetNameOfVaryingParameter', index)
 
     def get_value_of_varying_parameter(self, index: int) -> float:
-        return self.invoke_method('GetValueOfVaryingParameter', index)
+        return self.query_method_float('GetValueOfVaryingParameter', index)
 
     def get_param_min_of_varying_parameter(self, index: int) -> float:
-        return self.invoke_method('GetParameterMinOfVaryingParameter', index)
+        return self.query_method_float('GetParameterMinOfVaryingParameter', index)
 
     def get_param_max_of_varying_parameter(self, index: int) -> float:
-        return self.invoke_method('GetParameterMaxOfVaryingParameter', index)
+        return self.query_method_float('GetParameterMaxOfVaryingParameter', index)
 
     def get_param_init_of_varying_parameter(self, index: int) -> float:
-        return self.invoke_method('GetParameterInitOfVaryingParameter', index)
+        return self.query_method_float('GetParameterInitOfVaryingParameter', index)
 
     def add_goal(self, goal_type: str) -> int:
-        return self.invoke_method('AddGoal', goal_type)
+        return self.query_method_int('AddGoal', goal_type)
 
     def select_goal(self, id: int, use_for_optimization: bool = True):
         self.invoke_method('SelectGoal', id, use_for_optimization)

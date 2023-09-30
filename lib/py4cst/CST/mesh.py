@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class Mesh(ComObjectWrapper):
+class Mesh(VBAObjWrapper):
     TYPE_PBA = 'PBA'
     TYPE_STAIRCASE = 'Staircase'
     TYPE_TETRAHEDRAL = 'Tetrahedral'
@@ -42,289 +41,284 @@ class Mesh(ComObjectWrapper):
     SPATIAL_VAR_SPHERICAL = 'spherical'
     SPATIAL_VAR_CURVE = 'curve'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.Mesh
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super.__init__(vbap, 'Mesh')
 
     def set_mesh_type(self, mesh_type: str):
-        self.invoke_method('MeshType', mesh_type)
+        self.record_method('MeshType', mesh_type)
 
     def set_creator(self, creator: str):
         # undocumented, found in the history list
-        self.invoke_method('SetCreator', creator)
+        self.record_method('SetCreator', creator)
 
     def set_connectivity_check(self, flag: bool = True):
         # undocumented, found in the history list
-        self.invoke_method('ConnectivityCheck', flag)
+        self.record_method('ConnectivityCheck', flag)
 
     def set_cad_processing_method(self, method: str, undocumented_param: int = -1):
         # undocumented, found in the history list
-        self.invoke_method('SetCADProcessingMethod', method, undocumented_param)
+        self.record_method('SetCADProcessingMethod', method, undocumented_param)
 
     def set_gpu_for_matrix_calculation_disabled(self, flag: bool = True):
         # undocumented, found in the history list
-        self.invoke_method('SetGPUForMatrixCalculationDisabled', flag)
+        self.record_method('SetGPUForMatrixCalculationDisabled', flag)
 
     def set_tst_version(self, version: str):
-        self.invoke_method('TSTVersion', version)
+        self.record_method('TSTVersion', version)
 
     def set_pba_version(self, version: str):
-        self.invoke_method('PBAVersion', version)
+        self.record_method('PBAVersion', version)
 
     def set_pba_type(self, pba_type: str):
-        self.invoke_method('PBAType', pba_type)
+        self.record_method('PBAType', pba_type)
 
     def set_automatic_pba_type(self, flag: bool = True):
-        self.invoke_method('AutomaticPBAType', flag)
+        self.record_method('AutomaticPBAType', flag)
 
     def set_number_of_lines_per_wavelength(self, number: int):
-        self.invoke_method('LinesPerWavelength', number)
+        self.record_method('LinesPerWavelength', number)
 
     def set_min_number_of_steps(self, number: int):
-        self.invoke_method('MinimumStepNumber', number)
+        self.record_method('MinimumStepNumber', number)
 
     def set_ratio_limit(self, value: float):
-        self.invoke_method('RatioLimit', value)
+        self.record_method('RatioLimit', value)
 
     def set_use_ratio_limit(self, flag: bool = True):
-        self.invoke_method('UseRatioLimit', flag)
+        self.record_method('UseRatioLimit', flag)
 
     def set_smallest_mesh_step(self, value: float):
-        self.invoke_method('SmallestMeshStep', value)
+        self.record_method('SmallestMeshStep', value)
 
     def set_steps_per_wavelength_tet(self, value: float):
-        self.invoke_method('StepsPerWavelengthTet', value)
+        self.record_method('StepsPerWavelengthTet', value)
 
     def set_steps_per_wavelength_srf(self, value: float):
-        self.invoke_method('StepsPerWavelengthSrf', value)
+        self.record_method('StepsPerWavelengthSrf', value)
 
     def set_steps_per_wavelength_srf_ml(self, value: float):
-        self.invoke_method('StepsPerWavelengthSrfML', value)
+        self.record_method('StepsPerWavelengthSrfML', value)
 
     def set_minimum_step_number_tet(self, value: float):
-        self.invoke_method('MinimumStepNumberTet', value)
+        self.record_method('MinimumStepNumberTet', value)
 
     def set_minimum_step_number_srf(self, value: float):
-        self.invoke_method('MinimumStepNumberSrf', value)
+        self.record_method('MinimumStepNumberSrf', value)
 
     def set_minimum_step_number_srf_ml(self, value: float):
-        self.invoke_method('MinimumStepNumberSrfML', value)
+        self.record_method('MinimumStepNumberSrfML', value)
 
     def set_automesh(self, flag: bool = True):
-        self.invoke_method('Automesh', flag)
+        self.record_method('Automesh', flag)
 
     def set_material_refinement_tet(self, flag: bool = True):
-        self.invoke_method('MaterialRefinementTet', flag)
+        self.record_method('MaterialRefinementTet', flag)
 
     def set_equilibrate_mesh(self, flag: bool = True):
-        self.invoke_method('EquilibrateMesh', flag)
+        self.record_method('EquilibrateMesh', flag)
 
     def set_equilibrate_mesh_ratio(self, value: float):
-        self.invoke_method('EquilibrateMeshRatio', value)
+        self.record_method('EquilibrateMeshRatio', value)
 
     def set_use_cell_aspect_ratio(self, flag: bool = True):
-        self.invoke_method('UseCellAspectRatio', flag)
+        self.record_method('UseCellAspectRatio', flag)
 
     def set_cell_aspect_ratio(self, value: float):
-        self.invoke_method('CellAspectRatio', value)
+        self.record_method('CellAspectRatio', value)
 
     def set_use_pec_edge_model(self, flag: bool = True):
-        self.invoke_method('UsePecEdgeModel', flag)
+        self.record_method('UsePecEdgeModel', flag)
 
     def set_point_acc_enhancement(self, value: float):
-        self.invoke_method('PointAccEnhancement', value)
+        self.record_method('PointAccEnhancement', value)
 
     def set_fast_pba_accuracy(self, value: float):
-        self.invoke_method('FastPBAAccuracy', value)
+        self.record_method('FastPBAAccuracy', value)
 
     def set_fast_pba_gap_detection(self, flag: bool = True):
-        self.invoke_method('FastPBAGapDetection', flag)
+        self.record_method('FastPBAGapDetection', flag)
 
     def set_fast_pba_gap_tolerance(self, value: float):
-        self.invoke_method('FPBAGapTolerance', value)
+        self.record_method('FPBAGapTolerance', value)
 
     def set_area_fill_limit(self, value: float):
-        self.invoke_method('AreaFillLimit', value)
+        self.record_method('AreaFillLimit', value)
 
     def set_convert_geometry_data_after_meshing(self, flag: bool = True):
-        self.invoke_method('ConvertGeometryDataAfterMeshing', flag)
+        self.record_method('ConvertGeometryDataAfterMeshing', flag)
 
     def set_consider_space_for_lower_mesh_limit(self, flag: bool = True):
-        self.invoke_method('ConsiderSpaceForLowerMeshLimit', flag)
+        self.record_method('ConsiderSpaceForLowerMeshLimit', flag)
 
     def set_ratio_limit_governs_local_refinement(self, flag: bool = True):
-        self.invoke_method('RatioLimitGovernsLocalRefinement', flag)
+        self.record_method('RatioLimitGovernsLocalRefinement', flag)
 
     def update(self):
-        self.invoke_method('Update')
+        self.record_method('Update')
 
     def force_update(self):
-        self.invoke_method('ForceUpdate')
+        self.record_method('ForceUpdate')
 
     def calculate_matrices(self):
-        self.invoke_method('CalculateMatrices')
+        self.record_method('CalculateMatrices')
 
     def set_view_mesh_mode(self, flag: bool = True):
-        self.invoke_method('ViewMeshMode', flag)
+        self.record_method('ViewMeshMode', flag)
 
     def set_small_feature_size(self, value: float):
-        self.invoke_method('SmallFeatureSize', value)
+        self.record_method('SmallFeatureSize', value)
 
     def set_parallel_mesher_mode(self, mesher_type: str, mesher_mode: str):
-        self.invoke_method('SetParallelMesherMode', mesher_type, mesher_mode)
+        self.record_method('SetParallelMesherMode', mesher_type, mesher_mode)
 
     def set_max_number_of_parallel_mesher_threads(self, mesher_type: str, number: int):
-        self.invoke_method('SetMaxParallelMesherThreads', mesher_type, number)
+        self.record_method('SetMaxParallelMesherThreads', mesher_type, number)
 
     def set_automesh_straight_lines(self, flag: bool = True):
-        self.invoke_method('AutomeshStraightLines', flag)
+        self.record_method('AutomeshStraightLines', flag)
 
     def set_automesh_elliptical_lines(self, flag: bool = True):
-        self.invoke_method('AutomeshEllipticalLines', flag)
+        self.record_method('AutomeshEllipticalLines', flag)
 
     def enable_automesh_at_ellipse_bounds(self, factor: float):
-        self.invoke_method('AutomeshAtEllipseBounds', True, factor)
+        self.record_method('AutomeshAtEllipseBounds', True, factor)
 
     def disable_automesh_at_ellipse_bounds(self):
-        self.invoke_method('AutomeshAtEllipseBounds', False, 0)
+        self.record_method('AutomeshAtEllipseBounds', False, 0)
 
     def set_automesh_at_wire_end_points(self, flag: bool = True):
-        self.invoke_method('AutomeshAtWireEndPoints', flag)
+        self.record_method('AutomeshAtWireEndPoints', flag)
 
     def set_automesh_at_probe_points(self, flag: bool = True):
-        self.invoke_method('AutomeshAtProbePoints', flag)
+        self.record_method('AutomeshAtProbePoints', flag)
 
     def set_automesh_limit_shape_faces(self, flag: bool = True):
-        self.invoke_method('AutoMeshLimitShapeFaces', flag)
+        self.record_method('AutoMeshLimitShapeFaces', flag)
 
     def set_automesh_number_of_shape_faces(self, number: int):
-        self.invoke_method('AutoMeshNumberOfShapeFaces', number)
+        self.record_method('AutoMeshNumberOfShapeFaces', number)
 
     def set_merge_thin_pec_layer_fixpoints(self, flag: bool = True):
-        self.invoke_method('MergeThinPECLayerFixpoints', flag)
+        self.record_method('MergeThinPECLayerFixpoints', flag)
 
     def set_automesh_fixpoints_for_background(self, flag: bool = True):
-        self.invoke_method('AutomeshFixpointsForBackground', flag)
+        self.record_method('AutomeshFixpointsForBackground', flag)
 
     def enable_automesh_refine_at_pec_lines(self, factor: int):
-        self.invoke_method('AutomeshRefineAtPecLines', True, factor)
+        self.record_method('AutomeshRefineAtPecLines', True, factor)
 
     def disable_automesh_refine_at_pec_lines(self):
-        self.invoke_method('AutomeshRefineAtPecLines', False, 0)
+        self.record_method('AutomeshRefineAtPecLines', False, 0)
 
     def set_automesh_refine_pec_along_axes_only(self, flag: bool = True):
-        self.invoke_method('AutomeshRefinePecAlongAxesOnly', flag)
+        self.record_method('AutomeshRefinePecAlongAxesOnly', flag)
 
     def set_automesh_refine_dielectrics_type(self, dielectrics_type: str):
-        self.invoke_method('SetAutomeshRefineDielectricsType', dielectrics_type)
+        self.record_method('SetAutomeshRefineDielectricsType', dielectrics_type)
 
     def set_automesh_fixpoints_for_background(self, flag: bool = True):
-        self.invoke_method('AutomeshFixpointsForBackground', flag)
+        self.record_method('AutomeshFixpointsForBackground', flag)
 
     def set_surface_mesh_geometry_accuracy(self, value: float):
-        self.invoke_method('SurfaceMeshGeometryAccuracy', value)
+        self.record_method('SurfaceMeshGeometryAccuracy', value)
 
     def set_surface_mesh_method(self, method: str):
-        self.invoke_method('SurfaceMeshMethod', method)
+        self.record_method('SurfaceMeshMethod', method)
 
     def set_surface_tolerance(self, value: float):
-        self.invoke_method('SurfaceTolerance', value)
+        self.record_method('SurfaceTolerance', value)
 
     def set_surface_tolerance_type(self, surface_tolerance_type: str):
-        self.invoke_method('SurfaceToleranceType', surface_tolerance_type)
+        self.record_method('SurfaceToleranceType', surface_tolerance_type)
 
     def set_normal_tolerance(self, value: float):
-        self.invoke_method('NormalTolerance', value)
+        self.record_method('NormalTolerance', value)
 
     def set_anisotropic_curvature_refinement_fsm(self, flag: bool = True):
-        self.invoke_method('AnisotropicCurvatureRefinementFSM', flag)
+        self.record_method('AnisotropicCurvatureRefinementFSM', flag)
 
     def set_surface_mesh_enrichment(self, level: int):
-        self.invoke_method('SurfaceMeshEnrichment', level)
+        self.record_method('SurfaceMeshEnrichment', level)
 
     def set_surface_optimization(self, flag: bool = True):
-        self.invoke_method('SurfaceOptimization', flag)
+        self.record_method('SurfaceOptimization', flag)
 
     def set_surface_smoothing(self, flag: bool = True):
-        self.invoke_method('SurfaceSmoothing', flag)
+        self.record_method('SurfaceSmoothing', flag)
 
     def set_curvature_refinement_factor(self, value: float):
-        self.invoke_method('CurvatureRefinementFactor', value)
+        self.record_method('CurvatureRefinementFactor', value)
 
     def set_min_curvature_refinement(self, value: float):
-        self.invoke_method('MinimumCurvatureRefinement', value)
+        self.record_method('MinimumCurvatureRefinement', value)
 
     def set_anisotropic_curvature_refinement(self, flag: bool = True):
-        self.invoke_method('AnisotropicCurvatureRefinement', flag)
+        self.record_method('AnisotropicCurvatureRefinement', flag)
 
     def set_volume_optimization(self, flag: bool = True):
-        self.invoke_method('VolumeOptimization', flag)
+        self.record_method('VolumeOptimization', flag)
 
     def set_volume_smoothing(self, flag: bool = True):
-        self.invoke_method('VolumeSmoothing', flag)
+        self.record_method('VolumeSmoothing', flag)
 
     def set_density_transitions(self, value: float):
-        self.invoke_method('DensityTransitions', value)
+        self.record_method('DensityTransitions', value)
 
     def set_volume_mesh_method(self, method: str):
-        self.invoke_method('VolumeMeshMethod', method)
+        self.record_method('VolumeMeshMethod', method)
 
     def set_delaunay_optimization_level(self, value: int):
-        self.invoke_method('DelaunayOptimizationLevel', value)
+        self.record_method('DelaunayOptimizationLevel', value)
 
     def set_delaunay_propagation_factor(self, value: float):
-        self.invoke_method('DelaunayPropagationFactor', value)
+        self.record_method('DelaunayPropagationFactor', value)
 
     def snap_to_surface_mesh(self, file_path_in: str, file_path_out: str):
-        self.invoke_method('SnapToSurfaceMesh', file_path_in, file_path_out)
+        self.record_method('SnapToSurfaceMesh', file_path_in, file_path_out)
 
     def set_self_intersecting_check(self, flag: bool = True):
-        self.invoke_method('SelfIntersectingCheck', flag)
+        self.record_method('SelfIntersectingCheck', flag)
 
     def find_fixpoint_from_position(self, x: float, y: float, z: float) -> int:
-        return self.invoke_method('FindFixpointFromPosition', x, y, z)
+        return self.query_method_int('FindFixpointFromPosition', x, y, z)
 
     def add_fixpoint(self, x: float, y: float, z: float):
-        self.invoke_method('AddFixpoint', x, y, z)
+        self.record_method('AddFixpoint', x, y, z)
 
     def add_fixpoint_relative(self, ref_fixpoint_id: int, x: float, y: float, z: float):
-        self.invoke_method('RelativeAddFixpoint', ref_fixpoint_id, x, y, z)
+        self.record_method('RelativeAddFixpoint', ref_fixpoint_id, x, y, z)
 
     def delete_fixpoint(self, fixpoint_id: int):
-        self.invoke_method('DeleteFixpoint', fixpoint_id)
+        self.record_method('DeleteFixpoint', fixpoint_id)
 
     def add_intermediate_fixpoints(self, id1: int, id2: int, number_of_points: int):
-        self.invoke_method('AddIntermediateFixpoint', id1, id2, number_of_points)
+        self.record_method('AddIntermediateFixpoint', id1, id2, number_of_points)
 
     def add_automesh_fixpoint(
             self, use_x: bool, use_y: bool, use_z: bool, x: float, y: float, z: float):
-        self.invoke_method('AddAutomeshFixpoint', use_x, use_y, use_z, x, y, z)
+        self.record_method('AddAutomeshFixpoint', use_x, use_y, use_z, x, y, z)
 
     def delete_automesh_fixpoint(self, x: float, y: float, z: float):
-        self.invoke_method('DeleteAutomeshFixpoint', x, y, z)
+        self.record_method('DeleteAutomeshFixpoint', x, y, z)
 
     def modify_automesh_fixpoint(self, use_x: bool, use_y: bool, use_z: bool, fixpoint_id: int):
-        self.invoke_method('ModifyAutomeshFixpointFromId', use_x, use_y, use_z, fixpoint_id)
+        self.record_method('ModifyAutomeshFixpointFromId', use_x, use_y, use_z, fixpoint_id)
 
     def add_automesh_fixpoints_from_pick(
             self, use_x: bool, use_y: bool, use_z: bool, pick_type: str, solid_name: str,
             pick_id: int, face_id: int, number: int):
-        self.invoke_method(
+        self.record_method(
             'AddAutomeshFixpointFromId', use_x, use_y, use_z, pick_type, solid_name,
             pick_id, face_id, number)
 
     def delete_automesh_fixpoint(self, fixpoint_id: int):
-        self.invoke_method('DeleteAutomeshFixpointFromId', fixpoint_id)
+        self.record_method('DeleteAutomeshFixpointFromId', fixpoint_id)
 
     def clear_spatial_variation(self):
-        self.invoke_method('ClearSpatialVariation')
+        self.record_method('ClearSpatialVariation')
 
     def clear_spatial_variation_for_shape(self, solid_name: str):
-        self.invoke_method('ClearSpatialVariationForShape', solid_name)
+        self.record_method('ClearSpatialVariationForShape', solid_name)
 
     def set_spatial_variation_type_for_shape(self, solid_name: str, var_type: str):
-        self.invoke_method('SetSpatialVariationTypeForShape', solid_name, var_type)
+        self.record_method('SetSpatialVariationTypeForShape', solid_name, var_type)

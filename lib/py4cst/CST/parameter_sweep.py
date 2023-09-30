@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class ParameterSweep(ComObjectWrapper):
+class ParameterSweep(VBAObjWrapper):
     SIMULATION_TYPE_TRANSIENT = 'Transient'
     SIMULATION_TYPE_PORT_MODES_ONLY = 'Calculate port modes only'
     SIMULATION_TYPE_EIGENMODE = 'Eigenmode'
@@ -24,13 +23,10 @@ class ParameterSweep(ComObjectWrapper):
     SIMULATION_TYPE_PIC = 'PIC'
     SIMULATION_TYPE_PARTICLE_TRACKING = 'Particle Tracking'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.ParameterSweep
+    #TODO: check which methods should be recorded and which invoked
 
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'ParameterSweep')
 
     def set_simulation_type(self, sim_type: str):
         self.invoke_method('SetSimulationType', sim_type)

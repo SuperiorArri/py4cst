@@ -1,9 +1,7 @@
-from . import Project
-from . import ComObjectWrapper
-from . import w32com
+from . import IVBAProvider, VBAObjWrapper, VBATypeName
 import numpy as np
 
-class PlaneWave(ComObjectWrapper):
+class PlaneWave(VBAObjWrapper):
     POLARIZATION_LINEAR = 'Linear'
     POLARIZATION_CIRCULAR = 'Circular'
     POLARIZATION_ELLIPTICAL = 'Elliptical'
@@ -15,91 +13,77 @@ class PlaneWave(ComObjectWrapper):
     DIRECTION_Y = 'y'
     DIRECTION_Z = 'z'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.PlaneWave
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'PlaneWave')
 
     def reset(self):
-        self.invoke_method('Reset')
+        self.record_method('Reset')
 
     def store(self):
-        self.invoke_method('Store')
+        self.record_method('Store')
 
     def delete(self):
-        self.invoke_method('Delete')
+        self.record_method('Delete')
 
     def set_normal_vector(self, x: float, y: float, z: float):
-        self.invoke_method('Normal', x, y, z)
+        self.record_method('Normal', x, y, z)
 
     def set_e_vector(self, x: float, y: float, z: float):
-        self.invoke_method('EVector', x, y, z)
+        self.record_method('EVector', x, y, z)
 
     def set_polarization(self, polarization_type: str):
-        self.invoke_method('Polarization', polarization_type)
+        self.record_method('Polarization', polarization_type)
 
     def set_reference_frequency(self, frequency: float):
-        self.invoke_method('ReferenceFrequency', frequency)
+        self.record_method('ReferenceFrequency', frequency)
 
     def set_phase_difference_deg(self, angle: float):
-        self.invoke_method('PhaseDifference', angle)
+        self.record_method('PhaseDifference', angle)
 
     def set_phase_difference_rad(self, angle: float):
         self.set_phase_difference_deg(np.rad2deg(angle))
 
     def set_circular_direction(self, direction: str):
-        self.invoke_method('CircularDirection', direction)
+        self.record_method('CircularDirection', direction)
 
     def set_axial_ratio(self, ratio: float):
-        self.invoke_method('AxialRatio', ratio)
+        self.record_method('AxialRatio', ratio)
 
     def set_use_custom_decoupling_plane(self, flag: bool = True):
-        self.invoke_method('SetUserDecouplingPlane', flag)
+        self.record_method('SetUserDecouplingPlane', flag)
 
     def set_custom_decoupling_plane(self, direction: str, position: float):
-        self.invoke_method('DecouplingPlane', direction, position)
+        self.record_method('DecouplingPlane', direction, position)
 
+    # returns: (x, y, z)
     def get_normal_vector(self) -> tuple[float, float, float]:
-        x = w32com.create_ref_double()
-        y = w32com.create_ref_double()
-        z = w32com.create_ref_double()
-        self.invoke_method('GetNormal', x, y, z)
-        return (x.value, y.value, z.value)
+        D = VBATypeName.Double
+        return self.query_method_t('GetNormal', None, D, D, D)
 
+    # returns: (x, y, z)
     def get_e_vector(self) -> tuple[float, float, float]:
-        x = w32com.create_ref_double()
-        y = w32com.create_ref_double()
-        z = w32com.create_ref_double()
-        self.invoke_method('GetEVector', x, y, z)
-        return (x.value, y.value, z.value)
+        D = VBATypeName.Double
+        return self.query_method_t('GetEVector', None, D, D, D)
 
     def get_polarization_type(self) -> str:
-        polarization_type = w32com.create_ref_str()
-        self.invoke_method('GetPolarizationType', polarization_type)
-        return polarization_type.value
+        S = VBATypeName.String
+        return self.query_method_t('GetPolarizationType', None, S)[0]
 
     def get_circular_direction(self) -> str:
-        dir = w32com.create_ref_str()
-        self.invoke_method('GetCircularDirection', dir)
-        return dir.value
+        S = VBATypeName.String
+        return self.query_method_t('GetCircularDirection', None, S)[0]
 
     def get_reference_frequency(self) -> float:
-        frequency = w32com.create_ref_double()
-        self.invoke_method('GetReferenceFrequency', frequency)
-        return frequency.value
+        D = VBATypeName.Double
+        return self.query_method_t('GetReferenceFrequency', None, D)[0]
 
     def get_phase_difference_deg(self) -> float:
-        angle = w32com.create_ref_double()
-        self.invoke_method('GetPhaseDifference', angle)
-        return angle.value
+        D = VBATypeName.Double
+        return self.query_method_t('GetPhaseDifference', None, D)[0]
 
     def get_phase_difference_rad(self) -> float:
         return np.deg2rad(self.get_phase_difference_deg())
 
     def get_axial_ratio(self) -> float:
-        ratio = w32com.create_ref_double()
-        self.invoke_method('GetAxialRatio', ratio)
-        return ratio.value
+        D = VBATypeName.Double
+        return self.query_method_t('GetAxialRatio', None, D)[0]

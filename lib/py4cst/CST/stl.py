@@ -1,14 +1,8 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class STL(ComObjectWrapper):
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.STL
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+class STL(VBAObjWrapper):
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'STL')
 
     def reset(self):
         self.invoke_method('Reset')

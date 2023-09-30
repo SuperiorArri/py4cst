@@ -1,45 +1,39 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class Arc(ComObjectWrapper):
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.Arc
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+class Arc(VBAObjWrapper):
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'Arc')
 
     def reset(self):
-        self.invoke_method('Reset')
+        self.record_method('Reset')
 
     def set_name(self, arc_name: str):
-        self.invoke_method('Name', arc_name)
+        self.record_method('Name', arc_name)
 
     def set_curve(self, curve_name: str):
-        self.invoke_method('Curve', curve_name)
+        self.record_method('Curve', curve_name)
 
     def set_orientation_clockwise(self):
-        self.invoke_method('Orientation', 'Clockwise')
+        self.record_method('Orientation', 'Clockwise')
 
     def set_orientation_counter_clockwise(self):
-        self.invoke_method('Orientation', 'CounterClockwise')
+        self.record_method('Orientation', 'CounterClockwise')
 
     def set_center_x(self, x: float):
-        self.invoke_method('Xcenter', x)
+        self.record_method('Xcenter', x)
 
     def set_center_y(self, y: float):
-        self.invoke_method('Ycenter', y)
+        self.record_method('Ycenter', y)
 
     def set_center(self, x: float, y: float):
         self.set_center_x(x)
         self.set_center_y(y)
 
     def set_start_point_x(self, x: float):
-        self.invoke_method('X1', x)
+        self.record_method('X1', x)
 
     def set_start_point_y(self, y: float):
-        self.invoke_method('Y1', y)
+        self.record_method('Y1', y)
 
     def set_start_point_x(self, x: float, y: float):
         self.set_start_point_x(x)

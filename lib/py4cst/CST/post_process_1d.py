@@ -1,7 +1,6 @@
-from . import Project
-from . import ComObjectWrapper
+from . import IVBAProvider, VBAObjWrapper
 
-class PostProcess1D(ComObjectWrapper):
+class PostProcess1D(VBAObjWrapper):
     APPLY_TARGET_S_PARAM = 'S-parameter'
     APPLY_TARGET_PROBES = 'Probes'
     APPLY_TARGET_MONITORS = 'Monitors'
@@ -14,40 +13,35 @@ class PostProcess1D(ComObjectWrapper):
     OPERATION_TYPE_YZ_MATRICES = 'YZ-matrices'
     OPERATION_TYPE_EXCLUDE_PORT_MODES = 'Exclude Port Modes'
 
-    def __init__(self, project: Project) -> None:
-        self.project = project
-        self.com_object = project.com_object.PostProcess1D
-
-    def invoke_method(self, name, *args, **kwargs):
-        self.project.ensure_active()
-        return super().invoke_method(name, *args, **kwargs)
+    def __init__(self, vbap: IVBAProvider) -> None:
+        super().__init__(vbap, 'PostProcess1D')
 
     def reset(self):
-        self.invoke_method('Reset')
+        self.record_method('Reset')
 
     def set_apply_target(self, apply_target: str):
-        self.invoke_method('ApplyTo', apply_target)
+        self.record_method('ApplyTo', apply_target)
 
     def add_operation(self, operation_type: str):
-        self.invoke_method('AddOperation', operation_type)
+        self.record_method('AddOperation', operation_type)
 
     def set_deembed_distance(self, port_name: int, distance: float):
-        self.invoke_method('SetDeembedDistance', port_name, distance)
+        self.record_method('SetDeembedDistance', port_name, distance)
 
     def set_renorm_impedance(self, port_name: int, mode_name: int, impedance: float):
-        self.invoke_method('SetRenormImpedance', port_name, mode_name, impedance)
+        self.record_method('SetRenormImpedance', port_name, mode_name, impedance)
 
     def set_renorm_impedance_on_all_ports(self, impedance: float):
-        self.invoke_method('SetRenormImpedanceOnAllPorts', impedance)
+        self.record_method('SetRenormImpedanceOnAllPorts', impedance)
 
     def reset_renorm_impedance_on_all_ports(self):
-        self.invoke_method('SetUnnormImpedanceOnAllPorts')
+        self.record_method('SetUnnormImpedanceOnAllPorts')
 
     def set_consider_port_mode(self, port_name: int, mode_name: int, flag: bool = True):
-        self.invoke_method('SetConsiderPortMode', port_name, mode_name, flag)
+        self.record_method('SetConsiderPortMode', port_name, mode_name, flag)
 
     def run(self):
         self.invoke_method('Run')
 
     def set_operation_active(self, operation_type: str, active: bool = True):
-        self.invoke_method('ActivateOperation', operation_type, active)
+        self.record_method('ActivateOperation', operation_type, active)
