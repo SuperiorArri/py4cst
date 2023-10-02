@@ -2,7 +2,7 @@ from . import IVBAProvider, VBAObjWrapper
 
 class Shape(VBAObjWrapper):
     def __init__(self, vbap: IVBAProvider, shape_name: str) -> None:
-        super.__init__(vbap, shape_name)
+        super().__init__(vbap, shape_name)
 
     def reset(self):
         self.record_method('Reset')

@@ -2,3 +2,6 @@
 __pycache__
 /.vscode
 /debug.log
+/lib/build
+/lib/dist
+/lib/py4cst.egg-info

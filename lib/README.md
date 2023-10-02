@@ -34,6 +34,7 @@ To generate such a structure, we take the same approach as with VBA. We need to 
 	from py4cst.CST import Port
 	from py4cst.CST import Monitor
 	from py4cst.CST import MeshSettings
+	from py4cst.CST import Parameters
 	from py4cst.CST import units
 	from py4cst import CST
 	from py4cst import material_utils
@@ -66,8 +67,9 @@ To generate such a structure, we take the same approach as with VBA. We need to 
 	proj_units.set_time_unit(units.TIME_NANOSECOND)
 
 	# Setup project parameters: (just for demonstration, not necessary)
-	project.store_parameter_with_description('f_min', F_MIN, 'Minimum project frequency.')
-	project.store_parameter('f_max', F_MAX)
+	params = Parameters(project)
+	params.store('f_min', F_MIN, description='Minimum project frequency.')
+	params.store('f_max', F_MAX)
 
 	# Generate ground plane:
 	geometry_factor = units.get_geometry_si_to_unit_factor()
@@ -182,4 +184,30 @@ To generate such a structure, we take the same approach as with VBA. We need to 
 ## Analyze the patch antenna
 
 	# Run solver:
-	proj.get_modeler().run_solver()
+	project.get_modeler().run_solver()
+
+	project.save(r'C:\temp\test.cst', True)
+	results = Results(proj.get_file_name())
+
+	# Obtain S-Parameters:
+	s_param = SParameter(results)
+	print([:4])
+
+	s_param.select_by_indices((1,1))
+	freq = s_param.get_frequencies()
+	s11 = s_param.get_values()
+
+	s_param.select_by_indices((1,2))
+	s12 = s_param.get_values()
+
+	s_param.select_by_indices((2,1))
+	s21 = s_param.get_values()
+
+	s_param.select_by_indices((2,2))
+	s22 = s_param.get_values()
+
+	# Obtain farfield:
+	ffexp = ASCIIFarfieldExporter()
+	ffexp.prepare(project, 'myfarfield')
+	e_theta = ffexp.export_complex_theta()
+	e_phi = ffexp.export_complex_phi()

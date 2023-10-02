@@ -5,6 +5,7 @@ from pprint import pprint
 
 ifc = Interface(2023, start_mode=Interface.StartMode.ExistingOrNew)
 proj = ifc.get_active_project()
+
 # proj = ifc.new_microwave_studio_project()
 # print(proj.get_file_name())
 # print(proj.get_modeler().is_solver_running())
@@ -42,13 +43,16 @@ proj = ifc.get_active_project()
 # mat.load_from_file(material_library.get_material_path(proj, 'Air'))
 # mat.import_to_project(proj)
 
-# results = Results(proj.get_file_name())
-# results_3d = results.get_3d()
-# pprint(results_3d.get_tree_items())
+results = Results(proj.get_file_name())
+results_3d = results.get_3d()
+results_3d.get_run_ids()
+
+pprint(results_3d.get_tree_items())
 
 ffexp = ASCIIFarfieldExporter()
 ffexp.prepare(proj, 'farfield (f=3) [1]')
 print(ffexp.export_complex_theta())
+print(ffexp.export_complex_phi())
 
 input("Press Enter to continue...")
 
