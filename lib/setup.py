@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.1.2'
+VERSION = '0.1.3'
 DESCRIPTION = 'Automation/Scripting library for CST Studio Suite'
 LONG_DESCRIPTION = 'A package that allows Automation/Scripting for CST Studio Suite. It provides wrappers around CST Studio Suite python library and some utilities.'
 
