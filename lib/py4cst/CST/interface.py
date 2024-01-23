@@ -6,10 +6,19 @@ import os.path
 
 class Interface(IQuietModeController):
     class StartMode(Enum):
-        import cst.interface
-        New = cst.interface.DesignEnvironment.StartMode.New
-        ExistingOrNew = cst.interface.DesignEnvironment.StartMode.ExistingOrNew
-        Existing = cst.interface.DesignEnvironment.StartMode.Existing
+        New = 'New'
+        ExistingOrNew = 'ExistingOrNew'
+        Existing = 'Existing'
+
+        @staticmethod
+        def to_cst(value):
+            import cst.interface
+            return getattr(cst.interface.DesignEnvironment.StartMode, value.value)
+
+        @staticmethod
+        def from_cst(value):
+            import cst.interface
+            return StartMode(value.name)
 
     def __init__(
             self, version_or_install_dir: Optional[Union[int,str]] = None,
@@ -24,9 +33,9 @@ class Interface(IQuietModeController):
         # reason the connection to the Design Environment is lost)
         pass
 
-    def __init_cst_interface(self, start_mode: StartMode = StartMode.New) -> None:
+    def __init_cst_interface(self, start_mode: StartMode) -> None:
         import cst.interface
-        self.design_env = cst.interface.DesignEnvironment(mode=start_mode.value)
+        self.design_env = cst.interface.DesignEnvironment(mode=Interface.StartMode.to_cst(start_mode))
 
     def store_quiet_mode(self) -> None:
         self.stored_quiet_mode = self.is_in_quiet_mode()
@@ -58,7 +67,7 @@ class Interface(IQuietModeController):
         return Project(self.design_env.active_project(), self)
 
     def new_project(self, kind: Project.Kind) -> Project:
-        return Project(self.design_env.new_project(kind.value), self)
+        return Project(self.design_env.new_project(Project.Kind.to_cst(kind)), self)
 
     def new_cable_studio_project(self) -> Project:
         return Project(self.design_env.new_cs(), self)

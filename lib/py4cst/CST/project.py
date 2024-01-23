@@ -91,15 +91,23 @@ class Project(IProject, IVBAProvider):
     PATH_TYPE_TEMP = 'Temp'
 
     class Kind(Enum):
-        from cst.interface import ProjectType
-        DesignStudio = ProjectType.DS
-        MicrowaveStudio = ProjectType.MWS
-        EMStudio = ProjectType.EMS
-        ParticleStudio = ProjectType.PS
-        MphysicsStudio = ProjectType.MPS
-        CableStudio = ProjectType.CS
-        PCBStudio = ProjectType.PCBS
-        FilterDesigner3D = ProjectType.FD3D
+        DesignStudio = 'DS'
+        MicrowaveStudio = 'MWS'
+        EMStudio = 'EMS'
+        ParticleStudio = 'PS'
+        MphysicsStudio = 'MPS'
+        CableStudio = 'CS'
+        PCBStudio = 'PCBS'
+        FilterDesigner3D = 'FD3D'
+
+        @staticmethod
+        def to_cst(value):
+            from cst.interface import ProjectType
+            return getattr(ProjectType, value.value)
+
+        @staticmethod
+        def from_cst(value):
+            return Project.Kind(value.name)
 
     def __init__(self, native_obj, quiet_mode_controller: IQuietModeController) -> None:
         self.native_obj = native_obj
@@ -161,7 +169,7 @@ class Project(IProject, IVBAProvider):
 
     def query_function_t(
             self, function_name: str, return_type: Optional[VBATypeName],
-            *args: Union[str, int, float, bool, VBATypeName]) -> tuple:
+            *args: Union[str, int, float, bool, VBATypeName]) -> Optional[tuple]:
         modeler = self.get_modeler()
         if modeler is None:
             return None
@@ -178,7 +186,7 @@ class Project(IProject, IVBAProvider):
 
     def query_method_t(
             self, object_name: str, function_name: str, return_type: Optional[VBATypeName],
-            *args: Union[str, int, float, bool, VBATypeName]) -> tuple:
+            *args: Union[str, int, float, bool, VBATypeName]) -> Optional[tuple]:
         modeler = self.get_modeler()
         if modeler is None:
             return None
@@ -217,7 +225,7 @@ class Project(IProject, IVBAProvider):
         return None if len(msgs) == 0 else msgs[-1]['text']
 
     def get_kind(self) -> Kind:
-        return Project.Kind(self.native_obj.project_type())
+        return Project.Kind.from_cst(self.native_obj.project_type())
 
     def save(self, path: str, include_results: bool = True) -> None:
         self.native_obj.save(path, include_results)
