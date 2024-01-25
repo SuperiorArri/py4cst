@@ -245,6 +245,12 @@ class Project(IProject, IVBAProvider):
     def get_parameters(self) -> Parameters:
         return Parameters(self)
 
+    def set_solver_type(self, solver_type: str):
+        self.invoke_function('ChangeSolverType', solver_type)
+
+    def get_solver_type(self) -> str:
+        return self.query_function('GetSolverType')
+
     def reset_all(self):
         self.invoke_function('ResetAll')
 

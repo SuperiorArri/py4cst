@@ -51,14 +51,17 @@ class ASCIIFarfieldExporter:
         # self.__prepare_ffplot() #TODO: fix this
         self.__export_file()
 
-    def export_abs(self):
-        return None
+    def export_abs(self) -> np.array:
+        raise RuntimeError('unimplemented') #TODO: implement
 
-    def export_complex_theta(self):
+    def export_complex_theta(self) -> np.array:
         return self.current_ffs.get_theta_component()
 
-    def export_complex_phi(self):
+    def export_complex_phi(self) -> np.array:
         return self.current_ffs.get_phi_component()
+
+    def export_complex_theta_phi(self) -> np.array:
+        return self.current_ffs.get_samples()
 
     def __select_tree_item(self, farfield_name: str):
         self.vbap.get_quiet_mode_controller().store_and_disable_quiet_mode()

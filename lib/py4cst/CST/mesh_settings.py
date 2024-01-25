@@ -10,7 +10,7 @@ class MeshSettings(VBAObjWrapper):
     MESH_TYPE_ALL = 'All'
 
     def __init__(self, vbap: IVBAProvider) -> None:
-        super.__init__(vbap, 'MeshSettings')
+        super().__init__(vbap, 'MeshSettings')
 
     def set_mesh_type(self, mesh_type: str):
         self.record_method('SetMeshType', mesh_type)

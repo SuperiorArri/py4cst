@@ -1,7 +1,7 @@
 from py4cst.CST import Interface, Results
 from py4cst.results import SParameter
 
-ifc = Interface(2023, start_mode=Interface.StartMode.Existing)
+ifc = Interface(start_mode=Interface.StartMode.Existing)
 proj = ifc.get_active_project()
 results = Results(proj.get_file_name())
 

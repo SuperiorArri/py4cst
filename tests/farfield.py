@@ -1,7 +1,7 @@
 from py4cst.CST import Interface
 from py4cst.results import ASCIIFarfieldExporter
 
-ifc = Interface(2023, start_mode=Interface.StartMode.Existing)
+ifc = Interface(start_mode=Interface.StartMode.Existing)
 proj = ifc.get_active_project()
 
 ffexp = ASCIIFarfieldExporter()

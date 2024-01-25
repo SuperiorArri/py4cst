@@ -42,7 +42,7 @@ class Mesh(VBAObjWrapper):
     SPATIAL_VAR_CURVE = 'curve'
 
     def __init__(self, vbap: IVBAProvider) -> None:
-        super.__init__(vbap, 'Mesh')
+        super().__init__(vbap, 'Mesh')
 
     def set_mesh_type(self, mesh_type: str):
         self.record_method('MeshType', mesh_type)

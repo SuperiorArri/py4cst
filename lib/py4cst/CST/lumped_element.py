@@ -44,6 +44,11 @@ class LumpedElement(VBAObjWrapper):
     def set_capacitance(self, value: float):
         self.record_method('SetC', value)
 
+    def set_rlc(self, r: float, l: float, c: float):
+        self.set_resistance(r)
+        self.set_inductance(l)
+        self.set_capacitance(c)
+
     def set_blocking_conductivity(self, value: float):
         self.record_method('SetGs', value)
 

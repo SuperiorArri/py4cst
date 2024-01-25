@@ -9,7 +9,7 @@ class Parameters:
         self.vbap.invoke_function(name, *args)
 
     def query_fn(self, name: str, *args) -> str:
-        self.vbap.query_function(name, *args)
+        return self.vbap.query_function(name, *args)
 
     def delete(self, name: str):
         self.invoke_fn('DeleteParameter', name)

@@ -151,12 +151,12 @@ class Project(ComObjectWrapper):
 
     def run_solver(self):
         if not self.invoke_method('RunSolver'):
-            raise Exception('Failed to run solver!')
+            raise RuntimeError('Failed to run solver!')
 
     def import_subproject(self, file_name: str, do_wcs_alignment: bool = False):
         error_msg = self.invoke_method('ImportSubProject', file_name, do_wcs_alignment)
         if isinstance(error_msg, str) and len(error_msg) > 0:
-            raise Exception(error_msg)
+            raise RuntimeError(error_msg)
 
     def backup(self, path: str):
         return self.invoke_method('Backup', path)

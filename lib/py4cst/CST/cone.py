@@ -6,7 +6,7 @@ class Cone(Shape):
     AXIS_Z = 'z'
 
     def __init__(self, vbap: IVBAProvider) -> None:
-        super.__init__(vbap, 'Cone')
+        super().__init__(vbap, 'Cone')
 
     def set_axis(self, axis: str):
         self.record_method('Axis', axis)

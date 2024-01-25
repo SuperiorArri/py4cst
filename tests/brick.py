@@ -1,6 +1,6 @@
 from py4cst.CST import Interface, Brick
 
-ifc = Interface(2023)
+ifc = Interface()
 proj = ifc.new_microwave_studio_project()
 
 brick = Brick(proj)

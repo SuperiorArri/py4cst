@@ -2,7 +2,7 @@ from . import IVBAProvider, VBAObjWrapper
 
 class MeshShapes(VBAObjWrapper):
     def __init__(self, vbap: IVBAProvider) -> None:
-        super.__init__(vbap, 'MeshShapes')
+        super().__init__(vbap, 'MeshShapes')
 
     def reset(self):
         self.record_method('Reset')

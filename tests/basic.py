@@ -3,7 +3,7 @@ from py4cst.results import ASCIIFarfieldExporter
 from py4cst import material_library
 from pprint import pprint
 
-ifc = Interface(2023, start_mode=Interface.StartMode.ExistingOrNew)
+ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)
 proj = ifc.get_active_project()
 
 # proj = ifc.new_microwave_studio_project()

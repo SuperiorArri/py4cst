@@ -2,7 +2,7 @@ from py4cst.CST import Interface, Cylinder, Component
 import time
 import numpy as np
 
-ifc = Interface(2023)
+ifc = Interface()
 ifc.set_quiet_mode(False)
 
 proj = ifc.new_microwave_studio_project()
