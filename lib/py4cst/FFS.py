@@ -14,6 +14,16 @@ class Farfield:
         self.accepted_power = 0
         self.stimulated_power = 0
 
+    def __add__(self, ff2: Farfield) -> Farfield:
+        new_ff = Farfield()
+        new_ff.set_samples(self.samples + ff2.samples)
+        return new_ff
+
+    def __sub__(self, ff2: Farfield) -> Farfield:
+        new_ff = Farfield()
+        new_ff.set_samples(self.samples - ff2.samples)
+        return new_ff
+
     def __str__(self) -> str:
         templ = 'Farfield:\n'\
             '\tFrequency: {freq:.2e} Hz\n'\
@@ -163,26 +173,28 @@ class Farfield:
     def get_stimulated_power(self) -> float:
         return self.stimulated_power
 
+    @staticmethod
     def get_inner_product(ff1: Farfield, ff2: Farfield):
         Farfield._ensure_same_farfield_sizes(ff1, ff2)
         s1 = ff1.samples
         s2 = ff2.samples
         sin_theta_vec = np.array([np.sin(ff1.get_theta_vec_rad())]).T
         theta_grid = np.tile(sin_theta_vec, [1, ff1.get_num_phi_samples()])
-        dS = 2*theta_grid*np.sin(ff1.get_theta_step_rad()/2)*ff1.get_phi_step_rad()
-        integrand_theta = np.conj(s1[0:-2,0:-2,0]) * s2[0:-2,0:-2,0] * dS[0:-2,0:-2]
-        integrand_phi = np.conj(s1[0:-2,0:-2,1]) * s2[0:-2,0:-2,1] * dS[0:-2,0:-2]
+        ds = 2*theta_grid*np.sin(ff1.get_theta_step_rad()/2)*ff1.get_phi_step_rad()
+        integrand_theta = np.conj(s1[0:-2,0:-2,0]) * s2[0:-2,0:-2,0] * ds[0:-2,0:-2]
+        integrand_phi = np.conj(s1[0:-2,0:-2,1]) * s2[0:-2,0:-2,1] * ds[0:-2,0:-2]
         integral_theta = np.sum(np.sum(integrand_theta))
         integral_phi = np.sum(np.sum(integrand_phi))
         return (integral_theta+integral_phi, integral_theta, integral_phi)
 
-    def _ensure_existing_samples(self):
-        if self.samples is None:
-            raise Exception('Farfield has no samples!')
-
+    @staticmethod
     def _ensure_same_farfield_sizes(ff1, ff2):
         if ff1.samples.shape != ff2.samples.shape:
-            raise Exception('Failed to compute dot product: Farfields have different sizes')
+            raise RuntimeError('Failed to compute dot product: Farfields have different sizes')
+
+    def _ensure_existing_samples(self):
+        if self.samples is None:
+            raise RuntimeError('Farfield has no samples!')
 
 class Parser:
     def __init__(self) -> None:
@@ -322,8 +334,6 @@ class Parser:
         self.num_theta_samples = int(values[1])
         self._reserve_new_farfield_tensor(self.num_phi_samples, self.num_theta_samples)
         self._jump_to_line_rel(2)
-        # print('#phi:', self.num_phi_samples)
-        # print('#theta', self.num_theta_samples)
 
     def _reserve_new_farfield_tensor(self, num_phi_samples, num_theta_samples):
         dim = (num_theta_samples, num_phi_samples, 2)
@@ -342,29 +352,33 @@ class Parser:
     def _process_next_farfield_sample_data_line(self, farfield_tensor, phi_i, theta_i):
         values = Parser._parse_vector_line(self._get_line_rel(0), 6)
         self._jump_to_line_rel(1)
-        # print('|', len(self.farfields), phi_i, theta_i, '| farfield data:', values)
         farfield_tensor[theta_i, phi_i, 0] = values[2] + 1j*values[3]
         farfield_tensor[theta_i, phi_i, 1] = values[4] + 1j*values[5]
 
+    @staticmethod
     def _ensure_supported_version(version: str):
         if not Parser._is_supported_version(version):
-            raise Exception('Unsupported ffs version: ' + version)
+            raise RuntimeError('Unsupported ffs version: ' + version)
 
+    @staticmethod
     def _is_supported_version(version: str):
         return version == '3.0'
 
+    @staticmethod
     def _parse_vector_line(line, num_components: int):
         line = Parser._remove_duplicate_spaces(line.strip())
         vec = parse(('{} '*num_components).rstrip(), line).fixed
         Parser._ensure_vector_line_num_components(vec, num_components)
         return np.array([float(x) for x in vec])
 
+    @staticmethod
     def _ensure_vector_line_num_components(vec, expected_num_components: int):
         if len(vec) != expected_num_components:
-            raise Exception(
+            raise RuntimeError(
                 'Failed to parse vector line: Invalid number of components - expected '
                 + str(expected_num_components) + ', got ' + str(len(vec)))
 
+    @staticmethod
     def _remove_duplicate_spaces(txt: str):
         return re.sub(' +', ' ', txt)
 
@@ -438,29 +452,36 @@ class Dumper:
             res += Dumper._dump_ff_num_samples(ff)+Dumper._dump_ff_samples(ff)
         return res
 
+    @staticmethod
     def _ensure_supported_version(version: str):
         if not Dumper._is_supported_version(version):
-            raise Exception('Unsupported ffs version: ' + version)
+            raise RuntimeError('Unsupported ffs version: ' + version)
 
+    @staticmethod
     def _is_supported_version(version: str):
         return version == '3.0'
 
+    @staticmethod
     def _dump_vec(vec):
         return ('{:e} '*len(vec)).format(*vec)
 
+    @staticmethod
     def _dump_powers_and_frequency(ff: Farfield) -> str:
         return '{:e} \n{:e} \n{:e} \n{:e} \n\n'.format(
             ff.get_radiated_power(), ff.get_accepted_power(),
             ff.get_stimulated_power(), ff.get_frequency())
 
+    @staticmethod
     def _dump_ff_num_samples(ff: Farfield) -> str:
         templ = '// >> Total #phi samples, total #theta samples\n{n_phi} {n_theta}\n\n'
         return templ.format(n_phi=ff.get_num_phi_samples(), n_theta=ff.get_num_theta_samples())
 
+    @staticmethod
     def _dump_ff_samples(ff: Farfield) -> str:
         templ = '// >> Phi, Theta, Re(E_Theta), Im(E_Theta), Re(E_Phi), Im(E_Phi): \n{samples}\n'
         return templ.format(samples=Dumper._dump_ff_sample_vecs(ff))
 
+    @staticmethod
     def _dump_ff_sample_vecs(ff: Farfield) -> str:
         res = ''
         for phi_index in range(ff.get_num_phi_samples()):
@@ -468,6 +489,7 @@ class Dumper:
                 res += Dumper._dump_sample_at(ff, phi_index, theta_index)
         return res
 
+    @staticmethod
     def _dump_sample_at(ff: Farfield, phi_index, theta_index):
         phi = ff.get_phi_at_index_deg(phi_index)
         theta = ff.get_theta_at_index_deg(theta_index)

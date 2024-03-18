@@ -5,6 +5,22 @@ import pathlib
 import os.path
 
 class ASCIIFarfieldExporter:
+    @staticmethod
+    def get_theta_vec_rad(num_samples: int) -> list[float]:
+        return np.linspace(0, np.pi, num_samples)
+
+    @staticmethod
+    def get_theta_vec_deg(num_samples: int) -> list[float]:
+        return np.linspace(0, 180, num_samples)
+
+    @staticmethod
+    def get_phi_vec_rad(num_samples: int) -> list[float]:
+        return np.linspace(0, 2*np.pi, num_samples)
+
+    @staticmethod
+    def get_phi_vec_deg(num_samples: int) -> list[float]:
+        return np.linspace(0, 360, num_samples)
+
     DEFAULT_STEP_DEG: float = 5.0
 
     def __init__(self) -> None:
@@ -48,7 +64,7 @@ class ASCIIFarfieldExporter:
         self.vbap = vbap
         self.farfield_name = farfield_name
         self.__select_tree_item(farfield_name)
-        # self.__prepare_ffplot() #TODO: fix this
+        self.__prepare_ffplot() #TODO: fix this
         self.__export_file()
 
     def export_abs(self) -> np.array:

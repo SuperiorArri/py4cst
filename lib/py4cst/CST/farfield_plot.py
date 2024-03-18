@@ -108,13 +108,13 @@ class FarfieldPlot(VBAObjWrapper):
         super().__init__(vbap, 'FarfieldPlot')
 
     def reset(self):
-        self.record_method('Reset')
+        self.invoke_method('Reset')
 
     def reset_plot(self):
-        self.record_method('ResetPlot')
+        self.invoke_method('ResetPlot')
 
     def set_plot_type(self, plot_type: str):
-        self.record_method('Plottype', plot_type)
+        self.invoke_method('Plottype', plot_type)
 
     def vary_coord(self, angle_variant: int):
         # angle depends on active coordinate system:
@@ -123,103 +123,103 @@ class FarfieldPlot(VBAObjWrapper):
         #   Ludwig 2 AE -> Elevation | Azimuth
         #   Ludwig 2 EA -> Alpha | Epsilon
         #   Ludwig 3 -> Theta | Phi
-        self.record_method('Vary', 'angle' + str(angle_variant))
+        self.invoke_method('Vary', 'angle' + str(angle_variant))
 
     def set_phi_deg(self, angle_deg: float):
-        self.record_method('Phi', angle_deg)
+        self.invoke_method('Phi', angle_deg)
 
     def set_phi_rad(self, angle_rad: float):
         self.set_phi_deg(np.rad2deg(angle_rad))
 
     def set_theta_deg(self, angle_deg: float):
-        self.record_method('Theta', angle_deg)
+        self.invoke_method('Theta', angle_deg)
 
     def set_theta_rad(self, angle_rad: float):
         self.set_theta_deg(np.rad2deg(angle_rad))
 
     def set_theta_step_deg(self, angle_deg: float):
-        self.record_method('Step', angle_deg)
+        self.invoke_method('Step', angle_deg)
 
     def set_theta_step_rad(self, angle_rad: float):
         self.set_theta_step_deg(np.rad2deg(angle_rad))
 
     def set_phi_step_deg(self, angle_deg: float):
-        self.record_method('Step2', angle_deg)
+        self.invoke_method('Step2', angle_deg)
 
     def set_phi_step_rad(self, angle_rad: float):
         self.set_phi_step_deg(np.rad2deg(angle_rad))
 
     def set_lock_steps(self, flag: bool = True):
-        self.record_method('SetLockSteps', flag)
+        self.invoke_method('SetLockSteps', flag)
 
     def set_plot_range_only(self, flag: bool = True):
-        self.record_method('SetPlotRangeOnly', flag)
+        self.invoke_method('SetPlotRangeOnly', flag)
 
     def set_theta_start_deg(self, angle_deg: float):
-        self.record_method('SetThetaStart', angle_deg)
+        self.invoke_method('SetThetaStart', angle_deg)
 
     def set_theta_start_rad(self, angle_rad: float):
         self.set_theta_start_deg(np.rad2deg(angle_rad))
 
     def set_theta_end_deg(self, angle_deg: float):
-        self.record_method('SetThetaEnd', angle_deg)
+        self.invoke_method('SetThetaEnd', angle_deg)
 
     def set_theta_end_rad(self, angle_rad: float):
         self.set_theta_end_deg(np.rad2deg(angle_rad))
 
     def set_phi_start_deg(self, angle_deg: float):
-        self.record_method('SetPhiStart', angle_deg)
+        self.invoke_method('SetPhiStart', angle_deg)
 
     def set_phi_start_rad(self, angle_rad: float):
         self.set_phi_start_deg(np.rad2deg(angle_rad))
 
     def set_phi_end_deg(self, angle_deg: float):
-        self.record_method('SetPhiEnd', angle_deg)
+        self.invoke_method('SetPhiEnd', angle_deg)
 
     def set_phi_end_rad(self, angle_rad: float):
         self.set_phi_end_deg(np.rad2deg(angle_rad))
 
     def use_farfield_approximation(self, flag: bool = True):
-        self.record_method('UseFarfieldApproximation', flag)
+        self.invoke_method('UseFarfieldApproximation', flag)
 
     def set_multipoles_max_number(self, max_num: int):
-        self.record_method('SetMultipolNumber', max_num)
+        self.invoke_method('SetMultipolNumber', max_num)
 
     def set_frequency(self, freq: float):
-        self.record_method('SetFrequency', freq)
+        self.invoke_method('SetFrequency', freq)
 
     def set_time(self, time: float):
-        self.record_method('SetTime', time)
+        self.invoke_method('SetTime', time)
 
     def set_time_domain_farfield(self, flag: bool = True):
-        self.record_method('SetTimeDomainFF', flag)
+        self.invoke_method('SetTimeDomainFF', flag)
 
     def set_num_movie_samples(self, num: int):
-        self.record_method('SetMovieSamples', num)
+        self.invoke_method('SetMovieSamples', num)
 
     def plot(self):
-        self.record_method('Plot')
+        self.invoke_method('Plot')
 
     def store_settings(self):
-        self.record_method('StoreSettings')
+        self.invoke_method('StoreSettings')
 
     def export_summary_as_ascii(self, file_name: str):
-        self.record_method('ASCIIExportSummary', file_name)
+        self.invoke_method('ASCIIExportSummary', file_name)
 
     def set_ascii_export_version(self, version: str):
-        self.record_method('ASCIIExportVersion', version)
+        self.invoke_method('ASCIIExportVersion', version)
 
     def export_source_as_ascii(self, file_name: str):
-        self.record_method('ASCIIExportAsSource', file_name)
+        self.invoke_method('ASCIIExportAsSource', file_name)
 
     def export_broadband_source_as_ascii(self, file_name: str):
-        self.record_method('ASCIIExportAsBroadbandSource', file_name)
+        self.invoke_method('ASCIIExportAsBroadbandSource', file_name)
 
     def copy_farfield_to_1d_results(self, result_folder: str, result_name: str):
-        self.record_method('CopyFarfieldTo1DResults', result_folder, result_name)
+        self.invoke_method('CopyFarfieldTo1DResults', result_folder, result_name)
 
     def include_unit_cell_sidewalls(self, flag: bool = True):
-        self.record_method('IncludeUnitCellSidewalls', flag)
+        self.invoke_method('IncludeUnitCellSidewalls', flag)
 
     def calculate_point_deg(
             self, theta_deg: float, phi_deg: float, field_component: str,
@@ -248,7 +248,7 @@ class FarfieldPlot(VBAObjWrapper):
     def add_list_eval_point_deg(
             self, polar_angle_deg: float, lateral_angle_deg: float, radius: float,
             coord_system: str, tf_type: str, freq_or_time: float):
-        self.record_method(
+        self.invoke_method(
             'AddListEvaluationPoint', polar_angle_deg, lateral_angle_deg, radius,
             coord_system, tf_type, freq_or_time)
 
@@ -260,7 +260,7 @@ class FarfieldPlot(VBAObjWrapper):
             radius, coord_system, tf_type, freq_or_time)
 
     def calculate_list(self, name: str = ''):
-        self.record_method('CalculateList', name)
+        self.invoke_method('CalculateList', name)
 
     def get_list(self, field_component: str) -> str:
         return self.query_method_str('GetList', field_component)
@@ -269,85 +269,85 @@ class FarfieldPlot(VBAObjWrapper):
         return self.query_method_float('GetListItem', index, field_component)
 
     def clear_cuts(self):
-        self.record_method('ClearCuts')
+        self.invoke_method('ClearCuts')
 
     def add_cut_deg(self, cut_type: str, const_angle_deg: float, step_deg: float):
-        self.record_method('AddCut', cut_type, const_angle_deg, step_deg)
+        self.invoke_method('AddCut', cut_type, const_angle_deg, step_deg)
 
     def add_cut_rad(self, cut_type: str, const_angle_rad: float, step_rad: float):
         self.add_cut_deg(cut_type, np.rad2deg(const_angle_rad), np.rad2deg(step_rad))
 
     def set_color_by_value(self, flag: bool = True):
-        self.record_method('SetColorByValue', flag)
+        self.invoke_method('SetColorByValue', flag)
 
     def set_theta_360_deg(self, flag: bool = True):
-        self.record_method('SetTheta360', flag)
+        self.invoke_method('SetTheta360', flag)
 
     def draw_step_lines(self, flag: bool = True):
-        self.record_method('DrawStepLines', flag)
+        self.invoke_method('DrawStepLines', flag)
 
     def enable_symmetric_range(self, flag: bool = True):
-        self.record_method('SymmetricRange', flag)
+        self.invoke_method('SymmetricRange', flag)
 
     def draw_iso_long_lat_lines(self, flag: bool = True):
-        self.record_method('DrawIsoLongitudeLatitudeLines', flag)
+        self.invoke_method('DrawIsoLongitudeLatitudeLines', flag)
 
     def show_structure(self, flag: bool = True):
-        self.record_method('ShowStructure', flag)
+        self.invoke_method('ShowStructure', flag)
 
     def show_structure_profile(self, flag: bool = True):
-        self.record_method('ShowStructureProfile', flag)
+        self.invoke_method('ShowStructureProfile', flag)
 
     def set_structure_transparent(self, flag: bool = True):
-        self.record_method('SetStructureTransparent', flag)
+        self.invoke_method('SetStructureTransparent', flag)
 
     def set_farfield_transparent(self, flag: bool = True):
-        self.record_method('SetFarfieldTransparent', flag)
+        self.invoke_method('SetFarfieldTransparent', flag)
 
     def set_farfield_size(self, size: int):
-        self.record_method('FarfieldSize', size)
+        self.invoke_method('FarfieldSize', size)
 
     def set_plot_mode(self, plot_mode: str):
-        self.record_method('SetPlotMode', plot_mode)
+        self.invoke_method('SetPlotMode', plot_mode)
 
     def get_plot_mode(self) -> str:
         return self.query_method_str('GetPlotMode')
 
     def select_component(self, sel_component: str):
-        self.record_method('SelectComponent', sel_component)
+        self.invoke_method('SelectComponent', sel_component)
 
     def enable_polar_extra_lines(self):
-        self.record_method('SetSpecials', 'enablepolarextralines')
+        self.invoke_method('SetSpecials', 'enablepolarextralines')
 
     def disable_polar_extra_lines(self):
-        self.record_method('SetSpecials', 'disablepolarextralines')
+        self.invoke_method('SetSpecials', 'disablepolarextralines')
 
     def show_total_radiated_power_linear(self):
-        self.record_method('SetSpecials', 'showtrp')
+        self.invoke_method('SetSpecials', 'showtrp')
 
     def show_total_radiated_power_logarithmic(self):
-        self.record_method('SetSpecials', 'showtrpdb')
+        self.invoke_method('SetSpecials', 'showtrpdb')
 
     def hide_total_radiated_power(self):
-        self.record_method('SetSpecials', 'showtrpoff')
+        self.invoke_method('SetSpecials', 'showtrpoff')
 
     def show_total_isotropic_sensitivity_linear(self):
-        self.record_method('SetSpecials', 'showtis')
+        self.invoke_method('SetSpecials', 'showtis')
 
     def show_total_isotropic_sensitivity_logarithmic(self):
-        self.record_method('SetSpecials', 'showtisdb')
+        self.invoke_method('SetSpecials', 'showtisdb')
 
     def hide_total_isotropic_sensitivity(self):
-        self.record_method('SetSpecials', 'showtisoff')
+        self.invoke_method('SetSpecials', 'showtisoff')
 
     def set_virtual_sphere_radius(self, radius: float):
-        self.record_method('Distance', radius)
+        self.invoke_method('Distance', radius)
 
     def set_scale_linear(self):
-        self.record_method('SetScaleLinear', True)
+        self.invoke_method('SetScaleLinear', True)
 
     def set_scale_logarithmic(self):
-        self.record_method('SetScaleLinear', False)
+        self.invoke_method('SetScaleLinear', False)
 
     def is_scale_linear(self) -> bool:
         return self.query_method_bool('IsScaleLinear')
@@ -356,103 +356,103 @@ class FarfieldPlot(VBAObjWrapper):
         return not self.is_scale_linear()
 
     def set_inverse_axial_ratio(self, flag: bool = True):
-        self.record_method('SetInverseAxialRatio', flag)
+        self.invoke_method('SetInverseAxialRatio', flag)
 
     def has_inverse_axial_ratio(self) -> bool:
         return self.query_method_bool('IsInverseAxialRatio')
 
     def set_log_plot_range(self, range_db: float):
-        self.record_method('SetLogRange', range_db)
+        self.invoke_method('SetLogRange', range_db)
 
     def set_log_plot_normalization(self, norm_db: float):
-        self.record_method('SetLogNorm', norm_db)
+        self.invoke_method('SetLogNorm', norm_db)
 
     def get_log_plot_range(self) -> float:
         return self.query_method_float('GetLogRange')
 
     def set_main_lobe_threshold(self, threshold_db: float):
-        self.record_method('SetMainLobeThreshold', threshold_db)
+        self.invoke_method('SetMainLobeThreshold', threshold_db)
 
     def set_db_unit(self, unit_code: str):
-        self.record_method('DBUnit', unit_code)
+        self.invoke_method('DBUnit', unit_code)
 
     def set_max_reference_mode(self, max_ref_mode: str):
-        self.record_method('SetMaxReferenceMode', max_ref_mode)
+        self.invoke_method('SetMaxReferenceMode', max_ref_mode)
 
     def enable_fixed_plot_maximum(self, flag: bool = True):
-        self.record_method('EnableFixPlotMaximum', flag)
+        self.invoke_method('EnableFixPlotMaximum', flag)
 
     def is_plot_maximum_fixed(self) -> bool:
         return self.query_method_bool('IsPlotMaximumFixed')
 
     def set_fixed_plot_maximum(self, maximum: float):
-        self.record_method('SetFixPlotMaximumValue', maximum)
+        self.invoke_method('SetFixPlotMaximumValue', maximum)
 
     def get_fixed_plot_maximum(self) -> float:
         return self.query_method_float('GetFixPlotMaximumValue')
 
     def set_num_contour_values(self, num: int):
-        self.record_method('SetNumberOfContourValues', num)
+        self.invoke_method('SetNumberOfContourValues', num)
 
     def draw_countour_lines(self, flag: bool = True):
-        self.record_method('DrawContourLines', flag)
+        self.invoke_method('DrawContourLines', flag)
 
     def set_origin_by_bounding_box(self):
-        self.record_method('Origin', 'bbox')
+        self.invoke_method('Origin', 'bbox')
 
     def set_origin_to_zero(self):
-        self.record_method('Origin', 'zero')
+        self.invoke_method('Origin', 'zero')
 
     def set_origin(self, x: float, y: float, z: float):
-        self.record_method('Origin', 'free')
-        self.record_method('Userorigin', x, y, z)
+        self.invoke_method('Origin', 'free')
+        self.invoke_method('Userorigin', x, y, z)
 
     def set_phi_start_axis(self, x: float, y: float, z: float):
-        self.record_method('Phistart', x, y, z)
+        self.invoke_method('Phistart', x, y, z)
 
     def set_theta_start_axis(self, x: float, y: float, z: float):
-        self.record_method('Thetastart', x, y, z)
+        self.invoke_method('Thetastart', x, y, z)
 
     def set_axes_type(self, axes_type: str):
-        self.record_method('SetAxesType', axes_type)
+        self.invoke_method('SetAxesType', axes_type)
 
     def set_antenna_type(self, antenna_type: str):
-        self.record_method('SetAntennaType', antenna_type)
+        self.invoke_method('SetAntennaType', antenna_type)
 
     def set_polarization_vector(self, x: float, y: float, z: float):
-        self.record_method('PolarizationVector', x, y, z)
+        self.invoke_method('PolarizationVector', x, y, z)
 
     def set_coord_system(self, coord_system: str):
-        self.record_method('SetCoordinateSystemType', coord_system)
+        self.invoke_method('SetCoordinateSystemType', coord_system)
 
     def set_automatic_coord_system(self, flag: bool = True):
-        self.record_method('SetAutomaticCoordinateSystem', flag)
+        self.invoke_method('SetAutomaticCoordinateSystem', flag)
 
     def set_polarization_linear(self):
-        self.record_method('SetPolarizationType', 'linear')
+        self.invoke_method('SetPolarizationType', 'linear')
 
     def set_polarization_circular(self):
-        self.record_method('SetPolarizationType', 'circular')
+        self.invoke_method('SetPolarizationType', 'circular')
 
     def set_polarization_slant_deg(self, angle_deg: float):
-        self.record_method('SetPolarizationType', 'slant')
-        self.record_method('SlantAngle', angle_deg)
+        self.invoke_method('SetPolarizationType', 'slant')
+        self.invoke_method('SlantAngle', angle_deg)
 
     def set_polarization_slant_rad(self, angle_rad: float):
         self.set_polarization_slant_deg(np.rad2deg(angle_rad))
 
     def use_decoupling_plane(self, flag: bool = True):
-        self.record_method('UseDecouplingPlane', flag)
+        self.invoke_method('UseDecouplingPlane', flag)
 
     def set_decoupling_plane_axis(self, axis: str):
         # axis: 'x' or 'y' or 'z'
-        self.record_method('DecouplingPlaneAxis', axis)
+        self.invoke_method('DecouplingPlaneAxis', axis)
 
     def set_decoupling_plane_position(self, position: float):
-        self.record_method('DecouplingPlanePosition', position)
+        self.invoke_method('DecouplingPlanePosition', position)
 
     def use_user_defined_decoupling_plane(self, flag: bool = True):
-        self.record_method('SetUserDecouplingPlane', flag)
+        self.invoke_method('SetUserDecouplingPlane', flag)
 
     def get_max_value(self) -> float:
         return self.query_method_float('Getmax')
@@ -511,22 +511,22 @@ class FarfieldPlot(VBAObjWrapper):
         return self.query_method_float('GetFrontToBackRatio')
 
     def enable_phase_center_calculation(self, flag: bool = True):
-        self.record_method('EnablePhaseCenterCalculation', flag)
+        self.invoke_method('EnablePhaseCenterCalculation', flag)
 
     def set_phase_center_component(self, phase_center_component: str):
-        self.record_method('SetPhaseCenterComponent', phase_center_component)
+        self.invoke_method('SetPhaseCenterComponent', phase_center_component)
 
     def set_phase_center_plane(self, phase_center_plane: str):
-        self.record_method('SetPhaseCenterPlane', phase_center_plane)
+        self.invoke_method('SetPhaseCenterPlane', phase_center_plane)
 
     def set_phase_center_angular_limit_deg(self, limit_deg: float):
-        self.record_method('SetPhaseCenterAngularLimit', limit_deg)
+        self.invoke_method('SetPhaseCenterAngularLimit', limit_deg)
 
     def set_phase_center_angular_limit_rad(self, limit_rad: float):
         self.set_phase_center_angular_limit_deg(np.rad2deg(limit_rad))
 
     def show_phase_center(self, flag: bool = True):
-        self.record_method('ShowPhaseCenter', flag)
+        self.invoke_method('ShowPhaseCenter', flag)
 
     def get_phase_center_avg(self) -> tuple[float, float, float]:
         return self.__get_phase_center('avg')
