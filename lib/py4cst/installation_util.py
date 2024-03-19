@@ -8,7 +8,7 @@ def get_win_install_parent_path() -> str:
 def get_win_install_path(cst_version: int) -> str:
     return os.path.join(get_win_install_parent_path(), f'CST Studio Suite {cst_version}')
 
-def find_win_installed_versions() -> list[str]:
+def find_win_installed_versions() -> tuple[str]:
     res = []
     dir_path = get_win_install_parent_path()
     for file_path in os.listdir(dir_path):

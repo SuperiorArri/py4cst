@@ -15,6 +15,13 @@ def get_library_path(project: Project) -> str:
 def get_material_path(project: Project, mat_name: str) -> str:
     return os.path.join(get_library_path(project), f'{mat_name}.mtd')
 
+def get_available_materials(project: Project) -> list[str]:
+    material_names = []
+    for file in os.listdir(get_library_path(project)):
+        if file.endswith(".mtd"):
+            material_names.append(file[:-4])
+    return material_names
+
 class Material:
     def __init__(self) -> None:
         self.commands = []
