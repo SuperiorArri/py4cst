@@ -7,8 +7,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.1.4'
+VERSION = '0.1.4.2'
 DESCRIPTION = 'Automation/Scripting library for CST Studio Suite'
+LONG_DESCRIPTION = 'https://github.com/Arri0/py4cst'
 
 # Setting up
 setup(
@@ -18,7 +19,7 @@ setup(
     author_email="<travnsam@fel.cvut.cz>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     packages=find_packages(),
     install_requires=['numpy', 'parse', 'matplotlib', 'typing'],
     keywords=['python', 'CST Studio Suite', 'Automation', 'Electromagnetic Field', 'Simulation'],
