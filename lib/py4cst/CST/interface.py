@@ -96,6 +96,7 @@ class Interface(IQuietModeController):
     def close(self) -> None:
         self.design_env.close()
 
+    @staticmethod
     def get_version() -> str:
         import cst.interface
         return cst.interface.DesignEnvironment.version()

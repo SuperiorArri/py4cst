@@ -13,4 +13,4 @@ except Exception as e:
 print(proj.get_application_name())
 print(proj.get_application_version())
 print(proj.get_project_path(Project.PATH_TYPE_PROJECT))
-proj.close()
+# proj.close()
