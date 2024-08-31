@@ -41,10 +41,10 @@ class Monitor(VBAObjWrapper):
         super().__init__(vbap, 'Monitor')
 
     def reset(self):
-        self.record_method('Reset')
+        self.cache_method('Reset')
 
     def set_name(self, name: str):
-        self.record_method('Name', name)
+        self.cache_method('Name', name)
 
     def rename(self, old_name: str, new_name: str):
         self.record_method('Rename', old_name, new_name)
@@ -53,133 +53,135 @@ class Monitor(VBAObjWrapper):
         self.record_method('Delete', name)
 
     def create(self):
-        self.record_method('Create')
+        self.cache_method('Create')
+        self.flush_cache('Create Monitor')
 
     def set_field_type(self, field_type: str):
-        self.record_method('FieldType', field_type)
+        self.cache_method('FieldType', field_type)
 
     def set_dimension(self, dimension: str):
-        self.record_method('Dimension', dimension)
+        self.cache_method('Dimension', dimension)
 
     def set_plane_normal_direction(self, direction: str):
-        self.record_method('PlaneNormal', direction)
+        self.cache_method('PlaneNormal', direction)
 
     def set_plane_position(self, position: float):
-        self.record_method('PlanePosition', position)
+        self.cache_method('PlanePosition', position)
 
     def set_domain(self, domain: str):
-        self.record_method('Domain', domain)
+        self.cache_method('Domain', domain)
 
     def set_frequency(self, frequency: float):
-        self.record_method('Frequency', frequency)
+        self.cache_method('Frequency', frequency)
 
     def set_time_start(self, start: float):
-        self.record_method('Tstart', start)
+        self.cache_method('Tstart', start)
 
     def set_time_step(self, step: float):
-        self.record_method('Tstep', step)
+        self.cache_method('Tstep', step)
 
     def set_time_end(self, end: float):
-        self.record_method('Tend', end)
+        self.cache_method('Tend', end)
 
     def set_use_time_end(self, flag: bool = True):
-        self.record_method('UseTend', flag)
+        self.cache_method('UseTend', flag)
 
     def set_average_over_time(self, flag: bool = True):
-        self.record_method('TimeAverage', flag)
+        self.cache_method('TimeAverage', flag)
 
     def set_repetition_period(self, period: float):
-        self.record_method('RepetitionPeriod', period)
+        self.cache_method('RepetitionPeriod', period)
 
     def set_automatic_order(self, flag: bool = True):
-        self.record_method('AutomaticOrder', flag)
+        self.cache_method('AutomaticOrder', flag)
 
     def set_max_order(self, order: int):
-        self.record_method('MaxOrder', order)
+        self.cache_method('MaxOrder', order)
 
     def set_number_of_frequency_samples(self, number: int):
-        self.record_method('FrequencySamples', number)
+        self.cache_method('FrequencySamples', number)
 
     def set_compute_transient_farfield(self, flag: bool = True):
-        self.record_method('TransientFarfield', flag)
+        self.cache_method('TransientFarfield', flag)
 
     def set_accuracy(self, accuracy: str):
-        self.record_method('Accuracy', accuracy)
+        self.cache_method('Accuracy', accuracy)
 
     def set_origin(self, origin: str):
-        self.record_method('Origin', origin)
+        self.cache_method('Origin', origin)
 
     def set_custom_origin(self, x: float, y: float, z: float):
-        self.record_method('UserOrigin', x, y, z)
+        self.cache_method('UserOrigin', x, y, z)
 
     def set_frequency_range(self, f_min: float, f_max: float):
-        self.record_method('FrequencyRange', f_min, f_max)
+        self.cache_method('FrequencyRange', f_min, f_max)
 
     def set_domain(self, domain: str):
-        self.record_method('Domain', domain)
+        self.cache_method('Domain', domain)
 
     def set_number_of_samples(self, number: int):
-        self.record_method('Samples', number)
+        self.cache_method('Samples', number)
 
     def set_sampling_strategy(self, strategy: str):
-        self.record_method('SamplingStrategy', strategy)
+        self.cache_method('SamplingStrategy', strategy)
 
     def set_monitor_value(self, value: float):
-        self.record_method('MonitorValue', value)
+        self.cache_method('MonitorValue', value)
 
     def set_monitor_value_list(self, frequencies: list[float]):
         freq_str = ';'.join(str(s) for s in frequencies)
         print('freq_str=', freq_str)
-        self.record_method('MonitorValueList', freq_str)
+        self.cache_method('MonitorValueList', freq_str)
 
     def set_sampling_step(self, step: float):
-        self.record_method('SampleStep', step)
+        self.cache_method('SampleStep', step)
 
     def set_monitor_value_range(self, f_min: float, f_max: float):
-        self.record_method('MonitorValueRange', f_min, f_max)
+        self.cache_method('MonitorValueRange', f_min, f_max)
 
     def set_use_subvolume(self, flag: bool = True):
-        self.record_method('UseSubvolume', flag)
+        self.cache_method('UseSubvolume', flag)
 
     def set_subvolume(
             self, x_min: float, x_max: float, y_min: float, y_max: float,
             z_min: float, z_max: float):
-        self.record_method('SetSubvolume', x_min, x_max, y_min, y_max, z_min, z_max)
+        self.cache_method('SetSubvolume', x_min, x_max, y_min, y_max, z_min, z_max)
 
     def set_invert_orientation(self, flag: bool = True):
-        self.record_method('InvertOrientation', flag)
+        self.cache_method('InvertOrientation', flag)
 
     def set_export_farfield_source(self, flag: bool = True):
-        self.record_method('ExportFarfieldSource', flag)
+        self.cache_method('ExportFarfieldSource', flag)
 
     def set_enable_near_calculation(self, flag: bool = True):
-        self.record_method('EnableNearfieldCalculation', flag)
+        self.cache_method('EnableNearfieldCalculation', flag)
 
     def create_using_arbitrary_values(self, frequencies: list[float]):
         freq_str = ';'.join(str(s) for s in frequencies)
-        self.record_method('CreateUsingArbitraryValues', freq_str)
+        self.cache_method('CreateUsingArbitraryValues', freq_str)
 
     def create_using_linear_samples(self, f_min: float, f_max: float, num_samples: int):
-        self.record_method('CreateUsingLinearSamples', f_min, f_max, num_samples)
+        self.cache_method('CreateUsingLinearSamples', f_min, f_max, num_samples)
 
     def create_using_linear_step(self, f_min: float, f_max: float, f_step: float):
-        self.record_method('CreateUsingLinearStep', f_min, f_max, f_step)
+        self.cache_method('CreateUsingLinearStep', f_min, f_max, f_step)
 
     def create_using_log_samples(self, f_min: float, f_max: float, num_samples: int):
-        self.record_method('CreateUsingLogSamples', f_min, f_max, num_samples)
+        self.cache_method('CreateUsingLogSamples', f_min, f_max, num_samples)
 
     def export(self, excitation_name: str, file_path: str, flag: bool = True):
         #TODO: find out the meaning of the flag
-        self.record_method('Export', 'nfs', excitation_name, file_path, flag)
+        self.cache_method('Export', 'nfs', excitation_name, file_path, flag)
+        self.flush_cache('Export (Monitor)')
 
     def set_subvolume_sampling(self, x: float, y: float, z: float):
-        self.record_method('SetSubVolumeSampling', x, y, z)
+        self.cache_method('SetSubVolumeSampling', x, y, z)
 
     def change_subvolume_sampling(self, monitor_name: str, x: float, y: float, z: float):
-        self.record_method('ChangeSubVolumeSampling', monitor_name, x, y, z)
+        self.cache_method('ChangeSubVolumeSampling', monitor_name, x, y, z)
 
     def change_subvolume_sampling_to_history(self, monitor_name: str, x: float, y: float, z: float):
-        self.record_method('ChangeSubVolumeSamplingToHistory', monitor_name, x, y, z)
+        self.cache_method('ChangeSubVolumeSamplingToHistory', monitor_name, x, y, z)
 
     def get_number_of_monitors(self) -> int:
         return self.query_method_int('GetNumberOfMonitors')

@@ -5,3 +5,4 @@ __pycache__
 /lib/build
 /lib/dist
 /lib/py4cst.egg-info
+/notes.md

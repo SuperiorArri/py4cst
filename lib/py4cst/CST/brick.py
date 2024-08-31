@@ -5,13 +5,13 @@ class Brick(Shape):
         super().__init__(vbap, 'Brick')
 
     def set_x_range(self, x_min: float, x_max: float):
-        self.record_method('Xrange', x_min, x_max)
+        self.cache_method('Xrange', x_min, x_max)
 
     def set_y_range(self, y_min: float, y_max: float):
-        self.record_method('Yrange', y_min, y_max)
+        self.cache_method('Yrange', y_min, y_max)
 
     def set_z_range(self, z_min: float, z_max: float):
-        self.record_method('Zrange', z_min, z_max)
+        self.cache_method('Zrange', z_min, z_max)
 
     def set_xyz_range(
             self, xyz_min: tuple[float, float, float], xyz_max: tuple[float, float, float]):

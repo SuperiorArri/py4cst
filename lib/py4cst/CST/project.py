@@ -239,8 +239,8 @@ class Project(IProject, IVBAProvider):
     def get_interface_pcbs(self) -> InterfacePCBS:
         return None if self.native_obj.pcbs is None else InterfacePCBS(self.native_obj.pcbs)
 
-    def generate_history_list_from_cache(self) -> None:
-        self.get_history_list_generator().generate_cache()
+    def generate_history_list_from_cache(self, item_name: Optional[str]) -> None:
+        self.get_history_list_generator().flush_cache(item_name)
 
     def get_parameters(self) -> Parameters:
         return Parameters(self)

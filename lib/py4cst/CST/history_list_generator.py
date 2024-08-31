@@ -1,5 +1,6 @@
 from . import IHistoryListProvider
 from typing import Optional, Union
+import os
 
 class HistoryItem:
     def __init__(
@@ -27,16 +28,23 @@ class HistoryListGenerator:
     def cache_method(self, object_name, method_name, *args) -> None:
         self.history.append(HistoryItem(object_name, method_name, *args))
 
-    def generate_cache(self):
+    def flush_cache(self, item_name: Optional[str]):
+        item_name = '' if item_name is None else item_name
+        name_id = self.names.get(item_name, 0)
+        self.names[item_name] = name_id + 1
+        item_name += f':{name_id}'
+        code = ''
         for item in self.history:
-            self.generate_item(item)
+            code += item.to_vba_code() + os.linesep
+        self.history_list_provider.add_to_history(item_name, code)
+        self.history.clear()
 
     def generate_item(self, item: HistoryItem):
         name = '' if item.object_name is None else f'{item.object_name}.'
         name += item.method_name
-        id = self.names.get(name, 0)
-        self.names[name] = id + 1
-        name += f':{id}'
+        name_id = self.names.get(name, 0)
+        self.names[name] = name_id + 1
+        name += f':{name_id}'
         self.history_list_provider.add_to_history(name, item.to_vba_code())
 
 class IHistoryListGeneratorProvider:

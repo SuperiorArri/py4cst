@@ -10,76 +10,78 @@ class DiscretePort(VBAObjWrapper):
         super().__init__(vbap, 'DiscretePort')
 
     def reset(self):
-        self.record_method('Reset')
+        self.cache_method('Reset')
 
     def create(self):
-        self.record_method('Create')
+        self.cache_method('Create')
+        self.flush_cache('Create DiscretePort')
 
     def modify(self):
-        self.record_method('Modify')
+        self.cache_method('Modify')
+        self.flush_cache('Modify DiscretePort')
 
     def set_number(self, number: int):
-        self.record_method('PortNumber', number)
+        self.cache_method('PortNumber', number)
 
     def set_label(self, label: str):
-        self.record_method('Label', label)
+        self.cache_method('Label', label)
 
     def set_type(self, port_type: str):
-        self.record_method('Type', port_type)
+        self.cache_method('Type', port_type)
 
     def set_impedance(self, impedance: float):
-        self.record_method('Impedance', impedance)
+        self.cache_method('Impedance', impedance)
 
     def set_voltage(self, voltage: float):
-        self.record_method('Voltage', voltage)
+        self.cache_method('Voltage', voltage)
 
     def set_voltage_port_impedance(self, impedance: float):
-        self.record_method('VoltagePortImpedance', impedance)
+        self.cache_method('VoltagePortImpedance', impedance)
 
     def set_current(self, current: float):
-        self.record_method('Current', current)
+        self.cache_method('Current', current)
 
     def set_current_port_admittance(self, admittance: float):
-        self.record_method('CurrentPortAdmittance', admittance)
+        self.cache_method('CurrentPortAdmittance', admittance)
 
     def set_radius(self, radius: float):
-        self.record_method('Radius', radius)
+        self.cache_method('Radius', radius)
 
     def set_point1(self, x: float, y: float, z: float):
-        self.record_method('SetP1', False, x, y, z)
+        self.cache_method('SetP1', False, x, y, z)
 
     def set_pick_as_point1(self):
-        self.record_method('SetP1', True, 0, 0, 0)
+        self.cache_method('SetP1', True, 0, 0, 0)
 
     def set_point2(self, x: float, y: float, z: float):
-        self.record_method('SetP2', False, x, y, z)
+        self.cache_method('SetP2', False, x, y, z)
 
     def set_pick_as_point2(self):
-        self.record_method('SetP2', True, 0, 0, 0)
+        self.cache_method('SetP2', True, 0, 0, 0)
 
     def set_invert_direction(self, flag: bool = True):
-        self.record_method('InvertDirection', flag)
+        self.cache_method('InvertDirection', flag)
 
     def set_local_coordinates(self, flag: bool = True):
-        self.record_method('LocalCoordinates', flag)
+        self.cache_method('LocalCoordinates', flag)
 
     def set_monitor(self, flag: bool = True):
-        self.record_method('Monitor', flag)
+        self.cache_method('Monitor', flag)
 
     def set_wire(self, wire_name: str):
-        self.record_method('Wire', wire_name)
+        self.cache_method('Wire', wire_name)
 
     def set_wire_end_to_end1(self):
-        self.record_method('Position', 'end1')
+        self.cache_method('Position', 'end1')
 
     def set_wire_end_to_end2(self):
-        self.record_method('Position', 'end2')
+        self.cache_method('Position', 'end2')
 
     def set_lumped_element_name(self, name: str):
-        self.record_method('LumpedElementName', name)
+        self.cache_method('LumpedElementName', name)
 
     def set_delete_lumped_element(self, flag: bool = True):
-        self.record_method('DeleteLumpedElement', flag)
+        self.cache_method('DeleteLumpedElement', flag)
 
     # returns: (dir, index)
     def get_element_dir_index(self, port_number: int) -> tuple[int, int]:

@@ -10,6 +10,12 @@ class VBAObjWrapper:
     def record_method(self, name: str, *args: Union[str, int, float, bool]) -> None:
         self.history_list.invoke_method(self.native_obj_name, name, *args)
 
+    def cache_method(self, name: str, *args: Union[str, int, float, bool]) -> None:
+        self.history_list.cache_method(self.native_obj_name, name, *args)
+
+    def flush_cache(self, item_name: Optional[str]) -> None:
+        self.history_list.flush_cache(item_name)
+
     def invoke_method(self, name: str, *args: Union[str, int, float, bool]) -> None:
         self.vbap.invoke_method(self.native_obj_name, name, *args)
 

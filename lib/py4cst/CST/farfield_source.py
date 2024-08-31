@@ -13,43 +13,44 @@ class FarfieldSource(VBAObjWrapper):
         super().__init__(vbap, 'FarfieldSource')
 
     def reset(self):
-        self.record_method('Reset')
+        self.cache_method('Reset')
 
     def set_name(self, name: str):
-        self.record_method('Name', name)
+        self.cache_method('Name', name)
 
     def set_id(self, id: int):
-        self.record_method('Id', id)
+        self.cache_method('Id', id)
 
     def set_position(self, x: float, y: float, z: float):
-        self.record_method('SetPosition', x, y, z)
+        self.cache_method('SetPosition', x, y, z)
 
     def set_phi0_vec(self, x: float, y: float, z: float):
-        self.record_method('SetPhi0XYZ', x, y, z)
+        self.cache_method('SetPhi0XYZ', x, y, z)
 
     def set_theta0_vec(self, x: float, y: float, z: float):
-        self.record_method('SetTheta0XYZ', x, y, z)
+        self.cache_method('SetTheta0XYZ', x, y, z)
 
     def import_from_file(self, file_path: str):
-        self.record_method('Import', file_path)
+        self.cache_method('Import', file_path)
 
     def set_use_copy_only(self, flag: bool = True):
-        self.record_method('UseCopyOnly', flag)
+        self.cache_method('UseCopyOnly', flag)
 
     def set_use_multipole_ffs(self, flag: bool = True):
-        self.record_method('UseMultipoleFFS', flag)
+        self.cache_method('UseMultipoleFFS', flag)
 
     def set_alignment_type(self, alignment_type: str):
-        self.record_method('SetAlignmentType', alignment_type)
+        self.cache_method('SetAlignmentType', alignment_type)
 
     def set_multipole_degree(self, degree: int):
-        self.record_method('SetMultipoleDegree', degree)
+        self.cache_method('SetMultipoleDegree', degree)
 
     def set_multipole_calc_mode(self, mode: str):
-        self.record_method('SetMultipoleCalcMode', mode)
+        self.cache_method('SetMultipoleCalcMode', mode)
 
     def store(self):
-        self.record_method('Store')
+        self.cache_method('Store')
+        self.flush_cache('Store FarfieldSource')
 
     def delete(self):
         self.record_method('Delete')

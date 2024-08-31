@@ -17,82 +17,84 @@ class Wire(VBAObjWrapper):
         super().__init__(vbap, 'Wire')
 
     def reset(self):
-        self.record_method('Reset')
+        self.cache_method('Reset')
 
     def set_name(self, name: str):
-        self.record_method('Name', name)
+        self.cache_method('Name', name)
 
     def set_folder_name(self, folder_name: str):
-        self.record_method('Folder', folder_name)
+        self.cache_method('Folder', folder_name)
 
     def set_type(self, wire_type: str):
-        self.record_method('Type', wire_type)
+        self.cache_method('Type', wire_type)
 
     def set_bond_wire_type(self, bond_wire_type: str):
-        self.record_method('BondWireType', bond_wire_type)
+        self.cache_method('BondWireType', bond_wire_type)
 
     def set_height(self, height: float):
-        self.record_method('Height', height)
+        self.cache_method('Height', height)
 
     def set_relative_center_position(self, pos: float):
-        self.record_method('RelativeCenterPosition', pos)
+        self.cache_method('RelativeCenterPosition', pos)
 
     def set_point1(self, x: float, y: float, z: float):
-        self.record_method('Point1', x, y, z, False)
+        self.cache_method('Point1', x, y, z, False)
 
     def set_pick_as_point1(self):
-        self.record_method('Point1', 0, 0, 0, True)
+        self.cache_method('Point1', 0, 0, 0, True)
 
     def set_point2(self, x: float, y: float, z: float):
-        self.record_method('Point2', x, y, z, False)
+        self.cache_method('Point2', x, y, z, False)
 
     def set_pick_as_point2(self):
-        self.record_method('Point2', 0, 0, 0, True)
+        self.cache_method('Point2', 0, 0, 0, True)
 
     def set_alpha_angle_deg(self, angle_deg: float):
-        self.record_method('Alpha', angle_deg)
+        self.cache_method('Alpha', angle_deg)
 
     def set_alpha_angle_rad(self, angle_rad: float):
         self.set_alpha_angle_deg(np.rad2deg(angle_rad))
 
     def set_beta_angle_deg(self, angle_deg: float):
-        self.record_method('Beta', angle_deg)
+        self.cache_method('Beta', angle_deg)
 
     def set_beta_angle_rad(self, angle_rad: float):
         self.set_beta_angle_deg(np.rad2deg(angle_rad))
 
     def set_curve_name(self, name: str):
-        self.record_method('Curve', name)
+        self.cache_method('Curve', name)
 
     def set_radius(self, radius: float):
-        self.record_method('Radius', radius)
+        self.cache_method('Radius', radius)
 
     def set_solid_wire_model(self, flag: bool = True):
-        self.record_method('SolidWireModel', flag)
+        self.cache_method('SolidWireModel', flag)
 
     def set_material(self, mat_name: str):
-        self.record_method('Material', mat_name)
+        self.cache_method('Material', mat_name)
 
     def change_material(self, wire_name: str, material_name: str):
         self.record_method('ChangeMaterial', wire_name, material_name)
 
     def set_termination(self, termination: str):
-        self.record_method('Termination', termination)
+        self.cache_method('Termination', termination)
 
     def enable_advanced_chain_selection(self, flag: bool = True):
-        self.record_method('AdvancedChainSelection', flag)
+        self.cache_method('AdvancedChainSelection', flag)
 
     def create(self):
-        self.record_method('Add')
+        self.cache_method('Add')
+        self.flush_cache('Create Wire')
 
     def set_solid_name(self, name: str):
-        self.record_method('SolidName', name)
+        self.cache_method('SolidName', name)
 
     def keep_wire_after_conversion(self, flag: bool = True):
-        self.record_method('KeepWire', flag)
+        self.cache_method('KeepWire', flag)
 
     def convert_to_solid_shape(self):
-        self.record_method('ConvertToSolidShape')
+        self.cache_method('ConvertToSolidShape')
+        self.flush_cache('ConvertToSolidShape (Wire)')
 
     def delete(self, wire_name: str):
         self.record_method('Delete', wire_name)
@@ -120,22 +122,22 @@ class Wire(VBAObjWrapper):
         self.record_method('SetMeshStepwidthSrf', wire_name, step_width)
 
     def set_mesh_extend_with(self, x: float, y: float, z: float):
-        self.record_method('SetMeshExtendwidth', x, y, z)
+        self.cache_method('SetMeshExtendwidth', x, y, z)
 
     def activate_mesh_refinement(self, factor: float):
-        self.record_method('SetMeshRefinement', True, factor)
+        self.cache_method('SetMeshRefinement', True, factor)
 
     def deactivate_mesh_refinement(self):
-        self.record_method('SetMeshRefinement', False, 1.0)
+        self.cache_method('SetMeshRefinement', False, 1.0)
 
     def activate_mesh_volume_refinement(self, factor: float):
-        self.record_method('SetMeshVolumeRefinement', True, factor)
+        self.cache_method('SetMeshVolumeRefinement', True, factor)
 
     def deactivate_mesh_volume_refinement(self):
-        self.record_method('SetMeshVolumeRefinement', False, 1.0)
+        self.cache_method('SetMeshVolumeRefinement', False, 1.0)
 
     def set_use_for_simulation(self, flag: bool = True):
-        self.record_method('SetUseForSimulation', flag)
+        self.cache_method('SetUseForSimulation', flag)
 
     def get_length(self, wire_name: str) -> float:
         return self.query_method_float('GetLength', wire_name)
