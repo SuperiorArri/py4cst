@@ -44,7 +44,3 @@ def load_win_cst_python_lib(version_or_install_dir: Optional[Union[int,str]] = N
         add_win_installation_to_path_by_version(version_or_install_dir)
     else:
         add_win_installation_to_path(version_or_install_dir)
-
-if __name__ == '__main__':
-    print(get_win_install_parent_path())
-    print(find_win_installed_versions())

@@ -25,10 +25,10 @@ class LumpedFaceElement(VBAObjWrapper):
         self.flush_cache('Modify LumpedFaceElement')
 
     def set_type(self, elem_type: str):
-        self.cache_method('Type', elem_type)
+        self.cache_method('SetType', elem_type)
 
     def set_name(self, name: str):
-        self.cache_method('Name', name)
+        self.cache_method('SetName', name)
 
     def set_folder_name(self, folder_name: str):
         self.cache_method('Folder', folder_name)
@@ -39,8 +39,13 @@ class LumpedFaceElement(VBAObjWrapper):
     def set_inductance(self, value: float):
         self.cache_method('SetL', value)
 
-    def set_capacity(self, value: float):
+    def set_capacitance(self, value: float):
         self.cache_method('SetC', value)
+
+    def set_rlc(self, r: float, l: float, c: float):
+        self.set_resistance(r)
+        self.set_inductance(l)
+        self.set_capacitance(c)
 
     def set_blocking_conductivity(self, value: float):
         self.cache_method('SetGs', value)

@@ -285,31 +285,25 @@ class Parser:
         Parser._ensure_supported_version(version)
         self.version = version
         self._jump_to_line_rel(2)
-        # print('version:', version)
 
     def _process_data_type_line(self):
         self.data_type = self._get_line_rel(1).strip()
         self._jump_to_line_rel(2)
-        # print('data type:', self.data_type)
 
     def _process_num_frequencies_line(self):
         self.num_frequencies = int(self._get_line_rel(1).strip())
         self._jump_to_line_rel(2)
-        # print('num frequencies:', self.num_frequencies)
 
     def _process_position_line(self):
         self.position = Parser._parse_vector_line(self._get_line_rel(1), 3)
         self._jump_to_line_rel(2)
-        # print('position:', self.position)
 
     def _process_z_axis_line(self):
         self.z_axis = Parser._parse_vector_line(self._get_line_rel(1), 3)
-        # print('zAxis:', self.z_axis)
         self._jump_to_line_rel(2)
 
     def _process_x_axis_line(self):
         self.x_axis = Parser._parse_vector_line(self._get_line_rel(1), 3)
-        # print('xAxis:', self.x_axis)
         self._jump_to_line_rel(2)
 
     def _process_powers_and_frequencies_line(self):
@@ -326,7 +320,6 @@ class Parser:
         self.stimulated_powers.append(float(self._get_line_rel(2).strip()))
         self.frequencies.append(float(self._get_line_rel(3).strip()))
         self._jump_to_line_rel(5)
-        # print('R/A/S/F', self.radiated_powers[-1], self.accepted_powers[-1], self.stimulated_powers[-1], self.frequencies[-1])
 
     def _process_num_phi_theta_samples_line(self):
         values = Parser._parse_vector_line(self._get_line_rel(1), 2)

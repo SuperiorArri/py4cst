@@ -17,9 +17,7 @@ class CustomSTensor:
 
     def get_tensor(self, run_id: int = 0):
         s_tensor = self.__prealloc_tensor(run_id)
-        print('s tensor shape:',s_tensor.shape)
         for i,v in np.ndenumerate(self.structure):
-            print('index:',i, 'name:',v)
             self.s_param.select_by_name(v, run_id)
             s_tensor[i] = self.s_param.get_values()
         return s_tensor

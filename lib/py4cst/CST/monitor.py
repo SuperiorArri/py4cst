@@ -130,7 +130,6 @@ class Monitor(VBAObjWrapper):
 
     def set_monitor_value_list(self, frequencies: list[float]):
         freq_str = ';'.join(str(s) for s in frequencies)
-        print('freq_str=', freq_str)
         self.cache_method('MonitorValueList', freq_str)
 
     def set_sampling_step(self, step: float):
