@@ -2,7 +2,7 @@ from py4cst.CST import Interface, Project, Modeler, HFSolver, IESolver, Eigenmod
 
 interface = Interface()
 proj = interface.new_microwave_studio_project()
-modeler = Modeler(proj)
+modeler = proj.get_modeler()
 
 # Set Solver Type
 proj.set_solver_type(Project.SOLVER_HF_TIME_DOMAIN)

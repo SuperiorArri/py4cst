@@ -227,8 +227,10 @@ class Project(IProject, IVBAProvider):
     def get_kind(self) -> Kind:
         return Project.Kind.from_cst(self.native_obj.project_type())
 
-    def save(self, path: str, include_results: bool = True) -> None:
-        self.native_obj.save(path, include_results)
+    def save(
+            self, path: str = '', include_results: bool = True,
+            allow_overwrite: bool = False) -> None:
+        self.native_obj.save(path, include_results, allow_overwrite)
 
     def get_modeler(self) -> Modeler:
         return None if self.native_obj.modeler is None else Modeler(self.native_obj.modeler)

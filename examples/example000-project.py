@@ -13,4 +13,11 @@ except Exception as e:
 print(proj.get_application_name())
 print(proj.get_application_version())
 print(proj.get_project_path(Project.PATH_TYPE_PROJECT))
-# proj.close()
+
+# save to specified location
+proj.save('path/to/project.cst', include_results=False)
+
+# save to project's location, include results
+proj.save(include_results=True)
+
+proj.close()
