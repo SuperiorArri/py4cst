@@ -18,7 +18,7 @@ class Modeler(IHistoryListProvider, IVBARuntime):
         self.native_obj.add_to_history(header, vba_code)
 
     def full_history_rebuild(self) -> None:
-        self.native_obj.full_history_rebuild(self)
+        self.native_obj.full_history_rebuild()
 
     def get_active_solver_name(self) -> str:
         return self.native_obj.get_active_solver_name()

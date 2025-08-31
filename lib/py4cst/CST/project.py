@@ -1,10 +1,10 @@
-# from . import info
 from . import \
-    IProject, IVBAProvider, Modeler, Schematic, InterfacePCBS, HistoryListGenerator, Parameters, \
-    VBATypeName, IQuietModeController
+    IProject, IVBAProvider, Modeler, Schematic, InterfacePCBS, \
+    HistoryListGenerator, Parameters, VBATypeName, IQuietModeController
 from enum import Enum
 from typing import Optional, Union
 import os.path
+import json
 
 def cast_vba_value(value: str, type_name: str):
     if type_name in ['Byte', 'Integer', 'Long']:
@@ -388,19 +388,19 @@ class Project(IProject, IVBAProvider):
         self.invoke_function('RunScript', script_name)
 
     def report_information(self, *msg):
-        self.invoke_function('ReportInformation', ''.join(list(map(lambda x: str(x), msg))))
+        self.invoke_function('ReportInformation', ''.join([str(x) for x in msg]))
 
     def report_warning(self, *msg):
-        self.invoke_function('ReportWarning', ''.join(list(map(lambda x: str(x), msg))))
+        self.invoke_function('ReportWarning', ''.join([str(x) for x in msg]))
 
     def report_information_to_window(self, *msg):
-        self.invoke_function('ReportInformationToWindow', ''.join(list(map(lambda x: str(x), msg))))
+        self.invoke_function('ReportInformationToWindow', ''.join([str(x) for x in msg]))
 
     def report_warning_to_window(self, *msg):
-        self.invoke_function('ReportWarningToWindow', ''.join(list(map(lambda x: str(x), msg))))
+        self.invoke_function('ReportWarningToWindow', ''.join([str(x) for x in msg]))
 
     def report_error(self, *msg):
-        self.invoke_function('ReportError', ''.join(list(map(lambda x: str(x), msg))))
+        self.invoke_function('ReportError', ''.join([str(x) for x in msg]))
 
     def set_common_mpi_cluster_config(
             self, install_folder: str, temp_folder: str, architecture: str):
@@ -491,8 +491,3 @@ class Project(IProject, IVBAProvider):
 
     def export_image_to_clipboard(self, width: int = 0, height: int = 0):
         self.invoke_function('ExportImageToClipboard', width, height)
-
-    # def __get_welcome_message(self):
-    #     return \
-    #         f'CST Studio Suite Python interface v{info.MODULE_VERSION} by '+\
-    #         f'Samuel Travnicek connected.'
