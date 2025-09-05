@@ -1,6 +1,7 @@
 from .. import installation_util
 from . import ResultModule
 from typing import Optional, Union
+import os.path
 
 class Results:
     def __init__(
@@ -9,6 +10,7 @@ class Results:
             allow_interactive: bool = True) -> None:
         installation_util.load_win_cst_python_lib(version_or_install_dir)
         import cst.results
+        project_file_path = os.path.abspath(project_file_path)
         self.proj_file = cst.results.ProjectFile(project_file_path, allow_interactive)
 
     def get_3d(self) -> ResultModule:

@@ -322,3 +322,39 @@ class Mesh(VBAObjWrapper):
 
     def set_spatial_variation_type_for_shape(self, solid_name: str, var_type: str):
         self.record_method('SetSpatialVariationTypeForShape', solid_name, var_type)
+
+    def get_mesh_type(self) -> str:
+        return self.query_method_str('GetMeshType')
+
+    def is_fpba_used(self) -> bool:
+        return self.query_method_int('IsFPBAUsed') != 0
+
+    def is_fpba_gap_detection_active(self) -> bool:
+        return self.query_method_bool('IsFastPBAGapDetection')
+
+    def get_fpba_gap_tolerance(self) -> float:
+        return self.query_method_float('GetFPBAGapTolerance')
+
+    def get_area_fill_limit(self) -> float:
+        return self.query_method_float('GetAreaFillLimit')
+
+    def get_min_edge_length(self) -> float:
+        return self.query_method_float('GetMinimumEdgeLength')
+
+    def get_max_edge_length(self) -> float:
+        return self.query_method_float('GetMaximumEdgeLength')
+
+    def get_surface_mesh_area(self) -> float:
+        return self.query_method_float('GetSurfaceMeshArea')
+
+    def get_number_of_mesh_cells(self) -> int:
+        return self.query_method_int('GetNumberOfMeshCells')
+
+    def get_number_of_mesh_cells_metrics(self) -> int:
+        return self.query_method_int('GetNumberOfMeshCellsMetrics')
+
+    def get_parallel_mesher_mode(self) -> str:
+        return self.query_method_str('GetParallelMesherMode')
+
+    def get_max_parallel_mesher_threads(self) -> int:
+        return self.query_method_int('GetMaxParallelMesherThreads')

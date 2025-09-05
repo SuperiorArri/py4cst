@@ -4,7 +4,6 @@ from . import \
 from enum import Enum
 from typing import Optional, Union
 import os.path
-import json
 
 def cast_vba_value(value: str, type_name: str):
     if type_name in ['Byte', 'Integer', 'Long']:
@@ -229,7 +228,9 @@ class Project(IProject, IVBAProvider):
 
     def save(
             self, path: str = '', include_results: bool = True,
-            allow_overwrite: bool = False) -> None:
+            allow_overwrite: bool = True) -> None:
+        if path != '':
+            path = os.path.abspath(path)
         self.native_obj.save(path, include_results, allow_overwrite)
 
     def get_modeler(self) -> Modeler:
@@ -292,6 +293,7 @@ class Project(IProject, IVBAProvider):
     def store_in_archive(
             self, path: str, keep_all_results: bool = True, keep_1d_results: bool = True,
             keep_farfield_data: bool = True, delete_project_folder: bool = False):
+        path = os.path.abspath(path)
         self.invoke_function('StoreInArchive',
             path, keep_all_results, keep_1d_results, keep_farfield_data, delete_project_folder)
 
@@ -358,6 +360,7 @@ class Project(IProject, IVBAProvider):
             'GetNextTemplate', result_name, val_type, template_name, folder) != 'False'
 
     def get_file_type(self, file_path: str) -> str:
+        file_path = os.path.abspath(file_path)
         return self.query_function('GetFileType', file_path)
 
     def get_first_table_result(self, result_name: str) -> str:
@@ -407,6 +410,7 @@ class Project(IProject, IVBAProvider):
         self.invoke_function('SetCommonMPIClusterConfig', install_folder, temp_folder, architecture)
 
     def set_common_mpi_cluster_login_info(self, user_name: str, private_key_file_path: str):
+        private_key_file_path = os.path.abspath(private_key_file_path)
         self.invoke_function('SetCommonMPIClusterLoginInfo', user_name, private_key_file_path)
 
     def get_mpi_cluster_size(self) -> int:
@@ -423,9 +427,11 @@ class Project(IProject, IVBAProvider):
             architecture, active)
 
     def import_xy_curve_from_ascii_file(self, folder_name: str, file_path: str):
+        file_path = os.path.abspath(file_path)
         self.invoke_function('ImportXYCurveFromASCIIFile', folder_name, file_path)
 
     def paste_curves_from_ascii_file(self, folder_name: str, file_path: str):
+        file_path = os.path.abspath(file_path)
         self.invoke_function('PasteCurvesFromASCIIFile', folder_name, file_path)
 
     def paste_curves_from_clipboard(self, folder_name: str):
@@ -487,6 +493,7 @@ class Project(IProject, IVBAProvider):
         return (x, y, z)
 
     def export_image_to_file(self, path: str, width: int = 0, height: int = 0):
+        path = os.path.abspath(path)
         self.invoke_function('ExportImageToFile', path, width, height)
 
     def export_image_to_clipboard(self, width: int = 0, height: int = 0):
