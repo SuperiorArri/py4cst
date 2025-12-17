@@ -1,0 +1,67 @@
+object = 'SolverParameter'
+
+[[enums]]
+name = 'SolverType'
+values = [
+    { name = 'TRANSIENT', value = 'Transient solver' },
+    { name = 'FREQ_DOMAIN', value = 'Frequency domain solver' },
+    { name = 'ASYMPTOTIC', value = 'Asymptotic solver' },
+    { name = 'EIGENMODE', value = 'Eigenmode solver' },
+    { name = 'ELECTROSTATICS', value = 'Electrostatics solver' },
+    { name = 'MAGNETOSTATIC', value = 'Magnetostatic solver' },
+    { name = 'LF_FREQ_DOMAIN', value = 'LF Frequency domain solver' },
+    { name = 'LF_FREQ_DOMAIN_EQS', value = 'LF Frequency domain solver (EQS)' },
+    { name = 'STATIONARY_CURRENT', value = 'Stationary current solver' },
+    { name = 'PARTICLE_TRACKING', value = 'Particle tracking solver' },
+    { name = 'PIC', value = 'PIC solver' },
+    { name = 'THERMAL', value = 'Thermal solver' },
+    { name = 'INTEGRAL_EQUATION', value = 'Integral equation solver' },
+    { name = 'MULTILAYER', value = 'Multilayer solver' },
+    { name = 'LF_TIME_DOMAIN_MQS', value = 'LF Time domain solver (MQS)' },
+    { name = 'LF_TIME_DOMAIN_EQS', value = 'LF Time domain solver (EQS)' },
+    { name = 'THERMAL_TRANSIENT', value = 'Thermal transient solver' },
+    { name = 'STRUCTURAL_MECHANICS', value = 'Structural mechanics solver' },
+    { name = 'WAKEFIELD', value = 'Wakefield solver' },
+]
+
+[[enums]]
+name = 'MeshType'
+values = ['Hexahedral', 'Tetrahedral', 'Surface']
+
+[[methods]]
+name = 'SolverType'
+py_name = 'set_solver_type'
+args = [
+    { name = 'solver_type', type = 'SolverType' },
+    { name = 'mesh_type', type = 'MeshType' },
+]
+
+[[methods]]
+name = 'IgnoreLossyMetals'
+py_name = 'set_ignore_lossy_metals'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IgnoreLossyDielectrics'
+py_name = 'set_ignore_lossy_dielectrics'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IgnoreLossyMetalsForWires'
+py_name = 'set_ignore_lossy_metals_for_wires'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IgnoreNonlinearMaterials'
+py_name = 'set_ignore_nonlinear_materials'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseThinWireModel'
+py_name = 'set_use_thin_wire_model'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseZeroWireRadius'
+py_name = 'set_use_zero_wire_radius'
+args = [{ name = 'flag', type = 'bool', default = true }]

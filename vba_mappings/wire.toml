@@ -1,0 +1,352 @@
+object = 'Wire'
+
+[[enums]]
+name = 'Type'
+values = [
+    { name = 'BOND_WIRE', value = 'Bondwire' },
+    { name = 'CURVE_WIRE', value = 'Curvewire' },
+]
+
+[[enums]]
+name = 'BondWireType'
+values = ['Spline', 'JEDEC4', 'JEDEC5']
+
+[[enums]]
+name = 'Termination'
+values = ['natural', 'rounded', 'extended']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Folder'
+py_name = 'set_folder_name'
+cache = true
+args = [
+    { name = 'folder_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+cache = true
+args = [
+    { name = 'wire_type', type = 'Type' },
+]
+
+[[methods]]
+name = 'BondWireType'
+py_name = 'set_bond_wire_type'
+cache = true
+args = [
+    { name = 'bond_wire_type', type = 'BondWireType' },
+]
+
+[[methods]]
+name = 'Height'
+py_name = 'set_height'
+cache = true
+args = [
+    { name = 'height', type = 'float' },
+]
+
+[[methods]]
+name = 'RelativeCenterPosition'
+py_name = 'set_relative_center_position'
+cache = true
+args = [
+    { name = 'pos', type = 'float' },
+]
+
+[[methods]]
+name = 'Point1'
+py_name = 'set_point1'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+vba_call_args = ['coords[0]', 'coords[1]', 'coords[2]', false]
+
+[[methods]]
+name = 'Point1'
+py_name = 'set_pick_as_point1'
+cache = true
+vba_call_args = [0, 0, 0, true]
+
+[[methods]]
+name = 'Point2'
+py_name = 'set_point2'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+vba_call_args = ['coords[0]', 'coords[1]', 'coords[2]', false]
+
+[[methods]]
+name = 'Point2'
+py_name = 'set_pick_as_point2'
+cache = true
+vba_call_args = [0, 0, 0, true]
+
+[[methods]]
+name = 'Alpha'
+py_name = 'set_alpha_angle_deg'
+cache = true
+args = [
+    { name = 'angle_deg', type = 'float' },
+]
+
+[[methods]]
+name = 'Beta'
+py_name = 'set_beta_angle_deg'
+cache = true
+args = [
+    { name = 'angle_deg', type = 'float' },
+]
+
+[[methods]]
+name = 'Curve'
+py_name = 'set_curve_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Radius'
+py_name = 'set_radius'
+cache = true
+args = [
+    { name = 'radius', type = 'float' },
+]
+
+[[methods]]
+name = 'SolidWireModel'
+py_name = 'set_solid_wire_model'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [
+    { name = 'mat_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeMaterial'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Termination'
+py_name = 'set_termination'
+cache = true
+args = [
+    { name = 'termination', type = 'Termination' },
+]
+
+[[methods]]
+name = 'AdvancedChainSelection'
+py_name = 'set_advanced_chain_selection'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'Add'
+py_name = 'create'
+cache = true
+flush_cache = 'Create Wire'
+
+[[methods]]
+name = 'SolidName'
+py_name = 'set_solid_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'KeepWire'
+py_name = 'set_keep_wire_after_conversion'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'ConvertToSolidShape'
+cache = true
+flush_cache = 'ConvertToSolidShape (Wire)'
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'wire_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'SetAutomeshFixpoints'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetPriority'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'priority', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMaterialBasedRefinement'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetMeshStepwidth'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'widths', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'SetMeshStepwidthTet'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'step_width', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMeshStepwidthSrf'
+args = [
+    { name = 'wire_name', type = 'str' },
+    { name = 'step_width', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMeshExtendwidth'
+cache = true
+args = [{ name = 'widths', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetMeshRefinement'
+cache = true
+args = [
+    { name = 'active', type = 'bool' },
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMeshRefinement'
+py_name = 'activate_mesh_refinement'
+cache = true
+args = [
+    { name = 'factor', type = 'float' },
+]
+vba_call_args = [true, 'factor']
+
+[[methods]]
+name = 'SetMeshRefinement'
+py_name = 'deactivate_mesh_refinement'
+cache = true
+vba_call_args = [false, 1.0]
+
+[[methods]]
+name = 'SetMeshVolumeRefinement'
+cache = true
+args = [
+    { name = 'active', type = 'bool' },
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMeshVolumeRefinement'
+py_name = 'activate_mesh_volume_refinement'
+cache = true
+args = [
+    { name = 'factor', type = 'float' },
+]
+vba_call_args = [true, 'factor']
+
+[[methods]]
+name = 'SetMeshVolumeRefinement'
+py_name = 'deactivate_mesh_volume_refinement'
+cache = true
+vba_call_args = [false, 1.0]
+
+[[methods]]
+name = 'SetUseForSimulation'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'GetLength'
+return_type = 'float'
+args = [
+    { name = 'wire_name', type = 'str' },
+]
+
+[[methods]]
+name = 'GetGridLength'
+return_type = 'float'
+args = [
+    { name = 'wire_name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+py_name = 'create_folder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameFolder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DoesFolderExist'
+return_type = 'bool'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Slice'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SliceFolder'
+args = [{ name = 'name', type = 'str' }]

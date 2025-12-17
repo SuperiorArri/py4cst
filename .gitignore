@@ -1,8 +1,27 @@
-/to_be_deleted
-__pycache__
-/.vscode
-/debug.log
-/lib/build
-/lib/dist
-/lib/py4cst.egg-info
-/notes.md
+# Python cache/bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.eggs/
+pip-wheel-metadata/
+
+# IDE/project settings
+.vscode/
+.idea/
+
+# Packaging lock files
+pip-wheel-metadata/
+
+# Generated wrappers
+/src/py4cst/cst/wrappers/
+
+/todos.txt

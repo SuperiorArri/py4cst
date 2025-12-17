@@ -1,4 +1,4 @@
-from py4cst.CST import Interface, Project
+from py4cst.cst import Interface, Project
 
 ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)
 try:

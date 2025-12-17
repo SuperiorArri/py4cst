@@ -1,0 +1,63 @@
+object = 'Group'
+
+[[enums]]
+name = 'Type'
+values = ['normal', 'mesh']
+
+[[methods]]
+name = 'Add'
+py_name = 'create'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'group_type', type = 'Type' },
+]
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'AddItem'
+args = [
+    { name = 'item_name', type = 'str' },
+    { name = 'group_name', type = 'str' },
+]
+
+[[methods]]
+name = 'RemoveItem'
+args = [
+    { name = 'item_name', type = 'str' },
+    { name = 'group_name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+py_name = 'create_folder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameFolder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Reset'

@@ -1,0 +1,90 @@
+object = 'TraceFromCurve'
+
+[[enums]]
+name = 'GapType'
+values = [
+    { name = 'ROUNDED', value = 0 },
+    { name = 'EXTENDED', value = 1 },
+    { name = 'NATURAL', value = 2 },
+]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [
+    { name = 'mat_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Curve'
+py_name = 'set_curve'
+cache = true
+args = [
+    { name = 'curve_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Thickness'
+py_name = 'set_thickness'
+cache = true
+args = [
+    { name = 'thickness', type = 'float' },
+]
+
+[[methods]]
+name = 'Width'
+py_name = 'set_width'
+cache = true
+args = [
+    { name = 'width', type = 'float' },
+]
+
+[[methods]]
+name = 'RoundStart'
+py_name = 'set_start_round'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'RoundEnd'
+py_name = 'set_end_round'
+cache = true
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'GapType'
+py_name = 'set_gap_type'
+cache = true
+args = [
+    { name = 'gap_type', type = 'GapType' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create TraceFromCurve'

@@ -1,0 +1,225 @@
+object = 'FloquetPort'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[enums]]
+name = 'Position'
+values = [
+    { name = 'Z_MIN', value = 'zmin'},
+    { name = 'Z_MAX', value = 'zmax'},
+]
+
+[[enums]]
+name = 'ModeType'
+values = ['TE', 'TM', 'LCP', 'RCP']
+
+[[enums]]
+name = 'SortCode'
+values = [
+    { name = 'PLUS_BETA_PW', value = '+beta/pw' },
+    { name = 'PLUS_BETA', value = '+beta' },
+    { name = 'MINUS_BETA', value = '-beta' },
+    { name = 'PLUS_ALPHA', value = '+alpha' },
+    { name = 'MINUS_ALPHA', value = '-alpha' },
+    { name = 'PLUS_TE', value = '+te' },
+    { name = 'MINUS_TE', value = '-te' },
+    { name = 'PLUS_TM', value = '+tm' },
+    { name = 'MINUS_TM', value = '-tm' },
+    { name = 'PLUS_ORDER_X', value = '+orderx' },
+    { name = 'MINUS_ORDER_X', value = '-orderx' },
+    { name = 'PLUS_ORDER_Y', value = '+ordery' },
+    { name = 'MINUS_ORDER_Y', value = '-ordery' },
+]
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Port'
+py_name = 'prepare_port'
+args = [
+    { name = 'position', type = 'Position' },
+]
+
+[[methods]]
+name = 'AddMode'
+args = [
+    { name = 'mode_type', type = 'ModeType' },
+    { name = 'order_x', type = 'int' },
+    { name = 'order_y_prime', type = 'int' },
+]
+
+[[methods]]
+name = 'SetUseCircularPolarization'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetPolarizationIndependentOfScanAnglePhi'
+py_name = 'set_polarization_independent_of_phi_deg'
+args = [
+    { name = 'alignment_angle', type = 'float' },
+]
+vba_call_args = ['alignment_angle', true]
+
+[[methods]]
+name = 'set_polarization_independent_of_phi_rad'
+py_name = 'set_polarization_independent_of_phi_rad'
+args = [
+    { name = 'alignment_angle', type = 'float' },
+]
+
+[[methods]]
+name = 'SetPolarizationIndependentOfScanAnglePhi'
+py_name = 'set_polarization_dependent_of_phi'
+vba_call_args = [0, false]
+
+[[methods]]
+name = 'SetDialogFrequency'
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'SetDialogMediaFactor'
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'SetDialogTheta'
+py_name = 'set_dialog_theta_deg'
+args = [
+    { name = 'angle', type = 'float' },
+]
+
+[[methods]]
+name = 'SetDialogPhi'
+py_name = 'set_dialog_phi_deg'
+args = [
+    { name = 'angle', type = 'float' },
+]
+
+[[methods]]
+name = 'set_dialog_phi_rad'
+py_name = 'set_dialog_phi_rad'
+args = [
+    { name = 'angle', type = 'float' },
+]
+
+[[methods]]
+name = 'SetDialogMaxOrderX'
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'SetDialogMaxOrderYPrime'
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'SetCustomizedListFlag'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetNumberOfModesConsidered'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetSortCode'
+args = [
+    { name = 'code', type = 'SortCode' },
+]
+
+[[methods]]
+name = 'SetDistanceToReferencePlane'
+args = [
+    { name = 'distance', type = 'float' },
+]
+
+[[methods]]
+name = 'GetNumberOfModes'
+return_type = 'int'
+
+[[methods]]
+name = 'FirstMode'
+py_name = 'reset_mode_iterator'
+return_type = 'bool'
+
+[[methods]]
+name = 'GetMode'
+return_type = { __retval__ = 'Boolean', mode_type = 'String', order_x = 'Integer', order_y_prime = 'Integer' }
+args = [
+    { name = 'mode_type', type = '__retval__' },
+    { name = 'order_x', type = '__retval__' },
+    { name = 'order_y_prime', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+mode
+    (mode_type, order_x, order_y_prime) *on success* | None
+"""
+
+[[methods]]
+name = 'NextMode'
+py_name = 'advance_mode_iterator'
+return_type = 'bool'
+
+[[methods]]
+name = 'GetNumberOfModesConsidered'
+return_type = 'int'
+
+[[methods]]
+name = 'IsPortAtZmin'
+py_name = 'is_port_at_z_min'
+return_type = 'bool'
+
+[[methods]]
+name = 'IsPortAtZmax'
+py_name = 'is_port_at_z_max'
+return_type = 'bool'
+
+[[methods]]
+name = 'GetModeNameByNumber'
+return_type = { __retval__ = 'Boolean', name = 'String' }
+args = [
+    { name = 'name', type = '__retval__' },
+    { name = 'number', type = 'int' },
+]
+python_return_type = 'Optional[str]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+name
+    name *on success* | None
+"""
+
+[[methods]]
+name = 'GetModeNumberByName'
+return_type = { __retval__ = 'Boolean', number = 'Long' }
+args = [
+    { name = 'number', type = '__retval__' },
+    { name = 'name', type = 'str' },
+]
+python_return_type = 'Optional[int]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+mode_number
+    number *on success* | None
+"""
+
+[[methods]]
+name = 'ForceLegacyPhaseReference'
+py_name = 'set_force_legacy_phase_reference'
+args = [
+    { name = 'flag', type = 'bool' },
+]

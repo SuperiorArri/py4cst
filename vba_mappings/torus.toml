@@ -1,0 +1,100 @@
+object = 'Torus'
+
+[[enums]]
+name = 'Axis'
+values = ['x', 'y', 'z']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [
+    { name = 'mat_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Torus'
+
+[[methods]]
+name = 'Axis'
+py_name = 'set_axis'
+cache = true
+args = [
+    { name = 'axis', type = 'Axis' },
+]
+
+[[methods]]
+name = 'Outerradius'
+py_name = 'set_outer_radius'
+cache = true
+args = [
+    { name = 'radius', type = 'float' },
+]
+
+[[methods]]
+name = 'Innerradius'
+py_name = 'set_inner_radius'
+cache = true
+args = [
+    { name = 'radius', type = 'float' },
+]
+
+[[methods]]
+name = 'Xcenter'
+py_name = 'set_x_center'
+cache = true
+args = [
+    { name = 'center', type = 'float' },
+]
+
+[[methods]]
+name = 'Ycenter'
+py_name = 'set_y_center'
+cache = true
+args = [
+    { name = 'center', type = 'float' },
+]
+
+[[methods]]
+name = 'Zcenter'
+py_name = 'set_z_center'
+cache = true
+args = [
+    { name = 'center', type = 'float' },
+]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_num_segments'
+cache = true
+args = [
+    { name = 'num_segments', type = 'int' },
+]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_smooth_geometry'
+cache = true
+vba_call_args = [0]

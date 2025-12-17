@@ -4,6 +4,10 @@ This is a small python library that provides wrappers for CST Studio Suite pytho
 
 **Be aware the library in it's current state is highly untested and will change a lot even in it's core. Any contributions are welcome!**
 
+## Update 0.2.0
+
+Added VBA mappings. VBA wrappers are now generated automatically from TOML files, including documentation.
+
 # Usage
 
 Check the *examples* directory.

@@ -1,0 +1,67 @@
+object = 'Units'
+
+[[methods]]
+name = 'Geometry'
+py_name = 'set_geometry_unit'
+args = [{ name = 'unit', type = 'str' }]
+
+[[methods]]
+name = 'GetGeometryUnit'
+return_type = 'str'
+
+[[methods]]
+name = 'GetGeometryUnitToSI'
+py_name = 'get_geometry_unit_to_si_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'GetGeometrySIToUnit'
+py_name = 'get_geometry_si_to_unit_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'Time'
+py_name = 'set_time_unit'
+args = [{ name = 'unit', type = 'str' }]
+
+[[methods]]
+name = 'GetTimeUnit'
+return_type = 'str'
+
+[[methods]]
+name = 'GetTimeUnitToSI'
+py_name = 'get_time_unit_to_si_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'GetTimeSIToUnit'
+py_name = 'get_time_si_to_unit_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'Frequency'
+py_name = 'set_frequency_unit'
+args = [{ name = 'unit', type = 'str' }]
+
+[[methods]]
+name = 'GetFrequencyUnit'
+return_type = 'str'
+
+[[methods]]
+name = 'GetFrequencyUnitToSI'
+py_name = 'get_frequency_unit_to_si_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'GetFrequencySIToUnit'
+py_name = 'get_frequency_si_to_unit_factor'
+return_type = 'float'
+
+[[methods]]
+name = 'TemperatureUnit'
+py_name = 'set_temperature_unit'
+args = [{ name = 'unit', type = 'str' }]
+
+[[methods]]
+name = 'GetTemperatureUnit'
+return_type = 'str'

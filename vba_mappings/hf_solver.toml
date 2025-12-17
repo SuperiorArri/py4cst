@@ -1,0 +1,1067 @@
+object = 'Solver'
+
+[[imports]]
+module = '..frequency_range_list'
+attribute = 'FrequencyRangeList'
+
+[[enums]]
+name = 'PmlType'
+values = ['ConvPML', 'GTPML']
+
+[[enums]]
+name = 'UpdateSchema'
+values = ['Gap', 'Distributed']
+
+[[enums]]
+name = 'SuppressTss'
+values = [
+    'True',
+    'All',
+    'False',
+    'None',
+    'Reset',
+    'Ports',
+    'LumpedElements',
+    'Probes',
+    'UIMonitors',
+]
+
+[[enums]]
+name = 'Excitation'
+values = [
+    { name = 'PORT_MODE', value = 'portmode' },
+    { name = 'PLANE_WAVE', value = 'planewave' },
+    { name = 'FIELD_SOURCE', value = 'fieldsource' },
+    { name = 'FARFIELD_SOURCE', value = 'farfieldsource' },
+]
+
+[[enums]]
+name = 'SimultExcitOffset'
+values = [
+    { name = 'TIME_SHIFT', value = 'Timeshift'},
+    { name = 'PHASE_SHIFT', value = 'Phaseshift'},
+]
+
+[[enums]]
+name = 'Absorb'
+values = ['Automatic', 'Activate', 'Deactivate']
+
+[[enums]]
+name = 'ExcitationType'
+values = ['Automatic', 'Standard', 'Broadband']
+
+[[enums]]
+name = 'DecompositionType'
+values = ['Automatic', 'Standard', 'Broadband']
+
+[[enums]]
+name = 'Window'
+values = ['Rectangular', 'Cosine']
+
+[[enums]]
+name = 'HftdDispUpdateScheme'
+values = ['Standard', 'Generalized', 'Automatic']
+
+[[enums]]
+name = 'SubcycleState'
+values = ['Automatic', 'Activate', 'Deactivate']
+
+[[methods]]
+name = 'TimeBetweenUpdates'
+py_name = 'set_time_between_updates'
+args = [
+    { name = 'value', type = 'int' },
+]
+
+[[methods]]
+name = 'FrequencyRange'
+py_name = 'set_frequency_range'
+args = [
+    { name = 'min_freq', type = 'float' },
+    { name = 'max_freq', type = 'float' },
+]
+
+[[methods]]
+name = 'CalculateZandYMatrices'
+py_name = 'calculate_zy_matrices'
+
+[[methods]]
+name = 'CalculateVSWR'
+py_name = 'calculate_vswr'
+
+[[methods]]
+name = 'PBAFillLimit'
+py_name = 'set_pba_fill_limit'
+args = [
+    { name = 'percentage', type = 'float' },
+]
+
+[[methods]]
+name = 'UseSplitComponents'
+py_name = 'set_use_split_components'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AlwaysExcludePec'
+py_name = 'set_always_exclude_pec'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MPIParallelization'
+py_name = 'set_mpi_parallelization'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'GetFmin'
+py_name = 'get_min_frequency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetFmax'
+py_name = 'get_max_frequency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetNFsamples'
+py_name = 'get_number_of_frequency_samples'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNumberOfPorts'
+py_name = 'get_number_of_ports'
+return_type = 'int'
+
+[[methods]]
+name = 'ArePortsSubsequentlyNamed'
+return_type = 'bool'
+
+[[methods]]
+name = 'GetStimulationPort'
+return_type = 'int'
+
+[[methods]]
+name = 'GetStimulationMode'
+return_type = 'int'
+
+[[methods]]
+name = 'GetTotalSimulationTime'
+return_type = 'int'
+
+[[methods]]
+name = 'GetMatrixCalculationTime'
+return_type = 'int'
+
+[[methods]]
+name = 'GetLastSolverTime'
+return_type = 'int'
+
+[[methods]]
+name = 'Start'
+
+[[methods]]
+name = 'AutoNormImpedance'
+py_name = 'set_normalize_impedances_automatically'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NormingImpedance'
+py_name = 'set_norming_impedance'
+args = [
+    { name = 'impedance', type = 'float' },
+]
+
+[[methods]]
+name = 'MeshAdaption'
+py_name = 'set_mesh_adaptation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseDistributedComputing'
+py_name = 'set_use_distributed_computing'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'DistributeMatrixCalculation'
+py_name = 'set_distribute_matrix_calculation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'HardwareAcceleration'
+py_name = 'set_use_hardware_acceleration'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'StoreTDResultsInCache'
+py_name = 'set_store_td_results_in_cache'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'FrequencySamples'
+py_name = 'set_number_of_frequency_samples'
+args = [
+    { name = 'num_samples', type = 'int' },
+]
+
+[[methods]]
+name = 'FrequencyLogSamples'
+py_name = 'set_number_of_log_frequency_samples'
+args = [
+    { name = 'num_samples', type = 'int' },
+]
+
+[[methods]]
+name = 'ConsiderTwoPortReciprocity'
+py_name = 'set_consider_two_port_reciprocity'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'EnergyBalanceLimit'
+py_name = 'set_energy_balance_limit'
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+name = 'TimeStepStabilityFactor'
+py_name = 'set_time_step_stability_factor'
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'NormalizeToReferenceSignal'
+py_name = 'set_normalize_to_reference_signal'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NormalizeToDefaultSignalWhenInUse'
+py_name = 'set_normalize_to_default_signal_when_in_use'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AutoDetectIdenticalPorts'
+py_name = 'set_detect_identical_ports_automatically'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AutomaticTimeSignalSampling'
+py_name = 'set_sample_time_signal_automatically'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ConsiderExcitationForFreqSamplingRate'
+py_name = 'set_consider_excitation_for_freq_sampling_rate'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TDRComputation'
+py_name = 'set_perform_tdr_computation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TDRShift50Percent'
+py_name = 'set_shift_tdr_50_percent'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TDRReflection'
+py_name = 'set_perform_tdr_reflection_computation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseBroadBandPhaseShift'
+py_name = 'set_use_broadband_phase_shift'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetBroadBandPhaseShiftLowerBoundFac'
+py_name = 'set_broadband_phase_shift_lower_bound_factor'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SParaAdjustment'
+py_name = 'set_sparam_adjustment'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'PrepareFarfields'
+py_name = 'set_prepare_farfields'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MonitorFarFieldsNearToModel'
+py_name = 'set_monitor_farfields_near_to_model'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MatrixDump'
+py_name = 'set_dump_solver_matrices'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'RestartAfterInstabilityAbort'
+py_name = 'set_restart_after_instability_abort'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MaximumNumberOfThreads'
+py_name = 'set_max_number_of_threads'
+args = [
+    { name = 'num_threads', type = 'int' },
+]
+
+[[methods]]
+name = 'SetPMLType'
+args = [
+    { name = 'pml_type', type = 'PmlType' },
+]
+
+[[methods]]
+name = 'DiscreteItemUpdate'
+py_name = 'set_update_schema_discrete_items'
+args = [
+    { name = 'schema', type = 'UpdateSchema' },
+]
+
+[[methods]]
+name = 'DiscreteItemEdgeUpdate'
+py_name = 'set_update_schema_discrete_items_edge'
+args = [
+    { name = 'schema', type = 'UpdateSchema' },
+]
+
+[[methods]]
+name = 'DiscreteItemFaceUpdate'
+py_name = 'set_update_schema_discrete_items_face'
+args = [
+    { name = 'schema', type = 'UpdateSchema' },
+]
+
+[[methods]]
+name = 'GetDiscreteItemUpdate'
+py_name = 'get_update_schema_discrete_items'
+return_type = 'str'
+
+[[methods]]
+name = 'GetDiscreteItemEdgeUpdate'
+py_name = 'get_update_schema_discrete_items_edge'
+return_type = 'str'
+
+[[methods]]
+name = 'GetDiscreteItemFaceUpdate'
+py_name = 'get_update_schema_discrete_items_face'
+return_type = 'str'
+
+[[methods]]
+name = 'SuppressTimeSignalStorage'
+args = [
+    { name = 'key', type = 'SuppressTss' },
+]
+
+[[methods]]
+name = 'CalculateModesOnly'
+py_name = 'set_calculate_modes_only'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'StimulationMode'
+py_name = 'set_stimulation_mode'
+args = [
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'StimulationPort'
+py_name = 'set_stimulation_by_all_ports'
+vba_call_args = ["'All'"]
+
+[[methods]]
+name = 'StimulationPort'
+py_name = 'set_stimulation_by_selected_port'
+vba_call_args = ["'Selected'"]
+
+[[methods]]
+name = 'StimulationPort'
+py_name = 'set_stimulation_by_plane_wave'
+vba_call_args = ["'Plane Wave'"]
+
+[[methods]]
+name = 'StimulationPort'
+py_name = 'set_stimulation_by_port'
+args = [
+    { name = 'port_number', type = 'int' },
+]
+
+[[methods]]
+name = 'ResetExcitationModes'
+
+[[methods]]
+name = 'ExcitationPortMode'
+py_name = 'set_excitation_port_mode'
+args = [
+    { name = 'port', type = 'int' },
+    { name = 'mode', type = 'int' },
+    { name = 'amplitude', type = 'float' },
+    { name = 'phase', type = 'float' },
+    { name = 'signal', type = 'str' },
+    { name = 'active', type = 'bool' },
+]
+
+[[methods]]
+name = 'ExcitationFieldSource'
+py_name = 'set_excitation_field_source'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'amplitude', type = 'float' },
+    { name = 'phase', type = 'float' },
+    { name = 'signal', type = 'str' },
+    { name = 'active', type = 'bool' },
+]
+
+[[methods]]
+name = 'DefineExcitation'
+args = [
+    { name = 'excitation', type = 'Excitation' },
+    { name = 'name', type = 'int' },
+    { name = 'mode', type = 'int' },
+    { name = 'amplitude', type = 'float' },
+    { name = 'phase_or_time', type = 'float' },
+    { name = 'signal_name', type = 'str' },
+    { name = 'active', type = 'bool' },
+]
+
+[[methods]]
+name = 'DefineExcitationSettings'
+py_name = 'define_excitation_settings'
+args = [
+    { name = 'excitation', type = 'Excitation' },
+    { name = 'name', type = 'int' },
+    { name = 'mode', type = 'int' },
+    { name = 'amplitude', type = 'float' },
+    { name = 'phase_or_time', type = 'float' },
+    { name = 'signal_name', type = 'str' },
+    { name = 'accuracy', type = 'float' },
+    { name = 'f_min', type = 'float' },
+    { name = 'f_max', type = 'float' },
+    { name = 'active', type = 'bool' },
+]
+
+[[methods]]
+name = 'PhaseRefFrequency'
+py_name = 'set_phase_ref_frequency'
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'SParameterPortExcitation'
+py_name = 'set_s_param_port_excitation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SimultaneousExcitation'
+py_name = 'set_simultaneous_excitation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSimultaneousExcitAutoLabel'
+py_name = 'set_simultaneous_excitation_auto_label'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSimultaneousExcitationLabel'
+py_name = 'set_simultaneous_excitation_label'
+args = [
+    { name = 'label', type = 'str' },
+]
+
+[[methods]]
+name = 'SetSimultaneousExcitationOffset'
+py_name = 'set_simultaneous_excitation_offset'
+args = [
+    { name = 'offset', type = 'SimultExcitOffset' },
+]
+
+[[methods]]
+name = 'ExcitationSelectionShowAdditionalSettings'
+py_name = 'set_excitation_selection_show_additional_settings'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SuperimposePLWExcitation'
+py_name = 'set_superimpose_plw_excitation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ShowExcitationListAccuracy'
+py_name = 'set_show_excitation_list_accuracy'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ShowExcitationListMonitorFreqInterval'
+py_name = 'set_show_excitation_list_monitor_freq_interval'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SParaSymmetry'
+py_name = 'set_use_s_param_symmetries'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetSParaSymm'
+py_name = 'reset_s_param_symmetries'
+
+[[methods]]
+name = 'DefSParaSymm'
+py_name = 'define_new_s_param_symmetries'
+
+[[methods]]
+name = 'SPara'
+py_name = 'add_s_param'
+args = [
+    { name = 'port_num1', type = 'int' },
+    { name = 'port_num2', type = 'int' },
+]
+
+[[methods]]
+name = 'WaveguidePortGeneralized'
+py_name = 'set_waveguide_port_generalized'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'WaveguidePortModeTracking'
+py_name = 'set_waveguide_port_mode_tracking'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AbsorbUnconsideredModeFields'
+py_name = 'set_absorb_unconsidered_mode_fields'
+args = [
+    { name = 'key', type = 'Absorb' },
+]
+
+[[methods]]
+name = 'FullDeembedding'
+py_name = 'set_full_deembedding'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSamplesFullDeembedding'
+py_name = 'set_number_of_samples_full_deembedding'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'DispEpsFullDeembedding'
+py_name = 'set_consider_dispersive_behavior_full_deembedding'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'WaveguidePortBroadband'
+py_name = 'set_waveguide_port_broadband'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetModeFreqFactor'
+py_name = 'set_mode_freq_factor'
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'ScaleTETMModeToCenterFrequency'
+py_name = 'set_scale_te_tm_mode_to_center_frequency'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'WaveguidePortExcitationType'
+py_name = 'set_waveguide_port_excitation_type'
+args = [
+    { name = 'excitation_type', type = 'ExcitationType' },
+]
+
+[[methods]]
+name = 'WaveguidePortDecompositionType'
+py_name = 'set_waveguide_port_decomposition_type'
+args = [
+    { name = 'decomposition_type', type = 'DecompositionType' },
+]
+
+[[methods]]
+name = 'SetVoltageWaveguidePort'
+py_name = 'set_voltage_waveguide_port'
+args = [
+    { name = 'port_name', type = 'int' },
+    { name = 'value', type = 'float' },
+]
+vba_call_args = ["port_name", "value", "True"]
+
+[[methods]]
+name = 'SetVoltageWaveguidePort'
+py_name = 'unset_voltage_waveguide_port'
+args = [
+    { name = 'port_name', type = 'int' },
+]
+vba_call_args = ["port_name", "0.0", "False"]
+
+[[methods]]
+name = 'AdaptivePortMeshing'
+py_name = 'set_adaptive_port_meshing'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AccuracyAdaptivePortMeshing'
+py_name = 'set_adaptive_port_meshing_accuracy'
+args = [
+    { name = 'accuracy_percent', type = 'int' },
+]
+
+[[methods]]
+name = 'PassesAdaptivePortMeshing'
+py_name = 'set_adaptive_port_meshing_number_of_passes'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'NumberOfPulseWidths'
+py_name = 'set_number_of_pulse_widths'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SteadyStateLimit'
+py_name = 'enable_steady_state_monitor'
+args = [
+    { name = 'accuracy_dB', type = 'float' },
+]
+
+[[methods]]
+name = 'SteadyStateLimit'
+py_name = 'disable_steady_state_monitor'
+vba_call_args = ["'No Check'"]
+
+[[methods]]
+name = 'AddStopCriterion'
+args = [
+    { name = 'group_name', type = 'str' },
+    { name = 'threshold', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'active', type = 'bool' },
+]
+
+[[methods]]
+name = 'AddStopCriterionWithTargetFrequency'
+args = [
+    { name = 'group_name', type = 'str' },
+    { name = 'threshold', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'target_frequency_ranges', type = 'FrequencyRangeList' },
+    { name = 'active', type = 'bool' },
+]
+vba_call_args = [
+    'group_name',
+    'threshold',
+    'num_checks',
+    'active',
+    'str(target_frequency_ranges)',
+]
+
+[[methods]]
+name = 'StopCriteriaShowExcitation'
+py_name = 'set_stop_criteria_show_excitation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseArfilter'
+py_name = 'set_use_ar_filter'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ArMaxEnergyDeviation'
+py_name = 'set_ar_max_energy_deviation'
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+name = 'ArPulseSkip'
+py_name = 'set_ar_number_of_pulses_to_skip'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'StartArFilter'
+
+[[methods]]
+name = 'SetTimeWindow'
+args = [
+    { name = 'window', type = 'Window' },
+    { name = 'smoothness_percent', type = 'int' },
+    { name = 'enabled_on_transient_sim', type = 'bool' },
+]
+
+[[methods]]
+name = 'SurfaceImpedanceOrder'
+py_name = 'set_surface_impedance_order'
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'ActivatePowerLoss1DMonitor'
+py_name = 'set_activate_power_loss_1d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'PowerLoss1DMonitorPerSolid'
+py_name = 'set_power_loss_1d_monitor_per_solid'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Use3DFieldMonitorForPowerLoss1DMonitor'
+py_name = 'set_use_3d_field_monitor_for_power_loss_1d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseFarFieldMonitorForPowerLoss1DMonitor'
+py_name = 'set_use_farfield_monitor_for_power_loss_1d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseExtraFreqForPowerLoss1DMonitor'
+py_name = 'set_use_extra_freq_for_power_loss_1d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetPowerLoss1DMonitorExtraFreq'
+py_name = 'reset_power_loss_1d_monitor_extra_freqs'
+
+[[methods]]
+name = 'AddPowerLoss1DMonitorExtraFreq'
+py_name = 'add_power_loss_1d_monitor_extra_freq'
+args = [
+    { name = 'freq', type = 'float' },
+]
+
+[[methods]]
+name = 'SetTimePowerLossSIMaterialMonitor'
+py_name = 'set_time_power_loss_si_material_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ActivateTimePowerLossSIMaterialMonitor'
+py_name = 'activate_timer_power_loss_si_material_monitor'
+args = [
+    { name = 't_start', type = 'float' },
+    { name = 't_step', type = 'float' },
+]
+vba_call_args = ["t_start", "t_step", "0.0", "False"]
+
+[[methods]]
+name = 'ActivateTimePowerLossSIMaterialMonitor'
+py_name = 'activate_timer_power_loss_si_material_monitor_lim'
+args = [
+    { name = 't_start', type = 'float' },
+    { name = 't_step', type = 'float' },
+    { name = 't_end', type = 'float' },
+]
+vba_call_args = ["t_start", "t_step", "t_end", "True"]
+
+[[methods]]
+name = 'SetTimePowerLossSIMaterialMonitorAverage'
+py_name = 'set_time_power_loss_si_material_monitor_average'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetTimePowerLossSIMaterialMonitorAverageRepPeriod'
+py_name = 'set_time_power_loss_si_material_monitor_average_rep_period'
+args = [
+    { name = 'period', type = 'float' },
+]
+
+[[methods]]
+name = 'TimePowerLossSIMaterialMonitorPerSolid'
+py_name = 'set_time_power_loss_si_material_monitor_per_solid'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetDispNonLinearMaterialMonitor'
+py_name = 'set_disp_non_linear_material_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ActivateDispNonLinearMaterialMonitor'
+py_name = 'activate_disp_non_linear_material_monitor'
+args = [
+    { name = 't_start', type = 'float' },
+    { name = 't_step', type = 'float' },
+]
+vba_call_args = ["t_start", "t_step", "0.0", "False"]
+
+[[methods]]
+name = 'ActivateDispNonLinearMaterialMonitor'
+py_name = 'activate_disp_non_linear_material_monitor_lim'
+args = [
+    { name = 't_start', type = 'float' },
+    { name = 't_step', type = 'float' },
+    { name = 't_end', type = 'float' },
+]
+vba_call_args = ["t_start", "t_step", "t_end", "True"]
+
+[[methods]]
+name = 'ActivateSpaceMaterial3DMonitor'
+py_name = 'set_activate_space_material_3d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Use3DFieldMonitorForSpaceMaterial3DMonitor'
+py_name = 'set_use_3d_field_monitor_for_space_material_3d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseExtraFreqForSpaceMaterial3DMonitor'
+py_name = 'set_use_extra_freq_for_space_material_3d_monitor'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetSpaceMaterial3DMonitorExtraFreq'
+py_name = 'reset_space_material_3d_monitor_extra_freqs'
+
+[[methods]]
+name = 'AddSpaceMaterial3DMonitorExtraFreq'
+py_name = 'add_space_material_3d_monitor_extra_freq'
+args = [
+    { name = 'freq', type = 'float' },
+]
+
+[[methods]]
+name = 'SetHFTDDispUpdateScheme'
+py_name = 'set_hftd_disp_update_scheme'
+args = [
+    { name = 'scheme', type = 'HftdDispUpdateScheme' },
+]
+
+[[methods]]
+name = 'UseTSTAtPort'
+py_name = 'set_use_tst_at_port'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSubcycleState'
+py_name = 'set_sybcycle_state'
+args = [
+    { name = 'state', type = 'SubcycleState' },
+]
+
+[[methods]]
+name = 'SimplifiedPBAMethod'
+py_name = 'set_simplified_pba_method'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AKSPenaltyFactor'
+py_name = 'set_aks_penalty_factor'
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'AKSEstimation'
+py_name = 'set_aks_estimation'
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'AKSIterations'
+py_name = 'set_aks_number_of_iterations'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSAccuracy'
+py_name = 'set_aks_accuracy'
+args = [
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'AKSReset'
+py_name = 'reset_aks'
+
+[[methods]]
+name = 'AKSStart'
+py_name = 'start_aks'
+
+[[methods]]
+name = 'AKSEstimationCycles'
+py_name = 'set_aks_number_of_estimation_cycles'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSAutomaticEstimation'
+py_name = 'set_aks_automatic_estimation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AKSCheckModes'
+py_name = 'set_aks_number_of_check_modes'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSMaximumDF'
+py_name = 'set_aks_maximum_df'
+args = [
+    { name = 'delta_frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'AKSMaximumPasses'
+py_name = 'set_aks_max_number_of_passes'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSMeshIncrement'
+py_name = 'set_aks_mesh_increment'
+args = [
+    { name = 'inc', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSMinimumPasses'
+py_name = 'set_aks_min_number_of_passes'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AKSGetNumberOfModes'
+py_name = 'get_aks_number_of_modes'
+return_type = 'int'

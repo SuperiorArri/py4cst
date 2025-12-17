@@ -1,0 +1,363 @@
+object = 'Optimizer'
+
+[[enums]]
+name = 'GoalType'
+values = [
+    { name = 'PRIMARY_RESULT_1D', value = '1D Primary Result' },
+    { name = 'PRIMARY_RESULT_1DC', value = '1DC Primary Result' },
+    { name = 'RESULT_0D', value = '0D Result' },
+    { name = 'RESULT_1D', value = '1D Result' },
+    { name = 'RESULT_1DC', value = '1DC Result' },
+]
+
+[[enums]]
+name = 'GoalSummaryType'
+values = ['Sum_All_Goals', 'Max_All_Goals']
+
+[[enums]]
+name = 'GoalOperator'
+values = [
+    { name = 'LESS_THAN', value = '<' },
+    { name = 'GREATER_THAN', value = '>' },
+    { name = 'EQUAL', value = '=' },
+    'min',
+    'max',
+    'move min',
+    'move max'
+]
+
+[[enums]]
+name = 'GoalNorm'
+values = ['MaxDiff', 'MaxDiffSq', 'SumDiff', 'SumDiffSq', 'Diff', 'DiffSq']
+
+[[enums]]
+name = 'GoalScalarType'
+values = [
+    { name = 'MAG_LIN', value = 'maglin' },
+    { name = 'MAG_DB_10', value = 'magdb10' },
+    { name = 'MAG_DB_20', value = 'magdb20' },
+    'real',
+    'imag',
+    'phase',
+]
+
+[[enums]]
+name = 'GoalRangeType'
+values = ['total', 'range', 'single']
+
+[[enums]]
+name = 'OptimizerType'
+values = [
+    'Trust_Region',
+    'Nelder_Mead_Simplex',
+    'CMAES',
+    'Genetic_Algorithm',
+    'Particle_Swarm',
+    'Interpolated_NR_VariableMetric',
+    'Classic Powell',
+]
+
+[[enums]]
+name = 'InterpolationType'
+values = ['Second_Order']
+
+[[enums]]
+name = 'DistributionType'
+values = [
+    'Uniform_Random_Numbers',
+    'Latin_Hyper_Cube',
+    'Noisy_Latin_Hyper_Cube',
+    'Cube_Distribution'
+]
+
+[[enums]]
+name = 'DataStorageStrategy'
+values = ['All', 'Automatic', 'None']
+
+[[methods]]
+name = 'Start'
+
+[[methods]]
+name = 'StartActiveSolver'
+py_name = 'set_start_active_solver'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'InitParameterList'
+
+[[methods]]
+name = 'ResetParameterList'
+
+[[methods]]
+name = 'SelectParameter'
+args = [
+    { name = 'param_name', type = 'str' },
+    { name = 'use_for_optimization', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetParameterInit'
+py_name = 'set_parameter_init_value'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetParameterMin'
+py_name = 'set_parameter_min_value'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetParameterMax'
+py_name = 'set_parameter_max_value'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetParameterAnchors'
+py_name = 'set_parameter_number_of_anchors'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetMinMaxAuto'
+args = [{ name = 'percentage', type = 'float' }]
+
+[[methods]]
+name = 'SetAndUpdateMinMaxAuto'
+args = [{ name = 'percentage', type = 'float' }]
+
+[[methods]]
+name = 'SetAlwaysStartFromCurrent'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetUseDataOfPreviousCalculations'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'GetNumberOfVaryingParameters'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNameOfVaryingParameter'
+return_type = 'str'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'GetValueOfVaryingParameter'
+return_type = 'float'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'GetParameterMinOfVaryingParameter'
+return_type = 'float'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'GetParameterMaxOfVaryingParameter'
+return_type = 'float'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'GetParameterInitOfVaryingParameter'
+return_type = 'float'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'AddGoal'
+return_type = 'int'
+args = [{ name = 'goal_type', type = 'GoalType' }]
+
+[[methods]]
+name = 'SelectGoal'
+args = [
+    { name = 'id', type = 'int' },
+    { name = 'use_for_optimization', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'DeleteGoal'
+args = [{ name = 'id', type = 'int' }]
+
+[[methods]]
+name = 'DeleteAllGoals'
+
+[[methods]]
+name = 'SetGoalSummaryType'
+args = [{ name = 'goal_summary_type', type = 'GoalSummaryType' }]
+
+[[methods]]
+name = 'SetGoalUseFlag'
+py_name = 'set_use_goal_for_optimization'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetGoalOperator'
+args = [{ name = 'operator_type', type = 'GoalOperator' }]
+
+[[methods]]
+name = 'SetGoalTarget'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetGoalNormNew'
+args = [{ name = 'norm', type = 'GoalNorm' }]
+
+[[methods]]
+name = 'SetGoalWeight'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetGoalScalarType'
+args = [{ name = 'scalar_type', type = 'GoalScalarType' }]
+
+[[methods]]
+name = 'SetGoal1DResultName'
+py_name = 'set_goal_1d_result_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SetGoal1DCResultName'
+py_name = 'set_goal_1dc_result_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SetGoalTemplateBased0DResultName'
+py_name = 'set_goal_template_based_0d_result_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SetGoalTemplateBased1DResultName'
+py_name = 'set_goal_template_based_1d_result_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SetGoalTemplateBased1DCResultName'
+py_name = 'set_goal_template_based_1dc_result_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'SetGoalRange'
+args = [
+    { name = 'min_value', type = 'float' },
+    { name = 'max_value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetGoalRangeType'
+args = [{ name = 'range_type', type = 'GoalRangeType' }]
+
+[[methods]]
+name = 'UseSlope'
+py_name = 'set_use_slope'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetGoalTargetMax'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetOptimizerType'
+args = [{ name = 'optimizer_type', type = 'OptimizerType' }]
+
+[[methods]]
+name = 'SetUseInterpolation'
+args = [
+    { name = 'interpolation', type = 'InterpolationType' },
+    { name = 'optimizer_type', type = 'OptimizerType' },
+]
+
+[[methods]]
+name = 'SetGenerationSize'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'size', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMaxIt'
+py_name = 'set_max_number_of_iterations'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetInitialDistribution'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'distribution', type = 'DistributionType' },
+]
+
+[[methods]]
+name = 'SetGoalFunctionLevel'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'level', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMutationRate'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'rate', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMinSimplexSize'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetUseMaxEval'
+py_name = 'set_use_max_number_of_evaluations'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetMaxEval'
+py_name = 'set_max_number_of_evaluations'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetUsePreDefPointInInitDistribution'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetNumRefinements'
+py_name = 'set_number_of_refinements'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetDomainAccuracy'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'SetSigma'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SetAccuracy'
+args = [
+    { name = 'optimizer_type', type = 'OptimizerType' },
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'SetDataStorageStrategy'
+args = [{ name = 'strategy', type = 'DataStorageStrategy' }]
+
+[[methods]]
+name = 'SetOptionMoveMesh'
+py_name = 'set_move_mesh'
+args = [{ name = 'flag', type = 'bool', default = true }]

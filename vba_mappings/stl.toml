@@ -1,0 +1,60 @@
+object = 'STL'
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'FileName'
+py_name = 'set_file_name'
+args = [{ name = 'file_name', type = 'str' }]
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'ScaleToUnit'
+py_name = 'set_scale_to_unit'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ImportFileUnits'
+py_name = 'set_import_file_units'
+args = [{ name = 'units', type = 'str' }]
+
+[[methods]]
+name = 'ExportFromActiveCoordinateSystem'
+py_name = 'set_export_from_active_coordinate_system'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ImportToActiveCoordinateSystem'
+py_name = 'set_import_to_active_coordinate_system'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ExportFileUnits'
+py_name = 'set_export_file_units'
+args = [{ name = 'units', type = 'str' }]
+
+[[methods]]
+name = 'NormalTolerance'
+py_name = 'set_normal_tolerance'
+args = [{ name = 'tolerance', type = 'float' }]
+
+[[methods]]
+name = 'SurfaceTolerance'
+py_name = 'set_surface_tolerance'
+args = [{ name = 'tolerance', type = 'float' }]
+
+[[methods]]
+name = 'Read'
+
+[[methods]]
+name = 'Write'

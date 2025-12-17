@@ -1,0 +1,174 @@
+object = 'Extrude'
+
+[[enums]]
+name = 'Mode'
+values = [
+    { name = 'POINT_LIST', value = 'pointlist' },
+    'picks',
+    { name = 'MULTIPLE_PICKS', value = 'multiplepicks' }
+]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'Mode'
+py_name = 'set_mode'
+cache = true
+args = [{ name = 'mode', type = 'Mode' }]
+
+[[methods]]
+name = 'Height'
+py_name = 'set_height'
+cache = true
+args = [{ name = 'height', type = 'float' }]
+
+[[methods]]
+name = 'Origin'
+py_name = 'set_origin'
+cache = true
+args = [{ name = 'origin', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Uvector'
+py_name = 'set_u_vector'
+cache = true
+args = [{ name = 'u', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Vvector'
+py_name = 'set_v_vector'
+cache = true
+args = [{ name = 'v', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Point'
+py_name = 'set_first_point'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'LineTo'
+py_name = 'add_line_to'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'RLine'
+py_name = 'add_line_relative'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'Taper'
+py_name = 'set_taper'
+cache = true
+args = [{ name = 'taper', type = 'float' }]
+
+[[methods]]
+name = 'Twist'
+py_name = 'set_twist_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'UsePicksForHeight'
+py_name = 'set_use_picks_for_height'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'PickHeightDeterminedByFirstFace'
+py_name = 'set_pick_height_determined_by_first_face'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'NumberOfPickedFaces'
+py_name = 'set_num_picked_faces'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'DeleteBaseFaceSolid'
+py_name = 'set_delete_base_face_solid'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ClearPickedFace'
+py_name = 'set_clear_picked_face'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ModifyHeight'
+cache = true
+flush_cache = 'ModifyHeight (Extrude)'
+
+[[methods]]
+name = 'SetSimplifyActive'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetSimplifyMinPointsArc'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'SetSimplifyMinPointsCircle'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'SetSimplifyAngle'
+py_name = 'set_simplify_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyAdjacentTol'
+py_name = 'set_simplify_adjacent_tol_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyRadiusTol'
+cache = true
+args = [{ name = 'deviation', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyAngleTang'
+py_name = 'set_simplify_angle_tang_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyEdgeLength'
+cache = true
+args = [{ name = 'length', type = 'float' }]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Extrude'

@@ -1,4 +1,4 @@
-from py4cst.CST import Interface, Project, Parameters
+from py4cst.cst import Interface, Project, Parameters
 import py4cst.cst_file_utils as cfu
 
 interface = Interface()

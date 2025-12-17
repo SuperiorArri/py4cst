@@ -1,12 +1,13 @@
-from py4cst.CST import Interface, Brick, DiscretePort, Material, ProjectUnits
-from py4cst import CST, material_utils
+from py4cst.cst import Interface
+from py4cst.cst.wrappers import Brick, DiscretePort, Material, Units
+from py4cst import cst, material_utils
 
 ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)
 proj = ifc.new_microwave_studio_project()
 brick = Brick(proj)
 discrete_port = DiscretePort(proj)
 material = Material(proj)
-units = ProjectUnits(proj)
+units = Units(proj)
 
 # Patch parameters for frequency of 5.5 GHz
 patch_w = 19.2233905380 # mm
@@ -20,7 +21,7 @@ gnd_w = 2*padding + patch_w
 gnd_l = 2*padding + patch_l
 
 # Use millimeters as geometry units
-units.set_geometry_unit(CST.units.GEOMETRY_MILLIMETER)
+units.set_geometry_unit(cst.units.GEOMETRY_MILLIMETER)
 
 # Prepare substrate material
 material_utils.prepare_simple_material(material, rel_permeability=3.0)
@@ -52,10 +53,10 @@ brick.create()
 # Add a discrete port
 discrete_port.reset()
 discrete_port.set_number(1)
-discrete_port.set_type(DiscretePort.TYPE_S_PARAMETER)
+discrete_port.set_type(DiscretePort.PortType.S_PARAMETER)
 discrete_port.set_impedance(50)
 discrete_port.set_monitor(True)
 discrete_port.set_radius(0)
-discrete_port.set_point1(0, -patch_l/2+patch_s, substrate_h)
-discrete_port.set_point2(0, -patch_l/2+patch_s, 0)
+discrete_port.set_point1((0, -patch_l/2+patch_s, substrate_h))
+discrete_port.set_point2((0, -patch_l/2+patch_s, 0))
 discrete_port.create()

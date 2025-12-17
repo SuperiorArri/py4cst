@@ -1,0 +1,110 @@
+object = 'Anchorpoint'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[methods]]
+name = 'Store'
+py_name = 'store'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Define'
+py_name = 'define'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'pos', type = 'float', dimension = 3 },
+    { name = 'normal', type = 'float', dimension = 3 },
+    { name = 'u_vector', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'Restore'
+py_name = 'restore'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Delete'
+py_name = 'delete'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Rename'
+py_name = 'rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+py_name = 'create_folder'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteFolder'
+py_name = 'delete_folder'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'RenameFolder'
+py_name = 'rename_folder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DoesExist'
+py_name = 'does_exist'
+args = [{ name = 'name', type = 'str' }]
+return_type = 'bool'
+
+[[methods]]
+name = 'GetOrigin'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+origin
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetNormal'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+normal
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetUVector'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+u_vector
+    (x, y, z) *on success* | None
+"""

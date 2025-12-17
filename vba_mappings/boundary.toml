@@ -1,0 +1,451 @@
+object = 'Boundary'
+
+[[enums]]
+name = 'BoundaryType'
+values = [
+    'electric',
+    'magnetic',
+    'tangential',
+    'normal',
+    'open',
+    'expanded open',
+    'periodic',
+    'conducting wall',
+    'unit cell',
+]
+
+[[enums]]
+name = 'SymmetryType'
+values = ['electric', 'magnetic', 'none']
+
+[[enums]]
+name = 'PotentialType'
+values = ['none', 'fixed', 'floating']
+
+[[enums]]
+name = 'ThermalBoundaryType'
+values = ['isothermal', 'adiabatic', 'open', 'expanded open']
+
+[[enums]]
+name = 'ThermalSymmetryType'
+values = ['isothermal', 'adiabatic', 'none', 'expanded open']
+
+[[enums]]
+name = 'TemperatureType'
+values = ['none', 'fixed', 'floating']
+
+[[enums]]
+name = 'DistanceType'
+values = ['Fraction', 'Absolute']
+
+[[enums]]
+name = 'DistanceRefFreqType'
+values = ['Center', 'CenterNMonitors', 'User']
+
+[[enums]]
+name = 'Direction'
+values = ['outward', 'inward']
+
+[[methods]]
+name = 'Xmin'
+py_name = 'set_type_x_min'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'Xmax'
+py_name = 'set_type_x_max'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'Ymin'
+py_name = 'set_type_y_min'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'Ymax'
+py_name = 'set_type_y_max'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'Zmin'
+py_name = 'set_type_z_min'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'Zmax'
+py_name = 'set_type_z_max'
+args = [{ name = 'boundary_type', type = 'BoundaryType' }]
+
+[[methods]]
+name = 'GetXmin'
+py_name = 'get_type_x_min'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'GetXmax'
+py_name = 'get_type_x_max'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'GetYmin'
+py_name = 'get_type_y_min'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'GetYmax'
+py_name = 'get_type_y_max'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'GetZmin'
+py_name = 'get_type_z_min'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'GetZmax'
+py_name = 'get_type_z_max'
+return_type = 'BoundaryType'
+
+[[methods]]
+name = 'Xsymmetry'
+py_name = 'set_symmetry_x'
+args = [{ name = 'symmetry_type', type = 'SymmetryType' }]
+
+[[methods]]
+name = 'Ysymmetry'
+py_name = 'set_symmetry_y'
+args = [{ name = 'symmetry_type', type = 'SymmetryType' }]
+
+[[methods]]
+name = 'Zsymmetry'
+py_name = 'set_symmetry_z'
+args = [{ name = 'symmetry_type', type = 'SymmetryType' }]
+
+[[methods]]
+name = 'GetXSymmetry'
+py_name = 'get_symmetry_x'
+return_type = 'SymmetryType'
+
+[[methods]]
+name = 'GetYSymmetry'
+py_name = 'get_symmetry_y'
+return_type = 'SymmetryType'
+
+[[methods]]
+name = 'GetZSymmetry'
+py_name = 'get_symmetry_z'
+return_type = 'SymmetryType'
+
+[[methods]]
+name = 'ApplyInAllDirections'
+py_name = 'set_apply_in_all_directions'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'XminPotentialType'
+py_name = 'set_potential_type_x_min'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'XmaxPotentialType'
+py_name = 'set_potential_type_x_max'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'YminPotentialType'
+py_name = 'set_potential_type_y_min'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'YmaxPotentialType'
+py_name = 'set_potential_type_y_max'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'ZminPotentialType'
+py_name = 'set_potential_type_z_min'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'ZmaxPotentialType'
+py_name = 'set_potential_type_z_max'
+args = [{ name = 'potential_type', type = 'PotentialType' }]
+
+[[methods]]
+name = 'XminPotential'
+py_name = 'set_potential_x_min'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'XmaxPotential'
+py_name = 'set_potential_x_max'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'YminPotential'
+py_name = 'set_potential_y_min'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'YmaxPotential'
+py_name = 'set_potential_y_max'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'ZminPotential'
+py_name = 'set_potential_z_min'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'ZmaxPotential'
+py_name = 'set_potential_z_max'
+args = [{ name = 'potential', type = 'float' }]
+
+[[methods]]
+name = 'XminThermal'
+py_name = 'set_thermal_type_x_min'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'XmaxThermal'
+py_name = 'set_thermal_type_x_max'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'YminThermal'
+py_name = 'set_thermal_type_y_min'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'YmaxThermal'
+py_name = 'set_thermal_type_y_max'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'ZminThermal'
+py_name = 'set_thermal_type_z_min'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'ZmaxThermal'
+py_name = 'set_thermal_type_z_max'
+args = [{ name = 'thermal_type', type = 'ThermalBoundaryType' }]
+
+[[methods]]
+name = 'XsymmetryThermal'
+py_name = 'set_thermal_symmetry_x'
+args = [{ name = 'symmetry_type', type = 'ThermalSymmetryType' }]
+
+[[methods]]
+name = 'YsymmetryThermal'
+py_name = 'set_thermal_symmetry_y'
+args = [{ name = 'symmetry_type', type = 'ThermalSymmetryType' }]
+
+[[methods]]
+name = 'ZsymmetryThermal'
+py_name = 'set_thermal_symmetry_z'
+args = [{ name = 'symmetry_type', type = 'ThermalSymmetryType' }]
+
+[[methods]]
+name = 'GetXSymmetryThermal'
+py_name = 'get_thermal_symmetry_x'
+return_type = 'ThermalSymmetryType'
+
+[[methods]]
+name = 'GetYSymmetryThermal'
+py_name = 'get_thermal_symmetry_y'
+return_type = 'ThermalSymmetryType'
+
+[[methods]]
+name = 'GetZSymmetryThermal'
+py_name = 'get_thermal_symmetry_z'
+return_type = 'ThermalSymmetryType'
+
+[[methods]]
+name = 'XminTemperatureType'
+py_name = 'set_temperature_type_x_min'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'XmaxTemperatureType'
+py_name = 'set_temperature_type_x_max'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'YminTemperatureType'
+py_name = 'set_temperature_type_y_min'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'YmaxTemperatureType'
+py_name = 'set_temperature_type_y_max'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'ZminTemperatureType'
+py_name = 'set_temperature_type_z_min'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'ZmaxTemperatureType'
+py_name = 'set_temperature_type_z_max'
+args = [{ name = 'temperature_type', type = 'TemperatureType' }]
+
+[[methods]]
+name = 'XminTemperature'
+py_name = 'set_temperature_x_min'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'XmaxTemperature'
+py_name = 'set_temperature_x_max'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'YminTemperature'
+py_name = 'set_temperature_y_min'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'YmaxTemperature'
+py_name = 'set_temperature_y_max'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'ZminTemperature'
+py_name = 'set_temperature_z_min'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'ZmaxTemperature'
+py_name = 'set_temperature_z_max'
+args = [{ name = 'temperature', type = 'float' }]
+
+[[methods]]
+name = 'GetCalculationBox'
+return_type = { x_min = 'Double', x_max = 'Double', y_min = 'Double', y_max = 'Double', z_min = 'Double', z_max = 'Double' }
+args = [
+    { name = 'x_min', type = '__retval__' },
+    { name = 'x_max', type = '__retval__' },
+    { name = 'y_min', type = '__retval__' },
+    { name = 'y_max', type = '__retval__' },
+    { name = 'z_min', type = '__retval__' },
+    { name = 'z_max', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetStructureBox'
+return_type = { x_min = 'Double', x_max = 'Double', y_min = 'Double', y_max = 'Double', z_min = 'Double', z_max = 'Double' }
+args = [
+    { name = 'x_min', type = '__retval__' },
+    { name = 'x_max', type = '__retval__' },
+    { name = 'y_min', type = '__retval__' },
+    { name = 'y_max', type = '__retval__' },
+    { name = 'z_min', type = '__retval__' },
+    { name = 'z_max', type = '__retval__' },
+]
+
+[[methods]]
+name = 'Layer'
+py_name = 'set_number_of_layers'
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'MinimumLinesDistance'
+py_name = 'set_minimum_lines_distance'
+args = [{ name = 'distance', type = 'float' }]
+
+[[methods]]
+name = 'MinimumDistanceType'
+py_name = 'set_minimum_distance_type'
+args = [{ name = 'distance_type', type = 'DistanceType' }]
+
+[[methods]]
+name = 'SetAbsoluteDistance'
+py_name = 'set_absolute_distance'
+args = [{ name = 'distance', type = 'float' }]
+
+[[methods]]
+name = 'MinimumDistanceReferenceFrequencyType'
+py_name = 'set_minimum_distance_reference_frequency_type'
+args = [{ name = 'freq_type', type = 'DistanceRefFreqType' }]
+
+[[methods]]
+name = 'MinimumDistancePerWavelength'
+py_name = 'set_minimum_distance_per_wavelength'
+args = [{ name = 'distance', type = 'float' }]
+
+[[methods]]
+name = 'FrequencyForMinimumDistance'
+py_name = 'set_frequency_for_minimum_distance'
+args = [{ name = 'freq', type = 'float' }]
+
+[[methods]]
+name = 'XPeriodicShift'
+py_name = 'set_period_shift_x_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'YPeriodicShift'
+py_name = 'set_period_shift_y_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'ZPeriodicShift'
+py_name = 'set_period_shift_z_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'PeriodicUseConstantAngles'
+py_name = 'set_periodic_use_constant_angles'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetPeriodicBoundaryAngles'
+py_name = 'set_periodic_boundary_angles_deg'
+args = [
+    { name = 'theta_deg', type = 'float' },
+    { name = 'phi_deg', type = 'float' },
+]
+
+[[methods]]
+name = 'SetPeriodicBoundaryAnglesDirection'
+py_name = 'set_periodic_boundary_angles_direction'
+args = [{ name = 'direction', type = 'Direction' }]
+
+[[methods]]
+name = 'GetUnitCellScanAngle'
+return_type = { theta = 'Double', phi = 'Double', dir = 'Long' }
+args = [
+    { name = 'theta', type = '__retval__' },
+    { name = 'phi', type = '__retval__' },
+    { name = 'dir', type = '__retval__', map_enum = { name = 'Direction', values = { 0 = 'inward', 1 = 'outward' } } },
+]
+
+[[methods]]
+name = 'UnitCellDs1'
+py_name = 'get_unit_cells_distance_dir1'
+return_type = 'float'
+
+[[methods]]
+name = 'UnitCellDs2'
+py_name = 'get_unit_cells_distance_dir2'
+return_type = 'float'
+
+[[methods]]
+name = 'UnitCellAngle'
+py_name = 'get_unit_cells_angle_deg'
+return_type = 'float'
+
+[[methods]]
+name = 'UnitCellOrigin'
+py_name = 'set_unit_cells_origin'
+args = [
+    { name = 'pos_dir1', type = 'float' },
+    { name = 'pos_dir2', type = 'float' },
+]
+
+[[methods]]
+name = 'UnitCellFitToBoundingBox'
+py_name = 'set_unit_cells_fit_to_bounding_box'
+args = [{ name = 'flag', type = 'bool', default = true }]

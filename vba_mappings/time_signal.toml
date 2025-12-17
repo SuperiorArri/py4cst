@@ -1,0 +1,207 @@
+object = 'TimeSignal'
+
+[[enums]]
+name = 'SignalType'
+values = [
+    'Gaussian',
+    'Rectangular',
+    'Sine step',
+    'Sine',
+    'Smooth step',
+    'Constant',
+    'Double exponential',
+    'Impulse',
+    'User',
+    'Import',
+]
+
+[[enums]]
+name = 'ProblemType'
+values = ['High Frequency', 'Low Frequency']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Id'
+py_name = 'set_id'
+cache = true
+args = [{ name = 'id', type = 'int' }]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+    { name = 'problem_type', type = 'ProblemType' },
+]
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'problem_type', type = 'ProblemType' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create TimeSignal'
+
+[[methods]]
+name = 'FileName'
+py_name = 'set_file_name'
+cache = true
+args = [{ name = 'file_name', type = 'str' }]
+
+[[methods]]
+name = 'UseCopyOnly'
+py_name = 'set_use_copy_only'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Fmin'
+py_name = 'set_f_min'
+cache = true
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'Fmax'
+py_name = 'set_f_max'
+cache = true
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'Ttotal'
+py_name = 'set_total_time'
+cache = true
+args = [{ name = 'time', type = 'float' }]
+
+[[methods]]
+name = 'Trise'
+py_name = 'set_rise_time'
+cache = true
+args = [{ name = 'time', type = 'float' }]
+
+[[methods]]
+name = 'Thold'
+py_name = 'set_hold_time'
+cache = true
+args = [{ name = 'time', type = 'float' }]
+
+[[methods]]
+name = 'Tfall'
+py_name = 'set_fall_time'
+cache = true
+args = [{ name = 'time', type = 'float' }]
+
+[[methods]]
+name = 'Voffset'
+py_name = 'set_vertical_offset'
+cache = true
+args = [{ name = 'offset', type = 'float' }]
+
+[[methods]]
+name = 'AmplitudeRisePercent'
+py_name = 'set_amplitude_rise_percent'
+cache = true
+args = [{ name = 'percent', type = 'float' }]
+
+[[methods]]
+name = 'RiseFactor'
+py_name = 'set_rise_factor'
+cache = true
+args = [{ name = 'factor', type = 'float' }]
+
+[[methods]]
+name = 'ChirpRate'
+py_name = 'set_chirp_rate'
+cache = true
+args = [{ name = 'rate', type = 'float' }]
+
+[[methods]]
+name = 'Frequency'
+py_name = 'set_frequency'
+cache = true
+args = [{ name = 'frequency', type = 'float' }]
+
+[[methods]]
+name = 'Phase'
+py_name = 'set_phase'
+cache = true
+args = [{ name = 'phase', type = 'float' }]
+
+[[methods]]
+name = 'Amplitude'
+py_name = 'set_amplitude'
+cache = true
+args = [{ name = 'amplitude', type = 'float' }]
+
+[[methods]]
+name = 'StartAmplitude'
+py_name = 'set_start_amplitude'
+cache = true
+args = [{ name = 'amplitude', type = 'float' }]
+
+[[methods]]
+name = 'EndAmplitude'
+py_name = 'set_end_amplitude'
+cache = true
+args = [{ name = 'amplitude', type = 'float' }]
+
+[[methods]]
+name = 'SignalType'
+py_name = 'set_signal_type'
+cache = true
+args = [{ name = 'signal_type', type = 'SignalType' }]
+
+[[methods]]
+name = 'MinUserSignalSamples'
+py_name = 'set_min_number_of_user_signal_samples'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'Periodic'
+py_name = 'set_periodic'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ProblemType'
+py_name = 'set_problem_type'
+cache = true
+args = [{ name = 'problem_type', type = 'ProblemType' }]
+
+[[methods]]
+name = 'ExcitationSignalAsReference'
+py_name = 'set_excitation_signal_as_reference'
+cache = true
+args = [
+    { name = 'signal_name', type = 'str' },
+    { name = 'problem_type', type = 'ProblemType' },
+]
+
+[[methods]]
+name = 'ExcitationSignalResample'
+py_name = 'resample_excitation_signal'
+cache = true
+args = [
+    { name = 'signal_name', type = 'str' },
+    { name = 't_min', type = 'float' },
+    { name = 't_max', type = 'float' },
+    { name = 't_step', type = 'float' },
+    { name = 'problem_type', type = 'ProblemType' },
+]
+
+[[methods]]
+name = 'GetNextId'
+return_type = 'int'

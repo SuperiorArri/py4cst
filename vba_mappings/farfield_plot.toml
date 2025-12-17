@@ -1,0 +1,751 @@
+object = 'FarfieldPlot'
+save_history = false
+
+[[enums]]
+name = 'PlotType'
+values = [
+    'polar',
+    'cartesian',
+    { name = 'TWO_D', value = '2d' },
+    { name = 'TWO_D_ORTHO', value = '2dortho' },
+    { name = 'THREE_D', value = '3d' },
+]
+
+[[enums]]
+name = 'AngleVariant'
+values = ['angle1', 'angle2']
+
+[[enums]]
+name = 'AsciiVersion'
+values = [
+    { name = 'V2009', value = '2009' },
+    { name = 'V2010', value = '2010' },
+]
+
+[[enums]]
+name = 'CoordSystem'
+values = ['spherical', 'ludwig2ae', 'ludwig2ea', 'ludwig3']
+
+[[enums]]
+name = 'Polarization'
+values = ['linear', 'circular', 'slant', 'abs']
+
+[[enums]]
+name = 'Component'
+values = [
+    'radial',
+    'comp1',
+    'theta',
+    'azimuth',
+    'left',
+    'alpha',
+    'horizontal',
+    'crosspolar',
+    'comp2',
+    'phi',
+    'elevation',
+    'right',
+    'epsilon',
+    'vertical',
+    'copolar',
+]
+
+[[enums]]
+name = 'ComplexComponent'
+values = ['abs', 'phase', 're', 'im']
+
+[[enums]]
+name = 'TFType'
+values = ['time', 'frequency', { name = 'default', value = '' }]
+
+[[enums]]
+name = 'ListFieldComponent'
+values = [
+    { name = 'THETA', value = 'Point_T' },
+    { name = 'PHI', value = 'Point_P' },
+    { name = 'RADIUS', value = 'Point_R' },
+]
+
+[[enums]]
+name = 'CutType'
+values = ['polar', 'lateral']
+
+[[enums]]
+name = 'PlotMode'
+values = [
+    'directivity',
+    'gain',
+    'realized gain',
+    'efield',
+    'epattern',
+    'hfield',
+    'pfield',
+    'rcs',
+    { name = 'RCS_UNITS', value = 'rcsunits'},
+    { name = 'RCS_SW', value = 'rcssw'},
+]
+
+[[enums]]
+name = 'SelComponent'
+values = [
+    'Abs',
+    'Axial Ratio',
+    'Theta',
+    'Theta Phase',
+    'Phi',
+    'Phi Phase',
+    { name = 'THETA_DIV_PHI', value = 'Theta/Phi' },
+    { name = 'PHI_DIV_THETA', value = 'Phi/Theta' },
+]
+
+# unit codes documented in CST Studio Suite Online Help
+#  (Automation and Scription -> Visual Basic (VBA) -> 3D Simulation VBA -> VBA Objects ->
+#  -> Post Processing -> FarfieldPlot -> function DBUnit
+[[enums]]
+name = 'UnitCode'
+values = [
+    { name = 'V_MINUS_1', value = '-1' },
+    { name = 'V_0', value = '0' },
+    { name = 'V_60', value = '60' },
+    { name = 'V_120', value = '120' },
+    { name = 'V_MINUS_60', value = '-60' },
+]
+
+[[enums]]
+name = 'MaxRefMode'
+values = ['abs', 'plot']
+
+[[enums]]
+name = 'AxesType'
+values = [
+    'xyz',
+    'user',
+    { name = 'MAIN_LOBE', value = 'mainlobe' },
+    { name = 'CURRENT_WCS', value = 'currentwcs' },
+]
+
+[[enums]]
+name = 'Axis'
+values = ['x', 'y', 'z']
+
+[[enums]]
+name = 'AntennaType'
+values = [
+    'unknown',
+    'isotropic',
+    'isotropic_linear',
+    'directional_linear',
+    'directional_circular',
+]
+
+[[enums]]
+name = 'PhaseCenterComponent'
+values = ['theta', 'phi', 'boresight']
+
+[[enums]]
+name = 'PhaseCenterPlane'
+values = ['both', 'e-plane', 'h-plane']
+
+[[enums]]
+name = 'PhaseCenterMode'
+values = ['avg', 'eplane', 'hplane']
+
+[[enums]]
+name = 'Origin'
+values = [
+    { name = 'BOUNDING_BOX', value = 'bbox' },
+    'zero',
+    'free',
+]
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'ResetPlot'
+
+[[methods]]
+name = 'Plottype'
+py_name = 'set_plot_type'
+args = [{ name = 'plot_type', type = 'PlotType' }]
+
+[[methods]]
+name = 'Vary'
+py_name = 'vary_coord'
+args = [{ name = 'angle_variant', type = 'AngleVariant' }]
+
+[[methods]]
+name = 'Phi'
+py_name = 'set_phi_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'Theta'
+py_name = 'set_theta_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'Step'
+py_name = 'set_theta_step_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'Step2'
+py_name = 'set_phi_step_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetLockSteps'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetPlotRangeOnly'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetThetaStart'
+py_name = 'set_theta_start_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetThetaEnd'
+py_name = 'set_theta_end_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetPhiStart'
+py_name = 'set_phi_start_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetPhiEnd'
+py_name = 'set_phi_end_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'UseFarfieldApproximation'
+py_name = 'set_use_farfield_approximation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetMultipolNumber'
+py_name = 'set_multipoles_max_number'
+args = [{ name = 'max_num', type = 'int' }]
+
+[[methods]]
+name = 'SetFrequency'
+args = [{ name = 'freq', type = 'float' }]
+
+[[methods]]
+name = 'SetTime'
+args = [{ name = 'time', type = 'float' }]
+
+[[methods]]
+name = 'SetTimeDomainFF'
+py_name = 'set_time_domain_farfield'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetMovieSamples'
+py_name = 'set_num_movie_samples'
+args = [{ name = 'num', type = 'int' }]
+
+[[methods]]
+name = 'Plot'
+
+[[methods]]
+name = 'StoreSettings'
+
+[[methods]]
+name = 'ASCIIExportSummary'
+py_name = 'export_summary_as_ascii'
+args = [{ name = 'file_name', type = 'str' }]
+
+[[methods]]
+name = 'ASCIIExportVersion'
+py_name = 'set_ascii_export_version'
+args = [{ name = 'version', type = 'AsciiVersion' }]
+
+[[methods]]
+name = 'ASCIIExportAsSource'
+py_name = 'export_source_as_ascii'
+args = [{ name = 'file_name', type = 'str' }]
+
+[[methods]]
+name = 'ASCIIExportAsBroadbandSource'
+py_name = 'export_broadband_source_as_ascii'
+args = [{ name = 'file_name', type = 'str' }]
+
+[[methods]]
+name = 'CopyFarfieldTo1DResults'
+py_name = 'copy_farfield_to_1d_results'
+args = [
+    { name = 'result_folder', type = 'str' },
+    { name = 'result_name', type = 'str' },
+]
+
+[[methods]]
+name = 'IncludeUnitCellSidewalls'
+py_name = 'include_unit_cell_sidewalls'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'CalculatePoint'
+py_name = 'calculate_point_deg'
+return_type = 'float'
+args = [
+    { name = 'theta_deg', type = 'float' },
+    { name = 'phi_deg', type = 'float' },
+    { name = 'farfield_name', type = 'str' },
+    { name = 'coord_system', type = 'CoordSystem', optional = true, default = {} },
+    { name = 'polarization', type = 'Polarization', optional = true, default = {} },
+    { name = 'component', type = 'Component', optional = true, default = {} },
+    { name = 'complex_component', type = 'ComplexComponent', optional = true, default = {} },
+]
+vba_call_args = [
+    'theta_deg',
+    'phi_deg',
+    "' '.join(str(getattr(v, 'value', v)) for v in [coord_system, polarization, component, complex_component] if v is not None)",
+    'farfield_name',
+]
+
+[[methods]]
+name = 'CalculatePointNoApprox'
+py_name = 'calculate_point_no_approx_deg'
+return_type = 'float'
+args = [
+    { name = 'theta_deg', type = 'float' },
+    { name = 'phi_deg', type = 'float' },
+    { name = 'radius', type = 'float' },
+    { name = 'farfield_name', type = 'str' },
+    { name = 'coord_system', type = 'CoordSystem', optional = true, default = {} },
+    { name = 'polarization', type = 'Polarization', optional = true, default = {} },
+    { name = 'component', type = 'Component', optional = true, default = {} },
+    { name = 'complex_component', type = 'ComplexComponent', optional = true, default = {} },
+]
+vba_call_args = [
+    'theta_deg',
+    'phi_deg',
+    'radius',
+    "' '.join(str(getattr(v, 'value', v)) for v in [coord_system, polarization, component, complex_component] if v is not None)",
+    'farfield_name',
+]
+
+[[methods]]
+name = 'AddListEvaluationPoint'
+py_name = 'add_list_eval_point_deg'
+args = [
+    { name = 'polar_angle_deg', type = 'float' },
+    { name = 'lateral_angle_deg', type = 'float' },
+    { name = 'radius', type = 'float' },
+    { name = 'coord_system', type = 'CoordSystem' },
+    { name = 'tf_type', type = 'TFType' },
+    { name = 'freq_or_time', type = 'float' },
+]
+
+[[methods]]
+name = 'CalculateList'
+args = [
+    { name = 'name', type = 'str', default = '' },
+]
+
+[[methods]]
+name = 'GetList'
+args = [
+    { name = 'field_component', type = 'ListFieldComponent' },
+]
+
+[[methods]]
+name = 'GetListItem'
+args = [
+    { name = 'index', type = 'int' },
+    { name = 'field_component', type = 'ListFieldComponent' },
+]
+
+[[methods]]
+name = 'ClearCuts'
+
+[[methods]]
+name = 'AddCut'
+py_name = 'add_cut_deg'
+args = [
+    { name = 'cut_type', type = 'CutType' },
+    { name = 'const_angle_deg', type = 'float' },
+    { name = 'step_deg', type = 'float' },
+]
+
+[[methods]]
+name = 'SetColorByValue'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetTheta360'
+py_name = 'set_theta_360_deg'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DrawStepLines'
+py_name = 'set_draw_step_lines'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SymmetricRange'
+py_name = 'set_symmetric_range'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DrawIsoLongitudeLatitudeLines'
+py_name = 'set_draw_iso_longitude_latitude_lines'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ShowStructure'
+py_name = 'set_show_structure'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ShowStructureProfile'
+py_name = 'set_show_structure_profile'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetStructureTransparent'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetFarfieldTransparent'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'FarfieldSize'
+py_name = 'set_farfield_size'
+args = [{ name = 'size', type = 'int' }]
+
+[[methods]]
+name = 'SetPlotMode'
+args = [{ name = 'plot_mode', type = 'PlotMode' }]
+
+[[methods]]
+name = 'GetPlotMode'
+py_name = 'get_plot_mode'
+return_type = 'str'
+
+[[methods]]
+name = 'SelectComponent'
+args = [{ name = 'sel_component', type = 'SelComponent' }]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'enable_polar_extra_lines'
+vba_call_args = ["'enablepolarextralines'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'disable_polar_extra_lines'
+vba_call_args = ["'disablepolarextralines'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'show_total_radiated_power_linear'
+vba_call_args = ["'showtrp'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'show_total_radiated_power_logarithmic'
+vba_call_args = ["'showtrpdb'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'hide_total_radiated_power'
+vba_call_args = ["'showtrpoff'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'show_total_isotropic_sensitivity_linear'
+vba_call_args = ["'showtis'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'show_total_isotropic_sensitivity_logarithmic'
+vba_call_args = ["'showtisdb'"]
+
+[[methods]]
+name = 'SetSpecials'
+py_name = 'hide_total_isotropic_sensitivity'
+vba_call_args = ["'showtisoff'"]
+
+[[methods]]
+name = 'Distance'
+py_name = 'set_virtual_sphere_radius'
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'SetScaleLinear'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IsScaleLinear'
+return_type = 'bool'
+
+[[methods]]
+name = 'SetInverseAxialRatio'
+py_name = 'set_inverse_axial_ratio'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IsInverseAxialRatio'
+py_name = 'has_inverse_axial_ratio'
+return_type = 'bool'
+
+[[methods]]
+name = 'SetLogRange'
+py_name = 'set_log_plot_range'
+args = [{ name = 'range_db', type = 'float' }]
+
+[[methods]]
+name = 'SetLogNorm'
+py_name = 'set_log_plot_normalization'
+args = [{ name = 'norm_db', type = 'float' }]
+
+[[methods]]
+name = 'GetLogRange'
+py_name = 'get_log_plot_range'
+return_type = 'float'
+
+[[methods]]
+name = 'SetMainLobeThreshold'
+args = [{ name = 'threshold_db', type = 'float' }]
+
+[[methods]]
+name = 'DBUnit'
+py_name = 'set_db_unit'
+args = [{ name = 'unit_code', type = 'UnitCode' }]
+
+[[methods]]
+name = 'SetMaxReferenceMode'
+args = [{ name = 'max_ref_mode', type = 'MaxRefMode' }]
+
+[[methods]]
+name = 'EnableFixPlotMaximum'
+py_name = 'enable_fixed_plot_maximum'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'IsPlotMaximumFixed'
+py_name = 'is_plot_maximum_fixed'
+return_type = 'bool'
+
+[[methods]]
+name = 'SetFixPlotMaximumValue'
+py_name = 'set_fixed_plot_maximum'
+args = [{ name = 'maximum', type = 'float' }]
+
+[[methods]]
+name = 'GetFixPlotMaximumValue'
+py_name = 'get_fixed_plot_maximum'
+return_type = 'float'
+
+[[methods]]
+name = 'SetNumberOfContourValues'
+py_name = 'set_num_contour_values'
+args = [{ name = 'num', type = 'int' }]
+
+[[methods]]
+name = 'DrawContourLines'
+py_name = 'set_draw_countour_lines'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Origin'
+py_name = 'set_origin'
+args = [
+    { name = 'origin', type = 'Origin' }
+]
+
+[[methods]]
+name = 'Userorigin'
+py_name = 'set_user_origin'
+args = [{ name = 'pos', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Phistart'
+py_name = 'set_phi_start_axis'
+args = [{ name = 'axis', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Thetastart'
+py_name = 'set_theta_start_axis'
+args = [{ name = 'axis', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetAxesType'
+args = [{ name = 'axes_type', type = 'AxesType' }]
+
+[[methods]]
+name = 'SetAntennaType'
+args = [{ name = 'antenna_type', type = 'AntennaType' }]
+
+[[methods]]
+name = 'PolarizationVector'
+py_name = 'set_polarization_vector'
+args = [{ name = 'vec', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetCoordinateSystemType'
+py_name = 'set_coord_system'
+args = [{ name = 'coord_system', type = 'CoordSystem' }]
+
+[[methods]]
+name = 'SetAutomaticCoordinateSystem'
+py_name = 'set_automatic_coord_system'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetPolarizationType'
+args = [{ name = 'polarization_type', type = 'Polarization' }]
+
+[[methods]]
+name = 'SlantAngle'
+py_name = 'set_slant_angle_deg'
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'UseDecouplingPlane'
+py_name = 'set_use_decoupling_plane'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DecouplingPlaneAxis'
+py_name = 'set_decoupling_plane_axis'
+args = [{ name = 'axis', type = 'Axis' }]
+
+[[methods]]
+name = 'DecouplingPlanePosition'
+py_name = 'set_decoupling_plane_position'
+args = [{ name = 'position', type = 'float' }]
+
+[[methods]]
+name = 'SetUserDecouplingPlane'
+py_name = 'use_user_defined_decoupling_plane'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Getmax'
+py_name = 'get_max_value'
+return_type = 'float'
+
+[[methods]]
+name = 'Getmin'
+py_name = 'get_min_value'
+return_type = 'float'
+
+[[methods]]
+name = 'GetMean'
+py_name = 'get_mean_value'
+return_type = 'float'
+
+[[methods]]
+name = 'GetRadiationEfficiency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetTotalEfficiency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetSystemRadiationEfficiency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetSystemTotalEfficiency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetTRP'
+py_name = 'get_total_radiated_power'
+return_type = 'float'
+
+[[methods]]
+name = 'GetTotalRCS'
+return_type = 'float'
+
+[[methods]]
+name = 'GetTotalACS'
+return_type = 'float'
+
+[[methods]]
+name = 'GetMainLobeDirection'
+py_name = 'get_main_lobe_angle_deg'
+return_type = 'float'
+
+[[methods]]
+name = 'GetMainLobeVector'
+return_type = { x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetAngularWidthXdB'
+py_name = 'get_main_lobe_width_deg'
+return_type = 'float'
+
+[[methods]]
+name = 'GetSideLobeSuppression'
+return_type = 'float'
+
+[[methods]]
+name = 'GetSideLobeLevel'
+return_type = 'float'
+
+[[methods]]
+name = 'GetFrontToBackRatio'
+return_type = 'float'
+
+[[methods]]
+name = 'EnablePhaseCenterCalculation'
+py_name = 'set_phase_center_calculation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetPhaseCenterComponent'
+args = [{ name = 'phase_center_component', type = 'PhaseCenterComponent' }]
+
+[[methods]]
+name = 'SetPhaseCenterPlane'
+args = [{ name = 'phase_center_plane', type = 'PhaseCenterPlane' }]
+
+[[methods]]
+name = 'SetPhaseCenterAngularLimit'
+py_name = 'set_phase_center_angular_limit_deg'
+args = [{ name = 'limit_deg', type = 'float' }]
+
+[[methods]]
+name = 'ShowPhaseCenter'
+py_name = 'set_show_phase_center'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'GetPhaseCenterResult'
+args = [
+    { name = 'axis', type = 'Axis' },
+    { name = 'mode', type = 'PhaseCenterMode' },
+]
+
+[[methods]]
+name = 'GetPhaseCenterResultExpr'
+return_type = 'str'
+
+[[methods]]
+name = 'GetPhaseCenterResultExprAvg'
+return_type = 'str'
+
+[[methods]]
+name = 'GetPhaseCenterResultExprEPlane'
+return_type = 'str'
+
+[[methods]]
+name = 'GetPhaseCenterResultExprHPlane'
+return_type = 'str'

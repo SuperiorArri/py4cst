@@ -1,0 +1,71 @@
+object = 'PostProcess1D'
+
+[[enums]]
+name = 'ApplyTarget'
+values = ['S-parameter', 'Probes', 'Monitors']
+
+[[enums]]
+name = 'OperationType'
+values = [
+    'Time Window',
+    'AR-Filter',
+    'Phase Deembedding',
+    'Renormalization',
+    'VSWR',
+    'YZ-matrices',
+    'Exclude Port Modes',
+]
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'ApplyTo'
+py_name = 'set_apply_target'
+args = [{ name = 'apply_target', type = 'ApplyTarget' }]
+
+[[methods]]
+name = 'AddOperation'
+args = [{ name = 'operation_type', type = 'OperationType' }]
+
+[[methods]]
+name = 'SetDeembedDistance'
+args = [
+    { name = 'port_name', type = 'int' },
+    { name = 'distance', type = 'float' },
+]
+
+[[methods]]
+name = 'SetRenormImpedance'
+args = [
+    { name = 'port_name', type = 'int' },
+    { name = 'mode_name', type = 'int' },
+    { name = 'impedance', type = 'float' },
+]
+
+[[methods]]
+name = 'SetRenormImpedanceOnAllPorts'
+args = [{ name = 'impedance', type = 'float' }]
+
+[[methods]]
+name = 'SetUnnormImpedanceOnAllPorts'
+py_name = 'reset_renorm_impedance_on_all_ports'
+
+[[methods]]
+name = 'SetConsiderPortMode'
+args = [
+    { name = 'port_name', type = 'int' },
+    { name = 'mode_name', type = 'int' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'Run'
+
+[[methods]]
+name = 'ActivateOperation'
+py_name = 'set_operation_active'
+args = [
+    { name = 'operation_type', type = 'OperationType' },
+    { name = 'active', type = 'bool', default = true },
+]

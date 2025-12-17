@@ -1,4 +1,4 @@
-from py4cst.CST import Interface
+from py4cst.cst import Interface
 
 ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)
 proj = ifc.new_microwave_studio_project()

@@ -1,0 +1,177 @@
+object = 'DiscreteFacePort'
+
+[[imports]]
+module = '.port'
+attribute = 'Port'
+
+[[enums]]
+name = 'PortType'
+values = ['Sparameter', 'Voltage', 'Current']
+
+[[enums]]
+name = 'FaceType'
+values = ['Linear', 'Curved']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create DiscreteFacePort'
+
+[[methods]]
+name = 'Modify'
+cache = true
+flush_cache = 'Modify DiscreteFacePort'
+
+[[methods]]
+name = 'PortNumber'
+py_name = 'set_number'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'Label'
+py_name = 'set_label'
+cache = true
+args = [{ name = 'label', type = 'str' }]
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+cache = true
+args = [{ name = 'port_type', type = 'PortType' }]
+
+[[methods]]
+name = 'Impedance'
+py_name = 'set_impedance'
+cache = true
+args = [{ name = 'impedance', type = 'float' }]
+
+[[methods]]
+name = 'VoltageAmplitude'
+py_name = 'set_voltage_amplitude'
+cache = true
+args = [{ name = 'amplitude', type = 'float' }]
+
+[[methods]]
+name = 'VoltagePortImpedance'
+py_name = 'set_voltage_port_impedance'
+cache = true
+args = [{ name = 'impedance', type = 'float' }]
+
+[[methods]]
+name = 'CurrentAmplitude'
+py_name = 'set_current_amplitude'
+cache = true
+args = [{ name = 'amplitude', type = 'float' }]
+
+[[methods]]
+name = 'CurrentPortAdmittance'
+py_name = 'set_current_port_admittance'
+cache = true
+args = [{ name = 'admittance', type = 'float' }]
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_point1'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_pick_as_point1'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_point2'
+cache = true
+args = [
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_pick_as_point2'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'InvertDirection'
+py_name = 'set_invert_direction'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'LocalCoordinates'
+py_name = 'set_local_coordinates'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'CenterEdge'
+py_name = 'set_center_edge'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseProjection'
+py_name = 'set_use_projection'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ReverseProjection'
+py_name = 'set_reverse_projection'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'LumpedElementName'
+py_name = 'set_lumped_element_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteLumpedElement'
+py_name = 'set_delete_lumped_element'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Monitor'
+py_name = 'set_monitor'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AllowFullSize'
+py_name = 'set_allow_full_size'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'FaceType'
+py_name = 'set_face_type'
+cache = true
+args = [{ name = 'face_type', type = 'FaceType' }]
+
+[[methods]]
+name = 'GetProperties'
+return_type = { __retval__ = 'PortType', port_type = 'PortType' }
+args = [
+    { name = 'port_type', type = '__retval__' }
+]
+
+[[methods]]
+name = 'Delete'
+override_class = 'Port'
+args = [
+    { name = 'port_number', type = 'int' }
+]

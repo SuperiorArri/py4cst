@@ -1,0 +1,176 @@
+object = 'IESolver'
+
+[[enums]]
+name = 'Accuracy'
+values = ['Custom', 'Low', 'Medium', 'High']
+
+[[enums]]
+name = 'RealGroundModelType'
+values = ['Auto', 'Type 1', 'Type 2']
+
+[[enums]]
+name = 'PreconditionerType'
+values = ['Auto', 'Type 1', 'Type 2', 'Type 3']
+
+[[enums]]
+name = 'CmaAccuracy'
+values = ['Default', 'Custom']
+
+[[enums]]
+name = 'CmaMem'
+values = ['Custom', 'Low', 'Medium', 'High']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'SetAccuracySetting'
+args = [
+    { name = 'accuracy', type = 'Accuracy' },
+]
+
+[[methods]]
+name = 'UseFastFrequencySweep'
+py_name = 'set_use_fast_frequency_sweep'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseIEGroundPlane'
+py_name = 'set_use_ie_ground_plane'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetRealGroundMaterialName'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'CalcFarFieldInRealGround'
+py_name = 'set_calc_farfield_in_real_ground'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'RealGroundModelType'
+py_name = 'set_real_ground_model_type'
+args = [
+    { name = 'model_type', type = 'RealGroundModelType' },
+]
+
+[[methods]]
+name = 'PreconditionerType'
+py_name = 'set_preconditioner_type'
+args = [
+    { name = 'preconditioner_type', type = 'PreconditionerType' },
+]
+
+[[methods]]
+name = 'LowFrequencyStabilization'
+py_name = 'set_low_frequency_stabilization'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'LowFrequencyStabilizationML'
+py_name = 'set_low_frequency_stabilization_multilayer'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Multilayer'
+py_name = 'set_multilayer'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetiMoMACC_I'
+py_name = 'set_iterative_mom_accuracy_ie_solver'
+args = [
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'SetiMoMACC_M'
+py_name = 'set_iterative_mom_accuracy_multilayer_solver'
+args = [
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'SetCFIEAlpha'
+py_name = 'set_cfie_alpha'
+args = [
+    { name = 'accuracy', type = 'float' },
+]
+
+[[methods]]
+name = 'DeembedExternalPorts'
+py_name = 'set_deembed_external_ports'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetOpenBC_XY'
+py_name = 'set_open_boundary_condition_in_xy_dir'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ModeTrackingCMA'
+py_name = 'set_cma_mode_tracking'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NumberOfModesCMA'
+py_name = 'set_cma_number_of_modes'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'StartFrequencyCMA'
+py_name = 'set_cma_start_frequency'
+args = [
+    { name = 'freq', type = 'float' },
+]
+
+[[methods]]
+name = 'SetAccuracySettingCMA'
+py_name = 'set_cma_accuracy_setting'
+args = [
+    { name = 'accuracy', type = 'CmaAccuracy' },
+]
+
+[[methods]]
+name = 'FrequencySamplesCMA'
+py_name = 'set_cma_number_of_frequency_samples'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetMemSettingCMA'
+py_name = 'set_cma_mem_setting'
+args = [
+    { name = 'mem', type = 'CmaMem' },
+]
+
+[[methods]]
+name = 'CalculateModalWeightingCoefficientsCMA'
+py_name = 'set_cma_calculate_modal_weighting_coefficients'
+args = [
+    { name = 'flag', type = 'bool' },
+]

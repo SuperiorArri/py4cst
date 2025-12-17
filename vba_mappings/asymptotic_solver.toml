@@ -1,0 +1,259 @@
+object = 'AsymptoticSolver'
+
+[[enums]]
+name = 'SolverType'
+values = ['SBR', 'SBR_RAYTUBES']
+
+[[enums]]
+name = 'SolverMode'
+values = ['MONOSTATIC_SCATTERING', 'BISTATIC_SCATTERING', 'FIELD_SOURCES', 'RANGE_PROFILES']
+
+[[enums]]
+name = 'AccuracyLevel'
+values = ['LOW', 'MEDIUM', 'HIGH', 'CUSTOM']
+
+[[enums]]
+name = 'RangeProfilesWindow'
+values = ['RECTANGULAR', 'HANNING', 'HAMMING', 'BLACKMAN']
+
+[[enums]]
+name = 'RangeProfilesMode'
+values = ['RANGE_EXTEND', 'BANDWIDTH']
+
+[[enums]]
+name = 'AngleSweep'
+values = ['POINT', 'THETA', 'PHI', 'BOTH']
+
+[[methods]]
+name = 'SetSolverType'
+args = [{ name = 'solver_type', type = 'SolverType' }]
+
+[[methods]]
+name = 'SetSolverMode'
+args = [{ name = 'solver_mode', type = 'SolverMode' }]
+
+[[methods]]
+name = 'SetAccuracyLevel'
+args = [{ name = 'accuracy_level', type = 'AccuracyLevel' }]
+
+[[methods]]
+name = 'SetSolverStoreResultsAsTablesOnly'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'CalculateRCSMapFor1DSweeps'
+py_name = 'set_calculate_rcs_map_for_1d_sweeps'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Set'
+py_name = 'set_calculate_monitors'
+args = [{ name = 'flag', type = 'bool', default = true }]
+vba_call_args = [ "'CalculateMonitors'", 'flag' ]
+
+[[methods]]
+name = 'ResetPolarizations'
+
+[[methods]]
+name = 'AddHorizontalPolarization'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AddVerticalPolarization'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AddLHCPolarization'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AddRHCPolarization'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AddCustomPolarization'
+args = [
+    { name = 'theta', type = 'complex' },
+    { name = 'phi', type = 'complex' },
+]
+
+[[methods]]
+name = 'SetSolverMaximumNumberOfReflections'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesCenterFrequency'
+args = [{ name = 'freq', type = 'float' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesAutomatic'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesNumberOfSamples'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesWindowFunction'
+args = [{ name = 'window', type = 'RangeProfilesWindow' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesSpecMode'
+args = [{ name = 'mode', type = 'RangeProfilesMode' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesRangeExtend'
+args = [{ name = 'ext', type = 'float' }]
+
+[[methods]]
+name = 'SetSolverRangeProfilesBandwidth'
+args = [{ name = 'bw', type = 'float' }]
+
+[[methods]]
+name = 'ResetFrequencyList'
+
+[[methods]]
+name = 'AddFrequencySweep'
+args = [
+    { name = 'f_min', type = 'float' },
+    { name = 'f_max', type = 'float' },
+    { name = 'f_step', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetExcitationAngleList'
+
+[[methods]]
+name = 'AddExcitationAngleSweep'
+py_name = 'add_excitation_angle_sweep_deg'
+args = [
+    { name = 'angle_sweep_type', type = 'AngleSweep' },
+    { name = 'theta_min', type = 'float' },
+    { name = 'theta_max', type = 'float' },
+    { name = 'theta_step', type = 'float' },
+    { name = 'phi_min', type = 'float' },
+    { name = 'phi_max', type = 'float' },
+    { name = 'phi_step', type = 'float' },
+]
+
+[[methods]]
+name = 'AddExcitationAngleSweepWithRays'
+py_name = 'add_excitation_angle_sweep_with_rays_deg'
+args = [
+    { name = 'angle_sweep_type', type = 'AngleSweep' },
+    { name = 'theta_min', type = 'float' },
+    { name = 'theta_max', type = 'float' },
+    { name = 'theta_step', type = 'float' },
+    { name = 'phi_min', type = 'float' },
+    { name = 'phi_max', type = 'float' },
+    { name = 'phi_step', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetFieldSources'
+
+[[methods]]
+name = 'SetFieldSourceActive'
+args = [
+    { name = 'field_source_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetFieldSourcePhasor'
+args = [
+    { name = 'field_source_name', type = 'str' },
+    { name = 'phasor', type = 'complex', expansion_method = 'abs/phase' },
+]
+
+[[methods]]
+name = 'SetFieldSourceRays'
+py_name = 'set_field_source_store_rays'
+args = [
+    { name = 'field_source_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SimultaneousFieldSourceExcitation'
+py_name = 'set_simultaneous_field_source_excitation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Set'
+py_name = 'set_calculate_s_params'
+args = [{ name = 'flag', type = 'bool', default = true }]
+vba_call_args = [ "'CalculateSParameters'", 'flag' ]
+
+[[methods]]
+name = 'ResetObservationAngleList'
+
+[[methods]]
+name = 'AddObservationAngleSweep'
+py_name = 'add_observation_angle_sweep_deg'
+args = [
+    { name = 'angle_sweep_type', type = 'AngleSweep' },
+    { name = 'theta_min', type = 'float' },
+    { name = 'theta_max', type = 'float' },
+    { name = 'theta_step', type = 'float' },
+    { name = 'phi_min', type = 'float' },
+    { name = 'phi_max', type = 'float' },
+    { name = 'phi_step', type = 'float' },
+]
+
+[[methods]]
+name = 'AddObservationAngleSweepWithRays'
+py_name = 'add_observation_angle_sweep_with_rays_deg'
+args = [
+    { name = 'angle_sweep_type', type = 'AngleSweep' },
+    { name = 'theta_min', type = 'float' },
+    { name = 'theta_max', type = 'float' },
+    { name = 'theta_step', type = 'float' },
+    { name = 'phi_min', type = 'float' },
+    { name = 'phi_max', type = 'float' },
+    { name = 'phi_step', type = 'float' },
+]
+
+[[methods]]
+name = 'UseParallelization'
+py_name = 'set_use_parallelization'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'MaximumNumberOfThreads'
+py_name = 'set_maximum_number_of_threads'
+args = [
+    { name = 'number ', type = 'int' },
+]
+
+[[methods]]
+name = 'RemoteCalculation'
+py_name = 'set_remote_calculation'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'DistributedComputing'
+py_name = 'set_distributed_computing'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'DistributedComputingNodes'
+py_name = 'set_number_of_distributed_computing_nodes'
+args = [
+    { name = 'number ', type = 'int' },
+]
+
+[[methods]]
+name = 'Start'
+return_type = 'int'
+python_return_type = 'bool'
+map_return_value = "bool(__retval__)"
+return_value_description = "success"
+
+# TODO: implement methods starting at "Detailed Solver Control Options"

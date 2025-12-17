@@ -1,0 +1,233 @@
+object = 'Pick'
+
+[[enums]]
+name = 'PickType'
+values = ['EndPoint']
+
+[[methods]]
+name = 'AddEdge'
+args = [
+    { name = 'uvw1', type = 'int', dimension = 3 },
+    { name = 'uvw2', type = 'int', dimension = 3 },
+]
+
+[[methods]]
+name = 'DeleteEdge'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'MeanEdge'
+py_name = 'add_mean_edge'
+args = [{ name = 'indices', type = 'list[int]' }]
+vba_call_args = ["','.join(str(i) for i in indices)"]
+
+[[methods]]
+name = 'MoveEdge'
+args = [
+    { name = 'index', type = 'int' },
+    { name = 'delta', type = 'float', dimension = 3 },
+    { name = 'keep_original', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'MoveEdgeInPlane'
+args = [
+    { name = 'index', type = 'int' },
+    { name = 'offset', type = 'float' },
+    { name = 'keep_original', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'PickEdgeFromPickedPoints'
+args = [
+    { name = 'index1', type = 'int' },
+    { name = 'index2', type = 'int' },
+]
+
+[[methods]]
+name = 'ClearAllPicks'
+
+[[methods]]
+name = 'NextPickToDataBase'
+py_name = 'write_next_pick_to_database'
+args = [{ name = 'id', type = 'int' }]
+
+[[methods]]
+name = 'SnapLastPointToDrawplane'
+
+[[methods]]
+name = 'PickPointFromIdOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'pick_type', type = 'PickType' },
+    { name = 'id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickPointFromPointOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'pick_type', type = 'PickType' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'PickEdgeFromIdOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'edge_id', type = 'int' },
+    { name = 'vertex_id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickEdgeFromPointOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'PickFaceFromIdOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'face_id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickFaceFromPointOn'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'PickDanglingEdgeChainFromId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickEdgeFromId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'edge_id', type = 'int' },
+    { name = 'vertex_id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickEdgeFromPoint'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'PickSolidEdgeChainFromId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'edge_id', type = 'int' },
+    { name = 'face_id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickFaceChainFromId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'face_id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickFaceFromId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'id', type = 'int' },
+]
+
+[[methods]]
+name = 'PickFaceFromPoint'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'ChangeFaceId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'change_statement', type = 'str' },
+    { name = 'version_number', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeEdgeId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'change_statement', type = 'str' },
+    { name = 'version_number', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeVertexId'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'change_statement', type = 'str' },
+    { name = 'version_number', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFace'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'DeletePoint'
+args = [{ name = 'index', type = 'int' }]
+
+[[methods]]
+name = 'MeanPoint'
+py_name = 'add_mean_point'
+args = [{ name = 'indices', type = 'str' }]
+
+[[methods]]
+name = 'MeanLastTwoPoints'
+py_name = 'add_mean_from_last_two_points'
+
+[[methods]]
+name = 'MovePoint'
+args = [
+    { name = 'index', type = 'int' },
+    { name = 'delta', type = 'float', dimension = 3 },
+    { name = 'keep_original', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'PickPointFromCoordinates'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'GetEdgeIdFromPoint'
+return_type = 'int'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'GetFaceIdFromPoint'
+return_type = 'int'
+args = [
+    { name = 'shape_name', type = 'str' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'GetNumberOfPickedPoints'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNumberOfPickedEdges'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNumberOfPickedFaces'
+return_type = 'int'

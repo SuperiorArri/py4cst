@@ -1,0 +1,51 @@
+object = 'LayerStacking'
+
+[[enums]]
+name = 'Direction'
+values = ['x', 'y', 'z']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'LayerStackingActive'
+py_name = 'set_layer_stacking_active'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AlignValueBackgroundItems'
+py_name = 'set_background_items_align_value'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'NormalBackgroundItems'
+py_name = 'set_background_items_normal'
+args = [
+    { name = 'direction', type = 'Direction' },
+]
+
+[[methods]]
+name = 'InvertDirection'
+py_name = 'set_invert_direction'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'FixTransversal'
+py_name = 'set_fix_traversal'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AddItem'
+args = [
+    { name = 'index', type = 'int' },
+    { name = 'height', type = 'float' },
+    { name = 'material_name', type = 'str' },
+]

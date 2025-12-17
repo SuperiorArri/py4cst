@@ -1,0 +1,40 @@
+object = 'ADSCosimulation'
+
+[[enums]]
+name = 'SolverType'
+values = ['transient', 'frequency domain']
+
+[[enums]]
+name = 'ParamType'
+values = ['None', 'Length', 'Temperature', 'Voltage', 'Current', 'Resistance', 'Conductance', 'Capacitance', 'Inductance', 'Frequency', 'Time']
+
+[[methods]]
+name = 'EnableCoSimulation'
+py_name = 'set_cosimulation_enabled'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseInterpolation'
+py_name = 'set_use_interpolation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SolverType'
+py_name = 'set_solver_type'
+args = [{ name = 'solver_type', type = 'SolverType' }]
+
+[[methods]]
+name = 'Description'
+py_name = 'set_description'
+args = [{ name = 'description', type = 'str' }]
+
+[[methods]]
+name = 'ParameterInformation'
+py_name = 'set_parameter_info'
+args = [
+    { name = 'param_name', type = 'str' },
+    { name = 'use', type = 'bool' },
+    { name = 'param_type', type = 'ParamType' },
+    { name = 'nominal_value', type = 'float' },
+    { name = 'step_size', type = 'float' },
+]

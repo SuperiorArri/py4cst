@@ -1,0 +1,49 @@
+object = 'AnalyticalCurve'
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'analytical_curve_name', type = 'str' }]
+
+[[methods]]
+name = 'Curve'
+py_name = 'set_curve'
+cache = true
+args = [{ name = 'curve_name', type = 'str' }]
+
+[[methods]]
+name = 'LawX'
+py_name = 'set_law_x'
+cache = true
+args = [{ name = 'law', type = 'str' }]
+
+[[methods]]
+name = 'LawY'
+py_name = 'set_law_y'
+cache = true
+args = [{ name = 'law', type = 'str' }]
+
+[[methods]]
+name = 'LawZ'
+py_name = 'set_law_z'
+cache = true
+args = [{ name = 'law', type = 'str' }]
+
+[[methods]]
+name = 'ParameterRange'
+py_name = 'set_parameter_range'
+cache = true
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create AnalyticalCurve'

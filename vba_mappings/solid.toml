@@ -1,0 +1,251 @@
+object = 'Solid'
+
+[[enums]]
+name = 'Key'
+values = ['Inside', 'Outside', 'Centered']
+
+[[enums]]
+name = 'MeshApproximation'
+values = ['PBA', 'Staircase']
+
+[[methods]]
+name = 'Delete'
+args = [{ name = 'solid_name', type = 'str' }]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeComponent'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeMaterial'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'SetUseIndividualColor'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ChangeIndividualColor'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'rgb', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'FastModelUpdate'
+py_name = 'set_fast_model_update'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Add'
+py_name = 'perform_add_operation'
+args = [
+    { name = 'solid1_name', type = 'str' },
+    { name = 'solid2_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Insert'
+py_name = 'perform_insert_operation'
+args = [
+    { name = 'solid1_name', type = 'str' },
+    { name = 'solid2_name', type = 'str' },
+]
+description = """
+Insert solid2 into solid1.
+"""
+
+[[methods]]
+name = 'Intersect'
+py_name = 'perform_intersect_operation'
+args = [
+    { name = 'solid1_name', type = 'str' },
+    { name = 'solid2_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Subtract'
+py_name = 'perform_subtract_operation'
+args = [
+    { name = 'solid1_name', type = 'str' },
+    { name = 'solid2_name', type = 'str' },
+]
+description = """
+Subtract solid2 from solid1.
+"""
+
+[[methods]]
+name = 'MergeMaterialsOfComponent'
+args = [{ name = 'component_or_solid_name', type = 'str' }]
+
+[[methods]]
+name = 'ShapeVisualizationAccuracy2'
+py_name = 'set_shape_visualization_accuracy2'
+args = [{ name = 'acc', type = 'int' }]
+
+[[methods]]
+name = 'ShapeVisualizationOffset'
+py_name = 'set_shape_visualization_offset'
+args = [{ name = 'offset', type = 'int' }]
+
+[[methods]]
+name = 'AttachActiveWCS'
+args = [{ name = 'solid_name', type = 'str' }]
+
+[[methods]]
+name = 'BlendEdge'
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'ChamferEdge'
+py_name = 'chamfer_edge1_deg'
+args = [
+    { name = 'depth', type = 'float' },
+    { name = 'angle_deg', type = 'float' },
+    { name = 'face_id', type = 'int' },
+]
+vba_call_args = ['depth', 'angle_deg', false, 'face_id']
+
+[[methods]]
+name = 'ChamferEdge'
+py_name = 'chamfer_edge2_deg'
+args = [
+    { name = 'depth', type = 'float' },
+    { name = 'angle_deg', type = 'float' },
+    { name = 'face_id', type = 'int' },
+]
+vba_call_args = ['depth', 'angle_deg', true, 'face_id']
+
+[[methods]]
+name = 'SliceShape'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'SplitShape'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ThickenSheetAdvanced'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'key', type = 'Key' },
+    { name = 'thickness', type = 'float' },
+    { name = 'clear_picks', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'ShellAdvanced'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'key', type = 'Key' },
+    { name = 'thickness', type = 'float' },
+    { name = 'clear_picks', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'FillupSpaceAdvanced'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'component_name', type = 'str' },
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'MoveSelectedFace'
+args = [{ name = 'delta', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'MoveSelectedPlanarFace'
+args = [{ name = 'offset', type = 'float' }]
+
+[[methods]]
+name = 'OffsetSelectedFaces'
+args = [{ name = 'offset', type = 'float' }]
+
+[[methods]]
+name = 'RemoveSelectedFaces'
+
+[[methods]]
+name = 'SelectedFaceRadius'
+py_name = 'set_selected_face_radius'
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'SetMeshStepWidth'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'delta', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'SetMeshExtendwidth'
+py_name = 'set_mesh_extend_width'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'delta', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'SetAutomeshFixpoints'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetMaterialBasedRefinement'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetMeshProperties'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'approx', type = 'MeshApproximation' },
+    { name = 'default_type', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'SetUseForSimulation'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetUseThinSheetMeshForShape'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetMeshRefinement'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'edge_refinement', type = 'bool' },
+    { name = 'edge_refinement_factor', type = 'float' },
+    { name = 'volume_refinement', type = 'bool' },
+    { name = 'volume_refinement_factor', type = 'float' },
+]

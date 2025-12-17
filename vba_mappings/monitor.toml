@@ -1,0 +1,380 @@
+object = 'Monitor'
+
+[[enums]]
+name = 'FieldType'
+values = [
+    { name = 'E_FIELD', value = 'Efield' },
+    { name = 'H_FIELD', value = 'Hfield' },
+    { name = 'POWER_FLOW', value = 'Powerflow' },
+    { name = 'CURRENT', value = 'Current' },
+    { name = 'POWER_LOSS', value = 'Powerloss' },
+    { name = 'E_ENERGY', value = 'Eenergy' },
+    { name = 'H_ENERGY', value = 'Henergy' },
+    { name = 'FARFIELD', value = 'Farfield' },
+    { name = 'FIELD_SOURCE', value = 'Fieldsource' },
+    { name = 'SPACE_CHARGE', value = 'Spacecharge' },
+    { name = 'PARTICLE_CURRENT_DENSITY', value = 'Particlecurrentdensity' },
+]
+
+[[enums]]
+name = 'Dimension'
+values = ['plane', 'volume']
+
+[[enums]]
+name = 'Direction'
+values = ['x', 'y', 'z']
+
+[[enums]]
+name = 'Domain'
+values = ['frequency', 'time', 'static']
+
+[[enums]]
+name = 'Accuracy'
+values = [
+    { name = 'LOW', value = '1e-3' },
+    { name = 'MEDIUM', value = '1e-4' },
+    { name = 'HIGH', value = '1e-5' },
+]
+
+[[enums]]
+name = 'Origin'
+values = [
+    { name = 'BOUNDING_BOX', value = 'bbox' },
+    'zero',
+    'free',
+]
+
+[[enums]]
+name = 'SamplingStrategy'
+values = ['Frequencies', 'Steps', 'Linear', 'Logarithmic']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Delete'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Monitor'
+
+[[methods]]
+name = 'FieldType'
+py_name = 'set_field_type'
+cache = true
+args = [{ name = 'field_type', type = 'FieldType' }]
+
+[[methods]]
+name = 'Dimension'
+py_name = 'set_dimension'
+cache = true
+args = [{ name = 'dimension', type = 'Dimension' }]
+
+[[methods]]
+name = 'PlaneNormal'
+py_name = 'set_plane_normal'
+cache = true
+args = [{ name = 'direction', type = 'Direction' }]
+
+[[methods]]
+name = 'PlanePosition'
+py_name = 'set_plane_position'
+cache = true
+args = [{ name = 'position', type = 'float' }]
+
+[[methods]]
+name = 'Domain'
+py_name = 'set_domain'
+cache = true
+args = [{ name = 'domain', type = 'Domain' }]
+
+[[methods]]
+name = 'Frequency'
+py_name = 'set_frequency'
+cache = true
+args = [{ name = 'frequency', type = 'float' }]
+
+[[methods]]
+name = 'Tstart'
+py_name = 'set_time_start'
+cache = true
+args = [{ name = 'start', type = 'float' }]
+
+[[methods]]
+name = 'Tstep'
+py_name = 'set_time_step'
+cache = true
+args = [{ name = 'step', type = 'float' }]
+
+[[methods]]
+name = 'Tend'
+py_name = 'set_time_end'
+cache = true
+args = [{ name = 'end', type = 'float' }]
+
+[[methods]]
+name = 'UseTend'
+py_name = 'set_use_time_end'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'TimeAverage'
+py_name = 'set_average_over_time'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'RepetitionPeriod'
+py_name = 'set_repetition_period'
+cache = true
+args = [{ name = 'period', type = 'float' }]
+
+[[methods]]
+name = 'AutomaticOrder'
+py_name = 'set_automatic_order'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'MaxOrder'
+py_name = 'set_max_order'
+cache = true
+args = [{ name = 'order', type = 'int' }]
+
+[[methods]]
+name = 'FrequencySamples'
+py_name = 'set_number_of_frequency_samples'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'TransientFarfield'
+py_name = 'set_compute_transient_farfield'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'Accuracy'
+py_name = 'set_accuracy'
+cache = true
+args = [{ name = 'accuracy', type = 'str' }]
+
+[[methods]]
+name = 'Origin'
+py_name = 'set_origin'
+cache = true
+args = [{ name = 'origin', type = 'Origin' }]
+
+[[methods]]
+name = 'UserOrigin'
+py_name = 'set_user_origin'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'FrequencyRange'
+py_name = 'set_frequency_range'
+cache = true
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+]
+
+[[methods]]
+name = 'Samples'
+py_name = 'set_number_of_samples'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SamplingStrategy'
+py_name = 'set_sampling_strategy'
+cache = true
+args = [{ name = 'strategy', type = 'str' }]
+
+[[methods]]
+name = 'MonitorValue'
+py_name = 'set_monitor_value'
+cache = true
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'MonitorValueList'
+py_name = 'set_monitor_value_list'
+cache = true
+args = [{ name = 'frequencies', type = 'list[float]' }]
+vba_call_args = ["';'.join(str(f) for f in frequencies)"]
+
+[[methods]]
+name = 'SampleStep'
+py_name = 'set_sampling_step'
+cache = true
+args = [{ name = 'step', type = 'float' }]
+
+[[methods]]
+name = 'MonitorValueRange'
+py_name = 'set_monitor_value_range'
+cache = true
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+]
+
+[[methods]]
+name = 'UseSubvolume'
+py_name = 'set_use_subvolume'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'SetSubvolume'
+cache = true
+args = [
+    { name = 'min', type = 'float', dimension = 3 },
+    { name = 'max', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'InvertOrientation'
+py_name = 'set_invert_orientation'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'ExportFarfieldSource'
+py_name = 'set_export_farfield_source'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'EnableNearfieldCalculation'
+pY_name = 'set_enable_nearfield_calculation'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'CreateUsingArbitraryValues'
+cache = true
+flush_cache = 'Create Monitor'
+args = [{ name = 'frequencies', type = 'list[float]' }]
+vba_call_args = ["';'.join(str(f) for f in frequencies)"]
+
+[[methods]]
+name = 'CreateUsingLinearSamples'
+cache = true
+flush_cache = 'Create Monitor'
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+    { name = 'num_samples', type = 'int' },
+]
+
+[[methods]]
+name = 'CreateUsingLinearStep'
+cache = true
+flush_cache = 'Create Monitor'
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+    { name = 'step', type = 'float' },
+]
+
+[[methods]]
+name = 'CreateUsingLogSamples'
+cache = true
+flush_cache = 'Create Monitor'
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+    { name = 'num_samples', type = 'int' },
+]
+
+[[methods]]
+name = 'Export'
+cache = true
+flush_cache = 'Export Monitor'
+args = [
+    { name = 'excitation_name', type = 'str' },
+    { name = 'file_path', type = 'str' },
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSubVolumeSampling'
+py_name = 'set_subvolume_sampling'
+cache = true
+args = [{ name = 'factor_xyz', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'ChangeSubVolumeSampling'
+py_name = 'change_subvolume_sampling'
+args = [
+    { name = 'monitor_name', type = 'str' },
+    { name = 'factor_xyz', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'ChangeSubVolumeSamplingToHistory'
+py_name = 'change_subvolume_sampling_to_history'
+args = [
+    { name = 'monitor_name', type = 'str' },
+    { name = 'factor_xyz', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'GetNumberOfMonitors'
+return_type = 'int'
+
+[[methods]]
+name = 'GetMonitorNameFromIndex'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'str'
+
+[[methods]]
+name = 'GetMonitorTypeFromIndex'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'FieldType'
+
+[[methods]]
+name = 'GetMonitorDomainFromIndex'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'Domain'
+
+[[methods]]
+name = 'GetMonitorFrequencyFromIndex'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'float'
+
+[[methods]]
+name = 'GetMonitorTstartFromIndex'
+py_name = 'get_monitor_time_start_from_index'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'float'
+
+[[methods]]
+name = 'GetMonitorTstepFromIndex'
+py_name = 'get_monitor_time_step_from_index'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'float'
+
+[[methods]]
+name = 'GetMonitorTendFromIndex'
+py_name = 'get_monitor_time_end_from_index'
+args = [{ name = 'index', type = 'int' }]
+return_type = 'float'

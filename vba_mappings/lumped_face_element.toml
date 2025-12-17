@@ -1,0 +1,256 @@
+object = 'LumpedFaceElement'
+
+[[enums]]
+name = 'Type'
+values = [
+    { name = 'RLC_PARALLEL', value = 'rlcparallel' },
+    { name = 'RLC_SERIAL', value = 'rlcserial' },
+    'diode',
+    { name = 'SPICE_CIRCUIT', value = 'spicecircuit' },
+    'touchstone',
+    { name = 'MULTIPIN_GROUP_ITEM', value = 'multipingroupitem' },
+    { name = 'MULTIPIN_GROUP_SPICE', value = 'multipingroupspice' },
+    { name = 'MULTIPIN_GROUP_TOUCHSTONE', value = 'multipingrouptouchstone' },
+]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create LumpedFaceElement'
+
+[[methods]]
+name = 'Modify'
+cache = true
+flush_cache = 'Modify LumpedFaceElement'
+
+[[methods]]
+name = 'SetType'
+cache = true
+args = [
+    { name = 'elem_type', type = 'Type' },
+]
+
+[[methods]]
+name = 'SetName'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Folder'
+py_name = 'set_folder_name'
+cache = true
+args = [
+    { name = 'folder_name', type = 'str' },
+]
+
+[[methods]]
+name = 'SetR'
+py_name = 'set_resistance'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetL'
+py_name = 'set_inductance'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetC'
+py_name = 'set_capacitance'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetGs'
+py_name = 'set_blocking_conductivity'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetI0'
+py_name = 'set_reverse_current'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetT'
+py_name = 'set_temperature_kelvin'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetT'
+py_name = 'set_temperature_celsius'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+vba_call_args = ['value-273.15']
+
+[[methods]]
+name = 'SetT'
+py_name = 'set_temperature_fahrenheit'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+vba_call_args = ['(value + 459.67)*(5/9)']
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_point1'
+cache = true
+args = [
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_pick_as_point1'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_point2'
+cache = true
+args = [
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_pick_as_point2'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'CircuitFileName'
+py_name = 'set_circuit_file_name'
+cache = true
+args = [
+    { name = 'file_name', type = 'str' },
+]
+
+[[methods]]
+name = 'UseRelativePath'
+py_name = 'set_use_relative_path'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CircuitId'
+py_name = 'set_circuit_id'
+cache = true
+args = [
+    { name = 'id', type = 'int' },
+]
+
+[[methods]]
+name = 'UseCopyOnly'
+py_name = 'set_use_copy_only'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetInvert'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetMonitor'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseProjection'
+py_name = 'set_use_projection'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ReverseProjection'
+py_name = 'set_reverse_projection'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'PortName'
+py_name = 'set_port_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeletePort'
+py_name = 'set_delete_port'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+py_name = 'create_folder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameFolder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]

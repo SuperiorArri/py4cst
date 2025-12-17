@@ -1,0 +1,64 @@
+object = 'AnalyticalFace'
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'LawX'
+py_name = 'set_law_x'
+cache = true
+args = [{ name = 'expr', type = 'str' }]
+
+[[methods]]
+name = 'LawY'
+py_name = 'set_law_y'
+cache = true
+args = [{ name = 'expr', type = 'str' }]
+
+[[methods]]
+name = 'LawZ'
+py_name = 'set_law_z'
+cache = true
+args = [{ name = 'expr', type = 'str' }]
+
+[[methods]]
+name = 'ParameterRangeU'
+py_name = 'set_param_range_u'
+cache = true
+args = [
+    { name = 'u_min', type = 'float' },
+    { name = 'u_max', type = 'float' },
+]
+
+[[methods]]
+name = 'ParameterRangeV'
+py_name = 'set_param_range_v'
+cache = true
+args = [
+    { name = 'v_min', type = 'float' },
+    { name = 'v_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create AnalyticalFace'

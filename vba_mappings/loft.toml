@@ -1,0 +1,42 @@
+object = 'Loft'
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [
+    { name = 'component_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [
+    { name = 'mat_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Tangency'
+py_name = 'set_tangency'
+cache = true
+args = [
+    { name = 'tang', type = 'float' },
+]
+
+[[methods]]
+name = 'CreateNew'
+py_name = 'create'
+cache = true

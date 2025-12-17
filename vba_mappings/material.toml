@@ -1,0 +1,3009 @@
+object = 'Material'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[enums]]
+name = 'Type'
+values = [
+    'PEC',
+    'Normal',
+    'Anisotropic',
+    'Lossy Metal',
+    'Corrugated wall',
+    'Ohmic sheet',
+    'Tensor formula',
+    'Nonlinear',
+]
+
+[[enums]]
+name = 'RefCoordSystem'
+values = ['Global', 'Solid']
+
+[[enums]]
+name = 'CoordSystem'
+values = ['Cartesian', 'Cylindrical', 'Spherical']
+
+[[enums]]
+name = 'TabSurfImpModel'
+values = ['Opaque', 'Transparent']
+
+[[enums]]
+name = 'DispFitSchemeTabSI'
+values = ['Nth Order']
+
+[[enums]]
+name = 'EntryBlock'
+values = ['uu', 'vu', 'uv', 'vv']
+
+[[enums]]
+name = 'TangentDeltaModel'
+values = ['ConstSigma', 'ConstTanD']
+
+[[enums]]
+name = 'ConstTangentDeltaStrategy'
+values = ['AutomaticOrder', 'UserDefinedOrder', 'DjordjevicSarkar']
+
+[[enums]]
+name = 'DispModelEps'
+values = [
+    'None',
+    { name = 'DEBYE_1ST', value = 'Debye1st' },
+    { name = 'DEBYE_2ND', value = 'Debye2nd' },
+    'Drude',
+    'Lorentz',
+    { name = 'GENERAL_1ST', value = 'General1st' },
+    { name = 'GENERAL_2ND', value = 'General2nd' },
+    'General',
+    { name = 'NON_LINEAR_2ND', value = 'NonLinear2nd' },
+    { name = 'NON_LINEAR_3RD', value = 'NonLinear3rd' },
+    'NonLinearKerr',
+    'NonLinearRaman',
+]
+
+[[enums]]
+name = 'DispModelMu'
+values = [
+    'None',
+    { name = 'DEBYE_1ST', value = 'Debye1st' },
+    { name = 'DEBYE_2ND', value = 'Debye2nd' },
+    'Drude',
+    'Lorentz',
+    'Gyrotropic',
+    'GeneralizedDebye',
+    { name = 'GENERAL_1ST', value = 'General1st' },
+    { name = 'GENERAL_2ND', value = 'General2nd' },
+    { name = 'NON_LINEAR_2ND', value = 'NonLinear2nd' },
+    { name = 'NON_LINEAR_3RD', value = 'NonLinear3rd' },
+    'NonLinearKerr',
+    'NonLinearRaman',
+]
+
+[[enums]]
+name = 'DispersiveFittingFormat'
+values = [
+    'Real_Imag',
+    'Real_Tand',
+]
+
+[[enums]]
+name = 'DispersiveFittingScheme'
+values = [
+    'Conductivity',
+    { name = 'FIRST_ORDER', value = '1st Order' },
+    { name = 'SECOND_ORDER', value = '2nd Order' },
+    'Nth Order',
+]
+
+[[enums]]
+name = 'Direction'
+values = ['x', 'y', 'z']
+
+[[enums]]
+name = 'SpatiallyVarMatProp'
+values = [
+    'eps',
+    'mu',
+    'sigma',
+    { name = 'SIGMA_M', value = 'sigmam' },
+]
+
+[[enums]]
+name = 'SpatiallyVarMatModel'
+values = ['Constant', 'Luneburg', 'PowerLaw', 'GradedIndex']
+
+[[enums]]
+name = 'SpatiallyVarMatParam'
+values = [
+    'value_constant',
+    'value_center',
+    'value_surface',
+    'value_axis',
+    'value_cladding',
+    'value_profile',
+    'value_gradient',
+]
+
+[[enums]]
+name = 'SpaceMapMatProp'
+values = [
+    'eps',
+    'mu',
+    'sigma',
+    { name = 'SIGMA_M', value = 'sigmam' },
+    { name = 'EPS_INFINITY', value = 'epsinfinity' },
+    { name = 'MU_INFINITY', value = 'muinfinity' },
+    { name = 'DISP_COEFF0_EPS', value = 'dispcoeff0eps' },
+    { name = 'DISP_COEFF0_MU', value = 'dispcoeff0mu' },
+    { name = 'DISP_COEFF1_EPS', value = 'dispcoeff1eps' },
+    { name = 'DISP_COEFF1_MU', value = 'dispcoeff1mu' },
+    { name = 'DISP_COEFF2_EPS', value = 'dispcoeff2eps' },
+    { name = 'DISP_COEFF2_MU', value = 'dispcoeff2mu' },
+    { name = 'DISP_COEFF3_EPS', value = 'dispcoeff3eps' },
+    { name = 'DISP_COEFF3_MU', value = 'dispcoeff3mu' },
+    { name = 'DISP_COEFF4_EPS', value = 'dispcoeff4eps' },
+    { name = 'DISP_COEFF4_MU', value = 'dispcoeff4mu' },
+]
+
+[[enums]]
+name = 'SpaceMapMatModel'
+values = [
+    { name = 'CONSTANT_3D', value = '3DConstant' },
+    { name = 'DEFAULT_3D', value = '3DDefault' },
+    { name = 'IMPORT_HEX_3D', value = '3DImportHex' },
+    { name = 'IMPORT_TET_3D', value = '3DImportTet' },
+]
+
+[[enums]]
+name = 'SpaceMapMatParam'
+values = ['value_constant', 'value_default', 'map_filename', 'slimmesh_filename']
+
+[[enums]]
+name = 'GeneralizedDebyeNonLinDep'
+values = ['None', 'BHCurve', 'TabMuDiffCurve']
+
+[[enums]]
+name = 'CoatingTypeDef'
+values = [
+    'PERFECT_ABSORBER',
+    'SURFACE_IMPEDANCE_TABLE',
+    'REFLECTION_FACTOR_TABLE',
+    'REFLECTION_TRANSMISSION_FACTOR_TABLE',
+]
+
+[[enums]]
+name = 'ParticleProp'
+values = ['None', 'SecondaryEmission', 'SheetTransparency']
+
+[[enums]]
+name = 'SeModel'
+values = ['None', 'Furman', 'Import', 'Vaughan']
+
+[[enums]]
+name = 'IonSeeModel'
+values = ['None', 'Ion Import']
+
+[[enums]]
+name = 'ParticleTransparencySettings'
+values = ['Scalar', 'Import']
+
+[[enums]]
+name = 'ThermalType'
+values = ['PTC', 'Normal', 'Anisotropic']
+
+[[enums]]
+name = 'SpecificHeatUnit'
+values = [
+    'J/K/kg',
+    { name = 'KJ_K_KG', value = 'kJ/K/kg' },
+]
+
+[[enums]]
+name = 'MechanicsType'
+values = ['Unused', 'Isotropic']
+
+[[enums]]
+name = 'FlowResPressureLossTypeUVW'
+values = ['Blocked', 'Coefficient', 'Curve']
+
+[[enums]]
+name = 'FlowResPressureLossTypeSheet'
+values = ['Blocked', 'Coefficient', 'Curve', 'Perforation', 'FreeAreaRatio']
+
+[[enums]]
+name = 'FlowResShapeType'
+values = ['Hexagon', 'Circle', 'Square']
+
+[[enums]]
+name = 'TensorFormulaFor'
+values = ['epsilon_r', 'mu_r']
+
+[[enums]]
+name = 'Species'
+values = ['electron', 'hole']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Material'
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Folder'
+py_name = 'set_folder_name'
+cache = true
+args = [
+    { name = 'folder_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+cache = true
+args = [
+    { name = 'mat_type', type = 'Type' },
+]
+
+[[methods]]
+name = 'MaterialUnit'
+py_name = 'set_frequency_unit'
+cache = true
+args = [
+    { name = 'unit', type = 'str' },
+]
+vba_call_args = ["'Frequency'", 'unit']
+
+[[methods]]
+name = 'MaterialUnit'
+py_name = 'set_geometry_unit'
+cache = true
+args = [
+    { name = 'unit', type = 'str' },
+]
+vba_call_args = ["'Geometry'", 'unit']
+
+[[methods]]
+name = 'MaterialUnit'
+py_name = 'set_time_unit'
+cache = true
+args = [
+    { name = 'unit', type = 'str' },
+]
+vba_call_args = ["'Time'", 'unit']
+
+[[methods]]
+name = 'MaterialUnit'
+py_name = 'set_temperature_unit'
+cache = true
+args = [
+    { name = 'unit', type = 'str' },
+]
+vba_call_args = ["'Temperature'", 'unit']
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'mat_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+py_name = 'create_folder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameFolder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Colour'
+py_name = 'set_color_rgb'
+cache = true
+flush_cache = 'ChangeColour (Material)'
+args = [
+    { name = 'r', type = 'float' },
+    { name = 'g', type = 'float' },
+    { name = 'b', type = 'float' },
+]
+
+[[methods]]
+name = 'Transparency'
+py_name = 'set_transparency'
+cache = true
+args = [
+    { name = 'transparency', type = 'float' },
+]
+
+[[methods]]
+name = 'Transparency'
+py_name = 'set_color_alpha'
+cache = true
+args = [
+    { name = 'alpha', type = 'float' },
+]
+vba_call_args = ['1.0 - alpha']
+
+[[methods]]
+name = 'Wireframe'
+py_name = 'set_wireframe'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Reflection'
+py_name = 'set_reflection'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Allowoutline'
+py_name = 'set_allow_outlines'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Transparentoutline'
+py_name = 'set_transparent_solid_outlines'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ChangeColour'
+py_name = 'change_appearance'
+cache = true
+flush_cache = 'ChangeColour (Material)'
+
+[[methods]]
+name = 'Epsilon'
+py_name = 'set_rel_permitivity'
+cache = true
+args = [
+    { name = 'epsilon', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsilonX'
+py_name = 'set_rel_permitivity_x'
+cache = true
+args = [
+    { name = 'epsilon', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsilonY'
+py_name = 'set_rel_permitivity_y'
+cache = true
+args = [
+    { name = 'epsilon', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsilonZ'
+py_name = 'set_rel_permitivity_z'
+cache = true
+args = [
+    { name = 'epsilon', type = 'float' },
+]
+
+[[methods]]
+name = 'Mu'
+py_name = 'set_rel_permeability'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuX'
+py_name = 'set_rel_permeability_x'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuY'
+py_name = 'set_rel_permeability_y'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuZ'
+py_name = 'set_rel_permeability_z'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'Rho'
+py_name = 'set_material_density'
+cache = true
+args = [
+    { name = 'rho_kg_per_m3', type = 'float' },
+]
+
+[[methods]]
+name = 'AddCoatedMaterial'
+cache = true
+args = [
+    { name = 'mat_name', type = 'str' },
+    { name = 'thickness', type = 'float' },
+]
+
+[[methods]]
+name = 'ReferenceCoordSystem'
+py_name = 'set_reference_coord_system'
+cache = true
+args = [
+    { name = 'name', type = 'RefCoordSystem' },
+]
+
+[[methods]]
+name = 'CoordSystemType'
+py_name = 'set_coord_system_type'
+cache = true
+args = [
+    { name = 'name', type = 'CoordSystem' },
+]
+
+[[methods]]
+name = 'Corrugation'
+py_name = 'set_corrugation'
+cache = true
+args = [
+    { name = 'depth', type = 'float' },
+    { name = 'gap_width', type = 'float' },
+    { name = 'tooth_width', type = 'float' },
+]
+
+[[methods]]
+name = 'OhmicSheetImpedance'
+py_name = 'set_ohmic_sheet_impedance'
+cache = true
+args = [
+    { name = 'impedance', type = 'complex' },
+]
+
+[[methods]]
+name = 'OhmicSheetFreq'
+py_name = 'set_ohmic_sheet_frequency'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'SetTabulatedSurfaceImpedanceModel'
+cache = true
+args = [
+    { name = 'model', type = 'TabSurfImpModel' },
+]
+
+[[methods]]
+name = 'AddTabulatedSurfaceImpedanceFittingValue'
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 'impedance', type = 'complex' },
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddTabulatedSurfaceImpedanceValue'
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 'impedance', type = 'complex' },
+]
+
+[[methods]]
+name = 'DispersiveFittingSchemeTabSI'
+py_name = 'set_dispersive_fitting_scheme_tab_surf_imp'
+cache = true
+args = [
+    { name = 'scheme', type = 'DispFitSchemeTabSI' },
+]
+
+[[methods]]
+name = 'MaximalOrderNthModelFitTabSI'
+py_name = 'set_max_order_nth_model_fit_tab_surf_imp'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'UseOnlyDataInSimFreqRangeNthModelTabSI'
+py_name = 'set_use_only_data_in_sim_freq_range_nth_model_tab_surf_imp'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ErrorLimitNthModelFitTabSI'
+py_name = 'set_error_limit_nth_model_fit_tab_surf_imp'
+cache = true
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+name = 'TabulatedCompactModel'
+py_name = 'set_as_tabulated_compact_model'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetTabulatedCompactModelList'
+
+[[methods]]
+name = 'SetTabulatedCompactModelImpedance'
+cache = true
+args = [
+    { name = 'imp_p1', type = 'float' },
+    { name = 'imp_p2', type = 'float' },
+]
+
+[[methods]]
+name = 'SetSymmTabulatedCompactModelImpedance'
+cache = true
+args = [
+    { name = 'imp_p', type = 'float' },
+]
+
+[[methods]]
+name = 'AddTabulatedCompactModelItem'
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 's11', type = 'complex' },
+    { name = 's21', type = 'complex' },
+    { name = 's12', type = 'complex' },
+    { name = 's22', type = 'complex' },
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddSymmTabulatedCompactModelItem'
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 's11', type = 'complex' },
+    { name = 's21', type = 'complex' },
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'TabulatedCompactModelAnisotropic'
+py_name = 'set_tabulated_compact_model_anisotropic'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AddAnisoTabulatedCompactModelItem'
+args = [
+    { name = 'entry_block', type = 'EntryBlock' },
+    { name = 'frequency', type = 'float' },
+    { name = 's11', type = 'complex' },
+    { name = 's21', type = 'complex' },
+    { name = 's12', type = 'complex' },
+    { name = 's22', type = 'complex' },
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddAnisoSymmTabulatedCompactModelItem'
+args = [
+    { name = 'entry_block', type = 'EntryBlock' },
+    { name = 'frequency', type = 'float' },
+    { name = 's11', type = 'complex' },
+    { name = 's21', type = 'complex' },
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'MaximalOrderFitTabulatedCompactModel'
+py_name = 'set_max_order_fit_tabulated_compact_model'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'UseOnlyDataInSimFreqRangeTabulatedCompactModel'
+py_name = 'set_use_only_data_in_sim_freq_range_tabulated_compact_model'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ErrorLimitFitTabulatedCompactModel'
+py_name = 'set_error_limit_fit_tabulated_compact_model'
+cache = true
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+name = 'Thickness'
+py_name = 'set_thickness'
+cache = true
+args = [
+    { name = 'thickness', type = 'float' },
+]
+
+[[methods]]
+name = 'LossyMetalSIRoughness'
+py_name = 'set_lossy_metal_surf_imp_roughness'
+cache = true
+args = [
+    { name = 'roughness', type = 'float' },
+]
+
+[[methods]]
+name = 'Sigma'
+py_name = 'set_el_conductivity'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaX'
+py_name = 'set_el_conductivity_x'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaY'
+py_name = 'set_el_conductivity_y'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaZ'
+py_name = 'set_el_conductivity_z'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SetElParametricConductivity'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AddJEValue'
+cache = true
+args = [
+    { name = 'dj', type = 'float' },
+    { name = 'de', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetJEList'
+
+[[methods]]
+name = 'ResetElTimeDepCond'
+py_name = 'reset_el_time_dependent_conductivity_curve'
+cache = true
+
+[[methods]]
+name = 'AddElTimeDepCondValue'
+py_name = 'add_el_time_dependent_conductivity_value'
+cache = true
+args = [
+    { name = 'd_time', type = 'float' },
+    { name = 'd_cond', type = 'float' },
+]
+
+[[methods]]
+name = 'AddElTimeDepCondAnisoValue'
+py_name = 'add_el_time_dependent_conductivity_aniso_value'
+cache = true
+args = [
+    { name = 'd_time', type = 'float' },
+    { name = 'd_cond', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'LoadElTimeDepConductivity'
+py_name = 'load_el_time_dependent_conductivity_from_file'
+cache = true
+args = [
+    { name = 'file_path', type = 'str' },
+    { name = 'time_unit', type = 'str' },
+]
+
+[[methods]]
+name = 'TanD'
+py_name = 'set_el_tangent_delta'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDX'
+py_name = 'set_el_tangent_delta_x'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDY'
+py_name = 'set_el_tangent_delta_y'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDZ'
+py_name = 'set_el_tangent_delta_z'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDGiven'
+py_name = 'set_el_tangent_delta_given'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TanDFreq'
+py_name = 'set_el_tangent_delta_frequency'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDModel'
+py_name = 'set_el_tangent_delta_model'
+cache = true
+args = [
+    { name = 'model', type = 'TangentDeltaModel' },
+]
+
+[[methods]]
+name = 'SetConstTanDStrategyEps'
+py_name = 'set_el_const_tangent_delta_strategy_eps'
+cache = true
+args = [
+    { name = 'strategy', type = 'ConstTangentDeltaStrategy' },
+]
+
+[[methods]]
+name = 'ConstTanDModelOrderEps'
+py_name = 'set_el_const_tangent_delta_model_order_eps'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'DjordjevicSarkarUpperFreqEps'
+py_name = 'set_djordjevic_sarkar_upper_freq_eps'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaM'
+py_name = 'set_mag_conductivity'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaMX'
+py_name = 'set_mag_conductivity_x'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaMY'
+py_name = 'set_mag_conductivity_y'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SigmaMZ'
+py_name = 'set_mag_conductivity_z'
+cache = true
+args = [
+    { name = 'sigma', type = 'float' },
+]
+
+[[methods]]
+name = 'SetMagParametricConductivity'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetMagTimeDepCond'
+py_name = 'reset_mag_time_dependent_conductivity_curve'
+
+[[methods]]
+name = 'AddMagTimeDepCondValue'
+py_name = 'add_mag_time_dependent_conductivity_value'
+cache = true
+args = [
+    { name = 'd_time', type = 'float' },
+    { name = 'd_cond', type = 'float' },
+]
+
+[[methods]]
+name = 'AddMagTimeDepCondAnisoValue'
+py_name = 'add_mag_time_dependent_conductivity_aniso_value'
+cache = true
+args = [
+    { name = 'd_time', type = 'float' },
+    { name = 'd_cond', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'LoadMagTimeDepConductivity'
+py_name = 'load_mag_time_dependent_conductivity_from_file'
+cache = true
+args = [
+    { name = 'file_path', type = 'str' },
+    { name = 'time_unit', type = 'str' },
+]
+
+[[methods]]
+name = 'TanDM'
+py_name = 'set_mag_tangent_delta'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDMX'
+py_name = 'set_mag_tangent_delta_x'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDMY'
+py_name = 'set_mag_tangent_delta_y'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDMZ'
+py_name = 'set_mag_tangent_delta_z'
+cache = true
+args = [
+    { name = 'tan_d', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDMGiven'
+py_name = 'set_mag_tangent_delta_given'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TanDMFreq'
+py_name = 'set_mag_tangent_delta_frequency'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'TanDMModel'
+py_name = 'set_mag_tangent_delta_model'
+cache = true
+args = [
+    { name = 'model', type = 'TangentDeltaModel' },
+]
+
+[[methods]]
+name = 'SetConstTanDStrategyMu'
+py_name = 'set_mag_const_tangent_delta_strategy_mu'
+cache = true
+args = [
+    { name = 'strategy', type = 'ConstTangentDeltaStrategy' },
+]
+
+[[methods]]
+name = 'ConstTanDModelOrderMu'
+py_name = 'set_mag_const_tangent_delta_model_order_mu'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'DjordjevicSarkarUpperFreqMu'
+py_name = 'set_djordjevic_sarkar_upper_freq_mu'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'DispModelEps'
+py_name = 'set_disp_model_esp'
+cache = true
+args = [
+    { name = 'model', type = 'DispModelEps' },
+]
+
+[[methods]]
+name = 'DispModelMu'
+py_name = 'set_disp_model_mu'
+cache = true
+args = [
+    { name = 'model', type = 'DispModelMu' },
+]
+
+[[methods]]
+name = 'EpsInfinity'
+py_name = 'set_eps_infinity'
+cache = true
+args = [
+    { name = 'eps', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsInfinityX'
+py_name = 'set_eps_infinity_x'
+cache = true
+args = [
+    { name = 'eps', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsInfinityY'
+py_name = 'set_eps_infinity_y'
+cache = true
+args = [
+    { name = 'eps', type = 'float' },
+]
+
+[[methods]]
+name = 'EpsInfinityZ'
+py_name = 'set_eps_infinity_z'
+cache = true
+args = [
+    { name = 'eps', type = 'float' },
+]
+
+[[methods]]
+name = 'DispCoeff0Eps'
+py_name = 'set_disp_coeff0_eps'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0EpsX'
+py_name = 'set_disp_coeff0_eps_x'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0EpsY'
+py_name = 'set_disp_coeff0_eps_y'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0EpsZ'
+py_name = 'set_disp_coeff0_eps_z'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1Eps'
+py_name = 'set_disp_coeff1_eps'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1EpsX'
+py_name = 'set_disp_coeff1_eps_x'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1EpsY'
+py_name = 'set_disp_coeff1_eps_y'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1EpsZ'
+py_name = 'set_disp_coeff1_eps_z'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2Eps'
+py_name = 'set_disp_coeff2_eps'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2EpsX'
+py_name = 'set_disp_coeff2_eps_x'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2EpsY'
+py_name = 'set_disp_coeff2_eps_y'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2EpsZ'
+py_name = 'set_disp_coeff2_eps_z'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3Eps'
+py_name = 'set_disp_coeff3_eps'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3EpsX'
+py_name = 'set_disp_coeff3_eps_x'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3EpsY'
+py_name = 'set_disp_coeff3_eps_y'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3EpsZ'
+py_name = 'set_disp_coeff3_eps_z'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4Eps'
+py_name = 'set_disp_coeff4_eps'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4EpsX'
+py_name = 'set_disp_coeff4_eps_x'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4EpsY'
+py_name = 'set_disp_coeff4_eps_y'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4EpsZ'
+py_name = 'set_disp_coeff4_eps_z'
+cache = true
+args = [{ name = 'eps', type = 'float' }]
+
+[[methods]]
+name = 'AddDispEpsPole1stOrder'
+py_name = 'add_disp_eps_pole_1st_order'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole1stOrderX'
+py_name = 'add_disp_eps_pole_1st_order_x'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole1stOrderY'
+py_name = 'add_disp_eps_pole_1st_order_y'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole1stOrderZ'
+py_name = 'add_disp_eps_pole_1st_order_z'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole2ndOrder'
+py_name = 'add_disp_eps_pole_2nd_order'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole2ndOrderX'
+py_name = 'add_disp_eps_pole_2nd_order_x'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole2ndOrderY'
+py_name = 'add_disp_eps_pole_2nd_order_y'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispEpsPole2ndOrderZ'
+py_name = 'add_disp_eps_pole_2nd_order_z'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole1stOrder'
+py_name = 'add_disp_mu_pole_1st_order'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole1stOrderX'
+py_name = 'add_disp_mu_pole_1st_order_x'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole1stOrderY'
+py_name = 'add_disp_mu_pole_1st_order_y'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole1stOrderZ'
+py_name = 'add_disp_mu_pole_1st_order_z'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'beta0', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole2ndOrder'
+py_name = 'add_disp_mu_pole_2nd_order'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole2ndOrderX'
+py_name = 'add_disp_mu_pole_2nd_order_x'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole2ndOrderY'
+py_name = 'add_disp_mu_pole_2nd_order_y'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispMuPole2ndOrderZ'
+py_name = 'add_disp_mu_pole_2nd_order_z'
+cache = true
+args = [
+    { name = 'alpha0', type = 'float' },
+    { name = 'alpha1', type = 'float' },
+    { name = 'beta0', type = 'float' },
+    { name = 'beta1', type = 'float' },
+]
+
+[[methods]]
+name = 'MuInfinity'
+py_name = 'set_mu_infinity'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuInfinityX'
+py_name = 'set_mu_infinity_x'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuInfinityY'
+py_name = 'set_mu_infinity_y'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'MuInfinityZ'
+py_name = 'set_mu_infinity_z'
+cache = true
+args = [
+    { name = 'mu', type = 'float' },
+]
+
+[[methods]]
+name = 'DispCoeff0Mu'
+py_name = 'set_disp_coeff0_mu'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0MuX'
+py_name = 'set_disp_coeff0_mu_x'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0MuY'
+py_name = 'set_disp_coeff0_mu_y'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff0MuZ'
+py_name = 'set_disp_coeff0_mu_z'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1Mu'
+py_name = 'set_disp_coeff1_mu'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1MuX'
+py_name = 'set_disp_coeff1_mu_x'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1MuY'
+py_name = 'set_disp_coeff1_mu_y'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff1MuZ'
+py_name = 'set_disp_coeff1_mu_z'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2Mu'
+py_name = 'set_disp_coeff2_mu'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2MuX'
+py_name = 'set_disp_coeff2_mu_x'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2MuY'
+py_name = 'set_disp_coeff2_mu_y'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff2MuZ'
+py_name = 'set_disp_coeff2_mu_z'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3Mu'
+py_name = 'set_disp_coeff3_mu'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3MuX'
+py_name = 'set_disp_coeff3_mu_x'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3MuY'
+py_name = 'set_disp_coeff3_mu_y'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff3MuZ'
+py_name = 'set_disp_coeff3_mu_z'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4Mu'
+py_name = 'set_disp_coeff4_mu'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4MuX'
+py_name = 'set_disp_coeff4_mu_x'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4MuY'
+py_name = 'set_disp_coeff4_mu_y'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'DispCoeff4MuZ'
+py_name = 'set_disp_coeff4_mu_z'
+cache = true
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'UseSISystem'
+py_name = 'set_use_si_unit_system'
+cache = true
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'GyroMuFreq'
+py_name = 'set_gyro_mu_frequency'
+cache = true
+args = [{ name = 'frequency', type = 'float' }]
+
+[[methods]]
+name = 'SetMagnetostaticDepSourceField'
+cache = true
+args = [{ name = 'source_field', type = 'str' }]
+
+[[methods]]
+name = 'DispersiveFittingFormatEps'
+py_name = 'set_dispersive_fitting_format_eps'
+cache = true
+args = [
+    { name = 'format', type = 'DispersiveFittingFormat' },
+]
+
+[[methods]]
+name = 'DispersiveFittingFormatMu'
+py_name = 'set_dispersive_fitting_format_mu'
+cache = true
+args = [
+    { name = 'format', type = 'DispersiveFittingFormat' },
+]
+
+[[methods]]
+name = 'AddDispersionFittingValueEps'
+cache = true
+args = [
+    { name = 'd_freq', type = 'float' },
+    { name = 'd_val', type = 'complex' },
+    { name = 'd_weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispersionFittingValueMu'
+cache = true
+args = [
+    { name = 'd_freq', type = 'float' },
+    { name = 'd_val', type = 'complex' },
+    { name = 'd_weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispersionFittingValueXYZEps'
+cache = true
+args = [
+    { name = 'd_freq', type = 'float' },
+    { name = 'd_val', type = 'complex', dimension = 3 },
+    { name = 'd_weight', type = 'float' },
+]
+
+[[methods]]
+name = 'AddDispersionFittingValueXYZMu'
+cache = true
+args = [
+    { name = 'd_freq', type = 'float' },
+    { name = 'd_val', type = 'complex', dimension = 3 },
+    { name = 'd_weight', type = 'float' },
+]
+
+[[methods]]
+name = 'DispersiveFittingSchemeEps'
+py_name = 'set_dispersive_fitting_scheme_eps'
+cache = true
+args = [
+    { name = 'scheme', type = 'DispersiveFittingScheme' },
+]
+
+[[methods]]
+name = 'DispersiveFittingSchemeMu'
+py_name = 'set_dispersive_fitting_scheme_mu'
+cache = true
+args = [
+    { name = 'scheme', type = 'DispersiveFittingScheme' },
+]
+
+[[methods]]
+name = 'MaximalOrderNthModelFitEps'
+py_name = 'set_max_order_nth_model_fit_eps'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+name = 'MaximalOrderNthModelFitMu'
+py_name = 'set_max_order_nth_model_fit_mu'
+cache = true
+args = [
+    { name = 'order', type = 'int' },
+]
+
+[[methods]]
+# not documented, found in the history list
+name = 'ErrorLimitNthModelFitEps'
+py_name = 'set_error_limit_nth_model_fit_esp'
+cache = true
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+# not documented, found in the history list
+name = 'ErrorLimitNthModelFitMu'
+py_name = 'set_error_limit_nth_model_fit_mu'
+cache = true
+args = [
+    { name = 'limit', type = 'float' },
+]
+
+[[methods]]
+name = 'UseOnlyDataInSimFreqRangeNthModelEps'
+py_name = 'set_use_only_data_in_sim_freq_range_nth_model_eps'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseOnlyDataInSimFreqRangeNthModelMu'
+py_name = 'set_use_only_data_in_sim_freq_range_nth_model_mu'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseGeneralDispersionEps'
+py_name = 'set_use_general_dispersion_eps'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseGeneralDispersionMu'
+py_name = 'set_use_general_dispersion_mu'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TensorFormulaFor'
+py_name = 'set_tensor_formula_for'
+cache = true
+args = [
+    { name = 'key', type = 'TensorFormulaFor' },
+]
+
+[[methods]]
+name = 'TensorFormulaReal'
+py_name = 'set_tensor_formula_real'
+cache = true
+args = [
+    { name = 'row', type = 'int' },
+    { name = 'column', type = 'int' },
+    { name = 'formula', type = 'str' },
+]
+
+[[methods]]
+name = 'TensorFormulaImag'
+py_name = 'set_tensor_formula_imag'
+cache = true
+args = [
+    { name = 'row', type = 'int' },
+    { name = 'column', type = 'int' },
+    { name = 'formula', type = 'str' },
+]
+
+[[methods]]
+name = 'TensorAlignment'
+py_name = 'set_tensor_alignment'
+cache = true
+args = [
+    { name = 'w', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'TensorAlignment2'
+py_name = 'set_tensor_alignment2'
+cache = true
+args = [
+    { name = 'u', type = 'float', dimension = 3 },
+    { name = 'v', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'ResetSpatiallyVaryingMaterialParameter'
+cache = true
+args = [
+    { name = 'prop', type = 'SpatiallyVarMatProp' },
+]
+
+[[methods]]
+name = 'SpatiallyVaryingMaterialModel'
+py_name = 'set_spatially_varying_material_model'
+cache = true
+args = [
+    { name = 'prop', type = 'SpatiallyVarMatProp' },
+    { name = 'model', type = 'SpatiallyVarMatModel' },
+]
+
+[[methods]]
+name = 'SpatiallyVaryingMaterialModelAniso'
+py_name = 'set_spatially_varying_material_model_aniso'
+cache = true
+args = [
+    { name = 'prop', type = 'SpatiallyVarMatProp' },
+    { name = 'direction', type = 'Direction' },
+    { name = 'model', type = 'SpatiallyVarMatModel' },
+]
+
+[[methods]]
+name = 'AddSpatiallyVaryingMaterialParameter'
+cache = true
+args = [
+    { name = 'prop', type = 'SpatiallyVarMatProp' },
+    { name = 'param', type = 'SpatiallyVarMatParam' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AddSpatiallyVaryingMaterialParameterAniso'
+cache = true
+args = [
+    { name = 'prop', type = 'SpatiallyVarMatProp' },
+    { name = 'direction', type = 'Direction' },
+    { name = 'param', type = 'SpatiallyVarMatParam' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetSpaceMapBasedMaterial'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+]
+
+[[methods]]
+name = 'SpaceMapBasedOperator'
+py_name = 'set_space_map_based_operator'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'model', type = 'SpaceMapMatModel' },
+]
+
+[[methods]]
+name = 'SpaceMapBasedOperatorAniso'
+py_name = 'set_space_map_based_operator_aniso'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'direction', type = 'Direction' },
+    { name = 'model', type = 'SpaceMapMatModel' },
+]
+
+[[methods]]
+name = 'AddSpaceMapBasedMaterialStringParameter'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'param', type = 'SpaceMapMatParam' },
+    { name = 'value', type = 'str' },
+]
+
+[[methods]]
+name = 'AddSpaceMapBasedMaterialDoubleParameter'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'param', type = 'SpaceMapMatParam' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AddSpaceMapBasedMaterialStringParameterAniso'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'direction', type = 'Direction' },
+    { name = 'param', type = 'SpaceMapMatParam' },
+    { name = 'value', type = 'str' },
+]
+
+[[methods]]
+name = 'AddSpaceMapBasedMaterialDoubleParameterAniso'
+cache = true
+args = [
+    { name = 'prop', type = 'SpaceMapMatProp' },
+    { name = 'direction', type = 'Direction' },
+    { name = 'param', type = 'SpaceMapMatParam' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ConvertMaterialField'
+cache = true
+args = [
+    { name = 'file_path_in', type = 'str' },
+    { name = 'file_path_out', type = 'str' },
+]
+
+[[methods]]
+name = 'ResetTabMuDifferential'
+cache = true
+
+[[methods]]
+name = 'AddTabMuDifferential'
+cache = true
+args = [
+    { name = 'h_field', type = 'float' },
+    { name = 'mu_diff', type = 'float' },
+]
+
+[[methods]]
+name = 'GeneralizedDebyeNonLinDependency'
+py_name = 'set_generalized_debye_non_lin_dependency'
+cache = true
+args = [
+    { name = 'dependency', type = 'GeneralizedDebyeNonLinDep' },
+]
+
+[[methods]]
+name = 'SetMagnetostaticDepSourceField'
+cache = true
+args = [
+    { name = 'source_field', type = 'str' },
+]
+
+[[methods]]
+name = 'SetCoatingTypeDefinition'
+cache = true
+args = [
+    { name = 'prop', type = 'CoatingTypeDef' },
+]
+
+[[methods]]
+name = 'AddTabulatedSurfaceImpedance'
+py_name = 'add_tabulated_surface_impedance_deg'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 'angle', type = 'float' },
+    { name = 'z_te', type = 'complex' },
+    { name = 'z_tm', type = 'complex' },
+]
+
+[[methods]]
+name = 'AddTabulatedReflectionFactor'
+py_name = 'add_tabulated_reflection_factor_deg'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 'angle', type = 'float' },
+    { name = 'r_te', type = 'complex' },
+    { name = 'r_tm', type = 'complex' },
+]
+
+[[methods]]
+name = 'AddTabulatedReflectionTransmissionFactor'
+py_name = 'add_tabulated_reflection_transmission_factor_deg'
+cache = true
+args = [
+    { name = 'frequency', type = 'float' },
+    { name = 'angle', type = 'float' },
+    { name = 'r_te', type = 'complex' },
+    { name = 'r_tm', type = 'complex' },
+    { name = 't_te', type = 'complex' },
+    { name = 't_tm', type = 'complex' },
+]
+
+[[methods]]
+name = 'AddTemperatureDepEps'
+cache = true
+args = [
+    { name = 'd_temperature', type = 'float' },
+    { name = 'd_value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetTemperatureDepEps'
+cache = true
+
+[[methods]]
+name = 'AddTemperatureDepMu'
+cache = true
+args = [
+    { name = 'd_temperature', type = 'float' },
+    { name = 'd_value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetTemperatureDepMu'
+cache = true
+
+[[methods]]
+name = 'AddTemperatureDepSigma'
+cache = true
+args = [
+    { name = 'd_temperature', type = 'float' },
+    { name = 'd_value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetTemperatureDepSigma'
+cache = true
+
+[[methods]]
+name = 'SetTemperatureDepSourceField'
+cache = true
+args = [
+    { name = 'field_name', type = 'str' },
+]
+
+[[methods]]
+name = 'AddHBValue'
+cache = true
+args = [
+    { name = 'h_value', type = 'float' },
+    { name = 'b_value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetHBList'
+cache = true
+
+[[methods]]
+name = 'NLAnisotropy'
+py_name = 'set_use_nl_anisotropy'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NLAStackingFactor'
+py_name = 'set_nla_stacking_factor'
+cache = true
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'NLADirectionX'
+py_name = 'set_nla_direction_x'
+cache = true
+args = [
+    { name = 'dir', type = 'float' },
+]
+
+[[methods]]
+name = 'NLADirectionY'
+py_name = 'set_nla_direction_y'
+cache = true
+args = [
+    { name = 'dir', type = 'float' },
+]
+
+[[methods]]
+name = 'NLADirectionZ'
+py_name = 'set_nla_direction_z'
+cache = true
+args = [
+    { name = 'dir', type = 'float' },
+]
+
+[[methods]]
+name = 'ParticleProperty'
+py_name = 'set_particle_property'
+cache = true
+args = [
+    { name = 'prop', type = 'ParticleProp' },
+]
+
+[[methods]]
+name = 'SeModel'
+py_name = 'set_se_model'
+cache = true
+args = [
+    { name = 'model', type = 'SeModel' },
+]
+
+[[methods]]
+name = 'SeMaxGenerations'
+py_name = 'set_se_max_number_of_generations'
+cache = true
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SeMaxSecondaries'
+py_name = 'set_se_max_number_of_secondaries'
+cache = true
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SeTsParam_T1'
+py_name = 'set_se_ts_param_t1'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_T2'
+py_name = 'set_se_ts_param_t2'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_T3'
+py_name = 'set_se_ts_param_t3'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_T4'
+py_name = 'set_se_ts_param_t4'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_SEY'
+py_name = 'set_se_ts_param_sey'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_Energy'
+py_name = 'set_se_ts_param_energy'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_S'
+py_name = 'set_se_ts_param_s'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_PN'
+py_name = 'set_se_ts_param_pn'
+cache = true
+args = [
+    { name = 'n', type = 'int' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeTsParam_EpsN'
+py_name = 'set_se_ts_param_epsn'
+cache = true
+args = [
+    { name = 'n', type = 'int' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_R'
+py_name = 'set_se_rd_param_r'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_R1'
+py_name = 'set_se_rd_param_r1'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_R2'
+py_name = 'set_se_rd_param_r2'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_Q'
+py_name = 'set_se_rd_param_q'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_P1Inf'
+py_name = 'set_se_rd_param_p1_inf'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeRdParam_Energy'
+py_name = 'set_se_rd_param_energy'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_Sigma'
+py_name = 'set_se_bs_param_sigma'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_E1'
+py_name = 'set_se_bs_param_e1'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_E2'
+py_name = 'set_se_bs_param_e2'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_P1Hat'
+py_name = 'set_se_bs_param_p1_hat'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_P1Inf'
+py_name = 'set_se_bs_param_p1_inf'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_Energy'
+py_name = 'set_se_bs_param_energy'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_P'
+py_name = 'set_se_bs_param_p'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SeBsParam_W'
+py_name = 'set_se_bs_param_w'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SePlot1D'
+py_name = 'enable_se_plot_1d_deg'
+cache = true
+args = [
+    { name = 'angle', type = 'float' },
+    { name = 'energy', type = 'float' },
+]
+vba_call_args = ['True', 'angle', 'energy']
+
+[[methods]]
+name = 'SePlot1D'
+py_name = 'disable_se_plot_1d_deg'
+cache = true
+vba_call_args = ['False', '0', '0']
+
+[[methods]]
+name = 'SeVaughan'
+py_name = 'setup_se_vaughan'
+cache = true
+args = [
+    { name = 'energy_max', type = 'float' },
+    { name = 'se_yield_max', type = 'float' },
+    { name = 'energy_threshold', type = 'float' },
+    { name = 'smoothness', type = 'float' },
+    { name = 'temperature', type = 'float' },
+]
+
+[[methods]]
+name = 'SeImportSettings'
+py_name = 'set_se_import_settings'
+cache = true
+args = [
+    { name = 'file_name', type = 'str' },
+    { name = 'temperature', type = 'float' },
+]
+
+[[methods]]
+name = 'SeImportData'
+py_name = 'set_se_import_data'
+cache = true
+args = [
+    { name = 'energy', type = 'float' },
+    { name = 'sey', type = 'float' },
+]
+
+[[methods]]
+name = 'IonSEEModel'
+py_name = 'set_ion_see_model'
+cache = true
+args = [
+    { name = 'model', type = 'IonSeeModel' },
+]
+
+[[methods]]
+name = 'IonSEEImportSettings'
+py_name = 'set_ion_see_import_settings'
+cache = true
+args = [
+    { name = 'file_name', type = 'str' },
+    { name = 'temperature', type = 'float' },
+]
+
+[[methods]]
+name = 'IonSEEImportData'
+py_name = 'set_ion_see_import_data'
+cache = true
+args = [
+    { name = 'energy', type = 'float' },
+    { name = 'sey', type = 'float' },
+]
+
+[[methods]]
+name = 'ParticleTransparencySettings'
+py_name = 'set_particle_transparency_settings'
+cache = true
+args = [
+    { name = 'type', type = 'ParticleTransparencySettings' },
+    { name = 'percent', type = 'float' },
+    { name = 'file_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ParticleTransparencyImportData'
+py_name = 'set_particle_transparency_import_data'
+cache = true
+args = [
+    { name = 'energy', type = 'float' },
+    { name = 'transparency', type = 'float' },
+]
+
+[[methods]]
+name = 'SetEnergyStepForSEYPlots'
+cache = true
+args = [
+    { name = 'step', type = 'float' },
+]
+
+[[methods]]
+name = 'SpecialDispParamForPIC'
+py_name = 'set_special_disp_param_for_pic'
+cache = true
+args = [
+    { name = 'esp_inf', type = 'float' },
+    { name = 'relax_freq', type = 'float' },
+    { name = 'reson_freq', type = 'float' },
+    { name = 'reson_width', type = 'float' },
+    { name = 'lorentz_weight', type = 'float' },
+]
+
+[[methods]]
+name = 'SpecialDispParamVisual'
+py_name = 'set_special_disp_param_visual'
+cache = true
+args = [
+    { name = 'max_freq', type = 'float' },
+    { name = 'prop_dist', type = 'float' },
+]
+
+[[methods]]
+name = 'ThermalType'
+py_name = 'set_thermal_type'
+cache = true
+args = [
+    { name = 'thermal_type', type = 'str' },
+]
+
+[[methods]]
+name = 'ThermalConductivity'
+py_name = 'set_thermal_conductivity'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ThermalConductivityX'
+py_name = 'set_thermal_conductivity_x'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ThermalConductivityY'
+py_name = 'set_thermal_conductivity_y'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ThermalConductivityZ'
+py_name = 'set_thermal_conductivity_z'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SpecificHeat'
+py_name = 'set_specific_heat'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+    { name = 'unit', type = 'SpecificHeatUnit' },
+]
+
+[[methods]]
+name = 'BloodFlow'
+py_name = 'set_blood_flow'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'MetabolicRate'
+py_name = 'set_metabolic_rate'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'VoxelConvection'
+py_name = 'set_voxel_convection'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'DynamicViscosity'
+py_name = 'set_dynamic_viscosity'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'Emissivity'
+py_name = 'set_emissivity'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetNLThermalCond'
+cache = true
+
+[[methods]]
+name = 'AddNLThermalCond'
+cache = true
+args = [
+    { name = 'temperature', type = 'float' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AddNLThermalCondAniso'
+cache = true
+args = [
+    { name = 'temperature', type = 'float' },
+    { name = 'value_x', type = 'float' },
+    { name = 'value_y', type = 'float' },
+    { name = 'value_z', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetNLHeatCap'
+cache = true
+
+[[methods]]
+name = 'AddNLSpecificHeat'
+cache = true
+args = [
+    { name = 'temperature', type = 'float' },
+    { name = 'value', type = 'float' },
+    { name = 'unit', type = 'str' },
+]
+
+[[methods]]
+name = 'ResetNLBloodFlow'
+py_name = 'reset_nl_blook_flow'
+cache = true
+
+[[methods]]
+name = 'SetNLBloodFlowMinTemperature'
+py_name = 'add_nl_blood_flow_min_temperature'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetNLBloodFlowBasalValue'
+py_name = 'add_nl_blood_flow_basal_value'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetNLBloodFlowLocalVasodilationParam'
+py_name = 'add_nl_blood_flow_local_vasodilation_param'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetNLBloodFlowMaxMultiplier'
+py_name = 'add_nl_blood_flow_max_multiplier'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AddNLDynamicViscosity'
+cache = true
+args = [
+    { name = 'temperature', type = 'float' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'MechanicsType'
+py_name = 'set_mechanics_type'
+cache = true
+args = [
+    { name = 'mechanics_type', type = 'MechanicsType' },
+]
+
+[[methods]]
+name = 'YoungsModulus'
+py_name = 'set_youngs_modulus'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'PoissonsRatio'
+py_name = 'set_poisson_ratio'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ThermalExpansionRate'
+py_name = 'set_thermal_expansion_rate'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetTempDepYoungsModulus'
+cache = true
+
+[[methods]]
+name = 'AddTempDepYoungsModulus'
+cache = true
+args = [
+    { name = 'temperature', type = 'float' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'IntrinsicCarrierDensity'
+py_name = 'set_intrinsic_carrier_density'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'LatticeScattering'
+py_name = 'set_lattice_scattering'
+cache = true
+args = [
+    { name = 'species', type = 'Species' },
+    { name = 'mobility', type = 'float' },
+    { name = 'exponent', type = 'float' },
+]
+
+[[methods]]
+name = 'EffectiveMassForConductivity'
+py_name = 'set_effective_mass_for_conductivity'
+cache = true
+args = [
+    { name = 'species', type = 'Species' },
+    { name = 'effective_mass', type = 'float' },
+]
+
+[[methods]]
+name = 'AugerRecombination'
+py_name = 'enable_auger_recombination'
+cache = true
+args = [
+    { name = 'gamma_electron', type = 'float' },
+    { name = 'gamma_hole', type = 'float' },
+]
+vba_call_args = ['True', 'gamma_electron', 'gamma_hole']
+
+[[methods]]
+name = 'AugerRecombination'
+py_name = 'disable_auger_recombination'
+cache = true
+vba_call_args = ['False', '0', '0']
+
+[[methods]]
+name = 'BandToBandRecombination'
+py_name = 'enable_band_to_band_recombination'
+cache = true
+args = [
+    { name = 'rate', type = 'float' },
+]
+vba_call_args = ['True', 'rate']
+
+[[methods]]
+name = 'BandToBandRecombination'
+py_name = 'disable_band_to_band_recombination'
+vba_call_args = ['False', '0']
+cache = true
+
+[[methods]]
+name = 'ImpactIonization'
+py_name = 'enable_impact_ionization'
+cache = true
+args = [
+    { name = 'electron_ionization_rate', type = 'float' },
+    { name = 'electron_exponent', type = 'float' },
+    { name = 'electron_critical_field', type = 'float' },
+    { name = 'hole_ionization_rate', type = 'float' },
+    { name = 'hole_exponent', type = 'float' },
+    { name = 'hole_critical_field', type = 'float' },
+]
+vba_call_args = ['True', 'electron_ionization_rate', 'electron_exponent', 'electron_critical_field', 'hole_ionization_rate', 'hole_exponent', 'hole_critical_field']
+
+[[methods]]
+name = 'ImpactIonization'
+py_name = 'disable_impact_ionization'
+vba_call_args = ['False', '0', '0', '0', '0', '0', '0']
+cache = true
+
+[[methods]]
+name = 'OpticallyInducedCarrierGeneration'
+py_name = 'enable_optically_induced_carrier_generation'
+cache = true
+args = [
+    { name = 'quantum_efficiency', type = 'float' },
+]
+vba_call_args = ['True', 'quantum_efficiency']
+
+[[methods]]
+name = 'OpticallyInducedCarrierGeneration'
+py_name = 'disable_optically_induced_carrier_generation'
+vba_call_args = ['False', '0']
+cache = true
+
+[[methods]]
+name = 'SRHRecombination'
+py_name = 'enable_srh_recombination'
+cache = true
+args = [
+    { name = 'trap_energy_level', type = 'float' },
+    { name = 'electron_lifetime', type = 'float' },
+    { name = 'electron_reference_density', type = 'float' },
+    { name = 'hole_lifetime', type = 'float' },
+    { name = 'hole_reference_density', type = 'float' },
+]
+vba_call_args = ['True', 'trap_energy_level', 'electron_lifetime', 'electron_reference_density', 'hole_lifetime', 'hole_reference_density']
+
+[[methods]]
+name = 'SRHRecombination'
+py_name = 'disable_srh_recombination'
+cache = true
+vba_call_args = ['False', '0', '0', '0', '0', '0']
+
+[[methods]]
+name = 'FlowResPressureLossTypeU'
+py_name = 'set_flow_res_pressure_loss_type_u'
+cache = true
+args = [
+    { name = 'value', type = 'FlowResPressureLossTypeUVW' },
+]
+
+[[methods]]
+name = 'FlowResPressureLossTypeV'
+py_name = 'set_flow_res_pressure_loss_type_v'
+cache = true
+args = [
+    { name = 'value', type = 'FlowResPressureLossTypeUVW' },
+]
+
+[[methods]]
+name = 'FlowResPressureLossTypeW'
+py_name = 'set_flow_res_pressure_loss_type_w'
+cache = true
+args = [
+    { name = 'value', type = 'FlowResPressureLossTypeUVW' },
+]
+
+[[methods]]
+name = 'FlowResLossCoefficientU'
+py_name = 'set_flow_res_loss_coefficient_u'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResLossCoefficientV'
+py_name = 'set_flow_res_loss_coefficient_v'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResLossCoefficientW'
+py_name = 'set_flow_res_loss_coefficient_w'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResPressureLossTypeSheet'
+py_name = 'set_flow_res_pressure_loss_type_sheet'
+cache = true
+args = [
+    { name = 'value', type = 'FlowResPressureLossTypeSheet' },
+]
+
+[[methods]]
+name = 'FlowResLossCoefficientSheet'
+py_name = 'set_flow_res_loss_coefficient_sheet'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResFreeAreaRatio'
+py_name = 'set_flow_res_free_area_ratio'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResShapeType'
+py_name = 'set_flow_res_shape_type'
+cache = true
+args = [
+    { name = 'value', type = 'FlowResShapeType' },
+]
+
+[[methods]]
+name = 'FlowResShapeSize'
+py_name = 'set_flow_res_shape_size'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResShapeUPitch'
+py_name = 'set_flow_res_shape_u_pitch'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'FlowResShapeVPitch'
+py_name = 'set_flow_res_shape_v_pitch'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'GetNumberOfMaterials'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNameOfMaterialFromIndex'
+return_type = 'str'
+
+[[methods]]
+name = 'IsBackgroundMaterial'
+return_type = 'bool'
+args = [
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'GetTypeOfBackgroundMaterial'
+return_type = 'Type'
+
+[[methods]]
+name = 'GetTypeOfMaterial'
+return_type = 'Type'
+args = [
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'GetColour'
+py_name = 'get_color_rgb'
+return_type = { __retval__ = 'Boolean', r = 'Double', g = 'Double', b = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'r', type = '__retval__' },
+    { name = 'g', type = '__retval__' },
+    { name = 'b', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Color
+    (r, g, b) *on success* | None
+"""
+
+[[methods]]
+name = 'GetEpsilon'
+return_type = { __retval__ = 'Boolean', eps_x = 'Double', eps_y = 'Double', eps_z = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'eps_x', type = '__retval__' },
+    { name = 'eps_y', type = '__retval__' },
+    { name = 'eps_z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Epsilon
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetMu'
+return_type = { __retval__ = 'Boolean', mu_x = 'Double', mu_y = 'Double', mu_z = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'mu_x', type = '__retval__' },
+    { name = 'mu_y', type = '__retval__' },
+    { name = 'mu_z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Mu
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetSigma'
+py_name = 'get_el_sigma'
+return_type = { __retval__ = 'Boolean', sigma_x = 'Double', sigma_y = 'Double', sigma_z = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'sigma_x', type = '__retval__' },
+    { name = 'sigma_y', type = '__retval__' },
+    { name = 'sigma_z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Sigma - electric
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetSigmaM'
+py_name = 'get_mag_sigma'
+return_type = { __retval__ = 'Boolean', sigma_x = 'Double', sigma_y = 'Double', sigma_z = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'sigma_x', type = '__retval__' },
+    { name = 'sigma_y', type = '__retval__' },
+    { name = 'sigma_z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Sigma - magnetic
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetCorrugation'
+return_type = { __retval__ = 'Boolean', depth = 'Double', gap_width = 'Double', tooth_width = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'depth', type = '__retval__' },
+    { name = 'gap_width', type = '__retval__' },
+    { name = 'tooth_width', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Corrugation
+    (depth, gap_width, tooth_width) *on success* | None
+"""
+
+[[methods]]
+name = 'GetOhmicSheetImpedance'
+return_type = { __retval__ = 'Boolean', re = 'Double', im = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 're', type = '__retval__' },
+    { name = 'im', type = '__retval__' },
+]
+python_return_type = 'Optional[complex]'
+map_return_value = 'None if not __retval__[0] else complex(__retval__[1], __retval__[2])'
+return_value_description = """
+Impedance
+    complex(re, im) *on success* | None
+"""
+
+[[methods]]
+name = 'GetRho'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Rho
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetDynamicViscosity'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Dynamic viscosity
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetEmissivity'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Emissivity
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetThermalConductivity'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+Thermal conductivity
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetSpecificHeat'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Specific heat
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetHeatCapacity'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Heat capacity
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetBloodFlow'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Blood flow
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetMetabolicRate'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Metabolic rate
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'GetVoxelConvection'
+return_type = { __retval__ = 'Boolean', value = 'Double' }
+args = [
+    { name = 'material_name', type = 'str' },
+    { name = 'value', type = '__retval__' },
+]
+python_return_type = 'Optional[float]'
+map_return_value = 'None if not __retval__[0] else __retval__[1]'
+return_value_description = """
+Voxel convection
+    value *on success* | None
+"""
+
+[[methods]]
+name = 'Exists'
+return_type = 'bool'
+args = [
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+#NOTE: not documented, found in the history list
+name = 'ChangeBackgroundMaterial'
+cache = true
+flush_cache = 'ChangeBackgroundMaterial (Material)'
+
+[[methods]]
+#NOTE: not documented, found in the history list
+name = 'UseEmissivity'
+py_name = 'set_use_emissivity'
+cache = true
+args = [
+    { name = 'flag', type = 'bool' },
+]

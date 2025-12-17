@@ -1,0 +1,114 @@
+object = 'ParameterSweep'
+
+[[enums]]
+name = 'SimulationType'
+values = [
+    'Transient',
+    { name = 'PORT_MODES_ONLY', value = 'Calculate port modes only'},
+    'Eigenmode',
+    'Frequency',
+    'TLM',
+    'Asymtotic',
+    'E-Static',
+    'Electroquasistatic',
+    'Transient Electroquasistatic',
+    'M-Static',
+    'Transient Magnetoquasistatic',
+    'J-Static',
+    'Low Frequency',
+    'Thermal',
+    'Transient Thermal',
+    'Structural Mechanics',
+    'PIC',
+    'Particle Tracking',
+]
+
+[[methods]]
+name = 'SetSimulationType'
+args = [{ name = 'sim_type', type = 'SimulationType' }]
+
+[[methods]]
+name = 'AddSequence'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteSequence'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'EnableSequence'
+py_name = 'set_sequence_enabled'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'DeleteAllSequences'
+
+[[methods]]
+name = 'RenameSequence'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'AddParameter_Samples'
+py_name = 'add_parameter_samples_lin'
+args = [
+    { name = 'seq_name', type = 'str' },
+    { name = 'param_name', type = 'str' },
+    { name = 'lower_bound', type = 'float' },
+    { name = 'upper_bound', type = 'float' },
+    { name = 'num_steps', type = 'int' },
+]
+vba_call_args = ['seq_name', 'param_name', 'lower_bound', 'upper_bound', 'num_steps', false]
+
+[[methods]]
+name = 'AddParameter_Samples'
+py_name = 'add_parameter_samples_log'
+args = [
+    { name = 'seq_name', type = 'str' },
+    { name = 'param_name', type = 'str' },
+    { name = 'lower_bound', type = 'float' },
+    { name = 'upper_bound', type = 'float' },
+    { name = 'num_steps', type = 'int' },
+]
+vba_call_args = ['seq_name', 'param_name', 'lower_bound', 'upper_bound', 'num_steps', true]
+
+[[methods]]
+name = 'AddParameter_Stepwidth'
+py_name = 'add_parameter_step_width'
+args = [
+    { name = 'seq_name', type = 'str' },
+    { name = 'param_name', type = 'str' },
+    { name = 'lower_bound', type = 'float' },
+    { name = 'upper_bound', type = 'float' },
+    { name = 'width', type = 'float' },
+]
+
+[[methods]]
+name = 'AddParameter_ArbitraryPoints'
+py_name = 'add_parameter_arbitrary_points'
+args = [
+    { name = 'seq_name', type = 'str' },
+    { name = 'param_name', type = 'str' },
+    { name = 'points', type = 'list[float]' },
+]
+vba_call_args = ['seq_name', 'param_name', "';'.join(str(p) for p in points)"]
+
+[[methods]]
+name = 'DeleteParameter'
+args = [
+    { name = 'seq_name', type = 'str' },
+    { name = 'param_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Start'
+
+[[methods]]
+name = 'UseDistributedComputing'
+py_name = 'set_use_distributed_computing'
+args = [{ name = 'flag', type = 'bool', default = true }]

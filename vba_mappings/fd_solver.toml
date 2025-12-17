@@ -1,0 +1,727 @@
+object = 'FDSolver'
+
+[[enums]]
+name = 'ObcTypeHex'
+values = ['Default', 'PML', 'FreespaceSIBC']
+
+[[enums]]
+name = 'ObcTypeTet'
+values = ['Default', 'PML', 'SIBC']
+
+[[enums]]
+name = 'ResetSampleIntervals'
+values = ['all', 'adaptation', 'single', 'inactive', 'infinite']
+
+[[enums]]
+name = 'SampleInterval'
+values = ['Automatic', 'Single', 'Equidistant', 'Logarithmic']
+
+[[enums]]
+name = 'InactiveSampleInterval'
+values = ['Automatic', 'Equidistant']
+
+[[enums]]
+name = 'FreqDistAdaptMode'
+values = ['Local', 'As_A_Whole', 'Distributed']
+
+[[enums]]
+name = 'SweepThresholdType'
+values = ['S-Parameters', 'Probes']
+
+[[enums]]
+name = 'Type'
+values = ['Auto', 'Iterative', 'Direct']
+
+[[enums]]
+name = 'MeshMethod'
+values = ['Hexahedral', 'Tetrahedral', 'Surface']
+
+[[enums]]
+name = 'SweepMethod'
+values = ['General purpose', 'Fast reduced order model', 'Discrete samples only']
+
+[[enums]]
+name = 'StimulationMode'
+values = ['All', 'All+Floquet', 'Plane Wave', 'List', 'CMA']
+
+[[enums]]
+name = 'ResultDataSamplingMode'
+values = ['Automatic', 'Frequency (linear)', 'Frequency (logarithmic)', 'Frequency (log-linear)']
+
+[[enums]]
+name = 'ExcitationPort'
+values = [
+    { name = 'Z_MIN', value = 'zmin'},
+    { name = 'Z_MAX', value = 'zmax'},
+]
+
+[[enums]]
+name = 'ExcitationMode'
+values = ['1', '1;3;4', 'TE(0,0)', 'TM(0,0)', 'LCP', 'RCP']
+
+[[enums]]
+name = 'OrderTet'
+values = ['First', 'Second', 'Third']
+
+[[enums]]
+name = 'OrderSrf'
+values = ['First', 'Second', 'Third']
+
+[[enums]]
+name = 'NetworkComputingStrategy'
+values = ['RunRemote', 'Samples']
+
+[[enums]]
+name = 'MlfmmAccuracy'
+values = ['VeryLowMem', 'LowMem', 'Default', 'HighAcc']
+
+[[enums]]
+name = 'RecordUnitCellScanFarfield'
+values = [ 'on', 'off', 'auto' ]
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'start'
+
+[[methods]]
+name = 'AcceleratedRestart'
+py_name = 'set_accelerated_restart'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AccuracyTet'
+py_name = 'set_accuracy_tet'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AccuracySrf'
+py_name = 'set_accuracy_srf'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AccuracyHex'
+py_name = 'set_accuracy_hex'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'AccuracyROM'
+py_name = 'set_accuracy_rom'
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'StoreAllResults'
+py_name = 'set_store_all_results'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'StoreSolutionCoefficients'
+py_name = 'set_store_solution_coefficients'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CreateLegacy1DSignals'
+py_name = 'set_create_legacy_1d_signals'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetOpenBCTypeHex'
+py_name = 'set_obc_type_hex'
+args = [
+    { name = 'obc_type', type = 'ObcTypeHex' },
+]
+
+[[methods]]
+name = 'SetOpenBCTypeTet'
+py_name = 'set_obc_type_tet'
+args = [
+    { name = 'obc_type', type = 'ObcTypeTet' },
+]
+
+[[methods]]
+name = 'AddMonitorSamples'
+py_name = 'set_add_monitor_samples'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'FrequencySamples'
+py_name = 'set_max_number_of_frequency_samples'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'MeshAdaptionHex'
+py_name = 'set_mesh_adaptation_hex'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MeshAdaptionTet'
+py_name = 'set_mesh_adaption_tet'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResetSampleIntervals'
+args = [
+    { name = 'key', type = 'ResetSampleIntervals' },
+]
+
+[[methods]]
+name = 'UseHelmholtzEquation'
+py_name = 'set_use_helmholtz_equation'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'AddSampleInterval'
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+    { name = 'num_samples', type = 'int' },
+    { name = 'key', type = 'SampleInterval' },
+    { name = 'adaptation', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'AddInactiveSampleInterval'
+args = [
+    { name = 'min', type = 'float' },
+    { name = 'max', type = 'float' },
+    { name = 'num_samples', type = 'int' },
+    { name = 'key', type = 'InactiveSampleInterval' },
+    { name = 'adaptation', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'MaxIterations'
+py_name = 'set_max_number_of_iterations'
+args = [
+    { name = 'count', type = 'int' },
+]
+
+[[methods]]
+name = 'LimitIterations'
+py_name = 'set_limit_iterations'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ModesOnly'
+py_name = 'set_modes_only'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetShieldAllPorts'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetPortMeshMatches3DMeshTet'
+py_name = 'set_port_mesh_matches_3d_mesh_tet'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetAllowROMPortModeSolver'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetAllowDiscretePortSolver'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetUseROMPortModeSolverTet'
+args = [
+    { name = 'general_purpose', type = 'bool' },
+    { name = 'fast_reduced_order_model', type = 'bool' },
+]
+
+[[methods]]
+name = 'EnableNativeSingleEnded'
+py_name = 'set_enable_native_single_ended'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseDeembeddedFields'
+py_name = 'set_use_deembedded_fields'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'FreqDistAdaptMode'
+py_name = 'set_freq_dist_adapt_mode'
+args = [
+    { name = 'mode', type = 'FreqDistAdaptMode' },
+]
+
+[[methods]]
+name = 'SetPreferLeanOutput'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetUseImpLineImpedanceAsReference'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetUseOrientPortWithMask'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ConsiderPortLossesTet'
+py_name = 'set_consider_port_losses_tet'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetStopSweepIfCriterionMet'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetSweepThreshold'
+args = [
+    { name = 'type', type = 'SweepThresholdType' },
+    { name = 'threshold', type = 'float' },
+]
+
+[[methods]]
+name = 'UseSweepThreshold'
+py_name = 'set_use_sweep_threshold'
+args = [
+    { name = 'type', type = 'SweepThresholdType' },
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+args = [
+    { name = 'solver_type', type = 'Type' },
+]
+
+[[methods]]
+name = 'StoreResultsInCache'
+py_name = 'set_store_results_in_cache'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetMethod'
+args = [
+    { name = 'mesh_method', type = 'MeshMethod' },
+    { name = 'sweep_method', type = 'SweepMethod' },
+]
+
+[[methods]]
+name = 'AutoNormImpedance'
+py_name = 'set_auto_norm_impedance'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NormingImpedance'
+py_name = 'set_norming_impedance'
+args = [
+    { name = 'impedance', type = 'float' },
+]
+
+[[methods]]
+name = 'Stimulation'
+py_name = 'set_stimulation'
+args = [
+    { name = 'port', type = 'str' },
+    { name = 'mode', type = 'StimulationMode' },
+]
+
+[[methods]]
+name = 'SweepErrorChecks'
+py_name = 'set_number_of_sweep_error_checks'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SweepMinimumSamples'
+py_name = 'set_minimum_number_of_sweep_samples'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SweepConsiderAll'
+py_name = 'set_sweep_consider_all'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SweepConsiderReset'
+py_name = 'reset_sweep_consider_list'
+
+[[methods]]
+name = 'SweepConsiderSPar'
+py_name = 'consider_sweep_s_param'
+args = [
+    { name = 'port_out', type = 'int' },
+    { name = 'mode_out', type = 'int' },
+    { name = 'mode_in', type = 'int' },
+]
+
+[[methods]]
+name = 'SetNumberOfResultDataSamples'
+py_name = 'set_minimum_number_of_result_data_samples'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetResultDataSamplingMode'
+py_name = 'set_result_data_sampling_mode'
+args = [
+    { name = 'mode', type = 'ResultDataSamplingMode' },
+]
+
+[[methods]]
+name = 'ExtrudeOpenBC'
+py_name = 'set_extrude_open_boundary_condition'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'TDCompatibleMaterials'
+py_name = 'set_td_compatible_materials'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CalcStatBField'
+py_name = 'set_calculate_static_b_field'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CalcPowerLoss'
+py_name = 'set_calculate_power_loss'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CalcPowerLossPerComponent'
+py_name = 'set_calculate_power_loss_per_component'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetUseGreenSandyFerriteModel'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetGreenSandyThresholdH'
+py_name = 'set_green_sandy_threshold_h_field'
+args = [
+    { name = 'threshold', type = 'float' },
+]
+
+[[methods]]
+name = 'ResetExcitationList'
+py_name = 'reset_excitation_list'
+
+[[methods]]
+name = 'AddToExcitationList'
+py_name = 'add_item_to_excitation_list'
+args = [
+    { name = 'port', type = 'ExcitationPort' },
+    { name = 'mode', type = 'ExcitationMode' },
+]
+
+[[methods]]
+name = 'UseParallelization'
+py_name = 'set_use_parallelization'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'MaxCPUs'
+py_name = 'set_max_number_of_cpu_threads'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'MaximumNumberOfCPUDevices'
+py_name = 'set_max_number_of_cpu_devices'
+args = [
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'SweepWeightEvanescent'
+py_name = 'set_sweep_weight_evanescent'
+args = [
+    { name = 'weight', type = 'float' },
+]
+
+[[methods]]
+name = 'LowFrequencyStabilization'
+py_name = 'set_low_frequency_stabilization'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'OrderTet'
+py_name = 'set_order_tet'
+args = [
+    { name = 'order', type = 'OrderTet' },
+]
+
+[[methods]]
+name = 'MixedOrderTet'
+py_name = 'set_mixed_order_tet'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'OrderSrf'
+py_name = 'set_order_srf'
+args = [
+    { name = 'order', type = 'OrderSrf' },
+]
+
+[[methods]]
+name = 'MixedOrderSrf'
+py_name = 'set_mixed_order_srf'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseDistributedComputing'
+py_name = 'set_use_distributed_computing'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'NetworkComputingStrategy'
+py_name = 'set_network_computing_strategy'
+args = [
+    { name = 'strategy', type = 'str' },
+]
+
+[[methods]]
+name = 'NetworkComputingJobCount'
+py_name = 'set_network_computing_job_count'
+args = [
+    { name = 'count', type = 'int' },
+]
+
+[[methods]]
+name = 'UseSensitivityAnalysis'
+py_name = 'set_use_sensitivity_analysis'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseDoublePrecision'
+py_name = 'set_use_double_precision'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'PreconditionerAccuracyIntEq'
+py_name = 'set_preconditioner_accuracy_int_eq'
+args = [
+    { name = 'tolerance', type = 'float' },
+]
+
+[[methods]]
+name = 'MinMLFMMBoxSize'
+py_name = 'set_min_mlfmm_box_size'
+args = [
+    { name = 'tolerance', type = 'float' },
+]
+
+[[methods]]
+name = 'MLFMMAccuracy'
+py_name = 'set_mlfmm_accuracy'
+args = [
+    { name = 'accuracy', type = 'MlfmmAccuracy' },
+]
+
+[[methods]]
+name = 'UseCFIEForCPECIntEq'
+py_name = 'set_use_cfie_for_cpec_int_eq'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseFastRCSSweepIntEq'
+py_name = 'set_use_fast_rcs_sweep_int_eq'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetMRCSSweepProperties'
+args = [
+    { name = 'phi_start', type = 'float' },
+    { name = 'phi_end', type = 'float' },
+    { name = 'num_phi_steps', type = 'int' },
+    { name = 'theta_start', type = 'float' },
+    { name = 'theta_end', type = 'float' },
+    { name = 'num_theta_steps', type = 'int' },
+    { name = 'e_inc_theta', type = 'float' },
+    { name = 'e_inc_phi', type = 'float' },
+]
+
+[[methods]]
+name = 'GetRCSSweepProperties'
+return_type = { "phi_start" = "Double", "phi_end" = "Double", "num_phi_steps" = "Integer", "theta_start" = "Double", "theta_end" = "Double", "num_theta_steps" = "Integer", "e_inc_theta" = "Double", "e_inc_phi" = "Double", "activation" = "Boolean" }
+args = [
+    { "name" = "phi_start", type = "__retval__" },
+    { "name" = "phi_end", type = "__retval__" },
+    { "name" = "num_phi_steps", type = "__retval__" },
+    { "name" = "theta_start", type = "__retval__" },
+    { "name" = "theta_end", type = "__retval__" },
+    { "name" = "num_theta_steps", type = "__retval__" },
+    { "name" = "e_inc_theta", type = "__retval__" },
+    { "name" = "e_inc_phi", type = "__retval__" },
+    { "name" = "activation", type = "__retval__" },
+]
+
+[[methods]]
+name = 'SetCalcBlockExcitationsInParallel'
+args = [
+    { name = 'enable', type = 'bool' },
+    { name = 'use_block', type = 'bool' },
+    { name = 'max_parallel', type = 'int' },
+]
+
+[[methods]]
+name = 'SetWrite3DFieldsForFarfieldCalc'
+py_name = 'set_write_3d_fields_for_farfield_calc'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetRecordUnitCellScanFarfield'
+args = [
+    { name = 'key', type = 'RecordUnitCellScanFarfield' }
+]
+
+[[methods]]
+name = 'SetConsiderUnitCellScanFarfieldSymmetry'
+args = [
+    { name = 'flag_theta', type = 'bool' },
+    { name = 'flag_phi', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetDisableResultTemplatesDuringUnitCellScanAngleSweep'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ExtractUnitCellScanFarfield'
+args = [
+    { name = 'frequencies', type = 'list[float]' },
+    { name = 'names', type = 'list[str]' },
+    { name = 'anchor', type = 'int' },
+]
+vba_call_args = [
+    "';'.join(str(f) for f in frequencies)",
+    "';'.join(str(s) for s in names)",
+    'anchor',
+]
+
+[[methods]]
+name = 'UpdateInterpolationSettings'
+args = [
+    { name = 'navigation_tree_path', type = 'str' },
+]
+
+[[methods]]
+name = 'ExportMORSolution'
+args = [
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'ForceRecalculateOldSamples'
+py_name = 'set_force_recalculate_old_samples'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetAllowFloatDirectSolver'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'SetAllowChangeSettingsForSchematic'
+args = [
+    { name = 'flag', type = 'bool' },
+]

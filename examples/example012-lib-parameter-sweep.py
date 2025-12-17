@@ -1,4 +1,4 @@
-from py4cst.CST import Interface, Parameters
+from py4cst.cst import Interface, Parameters
 from py4cst.parameter_sweep import ParameterSweep
 
 ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)

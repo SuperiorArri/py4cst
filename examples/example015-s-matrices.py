@@ -1,4 +1,4 @@
-from py4cst.CST import Interface, Results
+from py4cst.cst import Interface, Results
 from py4cst.results import SMatrices
 import matplotlib.pyplot as plt
 import numpy as np

@@ -1,0 +1,431 @@
+object = 'MeshSettings'
+
+[[enums]]
+name = 'MeshType'
+values = ['Hex', 'HexTLM', 'Tet', 'Unstr', 'All']
+
+[[methods]]
+name = 'SetMeshType'
+args = [
+  { name = 'mesh_type', type = 'MeshType' },
+]
+
+[[methods]]
+name = 'Set'
+py_name = 'set_version'
+args = [{ name = 'version', type = 'int' }]
+vba_call_args = ["'Version'", 'version']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_steps_per_wave_near'
+args = [{ name = 'steps', type = 'float' }]
+vba_call_args = ["'StepsPerWaveNear'", 'steps']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_steps_per_wave_far'
+args = [{ name = 'steps', type = 'float' }]
+vba_call_args = ["'StepsPerWaveFar'", 'steps']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_wavelength_refinement_same_as_near'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'WavelengthRefinementSameAsNear'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_steps_per_box_near'
+args = [{ name = 'steps', type = 'float' }]
+vba_call_args = ["'StepsPerBoxNear'", 'steps']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_steps_per_box_far'
+args = [{ name = 'steps', type = 'float' }]
+vba_call_args = ["'StepsPerBoxFar'", 'steps']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_max_step_near'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MaxStepNear'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_max_step_far'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MaxStepFar'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_model_box_descr_near'
+args = [{ name = 'descr', type = 'str' }]
+vba_call_args = ["'ModelBoxDescrNear'", 'descr']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_model_box_descr_far'
+args = [{ name = 'descr', type = 'str' }]
+vba_call_args = ["'ModelBoxDescrFar'", 'descr']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_max_step_absolute'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseMaxStepAbsolute'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_geometry_refinement_same_as_near'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'GeometryRefinementSameAsNear'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_ratio_limit_geometry'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseRatioLimitGeometry'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ratio_limit_geometry'
+args = [{ name = 'limit', type = 'float' }]
+vba_call_args = ["'RatioLimitGeometry'", 'limit']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_min_step_geometry_x'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MinStepGeometryX'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_min_step_geometry_y'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MinStepGeometryY'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_min_step_geometry_z'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MinStepGeometryZ'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_same_min_step_geometry'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseSameMinStepGeometryXYZ'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_plane_merge_version'
+args = [{ name = 'version', type = 'str' }]
+vba_call_args = ["'PlaneMergeVersion'", 'version']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_on'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'FaceRefinementOn'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_policy'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'FaceRefinementPolicy'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_ratio'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'FaceRefinementRatio'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_step'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'FaceRefinementStep'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_number_of_steps'
+args = [{ name = 'number', type = 'int' }]
+vba_call_args = ["'FaceRefinementNSteps'", 'number']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_face_refinement_number_of_buffer_lines'
+args = [{ name = 'number', type = 'int' }]
+vba_call_args = ["'FaceRefinementBufferLines'", 'number']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ellipse_refinement_on'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'EllipseRefinementOn'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ellipse_refinement_policy'
+args = [{ name = 'value', type = 'int' }]
+vba_call_args = ["'EllipseRefinementPolicy'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ellipse_refinement_ratio'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'EllipseRefinementRatio'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ellipse_refinement_step'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'EllipseRefinementStep'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ellipse_refinement_number_of_steps'
+args = [{ name = 'number', type = 'int' }]
+vba_call_args = ["'EllipseRefinementNSteps'", 'number']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_edge_refinement_on'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'EdgeRefinementOn'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_edge_refinement_policy'
+args = [{ name = 'value', type = 'int' }]
+vba_call_args = ["'EdgeRefinementPolicy'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_edge_refinement_ratio'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'EdgeRefinementRatio'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_edge_refinement_step'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'EdgeRefinementStep'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_edge_refinement_number_of_buffer_lines'
+args = [{ name = 'number', type = 'int' }]
+vba_call_args = ["'EdgeRefinementBufferLines'", 'number']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_refine_edge_material_global'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'RefineEdgeMaterialGlobal'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_refine_axial_edge_global'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'RefineAxialEdgeGlobal'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_number_of_buffer_lines_near'
+args = [{ name = 'number', type = 'int' }]
+vba_call_args = ["'BufferLinesNear'", 'number']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_dielectrics'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseDielectrics'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_equilibrate_on'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'EquilibrateOn'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_equilibrate'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'Equilibrate'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_ignore_thin_panel_material'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'IgnoreThinPanelMaterial'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_axial_edges'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToAxialEdges'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_planes'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToPlanes'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_spheres'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToSpheres'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_ellipses'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToEllipses'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_cylinders'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToCylinders'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_snap_to_cylinder_centers'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SnapToCylinderCenters'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_phase_error_near'
+args = [{ name = 'error', type = 'float' }]
+vba_call_args = ["'PhaseErrorNear'", 'error']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_phase_error_far'
+args = [{ name = 'error', type = 'float' }]
+vba_call_args = ["'PhaseErrorFar'", 'error']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_cells_per_wavelength_policy'
+args = [{ name = 'policy', type = 'str' }]
+vba_call_args = ["'CellsPerWavelengthPolicy'", 'policy']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_min_step'
+args = [{ name = 'step', type = 'float' }]
+vba_call_args = ["'MinStep'", 'step']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_method'
+args = [{ name = 'method', type = 'str' }]
+vba_call_args = ["'Method'", 'method']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_curvature_order'
+args = [{ name = 'order', type = 'int' }]
+vba_call_args = ["'CurvatureOrder'", 'order']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_curvature_order_policy'
+args = [{ name = 'policy', type = 'str' }]
+vba_call_args = ["'CurvatureOrderPolicy'", 'policy']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_curv_refinement_control'
+args = [{ name = 'value', type = 'str' }]
+vba_call_args = ["'CurvRefinementControl'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_normal_tolerance'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'NormalTolerance'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_srf_mesh_gradation'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'SrfMeshGradation'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_srf_mesh_optimization'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SrfMeshOptimization'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_materials'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseMaterials'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_move_mesh'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'MoveMesh'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_automatic_edge_refinement'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'AutomaticEdgeRefinement'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_aniso_curve_refinement'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseAnisoCurveRefinement'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_use_same_srf_and_vol_mesh_gradation'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'UseSameSrfAndVolMeshGradation'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_vol_mesh_gradation'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'VolMeshGradation'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_vol_mesh_optimization'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'VolMeshOptimization'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_small_feature_size'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'SmallFeatureSize'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_coincidence_tolerance'
+args = [{ name = 'value', type = 'float' }]
+vba_call_args = ["'CoincidenceTolerance'", 'value']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_self_intersection_check'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'SelfIntersectionCheck'", '1 if flag else 0']
+
+[[methods]]
+name = 'Set'
+py_name = 'set_optimize_for_planar_structures'
+args = [{ name = 'flag', type = 'bool' }]
+vba_call_args = ["'OptimizeForPlanarStructures'", '1 if flag else 0']

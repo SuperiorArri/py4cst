@@ -1,0 +1,188 @@
+object = 'Rotate'
+
+[[enums]]
+name = 'Mode'
+values = ['pointlist', 'picks']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'Mode'
+py_name = 'set_mode'
+cache = true
+args = [{ name = 'mode', type = 'Mode' }]
+
+[[methods]]
+name = 'StartAngle'
+py_name = 'set_start_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'Angle'
+py_name = 'set_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'Height'
+py_name = 'set_height'
+cache = true
+args = [{ name = 'height', type = 'float' }]
+
+[[methods]]
+name = 'Origin'
+py_name = 'set_origin'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Rvector'
+py_name = 'set_r_vector'
+cache = true
+args = [{ name = 'uvw', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Zvector'
+py_name = 'set_z_vector'
+cache = true
+args = [{ name = 'uvw', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Point'
+py_name = 'set_first_point'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'LineTo'
+py_name = 'add_line_to'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'RLine'
+py_name = 'add_line_relative'
+cache = true
+args = [{ name = 'uv', type = 'float', dimension = 2 }]
+
+[[methods]]
+name = 'RadiusRatio'
+py_name = 'set_radius_ratio'
+cache = true
+args = [{ name = 'ratio', type = 'float' }]
+
+[[methods]]
+name = 'ModifyAngle'
+cache = true
+flush_cache = 'ModifyAngle (Port)'
+
+[[methods]]
+name = 'NSteps'
+py_name = 'set_num_steps'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'SplitClosedEdges'
+py_name = 'set_split_closed_edges'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SegmentedProfile'
+py_name = 'set_segmented_profile'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DeleteBaseFaceSolid'
+py_name = 'set_delete_base_face_solid'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ClearPickedFace'
+py_name = 'set_clear_picked_face'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SimplifySolid'
+py_name = 'set_simplify_solid'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseAdvancedSegmentedRotation'
+py_name = 'set_use_advanced_segmented_rotation'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetSimplifyActive'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetSimplifyMinPointsArc'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'SetSimplifyMinPointsCircle'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'SetSimplifyAngle'
+py_name = 'set_simplify_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyAdjacentTol'
+py_name = 'set_simplify_adjacent_tol_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyRadiusTol'
+cache = true
+args = [{ name = 'deviation', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyAngleTang'
+py_name = 'set_simplify_angle_tang_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'SetSimplifyEdgeLength'
+cache = true
+args = [{ name = 'length', type = 'float' }]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Rotate'

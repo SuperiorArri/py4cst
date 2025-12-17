@@ -1,0 +1,55 @@
+object = 'Brick'
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'Xrange'
+py_name = 'set_x_range'
+cache = true
+args = [
+    { name = 'x_min', type = 'float' },
+    { name = 'x_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Yrange'
+py_name = 'set_y_range'
+cache = true
+args = [
+    { name = 'y_min', type = 'float' },
+    { name = 'y_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Zrange'
+py_name = 'set_z_range'
+cache = true
+args = [
+    { name = 'z_min', type = 'float' },
+    { name = 'z_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Brick'

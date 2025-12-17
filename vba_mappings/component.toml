@@ -1,0 +1,96 @@
+object = 'Component'
+
+[[methods]]
+name = 'New'
+py_name = 'create'
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Delete'
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteAllEmptyComponents'
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DoesExist'
+args = [{ name = 'component_name', type = 'str' }]
+return_type = 'bool'
+
+[[methods]]
+name = 'GetNextFreeName'
+return_type = 'str'
+
+[[methods]]
+name = 'HideComponent'
+py_name = 'hide'
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'ShowComponent'
+py_name = 'show'
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Hide'
+py_name = 'hide_selected'
+
+[[methods]]
+name = 'Show'
+py_name = 'show_selected'
+
+[[methods]]
+name = 'HideUnselected'
+
+[[methods]]
+name = 'ShowUnselected'
+
+[[methods]]
+name = 'HideAll'
+
+[[methods]]
+name = 'ShowAll'
+
+[[methods]]
+name = 'HideAllPorts'
+
+[[methods]]
+name = 'ShowAllPorts'
+
+[[methods]]
+name = 'HideAllFieldSources'
+
+[[methods]]
+name = 'ShowAllFieldSources'
+
+[[methods]]
+name = 'HideAllLumpedElements'
+
+[[methods]]
+name = 'ShowAllLumpedElements'
+
+[[methods]]
+name = 'HideAllWires'
+
+[[methods]]
+name = 'ShowAllWires'
+
+[[methods]]
+name = 'HideAllDielectric'
+
+[[methods]]
+name = 'ShowAllDielectric'
+
+[[methods]]
+name = 'HideAllMetals'
+
+[[methods]]
+name = 'ShowAllMetals'

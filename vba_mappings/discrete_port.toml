@@ -1,0 +1,233 @@
+object = 'DiscretePort'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[enums]]
+name = 'PortType'
+values = [
+    { name = 'S_PARAMETER', value = 'Sparameter' },
+    'Voltage',
+    'Current',
+]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create DiscretePort'
+
+[[methods]]
+name = 'Modify'
+cache = true
+flush_cache = 'Modify DiscretePort'
+
+[[methods]]
+name = 'PortNumber'
+py_name = 'set_number'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'Label'
+py_name = 'set_label'
+cache = true
+args = [{ name = 'label', type = 'str' }]
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+cache = true
+args = [{ name = 'port_type', type = 'PortType' }]
+
+[[methods]]
+name = 'Impedance'
+py_name = 'set_impedance'
+cache = true
+args = [{ name = 'impedance', type = 'float' }]
+
+[[methods]]
+name = 'Voltage'
+py_name = 'set_voltage'
+cache = true
+args = [{ name = 'voltage', type = 'float' }]
+
+[[methods]]
+name = 'VoltagePortImpedance'
+py_name = 'set_voltage_port_impedance'
+cache = true
+args = [{ name = 'impedance', type = 'float' }]
+
+[[methods]]
+name = 'Current'
+py_name = 'set_current'
+cache = true
+args = [{ name = 'current', type = 'float' }]
+
+[[methods]]
+name = 'CurrentPortAdmittance'
+py_name = 'set_current_port_admittance'
+cache = true
+args = [{ name = 'admittance', type = 'float' }]
+
+[[methods]]
+name = 'Radius'
+py_name = 'set_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_point1'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP1'
+py_name = 'set_pick_as_point1'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_point2'
+cache = true
+args = [
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+vba_call_args = [false, 'coords[0]', 'coords[1]', 'coords[2]']
+
+[[methods]]
+name = 'SetP2'
+py_name = 'set_pick_as_point2'
+cache = true
+vba_call_args = [true, 0, 0, 0]
+
+[[methods]]
+name = 'InvertDirection'
+py_name = 'set_invert_direction'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'LocalCoordinates'
+py_name = 'set_local_coordinates'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Monitor'
+py_name = 'set_monitor'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Wire'
+py_name = 'set_wire'
+cache = true
+args = [{ name = 'wire_name', type = 'str' }]
+
+[[methods]]
+name = 'Position'
+py_name = 'set_wire_end_to_end1'
+cache = true
+vba_call_args = ["'end1'"]
+
+[[methods]]
+name = 'Position'
+py_name = 'set_wire_end_to_end2'
+cache = true
+vba_call_args = ["'end2'"]
+
+[[methods]]
+name = 'LumpedElementName'
+py_name = 'set_lumped_element_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteLumpedElement'
+py_name = 'set_delete_lumped_element'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'GetElementDirIndex'
+return_type = { dir = 'Long', index = 'Long' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'dir', type = '__retval__' },
+    { name = 'index', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetElement2ndIndex'
+py_name = 'get_element_second_index'
+return_type = { index = 'Long' }
+python_return_type = "int"
+map_return_value = "__retval__[0]"
+return_value_description = "index"
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'index', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetLength'
+args = [{ name = 'port_number', type = 'int' }]
+return_type = 'float'
+
+[[methods]]
+name = 'GetGridLength'
+args = [{ name = 'port_number', type = 'int' }]
+return_type = 'float'
+
+[[methods]]
+name = 'GetCoordinates'
+return_type = { __retval__ = 'Boolean', x0 = 'Double', y0 = 'Double', z0 = 'Double', x1 = 'Double', y1 = 'Double', z1 = 'Double' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'x0', type = '__retval__' },
+    { name = 'y0', type = '__retval__' },
+    { name = 'z0', type = '__retval__' },
+    { name = 'x1', type = '__retval__' },
+    { name = 'y1', type = '__retval__' },
+    { name = 'z1', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x0, y0, z0, x1, y1, z1) *on success* | None
+"""
+
+[[methods]]
+name = 'GetProperties'
+return_type = { __retval__ = 'Boolean', type = 'PortType', impedance = 'Double', current = 'Double', voltage = 'Double', voltage_port_impedance = 'Double', radius = 'Double', monitor = 'Boolean' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'type', type = '__retval__' },
+    { name = 'impedance', type = '__retval__' },
+    { name = 'current', type = '__retval__' },
+    { name = 'voltage', type = '__retval__' },
+    { name = 'voltage_port_impedance', type = '__retval__' },
+    { name = 'radius', type = '__retval__' },
+    { name = 'monitor', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x0, y0, z0, x1, y1, z1) *on success* | None
+"""
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'port_number', type = 'int' },
+]

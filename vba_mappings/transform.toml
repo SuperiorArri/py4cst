@@ -1,0 +1,275 @@
+object = 'Transform'
+
+[[enums]]
+name = 'What'
+values = [
+    'Shape',
+    'Anchorpoint',
+    'Face',
+    'Meshshape',
+    'Probe',
+    'Voxeldata',
+    'mixed',
+    'FFS',
+    { name = 'HF_3D_MONITOR', value = 'HF3DMonitor' },
+    'Port',
+    { name = 'LUMPED_ELEMENT', value = 'Lumpedelement' },
+    { name = 'CURRENT_DISTRIBUTION', value = 'Currentdistribution' },
+    'Coil',
+    { name = 'CURRENT_MONITOR', value = 'currentmonitor' },
+    { name = 'CURRENT_WIRE', value = 'currentwire' },
+    { name = 'VOLTAGE_MONITOR', value = 'voltagemonitor' },
+    { name = 'VOLTAGE_WIRE', value = 'voltagewire' },
+]
+
+[[enums]]
+name = 'How'
+values = [
+    'Translate',
+    'Rotate',
+    'Scale',
+    'Mirror',
+    'Matrix',
+    'LocalToGlobal',
+    'GlobalToLocal',
+]
+
+[[enums]]
+name = 'Origin'
+values = ['ShapeCenter', 'CommonCenter', 'Free']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'AddName'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'TranslateCurve'
+cache = true
+flush_cache = 'Transform: TranslateCurve'
+
+[[methods]]
+name = 'ScaleCurve'
+cache = true
+flush_cache = 'Transform: ScaleCurve'
+
+[[methods]]
+name = 'RotateCurve'
+cache = true
+flush_cache = 'Transform: RotateCurve'
+
+[[methods]]
+name = 'MirrorCurve'
+cache = true
+flush_cache = 'Transform: MirrorCurve'
+
+[[methods]]
+name = 'TranslateWire'
+cache = true
+flush_cache = 'Transform: TranslateWire'
+
+[[methods]]
+name = 'ScaleWire'
+cache = true
+flush_cache = 'Transform: ScaleWire'
+
+[[methods]]
+name = 'RotateWire'
+cache = true
+flush_cache = 'Transform: RotateWire'
+
+[[methods]]
+name = 'MirrorWire'
+cache = true
+flush_cache = 'Transform: MirrorWire'
+
+[[methods]]
+name = 'TranslateCoil'
+cache = true
+flush_cache = 'Transform: TranslateCoil'
+
+[[methods]]
+name = 'ScaleCoil'
+cache = true
+flush_cache = 'Transform: ScaleCoil'
+
+[[methods]]
+name = 'RotateCoil'
+cache = true
+flush_cache = 'Transform: RotateCoil'
+
+[[methods]]
+name = 'MirrorCoil'
+cache = true
+flush_cache = 'Transform: MirrorCoil'
+
+[[methods]]
+name = 'Transform'
+cache = true
+args = [
+    { name = 'what', type = 'What' },
+    { name = 'how', type = 'How' },
+]
+flush_cache = 'Transform'
+
+[[methods]]
+name = 'UsePickedPoints'
+py_name = 'set_use_picked_points'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'InvertPickedPoints'
+py_name = 'set_invert_picked_points'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'MultipleObjects'
+py_name = 'set_multiple_objects'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'GroupObjects'
+py_name = 'set_group_objects'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Origin'
+py_name = 'set_origin'
+cache = true
+args = [{ name = 'key', type = 'Origin' }]
+
+[[methods]]
+name = 'Center'
+py_name = 'set_center'
+cache = true
+args = [{ name = 'uvw', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Vector'
+py_name = 'set_vector'
+cache = true
+args = [{ name = 'uvw', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'ScaleFactor'
+py_name = 'set_scale_factor'
+cache = true
+args = [{ name = 'uvw_factors', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Angle'
+py_name = 'set_angle'
+cache = true
+args = [{ name = 'uvw_angles', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'PlaneNormal'
+py_name = 'set_plane_normal'
+cache = true
+args = [{ name = 'uvw_normal', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Matrix'
+py_name = 'set_matrix'
+cache = true
+args = [
+    { name = 'c11', type = 'float' },
+    { name = 'c12', type = 'float' },
+    { name = 'c13', type = 'float' },
+    { name = 'c21', type = 'float' },
+    { name = 'c22', type = 'float' },
+    { name = 'c23', type = 'float' },
+    { name = 'c31', type = 'float' },
+    { name = 'c32', type = 'float' },
+    { name = 'c33', type = 'float' },
+]
+
+[[methods]]
+name = 'Repetitions'
+py_name = 'set_number_of_repetitions'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'MultipleSelection'
+py_name = 'set_multiple_selection'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Destination'
+py_name = 'set_destination'
+cache = true
+args = [{ name = 'destination', type = 'str' }]
+
+[[methods]]
+name = 'AutoDestination'
+py_name = 'set_auto_destination'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Touch'
+py_name = 'set_touch'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AddNameToActiveTouchSet'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'AddNameToPassiveTouchSet'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'TouchTolerance'
+py_name = 'set_touch_tolerance'
+cache = true
+args = [{ name = 'tolerance', type = 'float' }]
+
+[[methods]]
+name = 'TouchMaxIterations'
+py_name = 'set_touch_max_num_iterations'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'TouchHeuristic'
+py_name = 'set_touch_heuristic'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'TouchOffset'
+py_name = 'set_touch_offset'
+cache = true
+args = [{ name = 'offset', type = 'float' }]

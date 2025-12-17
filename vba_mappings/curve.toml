@@ -1,0 +1,88 @@
+object = 'Curve'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[enums]]
+name = 'IterationType'
+values = ['all', 'open', 'closed']
+
+[[methods]]
+name = 'NewCurve'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'DeleteCurve'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'RenameCurve'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteCurveItem'
+args = [
+    { name = 'curve_name', type = 'str' },
+    { name = 'item_name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameCurveItem'
+args = [
+    { name = 'curve_name', type = 'str' },
+    { name = 'old_item_name', type = 'str' },
+    { name = 'new_item_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteCurveItemSegment'
+args = [
+    { name = 'curve_name', type = 'str' },
+    { name = 'edge_id', type = 'int' },
+]
+
+[[methods]]
+name = 'MoveCurveItem'
+args = [
+    { name = 'item_name', type = 'str' },
+    { name = 'old_curve_name', type = 'str' },
+    { name = 'new_curve_name', type = 'str' },
+]
+
+[[methods]]
+name = 'StartCurveNameIteration'
+args = [{ name = 'it_type', type = 'IterationType' }]
+
+[[methods]]
+name = 'GetNextCurveName'
+return_type = 'str'
+
+[[methods]]
+name = 'GetPointCoordinates'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'item_name', type = 'str' },
+    { name = 'pid', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetNumberOfPoints'
+return_type = 'int'
+
+[[methods]]
+name = 'IsClosed'
+args = [{ name = 'item_name', type = 'str' }]
+return_type = 'bool'

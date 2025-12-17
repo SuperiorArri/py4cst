@@ -1,16 +1,18 @@
-from py4cst.CST import Interface, FarfieldPlot
+from py4cst.cst import Interface
+from py4cst.cst.wrappers import FarfieldPlot
 from py4cst.results import ASCIIFarfieldExporter
 from py4cst import farfield_utils
+import numpy as np
 
 ifc = Interface(start_mode=Interface.StartMode.ExistingOrNew)
 proj = ifc.get_active_project()
 ffexp = ASCIIFarfieldExporter()
 
-ffexp.set_plot_mode(FarfieldPlot.PLOT_MODE_EFIELD)
+ffexp.set_plot_mode(FarfieldPlot.PlotMode.EFIELD)
 
-farfield_name = 'ff [1]'
+farfield_name = 'farfield (f=f0) [1]'
 ffexp.prepare(proj, farfield_name)
-ff = ffexp.export_complex_theta_phi()
+ff = ffexp.get_complex_theta_phi()
 
 print(f'Num theta samples: {farfield_utils.get_num_theta_samples(ff)}')
 print(f'Theta step (degrees): {farfield_utils.get_theta_step_deg(ff)}')
@@ -26,10 +28,10 @@ print(f'Phi vector (radians): {farfield_utils.get_phi_vec_rad(ff)}')
 
 ip_total, ip_theta, ip_phi = farfield_utils.get_inner_product(ff, ff)
 print('Inner product:')
-print(f'- total: {ip_total}')
-print(f'- theta component: {ip_theta}')
-print(f'- phi component: {ip_phi}')
+print(f'- total: {ip_total}, abs: {np.abs(ip_total)}')
+print(f'- theta component: {ip_theta}, abs: {np.abs(ip_theta)}')
+print(f'- phi component: {ip_phi}, abs: {np.abs(ip_phi)}')
 
 e_theta = ff[:,:,0]
 ip_single_comp = farfield_utils.get_inner_product_single_comp(e_theta, e_theta)
-print(f'Inner product (theta component only): {ip_single_comp}')
+print(f'Inner product (theta component only): {ip_single_comp}, abs: {np.abs(ip_single_comp)}')

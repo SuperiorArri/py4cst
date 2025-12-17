@@ -1,0 +1,101 @@
+object = 'FarfieldSource'
+
+[[enums]]
+name = 'AlignmentType'
+values = [
+    'user',
+    { name = 'CURRENT_WCS', value = 'currentwcs' },
+    { name = 'SOURCE_FILE', value = 'sourcefile' },
+]
+
+[[enums]]
+name = 'MultipoleCalcMode'
+values = [
+    'automatic',
+    'user defined',
+    { name = 'AUTO_TRUNCATION', value = 'autotruncation' },
+]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Id'
+py_name = 'set_id'
+cache = true
+args = [{ name = 'id', type = 'int' }]
+
+[[methods]]
+name = 'SetPosition'
+py_name = 'set_position'
+cache = true
+args = [{ name = 'pos', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetPhi0XYZ'
+py_name = 'set_phi0_vec'
+cache = true
+args = [{ name = 'vec', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetTheta0XYZ'
+py_name = 'set_theta0_vec'
+cache = true
+args = [{ name = 'vec', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Import'
+py_name = 'import_from_file'
+cache = true
+args = [{ name = 'file_path', type = 'str' }]
+
+[[methods]]
+name = 'UseCopyOnly'
+py_name = 'set_use_copy_only'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'UseMultipoleFFS'
+py_name = 'set_use_multipole_ffs'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetAlignmentType'
+cache = true
+args = [{ name = 'alignment_type', type = 'AlignmentType' }]
+
+[[methods]]
+name = 'SetMultipoleDegree'
+py_name = 'set_multipole_degree'
+cache = true
+args = [{ name = 'degree', type = 'int' }]
+
+[[methods]]
+name = 'SetMultipoleCalcMode'
+py_name = 'set_multipole_calc_mode'
+cache = true
+args = [{ name = 'mode', type = 'MultipoleCalcMode' }]
+
+[[methods]]
+name = 'Store'
+cache = true
+flush_cache = 'Store FarfieldSource'
+
+[[methods]]
+name = 'Delete'
+
+[[methods]]
+name = 'DeleteAll'
+
+[[methods]]
+name = 'GetNextId'
+return_type = 'int'

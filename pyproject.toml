@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py4cst"
+version = "0.2.0"
+description = "Automation/Scripting library for CST Studio Suite"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+authors = [{ name = "Samuel Travnicek" }]
+license = { file = "LICENSE" }
+keywords = [
+    "CST Studio Suite", "Automation", "Electromagnetic Field", "Simulation"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+]
+dependencies = [
+    "numpy",
+    "parse",
+    "matplotlib",
+]
+
+[project.urls]
+Homepage = "https://github.com/Arri0/py4cst"
+Repository = "https://github.com/Arri0/py4cst"
+
+[project.optional-dependencies]
+dev = [
+    "pyyaml",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["py4cst*"]
+
+[tool.setuptools.package-data]
+py4cst = [
+    "py.typed",
+    "cst/wrappers/*.py",
+]

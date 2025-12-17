@@ -1,4 +1,4 @@
-from py4cst.CST import Interface
+from py4cst.cst import Interface
 from py4cst import material_library
 
 interface = Interface()

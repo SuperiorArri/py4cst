@@ -1,0 +1,229 @@
+object = 'MeshAdaption3D'
+
+[[enums]]
+name = 'Type'
+values = ['EStatic', 'MStatic', 'JStatic', 'LowFrequency', 'HighFrequencyHex', 'HighFrequencyTet', 'Time']
+
+[[enums]]
+name = 'Strategy'
+values = ['ExpertSystem', 'Energy']
+
+[[enums]]
+name = 'RefinementType'
+values = ['Automatic', 'Bisection']
+
+[[enums]]
+name = 'ErrorEstimatorType'
+values = ['Automatic']
+
+[[methods]]
+name = 'Errorlimit'
+py_name = 'set_error_limit'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AccuracyFactor'
+py_name = 'set_accuracy_factor'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetType'
+args = [{ name = 'value', type = 'Type' }]
+
+[[methods]]
+name = 'SetAdaptionStrategy'
+args = [{ name = 'value', type = 'Strategy' }]
+
+[[methods]]
+name = 'RefinementType'
+py_name = 'set_refinement_type'
+args = [{ name = 'value', type = 'RefinementType' }]
+
+[[methods]]
+name = 'ErrorEstimatorType'
+py_name = 'set_error_estimator_type'
+args = [{ name = 'value', type = 'ErrorEstimatorType' }]
+
+[[methods]]
+name = 'MinPasses'
+py_name = 'set_min_number_of_passes'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'MaxPasses'
+py_name = 'set_max_number_of_passes'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'CellIncreaseFactor'
+py_name = 'set_cell_increase_factor'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'WeightE'
+py_name = 'set_weight_e'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'WeightB'
+py_name = 'set_weight_b'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'RefineX'
+py_name = 'set_refine_x'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'RefineY'
+py_name = 'set_refine_y'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'RefineZ'
+py_name = 'set_refine_z'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'MaxDeltaS'
+py_name = 'set_max_delta_s'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ClearStopCriteria'
+
+[[methods]]
+name = 'AddSParameterStopCriterion'
+args = [
+    { name = 'auto_freq', type = 'bool' },
+    { name = 'f_min', type = 'float' },
+    { name = 'f_max', type = 'float' },
+    { name = 'max_delta', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'active', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'Add0DResultStopCriterion'
+py_name = 'add_0d_result_stop_criterion'
+args = [
+    { name = 'result_name', type = 'str' },
+    { name = 'max_delta', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'active', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'Add1DResultStopCriterion'
+py_name = 'set_cell_increase_factor'
+args = [
+    { name = 'result_name', type = 'str' },
+    { name = 'max_delta', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'active', type = 'bool', default = true },
+    { name = 'is_complex', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'AddStopCriterion'
+args = [
+    { name = 'group_name', type = 'str' },
+    { name = 'threshold', type = 'float' },
+    { name = 'num_checks', type = 'int' },
+    { name = 'active', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'RemoveAllUserDefinedStopCriteria'
+
+[[methods]]
+name = 'MeshIncrement'
+py_name = 'set_mesh_increment'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetFrequencyRange'
+args = [
+    { name = 'f_min', type = 'float' },
+    { name = 'f_max', type = 'float' },
+]
+vba_call_args = [false, 'f_min', 'f_max']
+
+[[methods]]
+name = 'SetFrequencyRange'
+py_name = 'set_frequency_range_auto'
+vba_call_args = [true, 0, 0]
+
+[[methods]]
+name = 'SkipPulses'
+py_name = 'set_skipped_pulses'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'NumberOfDeltaSChecks'
+py_name = 'set_number_of_delta_s_checks'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'NumberOfPropConstChecks'
+py_name = 'set_number_of_prop_const_checks'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'PropagationConstantAccuracy'
+py_name = 'set_propagation_constant_accuracy'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SubsequentChecksOnlyOnce'
+py_name = 'set_subsequent_checks_only_once'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'WavelengthBasedRefinement'
+py_name = 'set_wavelength_based_refinement'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'MinimumAcceptedCellGrowth'
+py_name = 'set_min_accepted_cell_growth'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'RefThetaFactor'
+py_name = 'set_ref_theta_factor'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetMinimumMeshCellGrowth'
+py_name = 'set_min_mesh_cell_growth'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetLinearGrowthLimitation'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'EnableLinearGrowthLimitation'
+py_name = 'set_linear_growth_limitation'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'SingularEdgeRefinement'
+py_name = 'set_singular_edge_refinement'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'SnapToGeometry'
+py_name = 'set_snap_to_geometry'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'EnableInnerSParameterAdaptation'
+py_name = 'set_inner_s_parameter_adaptation'
+args = [{ name = 'flag', type = 'bool' }]
+
+[[methods]]
+name = 'EnablePortPropagationConstantAdaptation'
+py_name = 'set_port_propagation_constant_adaptation'
+args = [{ name = 'flag', type = 'bool' }]

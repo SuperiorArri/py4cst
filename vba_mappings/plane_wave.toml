@@ -1,0 +1,111 @@
+object = 'PlaneWave'
+
+[[enums]]
+name = 'PolarizationType'
+values = ['Linear', 'Circular', 'Elliptical']
+
+[[enums]]
+name = 'CircularDirection'
+values = ['Left', 'Right']
+
+[[enums]]
+name = 'Direction'
+values = ['x', 'y', 'z']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Store'
+
+[[methods]]
+name = 'Delete'
+
+[[methods]]
+name = 'Normal'
+py_name = 'set_normal_vector'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'EVector'
+py_name = 'set_e_vector'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Polarization'
+py_name = 'set_polarization'
+args = [{ name = 'polarization_type', type = 'PolarizationType' }]
+
+[[methods]]
+name = 'ReferenceFrequency'
+py_name = 'set_reference_frequency'
+args = [{ name = 'frequency', type = 'float' }]
+
+[[methods]]
+name = 'PhaseDifference'
+py_name = 'set_phase_difference_deg'
+args = [{ name = 'angle', type = 'float' }]
+
+[[methods]]
+name = 'CircularDirection'
+py_name = 'set_circular_direction'
+args = [{ name = 'direction', type = 'CircularDirection' }]
+
+[[methods]]
+name = 'AxialRatio'
+py_name = 'set_axial_ratio'
+args = [{ name = 'ratio', type = 'float' }]
+
+[[methods]]
+name = 'SetUserDecouplingPlane'
+py_name = 'set_use_custom_decoupling_plane'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DecouplingPlane'
+py_name = 'set_custom_decoupling_plane'
+args = [
+    { name = 'direction', type = 'Direction' },
+    { name = 'position', type = 'float' },
+]
+
+[[methods]]
+name = 'GetNormal'
+py_name = 'get_normal_vector'
+return_type = { x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetEVector'
+py_name = 'get_e_vector'
+return_type = { x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetPolarizationType'
+return_type = 'PolarizationType'
+
+[[methods]]
+name = 'GetCircularDirection'
+return_type = 'CircularDirection'
+
+[[methods]]
+name = 'GetReferenceFrequency'
+return_type = 'float'
+
+[[methods]]
+name = 'GetPhaseDifference'
+py_name = 'get_phase_difference_deg'
+return_type = 'float'
+
+[[methods]]
+name = 'GetAxialRatio'
+return_type = 'float'

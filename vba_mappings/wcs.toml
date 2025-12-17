@@ -1,0 +1,277 @@
+object = 'WCS'
+
+[[imports]]
+module = 'typing'
+attribute = 'Optional'
+
+[[enums]]
+name = 'Mode'
+values = ['global', 'local']
+
+[[enums]]
+name = 'AlignMode'
+values = [
+    'Point',
+    { name = 'THREE_POINTS', value = '3Points' },
+    'Edge',
+    'EdgeCenter',
+    'RotationEdge',
+    'Face',
+    'EdgeAndFace',
+]
+
+[[enums]]
+name = 'Axis'
+values = ['u', 'v', 'w']
+
+[[methods]]
+name = 'ActivateWCS'
+py_name = 'set_mode'
+args = [{ name = 'mode', type = 'Mode' }]
+
+[[methods]]
+name = 'Store'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Restore'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'SetNormal'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetOrigin'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'SetUVector'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'AlignWCSWithSelected'
+args = [{ name = 'mode', type = 'AlignMode' }]
+
+[[methods]]
+name = 'RotateWCS'
+py_name = 'rotate_wcs_deg'
+args = [
+    { name = 'axis', type = 'Axis' },
+    { name = 'angle_deg', type = 'float' },
+]
+
+[[methods]]
+name = 'MoveWCS'
+args = [
+    { name = 'mode', type = 'Mode' },
+    { name = 'delta', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'AlignWCSWithGlobalCoordinates'
+
+[[methods]]
+name = 'SetWorkplaneSize'
+args = [
+    { name = 'size', type = 'float' },
+]
+
+[[methods]]
+name = 'SetWorkplaneRaster'
+args = [
+    { name = 'raster_size', type = 'float' },
+]
+
+[[methods]]
+name = 'SetWorkplaneSnap'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetWorkplaneAutoadjust'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetWorkplaneSnapAutoadjust'
+args = [
+    { name = 'flag', type = 'bool', default = true },
+]
+
+[[methods]]
+name = 'SetWorkplaneAutosnapFactor'
+args = [
+    { name = 'factor', type = 'float' },
+]
+
+[[methods]]
+name = 'SetWorkplaneSnapRaster'
+args = [
+    { name = 'raster_size', type = 'float' },
+]
+
+[[methods]]
+name = 'IsWCSActive'
+py_name = 'get_mode'
+return_type = 'Mode'
+
+[[methods]]
+name = 'DoesExist'
+return_type = 'bool'
+args = [
+    { name = 'wcs_name', type = 'str' },
+]
+
+[[methods]]
+name = 'GetOrigin'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetNormal'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetUVector'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x, y, z) *on success* | None
+"""
+
+[[methods]]
+name = 'GetAffineMatrixUVW2XYZ'
+py_name = 'get_affine_matrix_uvw_to_xyz'
+return_type = { __retval__ = 'Boolean', ux = 'Double', uy = 'Double', uz = 'Double', vx = 'Double', vy = 'Double', vz = 'Double', wx = 'Double', wy = 'Double', wz = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'ux', type = '__retval__' },
+    { name = 'uy', type = '__retval__' },
+    { name = 'uz', type = '__retval__' },
+    { name = 'vx', type = '__retval__' },
+    { name = 'vy', type = '__retval__' },
+    { name = 'vz', type = '__retval__' },
+    { name = 'wx', type = '__retval__' },
+    { name = 'wy', type = '__retval__' },
+    { name = 'wz', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (ux, uy, uz, vx, vy, vz, wx, wy, wz) *on success* | None
+"""
+
+[[methods]]
+name = 'GetAffineMatrixXYZ2UVW'
+py_name = 'get_affine_matrix_xyz_to_uvw'
+return_type = { __retval__ = 'Boolean', ux = 'Double', uy = 'Double', uz = 'Double', vx = 'Double', vy = 'Double', vz = 'Double', wx = 'Double', wy = 'Double', wz = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'ux', type = '__retval__' },
+    { name = 'uy', type = '__retval__' },
+    { name = 'uz', type = '__retval__' },
+    { name = 'vx', type = '__retval__' },
+    { name = 'vy', type = '__retval__' },
+    { name = 'vz', type = '__retval__' },
+    { name = 'wx', type = '__retval__' },
+    { name = 'wy', type = '__retval__' },
+    { name = 'wz', type = '__retval__' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (ux, uy, uz, vx, vy, vz, wx, wy, wz) *on success* | None
+"""
+
+[[methods]]
+name = 'GetWCSPointFromGlobal'
+py_name = 'get_wcs_point_from_global'
+return_type = { __retval__ = 'Boolean', u = 'Double', v = 'Double', w = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'u', type = '__retval__' },
+    { name = 'v', type = '__retval__' },
+    { name = 'w', type = '__retval__' },
+    { name = 'x', type = 'float' },
+    { name = 'y', type = 'float' },
+    { name = 'z', type = 'float' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (u, v, w) *on success* | None
+"""
+
+[[methods]]
+name = 'GetGlobalPointFromWCS'
+py_name = 'get_global_point_from_wcs'
+return_type = { __retval__ = 'Boolean', x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'wcs_name', type = 'str' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+    { name = 'u', type = 'float' },
+    { name = 'v', type = 'float' },
+    { name = 'w', type = 'float' },
+]
+python_return_type = 'Optional[Tuple]'
+map_return_value = 'None if not __retval__[0] else tuple(__retval__[1:])'
+return_value_description = """
+coordinates
+    (x, y, z) *on success* | None
+"""

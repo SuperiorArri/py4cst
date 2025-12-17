@@ -1,0 +1,74 @@
+object = 'Sphere'
+
+[[enums]]
+name = 'Axis'
+values = ['x', 'y', 'z']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Sphere'
+
+[[methods]]
+name = 'Axis'
+py_name = 'set_axis'
+cache = true
+args = [{ name = 'axis', type = 'Axis' }]
+
+[[methods]]
+name = 'CenterRadius'
+py_name = 'set_center_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'TopRadius'
+py_name = 'set_top_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'BottomRadius'
+py_name = 'set_bottom_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'Center'
+py_name = 'set_center'
+cache = true
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_num_segments'
+cache = true
+args = [{ name = 'num_segments', type = 'int' }]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_smooth_geometry'
+cache = true
+vba_call_args = [0]

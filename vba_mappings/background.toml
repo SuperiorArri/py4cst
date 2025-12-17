@@ -1,0 +1,77 @@
+object = 'Background'
+
+[[enums]]
+name = 'MaterialType'
+values = ['normal', 'pec']
+
+[[enums]]
+name = 'ThermalType'
+values = ['normal', 'ptc']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Type'
+py_name = 'set_type'
+args = [{ name = 'material_type', type = 'MaterialType' }]
+
+[[methods]]
+name = 'Epsilon'
+py_name = 'set_permitivity'
+args = [{ name = 'epsilon', type = 'float' }]
+
+[[methods]]
+name = 'Mu'
+py_name = 'set_permeability'
+args = [{ name = 'mu', type = 'float' }]
+
+[[methods]]
+name = 'ElConductivity'
+py_name = 'set_conductivity'
+args = [{ name = 'sigma', type = 'float' }]
+
+[[methods]]
+name = 'XminSpace'
+py_name = 'set_space_x_min'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'XmaxSpace'
+py_name = 'set_space_x_max'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'YminSpace'
+py_name = 'set_space_y_min'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'YmaxSpace'
+py_name = 'set_space_y_max'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ZminSpace'
+py_name = 'set_space_z_min'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ZmaxSpace'
+py_name = 'set_space_z_max'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ThermalType'
+py_name = 'set_thermal_type'
+args = [{ name = 'thermal_type', type = 'ThermalType' }]
+
+[[methods]]
+name = 'ThermalConductivity'
+py_name = 'set_thermal_conductivity'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ApplyInAllDirections'
+py_name = 'set_apply_in_all_directions'
+args = [{ name = 'flag', type = 'bool', default = true }]

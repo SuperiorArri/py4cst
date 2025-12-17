@@ -1,0 +1,92 @@
+object = 'Arc'
+
+[[enums]]
+name = 'Orientation'
+values = [ 'Clockwise', 'CounterClockwise' ]
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'arc_name', type = 'str' }]
+
+[[methods]]
+name = 'Curve'
+py_name = 'set_curve'
+cache = true
+args = [{ name = 'curve_name', type = 'str' }]
+
+[[methods]]
+name = 'Orientation'
+py_name = 'set_orientation'
+cache = true
+args = [{ name = 'orientation', type = 'Orientation' }]
+
+[[methods]]
+name = 'Xcenter'
+py_name = 'set_center_x'
+cache = true
+args = [{ name = 'x', type = 'float' }]
+
+[[methods]]
+name = 'Ycenter'
+py_name = 'set_center_y'
+cache = true
+args = [{ name = 'y', type = 'float' }]
+
+[[methods]]
+name = 'X1'
+py_name = 'set_start_point_x'
+cache = true
+args = [{ name = 'x', type = 'float' }]
+
+[[methods]]
+name = 'Y1'
+py_name = 'set_start_point_y'
+cache = true
+args = [{ name = 'y', type = 'float' }]
+
+[[methods]]
+name = 'X2'
+py_name = 'set_end_point_x'
+cache = true
+args = [{ name = 'x', type = 'float' }]
+
+[[methods]]
+name = 'Y2'
+py_name = 'set_end_point_y'
+cache = true
+args = [{ name = 'y', type = 'float' }]
+
+[[methods]]
+name = 'Angle'
+py_name = 'set_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'UseAngle'
+py_name = 'set_use_angle'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_number_of_segments'
+cache = true
+args = [{ name = 'num', type = 'int' }]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_infinite_number_of_segments'
+cache = true
+vba_call_args = [ 0 ]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Arc'

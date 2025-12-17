@@ -1,0 +1,86 @@
+object = 'MeshShapes'
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Delete'
+args = [
+    { name = 'mesh_shape_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_mesh_shape_name', type = 'str' },
+    { name = 'new_mesh_shape_name', type = 'str' },
+]
+
+[[methods]]
+name = 'NewFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteFolder'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'RenameFolder'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'ChangeMaterial'
+args = [
+    { name = 'mesh_shape_name', type = 'str' },
+    { name = 'material_name', type = 'str' },
+]
+
+[[methods]]
+name = 'AddName'
+cache = true
+args = [
+    { name = 'element_name', type = 'str' },
+]
+
+[[methods]]
+name = 'DeleteMultiple'
+cache = true
+flush_cache = 'DeleteMultipleMeshShapes'
+
+[[methods]]
+name = 'Tolerance'
+py_name = 'set_tolerance'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'ResolveIntersections'
+cache = true
+flush_cache = 'ResolveIntersections'
+
+[[methods]]
+name = 'MeshElementSize'
+cache = true
+args = [
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'CreateMeshShapesByFacetting'
+cache = true
+flush_cache = 'CreateMeshShapesByFacetting'
+
+[[methods]]
+name = 'CreateMeshShapesByRemeshing'
+cache = true
+flush_cache = 'CreateMeshShapesByRemeshing'

@@ -1,0 +1,72 @@
+object = 'Align'
+
+[[enums]]
+name = 'AlignWhat'
+values = ['Shape', 'Subproject', 'Part', 'Mixed']
+
+[[enums]]
+name = 'AlignHow'
+values = ['Faces', 'Rotate', 'RotateByDegree']
+
+[[enums]]
+name = 'PickWhat'
+values = ['SourcePlane', 'TargetPlane', 'ZeroAngle', 'FinalAngle']
+
+[[enums]]
+name = 'PickKind'
+values = ['Face', 'Edge', 'Point']
+
+[[enums]]
+name = 'NumericalValue'
+values = ['Angle']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'AddName'
+py_name = 'add_name'
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Align'
+args = [
+    { name = 'what', type = 'AlignWhat' },
+    { name = 'how', type = 'AlignHow' },
+]
+
+[[methods]]
+name = 'SetKindOfPickFor'
+args = [
+    { name = 'what', type = 'PickWhat' },
+    { name = 'kind', type = 'PickKind' },
+]
+
+[[methods]]
+name = 'SetNameToStep'
+args = [
+    { name = 'what', type = 'PickWhat' },
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'SetNumericalValue'
+args = [
+    { name = 'what', type = 'NumericalValue' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SetOppositeFaceOrientation'
+py_name = 'set_opposite_face_orientation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ClearSubProjectImportInfo'
+py_name = 'set_clear_subproject_import_info'
+args = [{ name = 'flag', type = 'bool', default = true }]

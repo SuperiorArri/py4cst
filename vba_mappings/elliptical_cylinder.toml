@@ -1,0 +1,113 @@
+object = 'ECylinder'
+
+[[enums]]
+name = 'Axis'
+values = ['x', 'y', 'z']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+cache = true
+args = [{ name = 'name', type = 'str' }]
+
+[[methods]]
+name = 'Component'
+py_name = 'set_component'
+cache = true
+args = [{ name = 'component_name', type = 'str' }]
+
+[[methods]]
+name = 'Material'
+py_name = 'set_material'
+cache = true
+args = [{ name = 'mat_name', type = 'str' }]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create ECylinder'
+
+[[methods]]
+name = 'Axis'
+py_name = 'set_axis'
+cache = true
+args = [{ name = 'axis', type = 'Axis' }]
+
+[[methods]]
+name = 'Xradius'
+py_name = 'set_x_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'Yradius'
+py_name = 'set_y_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'Zradius'
+py_name = 'set_z_radius'
+cache = true
+args = [{ name = 'radius', type = 'float' }]
+
+[[methods]]
+name = 'Xcenter'
+py_name = 'set_x_center'
+cache = true
+args = [{ name = 'center', type = 'float' }]
+
+[[methods]]
+name = 'Ycenter'
+py_name = 'set_y_center'
+cache = true
+args = [{ name = 'center', type = 'float' }]
+
+[[methods]]
+name = 'Zcenter'
+py_name = 'set_z_center'
+cache = true
+args = [{ name = 'center', type = 'float' }]
+
+[[methods]]
+name = 'Xrange'
+py_name = 'set_x_range'
+cache = true
+args = [
+    { name = 'x_min', type = 'float' },
+    { name = 'x_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Yrange'
+py_name = 'set_y_range'
+cache = true
+args = [
+    { name = 'y_min', type = 'float' },
+    { name = 'y_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Zrange'
+py_name = 'set_z_range'
+cache = true
+args = [
+    { name = 'z_min', type = 'float' },
+    { name = 'z_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_num_segments'
+cache = true
+args = [{ name = 'num_segments', type = 'int' }]
+
+[[methods]]
+name = 'Segments'
+py_name = 'set_smooth_geometry'
+cache = true
+vba_call_args = ["0"]

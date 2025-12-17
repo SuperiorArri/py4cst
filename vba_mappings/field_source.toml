@@ -1,0 +1,175 @@
+object = 'FieldSource'
+
+[[enums]]
+name = 'AlignmentType'
+values = [
+    'user',
+    { name = 'CURRENT_WCS', value = 'currentwcs' },
+    { name = 'SOURCE_FILE', value = 'sourcefile' },
+]
+
+[[enums]]
+name = 'MultipoleCalcMode'
+values = [
+    'automatic',
+    'user defined',
+    { name = 'AUTO_TRUNCATION', value = 'autotruncation' },
+]
+
+[[enums]]
+name = 'SourceName'
+values = [
+    'Temperature',
+    'Displacement',
+    'Force Density',
+    'Nodal Forces',
+    'Thermal Losses'
+]
+
+[[enums]]
+name = 'FieldMonitorName'
+values = ['Initial Solution', 'Stationary Solution']
+
+[[enums]]
+name = 'ImportSettingsKey'
+values = [
+    'FormatSource',
+    'FormatTarget',
+    'NastranFilename',
+    'TemperatureFilename',
+    'GeometryUnit',
+    'TemperatureUnit',
+    'WorkingDir'
+]
+
+[[enums]]
+name = 'ImportSettingFormatSource'
+values = ['Abaqus', 'Tet', 'Hex', 'CHT']
+
+[[methods]]
+name = 'Reset'
+py_name = 'reset'
+
+[[methods]]
+name = 'Name'
+py_name = 'set_name'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'FileName'
+py_name = 'set_file_name'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Delete'
+py_name = 'delete'
+args = [
+    { name = 'name', type = 'str' },
+]
+
+[[methods]]
+name = 'Id'
+py_name = 'set_id'
+args = [
+    { name = 'id', type = 'int' },
+]
+
+[[methods]]
+name = 'GetNextId'
+return_type = 'int'
+
+[[methods]]
+name = 'DeleteAll'
+
+[[methods]]
+name = 'Rename'
+args = [
+    { name = 'old_name', type = 'str' },
+    { name = 'new_name', type = 'str' },
+]
+
+[[methods]]
+name = 'Read'
+py_name = 'read_from_file'
+
+[[methods]]
+name = 'ProjectPath'
+py_name = 'set_project_path'
+args = [
+    { name = 'path', type = 'str' },
+]
+
+[[methods]]
+name = 'UseRelativePath'
+py_name = 'set_use_relative_path'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'ResultSubDirectory'
+py_name = 'set_result_subdir'
+args = [
+    { name = 'path', type = 'str' },
+]
+
+[[methods]]
+name = 'SourceName'
+py_name = 'set_source_name'
+args = [
+    { name = 'field_type', type = 'SourceName' },
+]
+
+[[methods]]
+name = 'FieldMonitorName'
+py_name = 'set_field_monitor_name'
+args = [
+    { name = 'name', type = 'FieldMonitorName' },
+]
+
+[[methods]]
+name = 'ImportSettings'
+py_name = 'set_import_setting'
+args = [
+    { name = 'key', type = 'ImportSettingsKey' },
+    { name = 'value', type = 'str' },
+]
+
+[[methods]]
+name = 'TimeValue'
+py_name = 'set_time_value'
+args = [
+    { name = 'time', type = 'float' },
+]
+
+[[methods]]
+name = 'UseLastTimeFrame'
+py_name = 'set_use_last_time_frame'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'UseCopyOnly'
+py_name = 'set_use_copy_only'
+args = [
+    { name = 'flag', type = 'bool' },
+]
+
+[[methods]]
+name = 'CreateFieldImport'
+
+[[methods]]
+name = 'CreateFieldImportFromAbaqus'
+args = [
+    { name = 'name', type = 'str' },
+    { name = 'dir', type = 'str' },
+    { name = 'nastran_file_name', type = 'str' },
+    { name = 'distribution_file_name', type = 'str' },
+    { name = 'geom_unit', type = 'str' },
+    { name = 'temp_unit', type = 'str' },
+]

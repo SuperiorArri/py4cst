@@ -1,0 +1,461 @@
+object = 'Port'
+
+[[enums]]
+name = 'Orientation'
+values = ['xmin', 'xmax', 'ymin', 'ymax', 'zmin', 'zmax']
+
+[[enums]]
+name = 'Coordinates'
+values = ['Free', 'Full', 'Picks']
+
+[[enums]]
+name = 'Potential'
+values = ['Positive', 'Negative']
+
+[[enums]]
+name = 'BoundaryPosition'
+values = ['Umin', 'Umax', 'Vmin', 'Vmax']
+
+[[enums]]
+name = 'Shield'
+values = ['none', 'PEC', 'PMC']
+
+[[enums]]
+name = 'ModeType'
+values = ['TE', 'TM', 'TEM', 'QTEM', 'UNDEF', 'DAMPED', 'PLANE WAVE', 'FLOQUET']
+
+[[enums]]
+name = 'FacePortType'
+values = [
+    { name = 'UNKNOWN', value = 0 },
+    { name = 'RECTANGULAR', value = 1 },
+    { name = 'CYLINDRICAL', value = 2 },
+    { name = 'COAXIAL', value = 3 },
+]
+
+[[enums]]
+name = 'PortType'
+values = ['Waveguide', 'Discrete']
+
+[[methods]]
+name = 'Reset'
+cache = true
+
+[[methods]]
+name = 'Delete'
+args = [{ name = 'port_number', type = 'int' }]
+
+[[methods]]
+name = 'Rename'
+py_name = 'change_number'
+args = [
+    { name = 'old_port_number', type = 'int' },
+    { name = 'new_port_number', type = 'int' },
+]
+
+[[methods]]
+name = 'RenameLabel'
+py_name = 'change_label'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'label', type = 'str' },
+]
+
+[[methods]]
+name = 'Create'
+cache = true
+flush_cache = 'Create Port'
+
+[[methods]]
+name = 'Modify'
+cache = true
+flush_cache = 'Modify Port'
+
+[[methods]]
+name = 'PortNumber'
+py_name = 'set_number'
+cache = true
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'Label'
+py_name = 'set_label'
+cache = true
+args = [{ name = 'label', type = 'str' }]
+
+[[methods]]
+name = 'Folder'
+py_name = 'set_folder_name'
+cache = true
+args = [{ name = 'folder_name', type = 'str' }]
+
+[[methods]]
+name = 'WaveguideMonitor'
+py_name = 'set_waveguide_monitor'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'NumberOfModes'
+py_name = 'set_number_of_modes'
+cache = true
+args = [{ name = 'count', type = 'int' }]
+
+[[methods]]
+name = 'Orientation'
+py_name = 'set_orientation'
+cache = true
+args = [{ name = 'orientation', type = 'Orientation' }]
+
+[[methods]]
+name = 'Coordinates'
+py_name = 'set_coordinates'
+cache = true
+args = [{ name = 'coordinates', type = 'Coordinates' }]
+
+[[methods]]
+name = 'Xrange'
+py_name = 'set_x_range'
+cache = true
+args = [
+    { name = 'x_min', type = 'float' },
+    { name = 'x_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Yrange'
+py_name = 'set_y_range'
+cache = true
+args = [
+    { name = 'y_min', type = 'float' },
+    { name = 'y_max', type = 'float' },
+]
+
+[[methods]]
+name = 'Zrange'
+py_name = 'set_z_range'
+cache = true
+args = [
+    { name = 'z_min', type = 'float' },
+    { name = 'z_max', type = 'float' },
+]
+
+[[methods]]
+name = 'XrangeAdd'
+py_name = 'add_x_range'
+cache = true
+args = [
+    { name = 'x_min', type = 'float' },
+    { name = 'x_max', type = 'float' },
+]
+
+[[methods]]
+name = 'YrangeAdd'
+py_name = 'add_y_range'
+cache = true
+args = [
+    { name = 'y_min', type = 'float' },
+    { name = 'y_max', type = 'float' },
+]
+
+[[methods]]
+name = 'ZrangeAdd'
+py_name = 'add_z_range'
+cache = true
+args = [
+    { name = 'z_min', type = 'float' },
+    { name = 'z_max', type = 'float' },
+]
+
+[[methods]]
+name = 'PortOnBound'
+py_name = 'set_on_boundaries'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ClipPickedPortToBound'
+py_name = 'set_clip_picked_port_to_boundaries'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'TextSize'
+py_name = 'set_text_size'
+cache = true
+args = [{ name = 'size', type = 'int' }]
+
+[[methods]]
+name = 'ChangeTextSize'
+cache = true
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'size', type = 'int' },
+]
+
+[[methods]]
+name = 'TextMaxLimit'
+py_name = 'set_text_max_limit'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ReferencePlaneDistance'
+py_name = 'set_reference_plane_distance'
+cache = true
+args = [{ name = 'distance', type = 'float' }]
+
+[[methods]]
+name = 'AddPotentialNumerically'
+cache = true
+args = [
+    { name = 'mode_set', type = 'int' },
+    { name = 'potential', type = 'Potential' },
+    { name = 'uv_pos', type = 'float', dimension = 2 },
+]
+
+[[methods]]
+name = 'AddPotentialPicked'
+cache = true
+args = [
+    { name = 'mode_set', type = 'int' },
+    { name = 'potential', type = 'Potential' },
+    { name = 'solid_name', type = 'str' },
+    { name = 'face_id', type = 'int' },
+]
+
+[[methods]]
+name = 'AddPotentialEdgePicked'
+cache = true
+args = [
+    { name = 'mode_set', type = 'int' },
+    { name = 'potential', type = 'Potential' },
+    { name = 'solid_name', type = 'str' },
+    { name = 'edge_id', type = 'int' },
+]
+
+[[methods]]
+name = 'AdjustPolarization'
+py_name = 'set_adjust_polarization'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'PolarizationAngle'
+py_name = 'set_polarization_angle_deg'
+cache = true
+args = [{ name = 'angle_deg', type = 'float' }]
+
+[[methods]]
+name = 'PortImpedanceAndCalibration'
+py_name = 'set_port_impedance_and_calibration_evaluation'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AddModeLineByPoint'
+cache = true
+args = [
+    { name = 'line_number', type = 'int' },
+    { name = 'start_coords', type = 'float', dimension = 3 },
+    { name = 'end_coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'AddModeLineByFace'
+cache = true
+args = [
+    { name = 'line_number', type = 'int' },
+    { name = 'start_coords', type = 'float', dimension = 3 },
+    { name = 'solid_name', type = 'str' },
+    { name = 'face_id', type = 'int' },
+    { name = 'reverse', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'AddModeLineByBoundary'
+cache = true
+args = [
+    { name = 'line_number', type = 'int' },
+    { name = 'start_coords', type = 'float', dimension = 3 },
+    { name = 'position', type = 'BoundaryPosition' },
+    { name = 'reverse', type = 'bool', default = false },
+]
+
+[[methods]]
+name = 'AddModeLine'
+cache = true
+args = [
+    { name = 'mode_number', type = 'int' },
+    { name = 'impedance_line_number', type = 'int' },
+    { name = 'calibration_line_number', type = 'int' },
+    { name = 'polarization_line_number', type = 'int' },
+]
+
+[[methods]]
+name = 'SetEstimation'
+cache = true
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'value', type = 'float' },
+]
+
+[[methods]]
+name = 'SingleEnded'
+py_name = 'set_single_ended'
+cache = true
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Shield'
+py_name = 'set_shield'
+cache = true
+args = [{ name = 'key', type = 'Shield' }]
+
+[[methods]]
+name = 'GetFrequency'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetFcutoff'
+py_name = 'get_cutoff_frequency'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetModeType'
+return_type = 'ModeType'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetBeta'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetAlpha'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetAccuracy'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetWaveImpedance'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetLineImpedance'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetLineImpedanceBroadByIndex'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+    { name = 'index', type = 'int' },
+]
+
+[[methods]]
+name = 'GetLineImpedanceBroadByFreq'
+py_name = 'get_line_impedance_broad_by_frequency'
+return_type = 'float'
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'mode_number', type = 'int' },
+    { name = 'frequency', type = 'float' },
+]
+
+[[methods]]
+name = 'GetType'
+return_type = 'PortType'
+args = [{ name = 'port_number', type = 'int' }]
+
+[[methods]]
+name = 'GetNumberOfModes'
+return_type = 'int'
+args = [{ name = 'port_number', type = 'int' }]
+
+[[methods]]
+name = 'GetPortMeshLocation'
+return_type = { orientation = 'Long', x_min = 'Long', x_max = 'Long', y_min = 'Long', y_max = 'Long', z_min = 'Long', z_max = 'Long' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'orientation', type = '__retval__' },
+    { name = 'x_min', type = '__retval__' },
+    { name = 'x_max', type = '__retval__' },
+    { name = 'y_min', type = '__retval__' },
+    { name = 'y_max', type = '__retval__' },
+    { name = 'z_min', type = '__retval__' },
+    { name = 'z_max', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetPortMeshCoordinates'
+return_type = { orientation = 'Long', x_min = 'Double', x_max = 'Double', y_min = 'Double', y_max = 'Double', z_min = 'Double', z_max = 'Double' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'orientation', type = '__retval__' },
+    { name = 'x_min', type = '__retval__' },
+    { name = 'x_max', type = '__retval__' },
+    { name = 'y_min', type = '__retval__' },
+    { name = 'y_max', type = '__retval__' },
+    { name = 'z_min', type = '__retval__' },
+    { name = 'z_max', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetPortCenterCoordinates'
+return_type = { x = 'Double', y = 'Double', z = 'Double' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'x', type = '__retval__' },
+    { name = 'y', type = '__retval__' },
+    { name = 'z', type = '__retval__' },
+]
+
+[[methods]]
+name = 'GetFacePortTypeAndSize'
+return_type = { face_port_type = 'Long', size1 = 'Double', size2 = 'Double' }
+args = [
+    { name = 'port_number', type = 'int' },
+    { name = 'face_port_type', type = '__retval__' },
+    { name = 'size1', type = '__retval__' },
+    { name = 'size2', type = '__retval__' },
+]
+
+
+[[methods]]
+name = 'GetLabel'
+return_type = 'str'
+args = [{ name = 'port_number', type = 'int' }]

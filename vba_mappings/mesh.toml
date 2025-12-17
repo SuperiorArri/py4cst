@@ -1,0 +1,550 @@
+object = 'Mesh'
+
+[[enums]]
+name = 'MeshType'
+values = ['PBA', 'Staircase', 'Tetrahedral', 'Surface', 'SurfaceML']
+
+[[enums]]
+name = 'PbaType'
+values = ['PBA', 'Fast PBA']
+
+[[enums]]
+name = 'ParallelMesherType'
+values = ['Hex', 'Tet']
+
+[[enums]]
+name = 'ParallelMesherMode'
+values = ['maximum', 'user-defined', 'none']
+
+[[enums]]
+name = 'AutomeshRefineDielectrics'
+values = ['None', 'Wave', 'Static']
+
+[[enums]]
+name = 'SurfaceMeshMethod'
+values = ['General', 'Fast']
+
+[[enums]]
+name = 'SurfaceToleranceType'
+values = ['Relative', 'Absolute']
+
+[[enums]]
+name = 'VolumeMeshMethod'
+values = ['Delaunay', 'Advancing Front']
+
+[[enums]]
+name = 'PickType'
+values = [
+    'Midpoint',
+    'Facecenter',
+    'Centerpoint',
+    'Endpoint',
+    'CircleEndpoint',
+    'Circlepoint'
+]
+
+[[enums]]
+name = 'SpatialVariation'
+values = ['none', 'spherical', 'curve']
+
+[[methods]]
+name = 'MeshType'
+py_name = 'set_mesh_type'
+args = [{ name = 'mesh_type', type = 'MeshType' }]
+
+[[methods]]
+name = 'SetCreator'
+args = [{ name = 'creator', type = 'str' }]
+
+[[methods]]
+name = 'ConnectivityCheck'
+py_name = 'set_connectivity_check'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetCADProcessingMethod'
+args = [
+    { name = 'method', type = 'str' },
+    { name = 'undocumented_param', type = 'int', default = -1 },
+]
+
+[[methods]]
+name = 'SetGPUForMatrixCalculationDisabled'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'TSTVersion'
+py_name = 'set_tst_version'
+args = [{ name = 'version', type = 'str' }]
+
+[[methods]]
+name = 'PBAVersion'
+py_name = 'set_pba_version'
+args = [{ name = 'version', type = 'str' }]
+
+[[methods]]
+name = 'PBAType'
+py_name = 'set_pba_type'
+args = [{ name = 'pba_type', type = 'PbaType' }]
+
+[[methods]]
+name = 'AutomaticPBAType'
+py_name = 'set_automatic_pba_type'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'LinesPerWavelength'
+py_name = 'set_number_of_lines_per_wavelength'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'MinimumStepNumber'
+py_name = 'set_min_number_of_steps'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'RatioLimit'
+py_name = 'set_ratio_limit'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'UseRatioLimit'
+py_name = 'set_use_ratio_limit'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SmallestMeshStep'
+py_name = 'set_smallest_mesh_step'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'StepsPerWavelengthTet'
+py_name = 'set_steps_per_wavelength_tet'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'StepsPerWavelengthSrf'
+py_name = 'set_steps_per_wavelength_srf'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'StepsPerWavelengthSrfML'
+py_name = 'set_steps_per_wavelength_srf_ml'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'MinimumStepNumberTet'
+py_name = 'set_minimum_step_number_tet'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'MinimumStepNumberSrf'
+py_name = 'set_minimum_step_number_srf'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'MinimumStepNumberSrfML'
+py_name = 'set_minimum_step_number_srf_ml'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'Automesh'
+py_name = 'set_automesh'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'MaterialRefinementTet'
+py_name = 'set_material_refinement_tet'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'EquilibrateMesh'
+py_name = 'set_equilibrate_mesh'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'EquilibrateMeshRatio'
+py_name = 'set_equilibrate_mesh_ratio'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'UseCellAspectRatio'
+py_name = 'set_use_cell_aspect_ratio'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'CellAspectRatio'
+py_name = 'set_cell_aspect_ratio'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'UsePecEdgeModel'
+py_name = 'set_use_pec_edge_model'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'PointAccEnhancement'
+py_name = 'set_point_acc_enhancement'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'FastPBAAccuracy'
+py_name = 'set_fast_pba_accuracy'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'FastPBAGapDetection'
+py_name = 'set_fast_pba_gap_detection'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'FPBAGapTolerance'
+py_name = 'set_fast_pba_gap_tolerance'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AreaFillLimit'
+py_name = 'set_area_fill_limit'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'ConvertGeometryDataAfterMeshing'
+py_name = 'set_convert_geometry_data_after_meshing'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'ConsiderSpaceForLowerMeshLimit'
+py_name = 'set_consider_space_for_lower_mesh_limit'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'RatioLimitGovernsLocalRefinement'
+py_name = 'set_ratio_limit_governs_local_refinement'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'Update'
+
+[[methods]]
+name = 'ForceUpdate'
+
+[[methods]]
+name = 'CalculateMatrices'
+
+[[methods]]
+name = 'ViewMeshMode'
+py_name = 'set_view_mesh_mode'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SmallFeatureSize'
+py_name = 'set_small_feature_size'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SetParallelMesherMode'
+args = [
+    { name = 'mesher_type', type = 'ParallelMesherType' },
+    { name = 'mesher_mode', type = 'ParallelMesherMode' },
+]
+
+[[methods]]
+name = 'SetMaxParallelMesherThreads'
+py_name = 'set_max_number_of_parallel_mesher_threads'
+args = [
+    { name = 'mesher_type', type = 'ParallelMesherType' },
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'AutomeshStraightLines'
+py_name = 'set_automesh_straight_lines'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutomeshEllipticalLines'
+py_name = 'set_automesh_elliptical_lines'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutomeshAtWireEndPoints'
+py_name = 'set_automesh_at_wire_end_points'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutomeshAtProbePoints'
+py_name = 'set_automesh_at_probe_points'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutoMeshLimitShapeFaces'
+py_name = 'set_automesh_limit_shape_faces'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutoMeshNumberOfShapeFaces'
+py_name = 'set_automesh_number_of_shape_faces'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'MergeThinPECLayerFixpoints'
+py_name = 'set_merge_thin_pec_layer_fixpoints'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutomeshFixpointsForBackground'
+py_name = 'set_automesh_fixpoints_for_background'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'AutomeshRefineAtPecLines'
+py_name = 'enable_automesh_refine_at_pec_lines'
+args = [{ name = 'factor', type = 'int' }]
+vba_call_args = [ true, 'factor' ]
+
+[[methods]]
+name = 'AutomeshRefineAtPecLines'
+py_name = 'disable_automesh_refine_at_pec_lines'
+vba_call_args = [ false, 0 ]
+
+[[methods]]
+name = 'AutomeshRefinePecAlongAxesOnly'
+py_name = 'set_automesh_refine_pec_along_axes_only'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetAutomeshRefineDielectricsType'
+args = [{ name = 'dielectrics_type', type = 'AutomeshRefineDielectrics' }]
+
+[[methods]]
+name = 'SurfaceMeshGeometryAccuracy'
+py_name = 'set_surface_mesh_geometry_accuracy'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SurfaceMeshMethod'
+py_name = 'set_surface_mesh_method'
+args = [{ name = 'method', type = 'SurfaceMeshMethod' }]
+
+[[methods]]
+name = 'SurfaceTolerance'
+py_name = 'set_surface_tolerance'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SurfaceToleranceType'
+py_name = 'set_surface_tolerance_type'
+args = [{ name = 'surface_tolerance_type', type = 'SurfaceToleranceType' }]
+
+[[methods]]
+name = 'NormalTolerance'
+py_name = 'set_normal_tolerance'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AnisotropicCurvatureRefinementFSM'
+py_name = 'set_anisotropic_curvature_refinement_fsm'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SurfaceMeshEnrichment'
+py_name = 'set_surface_mesh_enrichment'
+args = [{ name = 'level', type = 'int' }]
+
+[[methods]]
+name = 'SurfaceOptimization'
+py_name = 'set_surface_optimization'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SurfaceSmoothing'
+py_name = 'set_surface_smoothing'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'CurvatureRefinementFactor'
+py_name = 'set_curvature_refinement_factor'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'MinimumCurvatureRefinement'
+py_name = 'set_min_curvature_refinement'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'AnisotropicCurvatureRefinement'
+py_name = 'set_anisotropic_curvature_refinement'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'VolumeOptimization'
+py_name = 'set_volume_optimization'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'VolumeSmoothing'
+py_name = 'set_volume_smoothing'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'DensityTransitions'
+py_name = 'set_density_transitions'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'VolumeMeshMethod'
+py_name = 'set_volume_mesh_method'
+args = [{ name = 'method', type = 'VolumeMeshMethod' }]
+
+[[methods]]
+name = 'DelaunayOptimizationLevel'
+py_name = 'set_delaunay_optimization_level'
+args = [{ name = 'value', type = 'int' }]
+
+[[methods]]
+name = 'DelaunayPropagationFactor'
+py_name = 'set_delaunay_propagation_factor'
+args = [{ name = 'value', type = 'float' }]
+
+[[methods]]
+name = 'SnapToSurfaceMesh'
+py_name = 'snap_to_surface_mesh'
+args = [
+    { name = 'file_path_in', type = 'str' },
+    { name = 'file_path_out', type = 'str' },
+]
+
+[[methods]]
+name = 'SelfIntersectingCheck'
+py_name = 'set_self_intersecting_check'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'FindFixpointFromPosition'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+return_type = 'int'
+
+[[methods]]
+name = 'AddFixpoint'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'RelativeAddFixpoint'
+py_name = 'add_fixpoint_relative'
+args = [
+    { name = 'ref_fixpoint_id', type = 'int' },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'DeleteFixpoint'
+args = [{ name = 'fixpoint_id', type = 'int' }]
+
+[[methods]]
+name = 'AddIntermediateFixpoint'
+args = [
+    { name = 'id1', type = 'int' },
+    { name = 'id2', type = 'int' },
+    { name = 'number_of_points', type = 'int' },
+]
+
+[[methods]]
+name = 'AddAutomeshFixpoint'
+args = [
+    { name = 'use_xyz', type = 'bool', dimension = 3 },
+    { name = 'coords', type = 'float', dimension = 3 },
+]
+
+[[methods]]
+name = 'DeleteAutomeshFixpoint'
+args = [{ name = 'coords', type = 'float', dimension = 3 }]
+
+[[methods]]
+name = 'ModifyAutomeshFixpointFromId'
+args = [
+    { name = 'use_xyz', type = 'bool', dimension = 3 },
+    { name = 'fixpoint_id', type = 'int' },
+]
+
+[[methods]]
+name = 'AddAutomeshFixpointFromId'
+args = [
+    { name = 'use_xyz', type = 'bool', dimension = 3 },
+    { name = 'pick_type', type = 'PickType' },
+    { name = 'solid_name', type = 'str' },
+    { name = 'pick_id', type = 'int' },
+    { name = 'face_id', type = 'int' },
+    { name = 'number', type = 'int' },
+]
+
+[[methods]]
+name = 'DeleteAutomeshFixpointFromId'
+args = [{ name = 'fixpoint_id', type = 'int' }]
+
+[[methods]]
+name = 'ClearSpatialVariation'
+
+[[methods]]
+name = 'ClearSpatialVariationForShape'
+py_name = 'clear_spatial_variation_for_shape'
+args = [{ name = 'solid_name', type = 'str' }]
+
+[[methods]]
+name = 'SetSpatialVariationTypeForShape'
+py_name = 'set_spatial_variation_type_for_shape'
+args = [
+    { name = 'solid_name', type = 'str' },
+    { name = 'var_type', type = 'SpatialVariation' },
+]
+
+[[methods]]
+name = 'GetMeshType'
+return_type = 'str'
+
+[[methods]]
+name = 'IsFPBAUsed'
+py_name = 'is_fpba_used'
+return_type = 'bool'
+
+[[methods]]
+name = 'IsFastPBAGapDetection'
+py_name = 'is_fpba_gap_detection_active'
+return_type = 'bool'
+
+[[methods]]
+name = 'GetFPBAGapTolerance'
+return_type = 'float'
+
+[[methods]]
+name = 'GetAreaFillLimit'
+return_type = 'float'
+
+[[methods]]
+name = 'GetMinimumEdgeLength'
+py_name = 'get_min_edge_length'
+return_type = 'float'
+
+[[methods]]
+name = 'GetMaximumEdgeLength'
+py_name = 'get_max_edge_length'
+return_type = 'float'
+
+[[methods]]
+name = 'GetSurfaceMeshArea'
+return_type = 'float'
+
+[[methods]]
+name = 'GetNumberOfMeshCells'
+return_type = 'int'
+
+[[methods]]
+name = 'GetNumberOfMeshCellsMetrics'
+return_type = 'int'
+
+[[methods]]
+name = 'GetParallelMesherMode'
+return_type = 'str'
+
+[[methods]]
+name = 'GetMaxParallelMesherThreads'
+return_type = 'int'

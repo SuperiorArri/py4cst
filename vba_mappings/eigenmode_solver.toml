@@ -1,0 +1,196 @@
+object = 'EigenmodeSolver'
+
+[[enums]]
+name = 'MethodType'
+values = ['AKS', 'JDM', 'JDM (low memory)', 'Automatic', 'Classical (Lossless)', 'General (Lossy)']
+
+[[enums]]
+name = 'MethodMesh'
+values = ['Hex', 'Tet']
+
+[[enums]]
+name = 'MeshType'
+values = ['Hexahedral Mesh', 'Tetrahedral Mesh']
+
+[[methods]]
+name = 'Reset'
+
+[[methods]]
+name = 'Start'
+return_type = 'bool'
+
+[[methods]]
+name = 'SetMeshAdaptationHex'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetMeshAdaptationTet'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetNumberOfModes'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetModesInFrequencyRange'
+py_name = 'set_calculate_modes_in_frequency_range'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetConsiderStaticModes'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetRemoteCalculation'
+py_name = 'set_use_remote_calculation'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetMethodType'
+args = [
+    { name = 'method_type', type = 'MethodType' },
+    { name = 'mesh', type = 'MethodMesh' },
+]
+
+[[methods]]
+name = 'SetMeshType'
+args = [{ name = 'mesh_type', type = 'MeshType' }]
+
+[[methods]]
+name = 'SetMaterialEvaluationFrequency'
+args = [{ name = 'freq', type = 'float', optional = true, expansion_method = 'flag/value' }]
+
+[[methods]]
+name = 'SetFrequencyTarget'
+args = [{ name = 'freq', type = 'float', optional = true, expansion_method = 'flag/value' }]
+
+[[methods]]
+name = 'SetLowerBoundForQ'
+args = [{ name = 'q_min', type = 'float', optional = true, expansion_method = 'flag/value' }]
+
+[[methods]]
+name = 'SetMaxNumberOfThreads'
+args = [{ name = 'number', type = 'int' }]
+
+[[methods]]
+name = 'SetUseParallelization'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetConsiderLossesInPostprocessingOnly'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'GetConsiderLossesInPostprocessingOnly'
+return_type = 'bool'
+
+[[methods]]
+name = 'SetMinimumQ'
+args = [{ name = 'min_q', type = 'float' }]
+
+[[methods]]
+name = 'SetCalculateExternalQFactor'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetQExternalAccuracy'
+py_name = 'set_q_external_accuracy'
+args = [{ name = 'accuracy', type = 'float' }]
+
+[[methods]]
+name = 'SetOrderTet'
+args = [{ name = 'order', type = 'int' }]
+
+[[methods]]
+name = 'SetStoreResultsInCache'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetTDCompatibleMaterials'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetCalculateThermalLosses'
+args = [{ name = 'flag', type = 'bool', default = true }]
+
+[[methods]]
+name = 'SetAccuracy'
+args = [{ name = 'accuracy', type = 'float' }]
+
+[[methods]]
+name = 'GetNumberOfModesCalculated'
+return_type = 'int'
+
+[[methods]]
+name = 'GetModeFrequencyInHz'
+return_type = 'float'
+args = [{ name = 'mode_number', type = 'int' }]
+
+[[methods]]
+name = 'GetModeRelResidualNorm'
+return_type = 'float'
+args = [{ name = 'mode_number', type = 'int' }]
+
+[[methods]]
+name = 'GetModeQFactor'
+return_type = 'float'
+args = [{ name = 'mode_number', type = 'int' }]
+
+[[methods]]
+name = 'GetModeExternalQFactor'
+return_type = 'float'
+args = [{ name = 'mode_number', type = 'int' }]
+
+[[methods]]
+name = 'GetLoadedFrequencyInHz'
+return_type = 'float'
+args = [{ name = 'mode_number', type = 'int' }]
+
+[[methods]]
+name = 'GetNumberOfSensitivityDesignParameters'
+return_type = 'int'
+
+[[methods]]
+name = 'GetSensitivityDesignParameter'
+return_type = 'str'
+args = [{ name = 'index', type = 'int' }]
+vba_call_args = ['index+1']
+
+[[methods]]
+name = 'GetFrequencySensitivity'
+return_type = 'float'
+args = [
+    { name = 'param_name', type = 'str' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'GetQFactorSensitivity'
+return_type = 'float'
+args = [
+    { name = 'param_name', type = 'str' },
+    { name = 'mode_number', type = 'int' },
+]
+
+[[methods]]
+name = 'ResetForceCalculation'
+
+[[methods]]
+name = 'CalculateLorentzForceForMode'
+args = [{ name = 'mode_index', type = 'int' }]
+
+[[methods]]
+name = 'CalculateLorentzForceForAllModes'
+
+[[methods]]
+name = 'IsModeSelectedForForceCalculation'
+return_type = 'bool'
+args = [{ name = 'mode_index', type = 'int' }]
+
+[[methods]]
+name = 'IsAnyModeSelectedForForceCalculation'
+return_type = 'bool'
+
+[[methods]]
+name = 'StartForceCalculation'
+return_type = 'bool'
